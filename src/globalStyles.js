@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     background: hsl(221, 69%, 94%);
     font-family: 'Plus Jakarta Sans', sans-serif;
+    height:100vh;
   }
 
 `;
