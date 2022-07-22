@@ -4,7 +4,7 @@ import Button from '../Button';
 
 import { StyledHeader } from './Header.styled';
 
-const Header: React.FC = () => {
+const Header = () => {
 	return (
 		<StyledHeader>
 			<img src={Logo} alt='Kanban Logo' />
