@@ -1,6 +1,6 @@
 import Button from '../Button';
 
-import { tasksData } from '../../Types/types';
+import { TasksData } from '../../Types/types';
 import { useAppDispatch } from '../../app/hooks';
 import { addTask } from '../../features/tasks/tasksSlice';
 
@@ -12,7 +12,7 @@ const TaskAdd = () => {
 	function handleAddTask(event: any) {
 		event.preventDefault();
 
-		const task: tasksData = {
+		const task: TasksData = {
 			id: Math.random().toString(),
 			title: event.target.title.value,
 			describe: event.target.description.value,

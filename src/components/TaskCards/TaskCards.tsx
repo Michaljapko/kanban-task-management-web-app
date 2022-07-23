@@ -1,4 +1,5 @@
 import { useAppSelector } from '../../app/hooks';
+import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { selectTasks } from '../../features/tasks/tasksSlice';
 
 import { StyledCard } from './TaskCards.style';
@@ -8,14 +9,21 @@ const TaskCards = () => {
 
 	return (
 		<>
-			{tasks.map((task) => {
-				return (
-					<StyledCard key={task.id}>
-						<p>{task.title}</p>
-						<p>0 of {task.subtask.length} subtasks</p>
-					</StyledCard>
-				);
-			})}
+			{tasks &&
+				tasks.map((task) => {
+					return (
+						<>
+							<p>{task.name}</p>
+							{task.tasks.map((task) => {
+								return (
+									<StyledCard>
+										<p>{task.title}</p>
+									</StyledCard>
+								);
+							})}
+						</>
+					);
+				})}
 		</>
 	);
 };
