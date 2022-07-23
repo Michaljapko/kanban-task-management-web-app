@@ -14,10 +14,13 @@ export const tasksSlice = createSlice({
 			// return (state = [...state, action.payload]);
 			console.log('123');
 		},
+		addBoard: (state, action: PayloadAction<string>) => {
+			state.boards.push({ name: action.payload, columns: [] });
+		},
 	},
 });
 
-export const { addTask } = tasksSlice.actions;
+export const { addTask, addBoard } = tasksSlice.actions;
 export const selectTasks = (state: RootState) => {
 	const board = state.tasks.boards.find((board) => board.name === state.currentBoard);
 	return board?.columns;

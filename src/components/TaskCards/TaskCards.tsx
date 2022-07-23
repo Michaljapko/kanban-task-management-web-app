@@ -5,16 +5,18 @@ import { selectTasks } from '../../features/tasks/tasksSlice';
 import { StyledCard } from './TaskCards.style';
 
 const TaskCards = () => {
-	const tasks = useAppSelector(selectTasks);
+	const columns = useAppSelector(selectTasks);
 
 	return (
 		<>
-			{tasks &&
-				tasks.map((task) => {
+			{columns &&
+				columns.map((column) => {
 					return (
 						<>
-							<p>{task.name}</p>
-							{task.tasks.map((task) => {
+							<p>
+								{column.name} ({column.tasks.length})
+							</p>
+							{column.tasks.map((task) => {
 								return (
 									<StyledCard>
 										<p>{task.title}</p>
