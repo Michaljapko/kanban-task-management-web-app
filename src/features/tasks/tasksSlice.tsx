@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { TasksData, ColumnAddingObject } from '../../Types/types';
+import {ColumnAddingObject } from '../../Types/types';
 import { Boards } from '../../Types/types';
 import { data } from '../../data/data';
 

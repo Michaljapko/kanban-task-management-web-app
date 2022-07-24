@@ -23,6 +23,7 @@ const LandingPage = () => {
 				<Sidebar />
 				{tasks?.length === 0 && <p>This board is empty. Create a new column to get started.</p>}
 				{tasks && tasks?.length > 0 && <TaskCards />}
+				
 				<Button onClick={() => dispatch(addColumn({ columnName: 'New column', currentBoard: currentBoard }))} icon='plus'>
 					Add New Column
 				</Button>
