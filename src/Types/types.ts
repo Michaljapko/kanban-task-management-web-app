@@ -22,9 +22,19 @@ export interface Boards {
 }
 
 export interface TasksData {
-	id: string;
 	title: string;
 	describe: string;
 	subtask: Subtask[];
 	status: 'doing' | 'todo';
+}
+
+export interface ColumnAddingObject {
+	columnName: string;
+	currentBoard: string;
+}
+
+export interface ButtonTypes {
+	children: string;
+	icon?: 'plus';
+	onClick?: any;
 }

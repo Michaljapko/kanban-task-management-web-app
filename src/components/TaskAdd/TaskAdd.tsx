@@ -1,25 +1,27 @@
 import Button from '../Button';
 
 import { TasksData } from '../../Types/types';
-import { useAppDispatch } from '../../app/hooks';
-import { addTask } from '../../features/tasks/tasksSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { addTask, selectTasks } from '../../features/tasks/tasksSlice';
 
 import { StyledInput, StyledTextArea } from './TaskAdd.style';
+import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 
 const TaskAdd = () => {
 	const dispatch = useAppDispatch();
+	const taskColumn = useAppSelector(selectTasks);
+	const currentBoard = useAppSelector(selectCurrentBoard);
 
 	function handleAddTask(event: any) {
 		event.preventDefault();
 
 		const task: TasksData = {
-			id: Math.random().toString(),
 			title: event.target.title.value,
 			describe: event.target.description.value,
 			subtask: [event.target.subtask.value],
 			status: event.target.status.value,
 		};
-		dispatch(addTask(task));
+		dispatch(addTask({ task: task, currentBoard: currentBoard }));
 	}
 	return (
 		<div>
@@ -39,8 +41,9 @@ a little.'
 				<StyledInput id='subtask' type='text' placeholder='e.g. Drink coffee & smile'></StyledInput>
 				<label htmlFor='status'>Status</label>
 				<select name='status' id='status'>
-					<option value='todo'>Todo</option>
-					<option value='doing'>Doing</option>
+					{taskColumn?.map((column) => (
+						<option value={column.name}>{column.name}</option>
+					))}
 				</select>
 				<Button>Create Task</Button>
 			</form>

@@ -15,6 +15,7 @@ export const boardSlice = createSlice({
 export const { changeBoard } = boardSlice.actions;
 
 export const selectCurrentBoard = (state: RootState) => state.currentBoard;
+
 export const selectBoards = (state: RootState) =>
 	state.tasks.boards.map((board) => {
 		return board.name;

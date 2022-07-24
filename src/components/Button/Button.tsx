@@ -1,15 +1,11 @@
 import React from 'react';
 import { StyledButton } from './Button.styled';
 import plus from '../../assets/icon-add-task-mobile.svg';
+import { ButtonTypes } from '../../Types/types';
 
-interface ButtonTypes {
-	children: string;
-	icon?: 'plus';
-}
-
-const Button = ({ children, icon }: ButtonTypes) => {
+const Button = ({ children, icon, onClick }: ButtonTypes) => {
 	return (
-		<StyledButton>
+		<StyledButton onClick={onClick}>
 			{icon && <img src={plus} alt={icon} />}
 			{children}
 		</StyledButton>

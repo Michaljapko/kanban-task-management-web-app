@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { TasksData } from '../../Types/types';
+import { TasksData, ColumnAddingObject } from '../../Types/types';
 import { Boards } from '../../Types/types';
 import { data } from '../../data/data';
 
@@ -10,17 +10,33 @@ export const tasksSlice = createSlice({
 	name: 'tasks',
 	initialState,
 	reducers: {
-		addTask: (state, action: PayloadAction<TasksData>) => {
-			// return (state = [...state, action.payload]);
-			console.log('123');
+		addTask: (state, action: PayloadAction<any>) => {
+			const boardIndex = state.boards.findIndex((board) => board.name === action.payload.currentBoard);
+			const columnIndex = state.boards[boardIndex].columns.findIndex((column) => column.name === action.payload.task.status);
+			state.boards[boardIndex].columns[columnIndex].tasks = [...state.boards[boardIndex].columns[columnIndex].tasks, action.payload.task];
 		},
 		addBoard: (state, action: PayloadAction<string>) => {
-			state.boards.push({ name: action.payload, columns: [] });
+			state.boards = [
+				...state.boards,
+				{
+					name: action.payload,
+					columns: [
+						{ name: 'Todo', tasks: [] },
+						{ name: 'Doing', tasks: [] },
+					],
+				},
+			];
+		},
+
+		addColumn: (state, action: PayloadAction<ColumnAddingObject>) => {
+			const boardIndex = state.boards.findIndex((board) => board.name === action.payload.currentBoard);
+			state.boards[boardIndex].columns = [...state.boards[boardIndex].columns, { name: action.payload.columnName, tasks: [] }];
 		},
 	},
 });
 
-export const { addTask, addBoard } = tasksSlice.actions;
+export const { addTask, addBoard, addColumn } = tasksSlice.actions;
+
 export const selectTasks = (state: RootState) => {
 	const board = state.tasks.boards.find((board) => board.name === state.currentBoard);
 	return board?.columns;

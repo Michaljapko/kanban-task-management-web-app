@@ -1,5 +1,4 @@
 import { useAppSelector } from '../../app/hooks';
-import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { selectTasks } from '../../features/tasks/tasksSlice';
 
 import { StyledCard } from './TaskCards.style';
