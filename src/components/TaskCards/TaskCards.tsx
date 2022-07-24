@@ -24,7 +24,7 @@ const TaskCards = () => {
 												if (task.isCompleted) return ++taskDone;
 												return taskDone;
 											}, 0)}{' '}
-											of {task.subtasks.length}
+											of {task.subtasks.length} subtask
 										</p>
 									</StyledCard>
 								);
