@@ -8,26 +8,34 @@ import { StyledInput, StyledTextArea } from './TaskAdd.style';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { useRef, useState } from 'react';
 import { v4 as uuid } from 'uuid';
-import { title } from 'process';
 
 const TaskAdd = () => {
 	const [subtaskInputs, setSubtaskInputs] = useState([{ id: uuid(), value: '' }]);
+
+	const titleInputsRef = useRef<HTMLInputElement>(null);
+	const descriptionInputsRef = useRef<HTMLTextAreaElement>(null);
+	const columnInputsRef = useRef<HTMLSelectElement>(null);
 	const subtaskInputsRef = useRef<HTMLInputElement[]>([]);
-	subtaskInputsRef.current = [];
+	// subtaskInputsRef.current = [];
+
 	const dispatch = useAppDispatch();
 	const taskColumn = useAppSelector(selectTasks);
 	const currentBoard = useAppSelector(selectCurrentBoard);
 
-	function handleAddTask(event: any) {
+	function handleAddTask(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
+		if (!titleInputsRef.current) return;
+		if (!descriptionInputsRef.current) return;
+		if (!columnInputsRef.current) return;
+
 		const subtask = subtaskInputsRef.current.map((input) => input.value);
 		const task: TasksData = {
-			title: event.target.title.value,
-			describe: event.target.description.value,
+			title: titleInputsRef.current?.value,
+			description: descriptionInputsRef.current?.value,
 			subtask: subtask.map((task) => {
 				return { title: task, isCompleted: false };
 			}),
-			status: event.target.status.value,
+			status: columnInputsRef.current?.value,
 		};
 		dispatch(addTask({ task: task, currentBoard: currentBoard }));
 	}
@@ -35,16 +43,16 @@ const TaskAdd = () => {
 		if (element && !subtaskInputsRef.current.includes(element)) {
 			subtaskInputsRef.current.push(element);
 		}
-		console.log(subtaskInputsRef.current.map((input) => input.value));
 	}
 	return (
 		<div>
 			<h2>Add New Task</h2>
-			<form onSubmit={() => handleAddTask}>
+			<form onSubmit={(event) => handleAddTask(event)}>
 				<label htmlFor='title'>Title</label>
-				<StyledInput id='title' type='text' placeholder='e.g. Take coffee break'></StyledInput>
+				<StyledInput ref={titleInputsRef} id='title' type='text' placeholder='e.g. Take coffee break'></StyledInput>
 				<label htmlFor='description'>Description</label>
 				<StyledTextArea
+					ref={descriptionInputsRef}
 					id='description'
 					placeholder='e.g. It’s always good to take a break. This 
 15 minute break will  recharge the batteries 
@@ -69,7 +77,7 @@ a little.'
 					Add New Subtask
 				</button>
 				<label htmlFor='status'>Status</label>
-				<select name='status' id='status'>
+				<select ref={columnInputsRef} name='status' id='status'>
 					{taskColumn?.map((column) => (
 						<option value={column.name}>{column.name}</option>
 					))}

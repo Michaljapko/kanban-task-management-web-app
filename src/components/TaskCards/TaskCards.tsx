@@ -19,13 +19,13 @@ const TaskCards = () => {
 								return (
 									<StyledCard>
 										<p>{task.title}</p>
-										<p>
+										{/* <p>
 											{task.subtasks.reduce((taskDone, task) => {
 												if (task.isCompleted) return ++taskDone;
 												return taskDone;
 											}, 0)}{' '}
 											of {task.subtasks.length} subtask
-										</p>
+										</p> */}
 									</StyledCard>
 								);
 							})}

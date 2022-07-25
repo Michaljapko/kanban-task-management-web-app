@@ -23,9 +23,9 @@ export interface Boards {
 
 export interface TasksData {
 	title: string;
-	describe: string;
+	description: string;
 	subtask: Subtask[];
-	status: 'doing' | 'todo';
+	status: string;
 }
 
 export interface ColumnAddingObject {
