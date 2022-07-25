@@ -18,7 +18,7 @@ export const selectCurrentBoard = (state: RootState) => state.currentBoard;
 
 export const selectBoards = (state: RootState) =>
 	state.tasks.boards.map((board) => {
-		return board.name;
+		return board;
 	});
 
 export default boardSlice.reducer;

@@ -30,6 +30,7 @@ const TaskAdd = () => {
 
 		const subtasks = subtaskInputsRef.current.map((input) => input.value);
 		const task: TasksData = {
+			id: uuid(),
 			title: titleInputsRef.current?.value,
 			description: descriptionInputsRef.current?.value,
 			subtasks: subtasks.map((task) => {
@@ -39,11 +40,13 @@ const TaskAdd = () => {
 		};
 		dispatch(addTask({ task: task, currentBoard: currentBoard }));
 	}
+
 	function addToRefs(element: HTMLInputElement) {
 		if (element && !subtaskInputsRef.current.includes(element)) {
 			subtaskInputsRef.current.push(element);
 		}
 	}
+	
 	return (
 		<div>
 			<h2>Add New Task</h2>

@@ -3,6 +3,7 @@ import { RootState } from '../../app/store';
 import { ColumnAddingObject } from '../../Types/types';
 import { Boards } from '../../Types/types';
 import { data } from '../../data/data';
+import { v4 as uuid } from 'uuid';
 
 const initialState: Boards = data;
 
@@ -14,16 +15,16 @@ export const tasksSlice = createSlice({
 			const boardIndex = state.boards.findIndex((board) => board.name === action.payload.currentBoard);
 			const columnIndex = state.boards[boardIndex].columns.findIndex((column) => column.name === action.payload.task.status);
 			state.boards[boardIndex].columns[columnIndex].tasks = [...state.boards[boardIndex].columns[columnIndex].tasks, action.payload.task];
-			
 		},
 		addBoard: (state, action: PayloadAction<string>) => {
 			state.boards = [
 				...state.boards,
 				{
+					id: uuid(),
 					name: action.payload,
 					columns: [
-						{ name: 'Todo', tasks: [] },
-						{ name: 'Doing', tasks: [] },
+						{ id: uuid(), name: 'Todo', tasks: [] },
+						{ id: uuid(), name: 'Doing', tasks: [] },
 					],
 				},
 			];
@@ -31,7 +32,7 @@ export const tasksSlice = createSlice({
 
 		addColumn: (state, action: PayloadAction<ColumnAddingObject>) => {
 			const boardIndex = state.boards.findIndex((board) => board.name === action.payload.currentBoard);
-			state.boards[boardIndex].columns = [...state.boards[boardIndex].columns, { name: action.payload.columnName, tasks: [] }];
+			state.boards[boardIndex].columns = [...state.boards[boardIndex].columns, { id: uuid(), name: action.payload.columnName, tasks: [] }];
 		},
 	},
 });

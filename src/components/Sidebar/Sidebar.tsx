@@ -12,8 +12,8 @@ const Sidebar: React.FC = () => {
 			<p>All Board ({boards.length})</p>
 			{boards.map((board) => {
 				return (
-					<button onClick={() => dispatch(changeBoard(board))} key={board}>
-						{board}
+					<button onClick={() => dispatch(changeBoard(board.name))} key={board.id}>
+						{board.name}
 					</button>
 				);
 			})}
