@@ -24,7 +24,7 @@ export interface Boards {
 export interface TasksData {
 	title: string;
 	description: string;
-	subtask: Subtask[];
+	subtasks: Subtask[];
 	status: string;
 }
 

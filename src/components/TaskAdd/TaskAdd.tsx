@@ -28,11 +28,11 @@ const TaskAdd = () => {
 		if (!descriptionInputsRef.current) return;
 		if (!columnInputsRef.current) return;
 
-		const subtask = subtaskInputsRef.current.map((input) => input.value);
+		const subtasks = subtaskInputsRef.current.map((input) => input.value);
 		const task: TasksData = {
 			title: titleInputsRef.current?.value,
 			description: descriptionInputsRef.current?.value,
-			subtask: subtask.map((task) => {
+			subtasks: subtasks.map((task) => {
 				return { title: task, isCompleted: false };
 			}),
 			status: columnInputsRef.current?.value,

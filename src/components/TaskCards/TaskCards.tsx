@@ -5,6 +5,7 @@ import { StyledCard } from './TaskCards.style';
 
 const TaskCards = () => {
 	const columns = useAppSelector(selectTasks);
+	console.log(columns);
 
 	return (
 		<>
@@ -19,13 +20,14 @@ const TaskCards = () => {
 								return (
 									<StyledCard>
 										<p>{task.title}</p>
-										{/* <p>
+										<p>
 											{task.subtasks.reduce((taskDone, task) => {
+												console.log(task);
 												if (task.isCompleted) return ++taskDone;
 												return taskDone;
 											}, 0)}{' '}
 											of {task.subtasks.length} subtask
-										</p> */}
+										</p>
 									</StyledCard>
 								);
 							})}

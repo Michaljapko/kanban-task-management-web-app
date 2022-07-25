@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import {ColumnAddingObject } from '../../Types/types';
+import { ColumnAddingObject } from '../../Types/types';
 import { Boards } from '../../Types/types';
 import { data } from '../../data/data';
 
@@ -14,6 +14,7 @@ export const tasksSlice = createSlice({
 			const boardIndex = state.boards.findIndex((board) => board.name === action.payload.currentBoard);
 			const columnIndex = state.boards[boardIndex].columns.findIndex((column) => column.name === action.payload.task.status);
 			state.boards[boardIndex].columns[columnIndex].tasks = [...state.boards[boardIndex].columns[columnIndex].tasks, action.payload.task];
+			
 		},
 		addBoard: (state, action: PayloadAction<string>) => {
 			state.boards = [
