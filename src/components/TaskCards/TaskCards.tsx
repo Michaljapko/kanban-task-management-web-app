@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { useAppSelector } from '../../app/hooks';
-import { selectTasks } from '../../features/tasks/tasksSlice';
+import { selectTasksData } from '../../features/tasks/tasksSlice';
 import TaskView from '../TaskView';
 
 import { StyledCard } from './TaskCards.style';
 
 const TaskCards = () => {
-	const columns = useAppSelector(selectTasks);
+	const columns = useAppSelector(selectTasksData);
 	const [taskViewData, setTaskViewData] = useState();
 	const [taskViewShow, setTaskViewShow] = useState(false);
 	function showTask(task: any) {
@@ -15,7 +15,7 @@ const TaskCards = () => {
 	}
 	return (
 		<>
-			{taskViewShow && <TaskView  task={taskViewData}  />}
+			{taskViewShow && <TaskView task={taskViewData} />}
 			{columns &&
 				columns.map((column) => {
 					return (
@@ -23,6 +23,7 @@ const TaskCards = () => {
 							<p key={column.id}>
 								{column.name} ({column.tasks.length})
 							</p>
+							c sli]
 							{column.tasks.map((task) => {
 								return (
 									<StyledCard onClick={() => showTask(task)} key={task.id}>

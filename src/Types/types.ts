@@ -3,6 +3,13 @@ export interface Subtask {
 	isCompleted: boolean;
 }
 
+export interface ButtonTypes {
+	children?: string;
+	icon?: 'plus';
+	variant?: 'header';
+	onClick?: any;
+}
+
 export interface Boards {
 	boards: {
 		id: string;
@@ -36,10 +43,4 @@ export interface TasksData {
 export interface ColumnAddingObject {
 	columnName: string;
 	currentBoard: string;
-}
-
-export interface ButtonTypes {
-	children: string;
-	icon?: 'plus';
-	onClick?: any;
 }

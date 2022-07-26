@@ -2,7 +2,7 @@ import Button from '../Button';
 
 import { TasksData } from '../../Types/types';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { addTask, selectTasks } from '../../features/tasks/tasksSlice';
+import { addTask, selectTasksData } from '../../features/tasks/tasksSlice';
 
 import { StyledInput, StyledTextArea } from './TaskAdd.style';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
@@ -19,7 +19,7 @@ const TaskAdd = () => {
 	// subtaskInputsRef.current = [];
 
 	const dispatch = useAppDispatch();
-	const taskColumn = useAppSelector(selectTasks);
+	const taskColumn = useAppSelector(selectTasksData);
 	const currentBoard = useAppSelector(selectCurrentBoard);
 
 	function handleAddTask(event: React.FormEvent<HTMLFormElement>) {
@@ -46,7 +46,7 @@ const TaskAdd = () => {
 			subtaskInputsRef.current.push(element);
 		}
 	}
-	
+
 	return (
 		<div>
 			<h2>Add New Task</h2>

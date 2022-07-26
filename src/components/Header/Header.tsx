@@ -1,15 +1,25 @@
-import React from 'react';
-import Logo from '../../assets/logo-mobile.svg';
+import logo from '../../assets/logo-mobile.svg';
+import ellipsis from '../../assets/icon-vertical-ellipsis.svg';
+import chevronDown from '../../assets/icon-chevron-down.svg';
+
 import Button from '../Button';
 
-import { StyledHeader } from './Header.styled';
+import { StyledHeader, StyledLogoBox, StyledHeaderBox, StyledLogoTitle } from './Header.styled';
 
 const Header = () => {
 	return (
 		<StyledHeader>
-			<img src={Logo} alt='Kanban Logo' />
-			<h3>Platform Launch</h3>
-			<Button>Add New Task</Button>
+			<StyledHeaderBox>
+				<img src={logo} alt='Kanban Logo' />
+				<StyledLogoBox>
+					<StyledLogoTitle>Platform Launch</StyledLogoTitle>
+					<img src={chevronDown} alt='Arrow Down' />
+				</StyledLogoBox>
+			</StyledHeaderBox>
+			<StyledHeaderBox>
+				<Button icon='plus' variant='header' />
+				<img src={ellipsis} alt='ellipsis' />
+			</StyledHeaderBox>
 		</StyledHeader>
 	);
 };
