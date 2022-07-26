@@ -1,4 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import layoutSlice from '../features/layout/layoutSlice';
 import boardSlice from '../features/tasks/boardSlice';
 import tasksReducer from '../features/tasks/tasksSlice';
 
@@ -6,6 +7,7 @@ export const store = configureStore({
 	reducer: {
 		tasks: tasksReducer,
 		currentBoard: boardSlice,
+		layoutSlice: layoutSlice,
 	},
 });
 

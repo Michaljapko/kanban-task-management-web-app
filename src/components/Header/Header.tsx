@@ -1,19 +1,24 @@
 import logo from '../../assets/logo-mobile.svg';
 import ellipsis from '../../assets/icon-vertical-ellipsis.svg';
 import chevronDown from '../../assets/icon-chevron-down.svg';
-
+import chavronUp from '../../assets/icon-chevron-up.svg';
 import Button from '../Button';
 
 import { StyledHeader, StyledLogoBox, StyledHeaderBox, StyledLogoTitle } from './Header.styled';
+import { selectisSidebarShow, setIsSidebarShow } from '../../features/layout/layoutSlice';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
 
 const Header = () => {
+	const dispatch = useAppDispatch();
+	const isSidebarShow = useAppSelector(selectisSidebarShow);
+
 	return (
 		<StyledHeader>
 			<StyledHeaderBox>
 				<img src={logo} alt='Kanban Logo' />
-				<StyledLogoBox>
+				<StyledLogoBox onClick={() => dispatch(setIsSidebarShow())}>
 					<StyledLogoTitle>Platform Launch</StyledLogoTitle>
-					<img src={chevronDown} alt='Arrow Down' />
+					{isSidebarShow ? <img src={chavronUp} alt='Arrow Up' /> : <img src={chevronDown} alt='Arrow Down' />}
 				</StyledLogoBox>
 			</StyledHeaderBox>
 			<StyledHeaderBox>

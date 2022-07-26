@@ -1,30 +1,32 @@
-import React from 'react';
 import { changeBoard, selectBoards } from '../../features/tasks/boardSlice';
 import { addBoard } from '../../features/tasks/tasksSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
-import { StyledWrapper, StyledHead } from './Sidebar.styled';
+import { StyledWrapper, StyledHead, StyledBack } from './Sidebar.styled';
+
+import Button from '../Button';
 
 const Sidebar = () => {
-	const boards = useAppSelector(selectBoards);
 	const dispatch = useAppDispatch();
+	const boards = useAppSelector(selectBoards);
 
 	return (
-		<StyledWrapper>
-			
-				<StyledHead>All Board ({boards.length})</StyledHead>
+		<StyledBack>
+			<StyledWrapper>
+				<StyledHead>All Boards ({boards.length})</StyledHead>
 				{boards.map((board) => {
 					return (
-						<button onClick={() => dispatch(changeBoard(board.name))} key={board.id}>
+						<Button onClick={() => dispatch(changeBoard(board.name))} key={board.id} variant='sidebar' icon='board'>
 							{board.name}
-						</button>
+						</Button>
 					);
 				})}
 
-				<button onClick={() => dispatch(addBoard('ddd'))}>+ Create New Board</button>
-				<button>Hide Sidebar</button>
-			
-		</StyledWrapper>
+				<Button onClick={() => dispatch(addBoard('ddd'))} variant='sidebarBold' icon='board'>
+					+ Create New Board
+				</Button>
+			</StyledWrapper>
+		</StyledBack>
 	);
 };
 

@@ -5,8 +5,8 @@ export interface Subtask {
 
 export interface ButtonTypes {
 	children?: string;
-	icon?: 'plus';
-	variant?: 'header';
+	icon?: 'plus' | 'board';
+	variant?: 'header' | 'sidebar' | 'sidebarBold';
 	onClick?: any;
 }
 
