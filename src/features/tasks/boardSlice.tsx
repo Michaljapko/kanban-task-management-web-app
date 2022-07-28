@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
 export const boardSlice = createSlice({
-	name: 'currentBoard',
+	name: 'currentBoardId',
 	initialState: '',
 	reducers: {
 		changeBoard: (state, action: PayloadAction<string>) => {
@@ -14,7 +14,7 @@ export const boardSlice = createSlice({
 
 export const { changeBoard } = boardSlice.actions;
 
-export const selectCurrentBoard = (state: RootState) => state.currentBoard;
+export const selectCurrentBoard = (state: RootState) => state.currentBoardId;
 
 export const selectBoards = (state: RootState) =>
 	state.tasks.boards.map((board) => {

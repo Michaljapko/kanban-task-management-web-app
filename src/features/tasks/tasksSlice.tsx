@@ -40,7 +40,7 @@ export const tasksSlice = createSlice({
 export const { addTask, addBoard, addColumn } = tasksSlice.actions;
 
 export const selectTasksData = (state: RootState) => {
-	const board = state.tasks.boards.find((board) => board.name === state.currentBoard);
+	const board = state.tasks.boards.find((board) => board.id === state.currentBoardId);
 	return board?.columns;
 };
 

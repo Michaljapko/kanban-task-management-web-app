@@ -6,7 +6,7 @@ import tasksReducer from '../features/tasks/tasksSlice';
 export const store = configureStore({
 	reducer: {
 		tasks: tasksReducer,
-		currentBoard: boardSlice,
+		currentBoardId: boardSlice,
 		layoutSlice: layoutSlice,
 	},
 });
