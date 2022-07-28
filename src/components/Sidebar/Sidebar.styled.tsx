@@ -8,7 +8,6 @@ export const StyledBack = styled.div`
 	width: 100%;
 	height: 100%;
 	padding-top: 16px;
-
 	background: #00000038;
 `;
 export const StyledWrapper = styled.div`

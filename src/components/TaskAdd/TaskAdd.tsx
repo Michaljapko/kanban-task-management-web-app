@@ -16,7 +16,6 @@ const TaskAdd = () => {
 	const descriptionInputsRef = useRef<HTMLTextAreaElement>(null);
 	const columnInputsRef = useRef<HTMLSelectElement>(null);
 	const subtaskInputsRef = useRef<HTMLInputElement[]>([]);
-	// subtaskInputsRef.current = [];
 
 	const dispatch = useAppDispatch();
 	const taskColumn = useAppSelector(selectTasksData);

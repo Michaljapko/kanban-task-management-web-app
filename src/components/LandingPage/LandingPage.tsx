@@ -10,17 +10,21 @@ import { addColumn, selectTasksData } from '../../features/tasks/tasksSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { StyledWrapper } from './LandingPage.styled';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
-import { selectisSidebarShow } from '../../features/layout/layoutSlice';
+import { selectIsSidebarShow, selectIsBoardAddShow } from '../../features/layout/layoutSlice';
+import BoardAdd from '../BoardAdd/BoadAdd';
 
 const LandingPage = () => {
 	const tasksData = useAppSelector(selectTasksData);
 	const currentBoard = useAppSelector(selectCurrentBoard);
-	const isSidebarShow = useAppSelector(selectisSidebarShow);
+	const isSidebarShow = useAppSelector(selectIsSidebarShow);
+	const isBoardAddShow = useAppSelector(selectIsBoardAddShow);
 	const dispatch = useAppDispatch();
 	return (
 		<>
+			{isBoardAddShow && <BoardAdd />}
 			<Header />
 			{isSidebarShow && <Sidebar />}
+
 			<StyledWrapper>
 				{!tasksData && <p>This board is empty. Create a new column to get started.</p>}
 				{tasksData && tasksData?.length > 0 && <TaskCards />}

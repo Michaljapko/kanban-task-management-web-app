@@ -1,5 +1,5 @@
 import { changeBoard, selectBoards, selectCurrentBoard } from '../../features/tasks/boardSlice';
-import { addBoard } from '../../features/tasks/tasksSlice';
+import { setIsSidebarShow, setIsBoardAddShow } from '../../features/layout/layoutSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import { StyledWrapper, StyledHead, StyledBack, StyledRadioBox } from './Sidebar.styled';
@@ -15,8 +15,8 @@ const Sidebar = () => {
 	const currentBoards = useAppSelector(selectCurrentBoard);
 
 	return (
-		<StyledBack>
-			<StyledWrapper>
+		<StyledBack onClick={() => dispatch(setIsSidebarShow())}>
+			<StyledWrapper onClick={(e) => e.stopPropagation()}>
 				<StyledHead>All Boards ({boards.length})</StyledHead>
 				{boards.map((board) => {
 					if (board.id === currentBoards) {
@@ -33,7 +33,7 @@ const Sidebar = () => {
 					);
 				})}
 
-				<Button onClick={() => dispatch(addBoard('ddd'))} variant='sidebarBold' icon='board'>
+				<Button onClick={() => dispatch(setIsBoardAddShow())} variant='sidebarBold' icon='board'>
 					+ Create New Board
 				</Button>
 				<StyledRadioBox>

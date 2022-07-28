@@ -8,6 +8,7 @@ export interface ButtonTypes {
 	icon?: 'plus' | 'board';
 	variant?: 'header' | 'sidebar' | 'sidebarBold' | 'sidebarCurrent';
 	onClick?: any;
+	type?: string;
 }
 
 export interface Boards {
@@ -38,9 +39,4 @@ export interface TasksData {
 	description: string;
 	subtasks: Subtask[];
 	status: string;
-}
-
-export interface ColumnAddingObject {
-	columnName: string;
-	currentBoard: string;
 }
