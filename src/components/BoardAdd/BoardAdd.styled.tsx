@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledBack = styled.div`
-	position: fixed;
+	position: absolute;
+	top: 0;
+	left: 0;
 	display: flex;
 	align-items: center;
 	width: 100%;
