@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { changeBoard } from '../../features/tasks/boardSlice';
 import { useAppDispatch } from '../../app/hooks';
 import { addBoard } from '../../features/tasks/tasksSlice';
 import { Boards } from '../../Types/types';
@@ -42,6 +43,8 @@ const BoardAdd = () => {
 			}),
 		};
 		dispatch(addBoard(board));
+		dispatch(changeBoard(board.id));
+		dispatch(setIsBoardAddShow());
 	}
 
 	return (

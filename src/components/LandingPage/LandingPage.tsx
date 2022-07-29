@@ -33,7 +33,7 @@ const LandingPage = () => {
 					Add New Column
 				</Button>
 
-				{/* <TaskAdd /> */}
+				<TaskAdd />
 			</StyledWrapper>
 		</>
 	);

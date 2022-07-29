@@ -20,6 +20,16 @@ export const data: Boards = {
 								{ id: '22223421', title: 'Go in', isCompleted: false },
 							],
 						},
+						{
+							id: '24412',
+							title: 'Do smth',
+							description: 'Go out and smth',
+							status: 'Done',
+							subtasks: [
+								{ id: '222231', title: 'Go out', isCompleted: true },
+								{ id: '22223421', title: 'Go in', isCompleted: false },
+							],
+						},
 					],
 				},
 				{

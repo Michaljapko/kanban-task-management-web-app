@@ -8,7 +8,7 @@ export interface ButtonTypes {
 	icon?: 'plus' | 'board';
 	variant?: 'header' | 'sidebar' | 'sidebarBold' | 'sidebarCurrent';
 	onClick?: any;
-	type?: string;
+	type?: 'button' | 'reset' | 'submit' | undefined;
 }
 
 export interface Boards {

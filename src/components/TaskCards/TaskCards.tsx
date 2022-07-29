@@ -18,12 +18,13 @@ const TaskCards = () => {
 			{taskViewShow && <TaskView task={taskViewData} />}
 			{columns &&
 				columns.map((column) => {
+					console.log(column);
 					return (
-						<>
+						<div>
 							<p key={column.id}>
 								{column.name} ({column.tasks.length})
 							</p>
-							c sli]
+
 							{column.tasks.map((task) => {
 								return (
 									<StyledCard onClick={() => showTask(task)} key={task.id}>
@@ -38,7 +39,7 @@ const TaskCards = () => {
 									</StyledCard>
 								);
 							})}
-						</>
+						</div>
 					);
 				})}
 		</>

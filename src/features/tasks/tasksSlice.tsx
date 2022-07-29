@@ -12,12 +12,11 @@ export const tasksSlice = createSlice({
 	initialState,
 	reducers: {
 		addTask: (state, action: PayloadAction<any>) => {
-			const boardIndex = state.boards.findIndex((board) => board.name === action.payload.currentBoard);
+			const boardIndex = state.boards.findIndex((board) => board.id === action.payload.currentBoard);
 			const columnIndex = state.boards[boardIndex].columns.findIndex((column) => column.name === action.payload.task.status);
 			state.boards[boardIndex].columns[columnIndex].tasks = [...state.boards[boardIndex].columns[columnIndex].tasks, action.payload.task];
 		},
 		addBoard: (state, action: PayloadAction<any>) => {
-			console.log(action.payload)
 			state.boards = [...state.boards, action.payload];
 		},
 
