@@ -5,7 +5,7 @@ import chavronUp from '../../assets/icon-chevron-up.svg';
 import Button from '../Button';
 
 import { StyledHeader, StyledLogoBox, StyledHeaderBox, StyledLogoTitle, StyledDropMenu } from './Header.styled';
-import { selectIsSidebarShow, setIsSidebarShow } from '../../features/layout/layoutSlice';
+import { selectIsSidebarShow, setIsSidebarShow, setIsTaskAddShow } from '../../features/layout/layoutSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { useState } from 'react';
 
@@ -30,7 +30,13 @@ const Header = () => {
 				</StyledLogoBox>
 			</StyledHeaderBox>
 			<StyledHeaderBox>
-				<Button icon='plus' variant='header' />
+				<Button
+					icon='plus'
+					variant='header'
+					onClick={() => {
+						dispatch(setIsTaskAddShow());
+					}}
+				/>
 
 				<img
 					src={ellipsis}

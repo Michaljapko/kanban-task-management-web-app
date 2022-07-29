@@ -10,7 +10,7 @@ import { addColumn, selectTasksData } from '../../features/tasks/tasksSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { StyledWrapper } from './LandingPage.styled';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
-import { selectIsSidebarShow, selectIsBoardAddShow } from '../../features/layout/layoutSlice';
+import { selectIsSidebarShow, selectIsBoardAddShow, selectIsTaskAddShow } from '../../features/layout/layoutSlice';
 import BoardAdd from '../BoardAdd/BoadAdd';
 
 const LandingPage = () => {
@@ -18,10 +18,13 @@ const LandingPage = () => {
 	const currentBoard = useAppSelector(selectCurrentBoard);
 	const isSidebarShow = useAppSelector(selectIsSidebarShow);
 	const isBoardAddShow = useAppSelector(selectIsBoardAddShow);
+	const isTaskAddShow = useAppSelector(selectIsTaskAddShow);
 	const dispatch = useAppDispatch();
 	return (
 		<>
 			{isBoardAddShow && <BoardAdd />}
+			{isTaskAddShow && <TaskAdd />}
+
 			<Header />
 			{isSidebarShow && <Sidebar />}
 
@@ -32,8 +35,6 @@ const LandingPage = () => {
 				<Button onClick={() => dispatch(addColumn({ columnName: 'New column', currentBoard: currentBoard }))} icon='plus'>
 					Add New Column
 				</Button>
-
-				<TaskAdd />
 			</StyledWrapper>
 		</>
 	);

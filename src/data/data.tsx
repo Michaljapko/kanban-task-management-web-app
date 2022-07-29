@@ -21,7 +21,7 @@ export const data: Boards = {
 							],
 						},
 						{
-							id: '24412',
+							id: '244122',
 							title: 'Do smth',
 							description: 'Go out and smth',
 							status: 'Done',

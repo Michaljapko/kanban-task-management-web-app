@@ -1,21 +1,24 @@
 import { useState } from 'react';
-import { useAppSelector } from '../../app/hooks';
 import { selectTasksData } from '../../features/tasks/tasksSlice';
 import TaskView from '../TaskView';
+import { selectIsTaskShow, setIsTaskShow } from '../../features/layout/layoutSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import { StyledCard } from './TaskCards.style';
 
 const TaskCards = () => {
+	const dispatch = useAppDispatch();
 	const columns = useAppSelector(selectTasksData);
+	const isTaskShow = useAppSelector(selectIsTaskShow);
 	const [taskViewData, setTaskViewData] = useState();
-	const [taskViewShow, setTaskViewShow] = useState(false);
+
 	function showTask(task: any) {
 		setTaskViewData(task);
-		setTaskViewShow(true);
+		dispatch(setIsTaskShow());
 	}
 	return (
 		<>
-			{taskViewShow && <TaskView task={taskViewData} />}
+			{isTaskShow && <TaskView task={taskViewData} />}
 			{columns &&
 				columns.map((column) => {
 					console.log(column);
