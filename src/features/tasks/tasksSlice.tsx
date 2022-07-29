@@ -19,6 +19,11 @@ export const tasksSlice = createSlice({
 		addBoard: (state, action: PayloadAction<any>) => {
 			state.boards = [...state.boards, action.payload];
 		},
+		deleteBoard: (state, action: PayloadAction<any>) => {
+			state.boards = state.boards.filter((board) => {
+				return action.payload !== board.id;
+			});
+		},
 
 		addColumn: (state, action: PayloadAction<any>) => {
 			const boardIndex = state.boards.findIndex((board) => board.id === action.payload.currentBoard);
@@ -27,7 +32,7 @@ export const tasksSlice = createSlice({
 	},
 });
 
-export const { addTask, addBoard, addColumn } = tasksSlice.actions;
+export const { addTask, addBoard, addColumn, deleteBoard } = tasksSlice.actions;
 
 export const selectTasksData = (state: RootState) => {
 	const board = state.tasks.boards.find((board) => board.id === state.currentBoardId);

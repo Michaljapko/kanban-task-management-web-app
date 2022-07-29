@@ -5,12 +5,13 @@ import Sidebar from '../Sidebar';
 import Button from '../Button';
 import TaskAdd from '../TaskAdd/TaskAdd';
 import TaskCards from '../TaskCards';
+import PopUp from '../PopUp';
 
 import { addColumn, selectTasksData } from '../../features/tasks/tasksSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { StyledWrapper } from './LandingPage.styled';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
-import { selectIsSidebarShow, selectIsBoardAddShow, selectIsTaskAddShow } from '../../features/layout/layoutSlice';
+import { selectIsSidebarShow, selectIsBoardAddShow, selectIsTaskAddShow, selectIsPopUpShow } from '../../features/layout/layoutSlice';
 import BoardAdd from '../BoardAdd/BoadAdd';
 
 const LandingPage = () => {
@@ -19,11 +20,13 @@ const LandingPage = () => {
 	const isSidebarShow = useAppSelector(selectIsSidebarShow);
 	const isBoardAddShow = useAppSelector(selectIsBoardAddShow);
 	const isTaskAddShow = useAppSelector(selectIsTaskAddShow);
+	const isPopUpShow = useAppSelector(selectIsPopUpShow);
 	const dispatch = useAppDispatch();
 	return (
 		<>
 			{isBoardAddShow && <BoardAdd />}
 			{isTaskAddShow && <TaskAdd />}
+			{isPopUpShow && <PopUp />}
 
 			<Header />
 			{isSidebarShow && <Sidebar />}

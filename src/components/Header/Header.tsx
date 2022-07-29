@@ -5,7 +5,7 @@ import chavronUp from '../../assets/icon-chevron-up.svg';
 import Button from '../Button';
 
 import { StyledHeader, StyledLogoBox, StyledHeaderBox, StyledLogoTitle, StyledDropMenu } from './Header.styled';
-import { selectIsSidebarShow, setIsSidebarShow, setIsTaskAddShow } from '../../features/layout/layoutSlice';
+import { selectIsSidebarShow, setIsSidebarShow, setIsTaskAddShow, setIsPopUpShow } from '../../features/layout/layoutSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { useState } from 'react';
 
@@ -18,6 +18,7 @@ const Header = () => {
 	return (
 		<StyledHeader>
 			<StyledHeaderBox>
+				
 				<img src={logo} alt='Kanban Logo' />
 				<StyledLogoBox
 					onClick={(event) => {
@@ -47,7 +48,7 @@ const Header = () => {
 				/>
 				{isDropMenuShow && (
 					<StyledDropMenu>
-						<button>Delete Board</button>
+						<button onClick={() => dispatch(setIsPopUpShow())}>Delete Board</button>
 
 						<button>Edit Board</button>
 					</StyledDropMenu>
