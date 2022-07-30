@@ -8,12 +8,16 @@ import { StyledHeader, StyledLogoBox, StyledHeaderBox, StyledLogoText, StyledDro
 import { selectIsSidebarShow, setIsSidebarShow, setIsTaskAddShow, setIsPopUpShow } from '../../features/layout/layoutSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { useState } from 'react';
+import { selectTasksData } from '../../features/tasks/tasksSlice';
 
 const Header = () => {
 	const [isDropMenuShow, setIsDropMenuShow] = useState<boolean>(false);
 
 	const dispatch = useAppDispatch();
+	const taskData = useAppSelector(selectTasksData);
 	const isSidebarShow = useAppSelector(selectIsSidebarShow);
+
+	console.log(taskData);
 
 	return (
 		<StyledHeader>
@@ -30,14 +34,21 @@ const Header = () => {
 				</StyledLogoBox>
 			</StyledHeaderBox>
 			<StyledHeaderBox>
-				<Button
-					icon='plus'
-					variant='header'
-					onClick={() => {
-						dispatch(setIsTaskAddShow());
-					}}
-				/>
-
+				{taskData && (
+					<Button
+						icon='plus'
+						variant='header'
+						onClick={() => {
+							dispatch(setIsTaskAddShow());
+						}}
+					/>
+				)}
+				{!taskData && (
+					<Button
+						icon='plus'
+						variant='header-off'
+					/>
+				)}
 				<img
 					src={ellipsis}
 					alt='ellipsis'

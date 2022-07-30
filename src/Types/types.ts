@@ -6,7 +6,7 @@ export interface Subtask {
 export interface ButtonTypes {
 	children?: string;
 	icon?: 'plus' | 'board';
-	variant?: 'header' | 'sidebar' | 'sidebarBold' | 'sidebarCurrent';
+	variant?: 'header' | 'sidebar' | 'sidebarBold' | 'sidebarCurrent' | 'header-off';
 	onClick?: any;
 	type?: 'button' | 'reset' | 'submit' | undefined;
 }

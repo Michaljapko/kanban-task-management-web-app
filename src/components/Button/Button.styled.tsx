@@ -37,7 +37,10 @@ export const StyledButton = styled.button`
 			border: 0;
 			border-radius: 24px;
 			padding: ${(props: any) => {
-				return props['data-variant'] === 'header' ? '5px 18px' : '15px 18px';
+				if (props['data-variant'] === 'header' || props['data-variant'] === 'header-off') {
+					return '5px 18px';
+				}
+				return '15px 18px';
 			}};
 			background: #635fc7;
 			font-size: 15px;
@@ -46,6 +49,9 @@ export const StyledButton = styled.button`
 			font-style: normal;
 			text-align: start;
 			color: #fff;
+			opacity: ${(props: any) => {
+				if (props['data-variant'] === 'header-off') return '0.25';
+			}};
 		`;
 	}};
 `;
