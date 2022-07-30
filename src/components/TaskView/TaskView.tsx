@@ -1,4 +1,4 @@
-import { StyledBack, StyledBox, StyledTitle, StyledDescription, StyledParagraph, StyledSubtaskBox } from './TaskView.styled';
+import { StyledBack, StyledBox, StyledTitle, StyledDescription, StyledParagraph, StyledSubtaskBox, StyledBoxSection } from './TaskView.styled';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setIsTaskShow } from '../../features/layout/layoutSlice';
 import { selectTasksData } from '../../features/tasks/tasksSlice';
@@ -9,33 +9,42 @@ const TaskView = ({ task }: any) => {
 	return (
 		<StyledBack onClick={() => dispatch(setIsTaskShow())}>
 			<StyledBox onClick={(e) => e.stopPropagation()}>
-				<StyledTitle>{task.title}</StyledTitle>
-				<StyledDescription>{task.description}</StyledDescription>
+				<StyledBoxSection>
+					<StyledTitle>{task.title}</StyledTitle>
+				</StyledBoxSection>
+				<StyledBoxSection>
+					<StyledDescription>{task.description}</StyledDescription>
+				</StyledBoxSection>
 
-				<StyledParagraph>
-					Subtask (
-					{task.subtasks.reduce((taskDone: number, task: any) => {
-						if (task.isCompleted) return ++taskDone;
-						return taskDone;
-					}, 0)}{' '}
-					of {task.subtasks.length})
-				</StyledParagraph>
-				{task.subtasks.map((subtask: any) => (
-					<StyledSubtaskBox>
-						{subtask.isCompleted ? (
-							<input type='checkbox' id='subscribeNews' name='subscribe' checked />
-						) : (
-							<input type='checkbox' id='subscribeNews' name='subscribe' />
-						)}
-						<p>{subtask.title}</p>
-					</StyledSubtaskBox>
-				))}
-				<StyledParagraph>Current state:</StyledParagraph>
-				<select>
-					{taskColumn?.map((column) => (
-						<option value={column.name}>{column.name}</option>
+				<StyledBoxSection>
+					<StyledParagraph>
+						Subtask (
+						{task.subtasks.reduce((taskDone: number, task: any) => {
+							if (task.isCompleted) return ++taskDone;
+							return taskDone;
+						}, 0)}{' '}
+						of {task.subtasks.length})
+					</StyledParagraph>
+
+					{task.subtasks.map((subtask: any) => (
+						<StyledSubtaskBox>
+							{subtask.isCompleted ? (
+								<input type='checkbox' id='subscribeNews' name='subscribe' checked />
+							) : (
+								<input type='checkbox' id='subscribeNews' name='subscribe' />
+							)}
+							<p>{subtask.title}</p>
+						</StyledSubtaskBox>
 					))}
-				</select>
+				</StyledBoxSection>
+				<StyledBoxSection>
+					<StyledParagraph>Current state:</StyledParagraph>
+					<select>
+						{taskColumn?.map((column) => (
+							<option value={column.name}>{column.name}</option>
+						))}
+					</select>
+				</StyledBoxSection>
 			</StyledBox>
 		</StyledBack>
 	);

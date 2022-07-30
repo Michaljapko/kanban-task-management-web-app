@@ -2,10 +2,11 @@ import { TasksData } from '../../Types/types';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addTask, selectTasksData } from '../../features/tasks/tasksSlice';
 import { setIsTaskAddShow } from '../../features/layout/layoutSlice';
-import { StyledBack, StyledBox, StyledInput, StyledTextArea } from './TaskAdd.style';
+import { StyledBack, StyledBox, StyledInput, StyledTextArea, StyledLabel, StyledTitle, StyledBoxSection } from './TaskAdd.style';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { useRef, useState } from 'react';
 import { v4 as uuid } from 'uuid';
+import Button from '../Button';
 
 const TaskAdd = () => {
 	const [subtaskInputs, setSubtaskInputs] = useState([{ id: uuid(), value: '' }]);
@@ -48,44 +49,53 @@ const TaskAdd = () => {
 	return (
 		<StyledBack onClick={() => dispatch(setIsTaskAddShow())}>
 			<StyledBox onClick={(e) => e.stopPropagation()}>
-				<h2>Add New Task</h2>
-
+				<StyledBoxSection>
+					<StyledTitle>Add New Task</StyledTitle>
+				</StyledBoxSection>
 				<form onSubmit={(event) => handleAddTask(event)}>
-					<label htmlFor='title'>Title</label>
-					<StyledInput ref={titleInputsRef} id='title' type='text' placeholder='e.g. Take coffee break'></StyledInput>
-					<label htmlFor='description'>Description</label>
-					<StyledTextArea
-						ref={descriptionInputsRef}
-						id='description'
-						placeholder='e.g. It’s always good to take a break. This 
+					<StyledBoxSection>
+						<StyledLabel htmlFor='title'>Title</StyledLabel>
+						<StyledInput ref={titleInputsRef} id='title' type='text' placeholder='e.g. Take coffee break'></StyledInput>
+					</StyledBoxSection>
+					<StyledBoxSection>
+						<StyledLabel htmlFor='description'>Description</StyledLabel>
+						<StyledTextArea
+							ref={descriptionInputsRef}
+							id='description'
+							placeholder='e.g. It’s always good to take a break. This 
 15 minute break will  recharge the batteries 
 a little.'
-					></StyledTextArea>
-					<label htmlFor='subtask'>Subtask</label>
-					{subtaskInputs.map((subtaskInput) => (
-						<StyledInput
-							ref={addToRefs}
-							id={subtaskInput.id}
-							type='text'
-							defaultValue={subtaskInput.value}
-							placeholder='e.g. Make coffee'
-						></StyledInput>
-					))}
-					<button
-						type='button'
-						onClick={() => {
-							setSubtaskInputs([...subtaskInputs, { id: uuid(), value: '' }]);
-						}}
-					>
-						Add New Subtask
-					</button>
-					<label htmlFor='status'>Status</label>
-					<select ref={columnInputsRef} name='status' id='status'>
-						{taskColumn?.map((column) => (
-							<option value={column.name}>{column.name}</option>
+						/>
+					</StyledBoxSection>
+					<StyledBoxSection>
+						<StyledLabel htmlFor='subtask'>Subtask</StyledLabel>
+						{subtaskInputs.map((subtaskInput) => (
+							<StyledInput
+								ref={addToRefs}
+								id={subtaskInput.id}
+								type='text'
+								defaultValue={subtaskInput.value}
+								placeholder='e.g. Make coffee'
+							></StyledInput>
 						))}
-					</select>
-					<button type='submit'>Create Task</button>
+						<Button
+							type='button'
+							onClick={() => {
+								setSubtaskInputs([...subtaskInputs, { id: uuid(), value: '' }]);
+							}}
+						>
+							Add New Subtask
+						</Button>
+					</StyledBoxSection>
+					<StyledBoxSection>
+						<StyledLabel htmlFor='status'>Status</StyledLabel>
+						<select ref={columnInputsRef} name='status' id='status'>
+							{taskColumn?.map((column) => (
+								<option value={column.name}>{column.name}</option>
+							))}
+						</select>
+					</StyledBoxSection>
+					<Button type='submit'>Create Task</Button>
 				</form>
 			</StyledBox>
 		</StyledBack>

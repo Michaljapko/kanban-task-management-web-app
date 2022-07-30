@@ -12,9 +12,14 @@ export const StyledBack = styled.div`
 export const StyledBox = styled.div`
 	margin: 0 16px;
 	padding: 24px;
+	padding-bottom: 0;
 	width: 100%;
 	background: #fff;
 	border-radius: 6px;
+`;
+
+export const StyledBoxSection = styled.div`
+	margin-bottom: 24px;
 `;
 
 export const StyledSubtaskBox = styled.div`
