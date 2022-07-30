@@ -4,7 +4,7 @@ import chevronDown from '../../assets/icon-chevron-down.svg';
 import chavronUp from '../../assets/icon-chevron-up.svg';
 import Button from '../Button';
 
-import { StyledHeader, StyledLogoBox, StyledHeaderBox, StyledLogoTitle, StyledDropMenu } from './Header.styled';
+import { StyledHeader, StyledLogoBox, StyledHeaderBox, StyledLogoText, StyledDropMenu } from './Header.styled';
 import { selectIsSidebarShow, setIsSidebarShow, setIsTaskAddShow, setIsPopUpShow } from '../../features/layout/layoutSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { useState } from 'react';
@@ -18,7 +18,6 @@ const Header = () => {
 	return (
 		<StyledHeader>
 			<StyledHeaderBox>
-				
 				<img src={logo} alt='Kanban Logo' />
 				<StyledLogoBox
 					onClick={(event) => {
@@ -26,7 +25,7 @@ const Header = () => {
 						dispatch(setIsSidebarShow());
 					}}
 				>
-					<StyledLogoTitle>Platform Launch</StyledLogoTitle>
+					<StyledLogoText>Platform Launch</StyledLogoText>
 					{isSidebarShow ? <img src={chavronUp} alt='Arrow Up' /> : <img src={chevronDown} alt='Arrow Down' />}
 				</StyledLogoBox>
 			</StyledHeaderBox>

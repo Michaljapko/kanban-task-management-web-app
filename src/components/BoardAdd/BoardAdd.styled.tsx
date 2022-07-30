@@ -17,15 +17,27 @@ export const StyledBox = styled.div`
 	background: #fff;
 	border-radius: 6px;
 `;
+export const StyledHeading = styled.h2`
+	${({ theme }) => {
+		return theme.textHeading.large;
+	}}
+`;
 export const StyledInput = styled.input`
 	width: 100%;
 	padding: 8px 16px;
 	border: 1px solid rgba(130, 143, 163, 0.25);
 	border-radius: 4px;
+	${({ theme }) => {
+		return theme.text.large;
+	}}
 `;
 export const StyledLabel = styled.label`
 	display: block;
 	margin-bottom: 8px;
+	${({ theme }) => {
+		return theme.text.medium;
+	}}
+	color: #828FA3;
 `;
 export const StyledColumnInputBox = styled.div`
 	display: flex;

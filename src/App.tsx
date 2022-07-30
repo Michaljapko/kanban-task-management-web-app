@@ -1,12 +1,12 @@
 import React from 'react';
 import LandingPage from './components/LandingPage';
 import GlobalStyle from './globalStyles';
-import whiteTheme from './theme/whiteTheme';
+import theme from './theme/theme';
 import { ThemeProvider } from 'styled-components';
 
 function App() {
 	return (
-		<ThemeProvider theme={whiteTheme}>
+		<ThemeProvider theme={theme}>
 			<GlobalStyle />
 			<LandingPage />
 		</ThemeProvider>

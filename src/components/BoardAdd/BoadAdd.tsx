@@ -2,10 +2,9 @@ import { useRef, useState } from 'react';
 import { changeBoard } from '../../features/tasks/boardSlice';
 import { useAppDispatch } from '../../app/hooks';
 import { addBoard } from '../../features/tasks/tasksSlice';
-import { Boards } from '../../Types/types';
 import { v4 as uuid } from 'uuid';
 import Button from '../Button';
-import { StyledBack, StyledBox, StyledInput, StyledColumnInputBox, StyledLabel, StyledBoxSection } from './BoardAdd.styled';
+import { StyledBack, StyledBox, StyledInput, StyledColumnInputBox, StyledLabel, StyledBoxSection, StyledHeading } from './BoardAdd.styled';
 import cross from '../../assets/icon-cross.svg';
 import { setIsBoardAddShow } from '../../features/layout/layoutSlice';
 
@@ -51,7 +50,7 @@ const BoardAdd = () => {
 		<StyledBack onClick={() => dispatch(setIsBoardAddShow())}>
 			<StyledBox onClick={(e) => e.stopPropagation()}>
 				<StyledBoxSection>
-					<h2>Add New Board</h2>
+					<StyledHeading>Add New Board</StyledHeading>
 				</StyledBoxSection>
 				<form onSubmit={(event) => handleAddBoard(event)}>
 					<StyledBoxSection>

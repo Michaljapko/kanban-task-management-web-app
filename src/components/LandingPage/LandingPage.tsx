@@ -9,7 +9,7 @@ import PopUp from '../PopUp';
 
 import { addColumn, selectTasksData } from '../../features/tasks/tasksSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { StyledWrapper } from './LandingPage.styled';
+import { StyledInfo, StyledWrapper } from './LandingPage.styled';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { selectIsSidebarShow, selectIsBoardAddShow, selectIsTaskAddShow, selectIsPopUpShow } from '../../features/layout/layoutSlice';
 import BoardAdd from '../BoardAdd/BoadAdd';
@@ -32,7 +32,7 @@ const LandingPage = () => {
 			{isSidebarShow && <Sidebar />}
 
 			<StyledWrapper>
-				{!tasksData && <p>This board is empty. Create a new column to get started.</p>}
+				{!tasksData && <StyledInfo>This board is empty. Create a new column to get started.</StyledInfo>}
 				{tasksData && tasksData?.length > 0 && <TaskCards />}
 
 				<Button onClick={() => dispatch(addColumn({ columnName: 'New column', currentBoard: currentBoard }))} icon='plus'>

@@ -36,6 +36,7 @@ const TaskAdd = () => {
 			status: columnInputsRef.current?.value,
 		};
 		dispatch(addTask({ task: task, currentBoard: currentBoard }));
+		dispatch(setIsTaskAddShow());
 	}
 
 	function addToRefs(element: HTMLInputElement) {
@@ -48,6 +49,7 @@ const TaskAdd = () => {
 		<StyledBack onClick={() => dispatch(setIsTaskAddShow())}>
 			<StyledBox onClick={(e) => e.stopPropagation()}>
 				<h2>Add New Task</h2>
+
 				<form onSubmit={(event) => handleAddTask(event)}>
 					<label htmlFor='title'>Title</label>
 					<StyledInput ref={titleInputsRef} id='title' type='text' placeholder='e.g. Take coffee break'></StyledInput>

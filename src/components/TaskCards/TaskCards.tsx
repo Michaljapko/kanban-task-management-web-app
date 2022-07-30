@@ -4,7 +4,7 @@ import TaskView from '../TaskView';
 import { selectIsTaskShow, setIsTaskShow } from '../../features/layout/layoutSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
-import { StyledCard } from './TaskCards.style';
+import { StyledCard, StyledHeading, StyledTitle, StyledParagraph } from './TaskCards.style';
 
 const TaskCards = () => {
 	const dispatch = useAppDispatch();
@@ -21,24 +21,23 @@ const TaskCards = () => {
 			{isTaskShow && <TaskView task={taskViewData} />}
 			{columns &&
 				columns.map((column) => {
-					console.log(column);
 					return (
-						<div>
-							<p key={column.id}>
+						<div key={column.id}>
+							<StyledHeading>
 								{column.name} ({column.tasks.length})
-							</p>
+							</StyledHeading>
 
 							{column.tasks.map((task) => {
 								return (
 									<StyledCard onClick={() => showTask(task)} key={task.id}>
-										<p>{task.title}</p>
-										<p>
+										<StyledTitle>{task.title}</StyledTitle>
+										<StyledParagraph>
 											{task.subtasks.reduce((taskDone, task) => {
 												if (task.isCompleted) return ++taskDone;
 												return taskDone;
 											}, 0)}{' '}
-											of {task.subtasks.length} subtask
-										</p>
+											of {task.subtasks.length} substasks
+										</StyledParagraph>
 									</StyledCard>
 								);
 							})}

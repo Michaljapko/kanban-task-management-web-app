@@ -5,7 +5,8 @@ export const StyledHeader = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	padding: 0 16px;
-	background: ${({ theme }) => theme.headBackground};
+	height: 64px;
+	background: #fff;
 `;
 
 export const StyledLogoBox = styled.div`
@@ -20,9 +21,10 @@ export const StyledHeaderBox = styled.div`
 	gap: 16px;
 `;
 
-export const StyledLogoTitle = styled.h1`
-	font-size: 18px;
-	color: #000112;
+export const StyledLogoText = styled.h1`
+	${({ theme }) => {
+		return theme.textHeading.large;
+	}};
 `;
 
 export const StyledDropMenu = styled.div`

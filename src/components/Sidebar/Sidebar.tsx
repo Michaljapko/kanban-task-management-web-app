@@ -19,15 +19,20 @@ const Sidebar = () => {
 			<StyledWrapper onClick={(e) => e.stopPropagation()}>
 				<StyledHead>All Boards ({boards.length})</StyledHead>
 				{boards.map((board) => {
+					let variant: 'sidebar' | 'sidebarCurrent' = 'sidebar';
 					if (board.id === currentBoards) {
-						return (
-							<Button onClick={() => dispatch(changeBoard(board.id))} key={board.id} variant='sidebarCurrent' icon='board'>
-								{board.name}
-							</Button>
-						);
+						variant = 'sidebarCurrent';
 					}
 					return (
-						<Button onClick={() => dispatch(changeBoard(board.id))} key={board.id} variant='sidebar' icon='board'>
+						<Button
+							onClick={() => {
+								dispatch(changeBoard(board.id));
+								dispatch(setIsSidebarShow());
+							}}
+							key={board.id}
+							variant={variant}
+							icon='board'
+						>
 							{board.name}
 						</Button>
 					);
