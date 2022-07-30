@@ -12,11 +12,17 @@ export const data: Boards = {
 					tasks: [
 						{
 							id: '24412',
-							title: 'Do smth',
-							description: 'Go out and smth',
+							title: 'Research pricing points of various competitors and trial different business models',
+							description:
+								'We know what were planning to build for version one. Now we need to finalise the first pricing model well use. Keep iterating the subtasks until we have a coherent proposition.',
 							status: 'Done',
 							subtasks: [
-								{ id: '222231', title: 'Go out', isCompleted: true },
+								{
+									id: '222231',
+									title:
+										'We know what were planning to build for version one. Now we need to finalise the first pricing model well use. Keep iterating the subtasks until we have a coherent proposition.',
+									isCompleted: true,
+								},
 								{ id: '22223421', title: 'Go in', isCompleted: false },
 							],
 						},

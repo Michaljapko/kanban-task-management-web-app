@@ -1,4 +1,4 @@
-import { StyledBack, StyledBox } from './TaskView.styled';
+import { StyledBack, StyledBox, StyledTitle, StyledDescription, StyledParagraph, StyledSubtaskBox } from './TaskView.styled';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setIsTaskShow } from '../../features/layout/layoutSlice';
 import { selectTasksData } from '../../features/tasks/tasksSlice';
@@ -9,28 +9,28 @@ const TaskView = ({ task }: any) => {
 	return (
 		<StyledBack onClick={() => dispatch(setIsTaskShow())}>
 			<StyledBox onClick={(e) => e.stopPropagation()}>
-				<p>{task.title}</p>
-				<p>{task.description}</p>
+				<StyledTitle>{task.title}</StyledTitle>
+				<StyledDescription>{task.description}</StyledDescription>
 
-				<p>
-					Subtask(
+				<StyledParagraph>
+					Subtask (
 					{task.subtasks.reduce((taskDone: number, task: any) => {
 						if (task.isCompleted) return ++taskDone;
 						return taskDone;
-					}, 0)}
-					of {task.subtasks.length}){' '}
-				</p>
+					}, 0)}{' '}
+					of {task.subtasks.length})
+				</StyledParagraph>
 				{task.subtasks.map((subtask: any) => (
-					<div>
+					<StyledSubtaskBox>
 						{subtask.isCompleted ? (
 							<input type='checkbox' id='subscribeNews' name='subscribe' checked />
 						) : (
 							<input type='checkbox' id='subscribeNews' name='subscribe' />
 						)}
 						<p>{subtask.title}</p>
-					</div>
+					</StyledSubtaskBox>
 				))}
-				<p>Current state:</p>
+				<StyledParagraph>Current state:</StyledParagraph>
 				<select>
 					{taskColumn?.map((column) => (
 						<option value={column.name}>{column.name}</option>
