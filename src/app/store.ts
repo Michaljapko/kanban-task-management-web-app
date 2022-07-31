@@ -1,12 +1,16 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import layoutSlice from '../features/layout/layoutSlice';
 import boardSlice from '../features/tasks/boardSlice';
+import columnSlice from '../features/tasks/columnSlice';
 import tasksReducer from '../features/tasks/tasksSlice';
+import TaskViewIdSlice from '../features/tasks/TaskViewIdSlice';
 
 export const store = configureStore({
 	reducer: {
 		tasks: tasksReducer,
 		currentBoardId: boardSlice,
+		currentColumnId: columnSlice,
+		currentTaskViewId: TaskViewIdSlice,
 		layoutSlice: layoutSlice,
 	},
 });

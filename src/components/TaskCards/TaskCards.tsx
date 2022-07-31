@@ -11,14 +11,17 @@ const TaskCards = () => {
 	const columns = useAppSelector(selectTasksData);
 	const isTaskShow = useAppSelector(selectIsTaskShow);
 	const [taskViewData, setTaskViewData] = useState();
+	const [currentColumnId, setCurrentColumnId] = useState();
 
-	function showTask(task: any) {
+	function showTask(task: any, ColumnId: any) {
+		
+		setCurrentColumnId(ColumnId);
 		setTaskViewData(task);
 		dispatch(setIsTaskShow());
 	}
 	return (
 		<>
-			{isTaskShow && <TaskView task={taskViewData} />}
+			{isTaskShow && <TaskView taskData={taskViewData} currentColumn={currentColumnId} />}
 			{columns &&
 				columns.map((column) => {
 					return (
@@ -29,7 +32,7 @@ const TaskCards = () => {
 
 							{column.tasks.map((task) => {
 								return (
-									<StyledCard onClick={() => showTask(task)} key={task.id}>
+									<StyledCard onClick={() => showTask(task, column.id)} key={task.id}>
 										<StyledTitle>{task.title}</StyledTitle>
 										<StyledParagraph>
 											{task.subtasks.reduce((taskDone, task) => {

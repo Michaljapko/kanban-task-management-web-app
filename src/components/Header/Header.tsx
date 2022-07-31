@@ -17,8 +17,6 @@ const Header = () => {
 	const taskData = useAppSelector(selectTasksData);
 	const isSidebarShow = useAppSelector(selectIsSidebarShow);
 
-	console.log(taskData);
-
 	return (
 		<StyledHeader>
 			<StyledHeaderBox>
@@ -43,12 +41,7 @@ const Header = () => {
 						}}
 					/>
 				)}
-				{!taskData && (
-					<Button
-						icon='plus'
-						variant='header-off'
-					/>
-				)}
+				{!taskData && <Button icon='plus' variant='header-off' />}
 				<img
 					src={ellipsis}
 					alt='ellipsis'

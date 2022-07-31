@@ -91,7 +91,7 @@ a little.'
 						<StyledLabel htmlFor='status'>Status</StyledLabel>
 						<select ref={columnInputsRef} name='status' id='status'>
 							{taskColumn?.map((column) => (
-								<option value={column.name}>{column.name}</option>
+								<option value={column.id}>{column.name}</option>
 							))}
 						</select>
 					</StyledBoxSection>
