@@ -22,7 +22,6 @@ const TaskView = ({ taskData, currentColumn }: any) => {
 	}
 
 	useEffect(() => {
-		console.log(task);
 		getTaskDone();
 	}, [task]);
 

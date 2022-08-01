@@ -5,7 +5,14 @@ import chavronUp from '../../assets/icon-chevron-up.svg';
 import Button from '../Button';
 
 import { StyledHeader, StyledLogoBox, StyledHeaderBox, StyledLogoText, StyledDropMenu } from './Header.styled';
-import { selectIsSidebarShow, setIsSidebarShow, setIsTaskAddShow, setIsPopUpShow } from '../../features/layout/layoutSlice';
+import {
+	selectIsSidebarShow,
+	setIsSidebarShow,
+	setIsTaskAddShow,
+	setIsPopUpShow,
+	selectIsDropDownShow,
+	setIsDropDownShow,
+} from '../../features/layout/layoutSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { useState } from 'react';
 import { selectTasksData } from '../../features/tasks/tasksSlice';
@@ -16,6 +23,7 @@ const Header = () => {
 	const dispatch = useAppDispatch();
 	const taskData = useAppSelector(selectTasksData);
 	const isSidebarShow = useAppSelector(selectIsSidebarShow);
+	const isDropDownShow = useAppSelector(selectIsDropDownShow);
 
 	return (
 		<StyledHeader>
@@ -46,13 +54,19 @@ const Header = () => {
 					src={ellipsis}
 					alt='ellipsis'
 					onClick={() => {
-						setIsDropMenuShow(!isDropMenuShow);
+						dispatch(setIsDropDownShow());
 					}}
 				/>
-				{isDropMenuShow && (
+				{isDropDownShow && (
 					<StyledDropMenu>
-						<button onClick={() => dispatch(setIsPopUpShow())}>Delete Board</button>
-
+						<button
+							onClick={() => {
+								dispatch(setIsPopUpShow());
+								dispatch(setIsDropDownShow());
+							}}
+						>
+							Delete Board
+						</button>
 						<button>Edit Board</button>
 					</StyledDropMenu>
 				)}

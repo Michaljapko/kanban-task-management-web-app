@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { changeBoard } from '../../features/tasks/boardSlice';
 import { useAppDispatch } from '../../app/hooks';
 import { addBoard } from '../../features/tasks/tasksSlice';
@@ -8,9 +8,8 @@ import { StyledBack, StyledBox, StyledInput, StyledColumnInputBox, StyledLabel, 
 import cross from '../../assets/icon-cross.svg';
 import { setIsBoardAddShow } from '../../features/layout/layoutSlice';
 
-const BoardAdd = () => {
+const BoardAdd = ({ editMode }: any) => {
 	const [columnInputs, setColumnInputs] = useState([{ id: uuid(), value: '' }]);
-
 	const dispatch = useAppDispatch();
 	const nameInputsRef = useRef<HTMLInputElement>(null);
 	const columnInputsRef = useRef<HTMLInputElement[]>([]);

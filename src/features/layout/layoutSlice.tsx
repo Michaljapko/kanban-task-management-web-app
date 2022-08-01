@@ -3,7 +3,7 @@ import { RootState } from '../../app/store';
 
 export const layoutSlice = createSlice({
 	name: 'layoutSlice',
-	initialState: { isSidebarShow: false, isTaskAddShow: false, isBoardAddShow: false, isPopUpShow: false, isTaskShow: false },
+	initialState: { isSidebarShow: false, isTaskAddShow: false, isBoardAddShow: false, isPopUpShow: false, isTaskShow: false, isDropDownShow: false },
 	reducers: {
 		setIsSidebarShow: (state) => {
 			return (state = { ...state, isSidebarShow: !state.isSidebarShow });
@@ -20,14 +20,18 @@ export const layoutSlice = createSlice({
 		setIsTaskShow: (state) => {
 			return (state = { ...state, isTaskShow: !state.isTaskShow });
 		},
+		setIsDropDownShow: (state) => {
+			return (state = { ...state, isDropDownShow: !state.isDropDownShow });
+		},
 	},
 });
 
-export const { setIsSidebarShow, setIsBoardAddShow, setIsPopUpShow, setIsTaskAddShow, setIsTaskShow } = layoutSlice.actions;
+export const { setIsSidebarShow, setIsBoardAddShow, setIsPopUpShow, setIsTaskAddShow, setIsTaskShow, setIsDropDownShow } = layoutSlice.actions;
 export const selectIsSidebarShow = (state: RootState) => state.layoutSlice.isSidebarShow;
 export const selectIsBoardAddShow = (state: RootState) => state.layoutSlice.isBoardAddShow;
 export const selectIsTaskAddShow = (state: RootState) => state.layoutSlice.isTaskAddShow;
 export const selectIsPopUpShow = (state: RootState) => state.layoutSlice.isPopUpShow;
 export const selectIsTaskShow = (state: RootState) => state.layoutSlice.isTaskShow;
+export const selectIsDropDownShow = (state: RootState) => state.layoutSlice.isDropDownShow;
 
 export default layoutSlice.reducer;
