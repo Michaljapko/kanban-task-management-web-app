@@ -12,6 +12,7 @@ import {
 	setIsPopUpShow,
 	selectIsDropDownShow,
 	setIsDropDownShow,
+	setIsBoardEditShow,
 } from '../../features/layout/layoutSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { useState } from 'react';
@@ -67,7 +68,14 @@ const Header = () => {
 						>
 							Delete Board
 						</button>
-						<button>Edit Board</button>
+						<button
+							onClick={() => {
+								dispatch(setIsBoardEditShow());
+								dispatch(setIsDropDownShow());
+							}}
+						>
+							Edit Board
+						</button>
 					</StyledDropMenu>
 				)}
 			</StyledHeaderBox>

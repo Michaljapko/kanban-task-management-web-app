@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, current } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
 import { Boards } from '../../Types/types';
@@ -20,6 +20,10 @@ export const tasksSlice = createSlice({
 		},
 		addBoard: (state, action: PayloadAction<any>) => {
 			state.boards = [...state.boards, action.payload];
+		},
+		editBoard: (state, action: PayloadAction<any>) => {
+			const boardIndex = state.boards.findIndex((board) => board.id === action.payload.currentBoard);
+			state.boards[boardIndex] = action.payload.board;
 		},
 		addColumn: (state, action: PayloadAction<any>) => {
 			const boardIndex = state.boards.findIndex((board) => board.id === action.payload.currentBoard);
@@ -51,7 +55,7 @@ export const tasksSlice = createSlice({
 	},
 });
 
-export const { addTask, addBoard, addColumn, deleteBoard, taskEdit, taskColumnChange } = tasksSlice.actions;
+export const { addTask, addBoard, addColumn, deleteBoard, taskEdit, editBoard, taskColumnChange } = tasksSlice.actions;
 
 export const selectTasksData = (state: RootState) => {
 	const board = state.tasks.boards.find((board) => board.id === state.currentBoardId);

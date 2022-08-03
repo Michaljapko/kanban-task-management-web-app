@@ -8,7 +8,7 @@ import { StyledBack, StyledBox, StyledInput, StyledColumnInputBox, StyledLabel, 
 import cross from '../../assets/icon-cross.svg';
 import { setIsBoardAddShow } from '../../features/layout/layoutSlice';
 
-const BoardAdd = ({ editMode }: any) => {
+const BoardAdd = () => {
 	const [columnInputs, setColumnInputs] = useState([{ id: uuid(), value: '' }]);
 	const dispatch = useAppDispatch();
 	const nameInputsRef = useRef<HTMLInputElement>(null);
