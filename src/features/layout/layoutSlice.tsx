@@ -25,27 +25,13 @@ export const layoutSlice = createSlice({
 	},
 	reducers: {
 		setIsSidebarShow: (state) => (state = { ...initialState, isSidebarShow: !state.isSidebarShow }),
-		setIsBoardAddShow: (state) => {
-			return (state = { ...state, isSidebarShow: false, isBoardAddShow: !state.isBoardAddShow });
-		},
-		setIsBoardEditShow: (state) => {
-			return (state = { ...state, isSidebarShow: false, isBoardEditShow: !state.isBoardEditShow });
-		},
-		setIsTaskAddShow: (state) => {
-			return (state = { ...state, isSidebarShow: false, isTaskAddShow: !state.isTaskAddShow });
-		},
-		setIsPopUpShow: (state) => {
-			return (state = { ...state, isPopUpShow: !state.isPopUpShow });
-		},
-		setIsTaskShow: (state) => {
-			return (state = { ...state, isTaskShow: !state.isTaskShow });
-		},
-		setIsTaskEditShow: (state) => {
-			return (state = { ...state, isTaskShow: !state.isTaskShow, isTaskEditShow: !state.isTaskEditShow });
-		},
-		setIsDropDownShow: (state) => {
-			return (state = { ...state, isDropDownShow: !state.isDropDownShow });
-		},
+		setIsBoardAddShow: (state) => (state = { ...initialState, isSidebarShow: false, isBoardAddShow: !state.isBoardAddShow }),
+		setIsBoardEditShow: (state) => (state = { ...initialState, isSidebarShow: false, isBoardEditShow: !state.isBoardEditShow }),
+		setIsTaskAddShow: (state) => (state = { ...initialState, isSidebarShow: false, isTaskAddShow: !state.isTaskAddShow }),
+		setIsPopUpShow: (state) => (state = { ...initialState, isPopUpShow: !state.isPopUpShow }),
+		setIsTaskShow: (state) => (state = { ...initialState, isTaskShow: !state.isTaskShow }),
+		setIsTaskEditShow: (state) => (state = { ...initialState, isTaskShow: !state.isTaskShow, isTaskEditShow: !state.isTaskEditShow }),
+		setIsDropDownShow: (state) => (state = { ...initialState, isDropDownShow: !state.isDropDownShow }),
 	},
 });
 
