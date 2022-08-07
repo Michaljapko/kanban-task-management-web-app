@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { selectThemeMode } from '../../features/layout/themeSlice';
+import { useAppSelector } from '../../app/hooks';
 
 export const StyledBack = styled.div`
 	position: absolute;
@@ -8,12 +10,22 @@ export const StyledBack = styled.div`
 	align-items: center;
 	width: 100%;
 	height: 100%;
-	background: #00000038;
+	background: ${({ theme }) => theme.color.backBackground};
 `;
 export const StyledBox = styled.div`
 	margin: 0 16px;
+	border-radius: 6px;
 	padding: 24px;
 	width: 100%;
-	background: #fff;
-	border-radius: 6px;
+	background: ${({ theme }) => {
+		const themeMode = useAppSelector(selectThemeMode);
+		return theme[themeMode].mainBackground;
+	}};
+`;
+export const StyledHeading = styled.h2`
+	${({ theme }) => theme.textHeading.large}
+	color:   ${({ theme }) => {
+		const themeMode = useAppSelector(selectThemeMode);
+		return theme[themeMode].mainColor;
+	}};
 `;

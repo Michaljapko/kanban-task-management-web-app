@@ -1,4 +1,4 @@
-import { StyledBack, StyledBox, StyledBoxSection, StyledColumnInputBox, StyledHeading, StyledInput, StyledLabel } from './BoardAdd.styled';
+import { StyledBoxSection, StyledColumnInputBox, StyledInput, StyledLabel } from './BoardAdd.styled';
 import { useRef, useState } from 'react';
 
 import Button from '../Button';
@@ -8,6 +8,7 @@ import cross from '../../assets/icon-cross.svg';
 import { setIsBoardAddShow } from '../../features/layout/layoutSlice';
 import { useAppDispatch } from '../../app/hooks';
 import { v4 as uuid } from 'uuid';
+import PopUp from '../PopUp';
 
 const BoardAdd = () => {
 	const [columnInputs, setColumnInputs] = useState([{ id: uuid(), value: '' }]);
@@ -46,38 +47,33 @@ const BoardAdd = () => {
 	}
 
 	return (
-		<StyledBack onClick={() => dispatch(setIsBoardAddShow())}>
-			<StyledBox onClick={(e) => e.stopPropagation()}>
+		<PopUp title={'Add New Board'} layoutDispatch={() => dispatch(setIsBoardAddShow())}>
+			<form onSubmit={(event) => handleAddBoard(event)}>
 				<StyledBoxSection>
-					<StyledHeading>Add New Board</StyledHeading>
+					<StyledLabel htmlFor='name'>Board Name</StyledLabel>
+					<StyledInput ref={nameInputsRef} id='name' type='text' placeholder='e.g. Web Design' />
 				</StyledBoxSection>
-				<form onSubmit={(event) => handleAddBoard(event)}>
-					<StyledBoxSection>
-						<StyledLabel htmlFor='name'>Board Name</StyledLabel>
-						<StyledInput ref={nameInputsRef} id='name' type='text' placeholder='e.g. Web Design' />
-					</StyledBoxSection>
-					<StyledBoxSection>
-						<StyledLabel htmlFor='column'>Subtask</StyledLabel>
-						{columnInputs.map((columnInput) => (
-							<StyledColumnInputBox>
-								<StyledInput ref={addToRefs} id={columnInput.id} type='text' defaultValue={columnInput.value} /> <img src={cross} alt='Delete' />
-							</StyledColumnInputBox>
-						))}
-						<Button
-							type='button'
-							onClick={() => {
-								setColumnInputs([...columnInputs, { id: uuid(), value: '' }]);
-							}}
-						>
-							Add New Column
-						</Button>
-					</StyledBoxSection>
-					<StyledBoxSection>
-						<Button type='submit'>Create New Board</Button>
-					</StyledBoxSection>
-				</form>
-			</StyledBox>
-		</StyledBack>
+				<StyledBoxSection>
+					<StyledLabel htmlFor='column'>Subtask</StyledLabel>
+					{columnInputs.map((columnInput) => (
+						<StyledColumnInputBox>
+							<StyledInput ref={addToRefs} id={columnInput.id} type='text' defaultValue={columnInput.value} /> <img src={cross} alt='Delete' />
+						</StyledColumnInputBox>
+					))}
+					<Button
+						type='button'
+						onClick={() => {
+							setColumnInputs([...columnInputs, { id: uuid(), value: '' }]);
+						}}
+					>
+						Add New Column
+					</Button>
+				</StyledBoxSection>
+				<StyledBoxSection>
+					<Button type='submit'>Create New Board</Button>
+				</StyledBoxSection>
+			</form>
+		</PopUp>
 	);
 };
 

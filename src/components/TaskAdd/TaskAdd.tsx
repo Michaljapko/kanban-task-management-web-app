@@ -1,4 +1,4 @@
-import { StyledBack, StyledBox, StyledBoxSection, StyledInput, StyledLabel, StyledTextArea, StyledTitle } from './TaskAdd.style';
+import { StyledBoxSection, StyledInput, StyledLabel, StyledTextArea, StyledTitle } from './TaskAdd.style';
 import { addTask, selectTasksData } from '../../features/tasks/tasksSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useRef, useState } from 'react';
@@ -8,6 +8,7 @@ import { TasksData } from '../../Types/types';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { setIsTaskAddShow } from '../../features/layout/layoutSlice';
 import { v4 as uuid } from 'uuid';
+import PopUp from '../PopUp';
 
 const TaskAdd = () => {
 	const [subtaskInputs, setSubtaskInputs] = useState([{ id: uuid(), value: '' }]);
@@ -48,58 +49,53 @@ const TaskAdd = () => {
 	}
 
 	return (
-		<StyledBack onClick={() => dispatch(setIsTaskAddShow())}>
-			<StyledBox onClick={(e) => e.stopPropagation()}>
+		<PopUp title={'Add New Task'} layoutDispatch={() => dispatch(setIsTaskAddShow())}>
+			<form onSubmit={(event) => handleAddTask(event)}>
 				<StyledBoxSection>
-					<StyledTitle>Add New Task</StyledTitle>
+					<StyledLabel htmlFor='title'>Title </StyledLabel>
+					<StyledInput ref={titleInputsRef} id='title' type='text' placeholder='e.g. Take coffee break'></StyledInput>
 				</StyledBoxSection>
-				<form onSubmit={(event) => handleAddTask(event)}>
-					<StyledBoxSection>
-						<StyledLabel htmlFor='title'>Title </StyledLabel>
-						<StyledInput ref={titleInputsRef} id='title' type='text' placeholder='e.g. Take coffee break'></StyledInput>
-					</StyledBoxSection>
-					<StyledBoxSection>
-						<StyledLabel htmlFor='description'>Description</StyledLabel>
-						<StyledTextArea
-							ref={descriptionInputsRef}
-							id='description'
-							placeholder='e.g. It’s always good to take a break. This 
+				<StyledBoxSection>
+					<StyledLabel htmlFor='description'>Description</StyledLabel>
+					<StyledTextArea
+						ref={descriptionInputsRef}
+						id='description'
+						placeholder='e.g. It’s always good to take a break. This 
 15 minute break will  recharge the batteries 
 a little.'
-						/>
-					</StyledBoxSection>
-					<StyledBoxSection>
-						<StyledLabel htmlFor='subtask'>Subtask</StyledLabel>
-						{subtaskInputs.map((subtaskInput) => (
-							<StyledInput
-								ref={addToRefs}
-								id={subtaskInput.id}
-								type='text'
-								defaultValue={subtaskInput.value}
-								placeholder='e.g. Make coffee'
-							></StyledInput>
+					/>
+				</StyledBoxSection>
+				<StyledBoxSection>
+					<StyledLabel htmlFor='subtask'>Subtask</StyledLabel>
+					{subtaskInputs.map((subtaskInput) => (
+						<StyledInput
+							ref={addToRefs}
+							id={subtaskInput.id}
+							type='text'
+							defaultValue={subtaskInput.value}
+							placeholder='e.g. Make coffee'
+						></StyledInput>
+					))}
+					<Button
+						type='button'
+						onClick={() => {
+							setSubtaskInputs([...subtaskInputs, { id: uuid(), value: '' }]);
+						}}
+					>
+						Add New Subtask
+					</Button>
+				</StyledBoxSection>
+				<StyledBoxSection>
+					<StyledLabel htmlFor='status'>Status</StyledLabel>
+					<select ref={columnInputsRef} name='status' id='status'>
+						{taskColumn?.map((column) => (
+							<option value={column.id}>{column.name}</option>
 						))}
-						<Button
-							type='button'
-							onClick={() => {
-								setSubtaskInputs([...subtaskInputs, { id: uuid(), value: '' }]);
-							}}
-						>
-							Add New Subtask
-						</Button>
-					</StyledBoxSection>
-					<StyledBoxSection>
-						<StyledLabel htmlFor='status'>Status</StyledLabel>
-						<select ref={columnInputsRef} name='status' id='status'>
-							{taskColumn?.map((column) => (
-								<option value={column.id}>{column.name}</option>
-							))}
-						</select>
-					</StyledBoxSection>
-					<Button type='submit'>Create Task</Button>
-				</form>
-			</StyledBox>
-		</StyledBack>
+					</select>
+				</StyledBoxSection>
+				<Button type='submit'>Create Task</Button>
+			</form>
+		</PopUp>
 	);
 };
 

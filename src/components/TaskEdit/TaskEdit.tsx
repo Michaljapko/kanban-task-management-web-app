@@ -1,4 +1,4 @@
-import { StyledBack, StyledBox, StyledBoxSection, StyledInput, StyledLabel, StyledTextArea, StyledTitle } from './TaskEdit.style';
+import { StyledBoxSection, StyledInput, StyledLabel, StyledTextArea } from './TaskEdit.style';
 import { selectCurrentTaskData, selectTasksData, taskColumnChange, taskEdit } from '../../features/tasks/tasksSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useRef, useState } from 'react';
@@ -9,6 +9,7 @@ import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { selectCurrentColumn } from '../../features/tasks/columnSlice';
 import { setIsTaskEditShow } from '../../features/layout/layoutSlice';
 import { v4 as uuid } from 'uuid';
+import PopUp from '../PopUp';
 
 const TaskEdit = () => {
 	const convertToBoolean = (string: string | any) => (string === 'true' ? true : false);
@@ -68,62 +69,57 @@ const TaskEdit = () => {
 	}
 
 	return (
-		<StyledBack onClick={() => dispatch(setIsTaskEditShow())}>
-			<StyledBox onClick={(e) => e.stopPropagation()}>
+		<PopUp title={'Edit Task'} layoutDispatch={() => dispatch(setIsTaskEditShow())}>
+			<form onSubmit={(event) => handleEditTask(event)}>
 				<StyledBoxSection>
-					<StyledTitle>Edit Task</StyledTitle>
+					<StyledLabel htmlFor='title'>Title</StyledLabel>
+					<StyledInput ref={titleInputsRef} id='title' type='text' defaultValue={task.title}></StyledInput>
 				</StyledBoxSection>
-				<form onSubmit={(event) => handleEditTask(event)}>
-					<StyledBoxSection>
-						<StyledLabel htmlFor='title'>Title</StyledLabel>
-						<StyledInput ref={titleInputsRef} id='title' type='text' defaultValue={task.title}></StyledInput>
-					</StyledBoxSection>
-					<StyledBoxSection>
-						<StyledLabel htmlFor='description'>Description</StyledLabel>
-						<StyledTextArea ref={descriptionInputsRef} id='description' defaultValue={task.description} />
-					</StyledBoxSection>
-					<StyledBoxSection>
-						<StyledLabel htmlFor='subtask'>Subtask</StyledLabel>
-						{task.subtasks.map((subtaskInput) => (
-							<StyledInput
-								ref={addToRefs}
-								key={subtaskInput.id}
-								type='text'
-								defaultValue={subtaskInput.title}
-								data-done={subtaskInput.isCompleted}
-							></StyledInput>
-						))}
-						{subtaskInputs.map((subtaskInput) => (
-							<StyledInput ref={addToRefs} key={subtaskInput.id} type='text' data-done={false}></StyledInput>
-						))}
-						<Button
-							type='button'
-							onClick={() => {
-								setSubtaskInputs([...subtaskInputs, { id: uuid(), value: '' }]);
-							}}
-						>
-							+ Add New Subtask
-						</Button>
-					</StyledBoxSection>
-					<StyledBoxSection>
-						<StyledLabel htmlFor='status'>Status</StyledLabel>
-						<select ref={columnInputsRef} name='status' id='status'>
-							{taskColumn?.map((column) => {
-								if (currentColumn === column.id) {
-									return (
-										<option key={column.id} value={column.id} selected>
-											{column.name}
-										</option>
-									);
-								}
-								return <option value={column.id}>{column.name}</option>;
-							})}
-						</select>
-					</StyledBoxSection>
-					<Button type='submit'>Save Changes</Button>
-				</form>
-			</StyledBox>
-		</StyledBack>
+				<StyledBoxSection>
+					<StyledLabel htmlFor='description'>Description</StyledLabel>
+					<StyledTextArea ref={descriptionInputsRef} id='description' defaultValue={task.description} />
+				</StyledBoxSection>
+				<StyledBoxSection>
+					<StyledLabel htmlFor='subtask'>Subtask</StyledLabel>
+					{task.subtasks.map((subtaskInput) => (
+						<StyledInput
+							ref={addToRefs}
+							key={subtaskInput.id}
+							type='text'
+							defaultValue={subtaskInput.title}
+							data-done={subtaskInput.isCompleted}
+						></StyledInput>
+					))}
+					{subtaskInputs.map((subtaskInput) => (
+						<StyledInput ref={addToRefs} key={subtaskInput.id} type='text' data-done={false}></StyledInput>
+					))}
+					<Button
+						type='button'
+						onClick={() => {
+							setSubtaskInputs([...subtaskInputs, { id: uuid(), value: '' }]);
+						}}
+					>
+						+ Add New Subtask
+					</Button>
+				</StyledBoxSection>
+				<StyledBoxSection>
+					<StyledLabel htmlFor='status'>Status</StyledLabel>
+					<select ref={columnInputsRef} name='status' id='status'>
+						{taskColumn?.map((column) => {
+							if (currentColumn === column.id) {
+								return (
+									<option key={column.id} value={column.id} selected>
+										{column.name}
+									</option>
+								);
+							}
+							return <option value={column.id}>{column.name}</option>;
+						})}
+					</select>
+				</StyledBoxSection>
+				<Button type='submit'>Save Changes</Button>
+			</form>
+		</PopUp>
 	);
 };
 

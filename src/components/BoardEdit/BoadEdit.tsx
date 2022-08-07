@@ -8,6 +8,7 @@ import cross from '../../assets/icon-cross.svg';
 import { editBoard } from '../../features/tasks/tasksSlice';
 import { setIsBoardEditShow } from '../../features/layout/layoutSlice';
 import { v4 as uuid } from 'uuid';
+import PopUp from '../PopUp';
 
 const BoardEdit = () => {
 	const currentBoardId = useAppSelector(selectCurrentBoard);
@@ -48,43 +49,38 @@ const BoardEdit = () => {
 	}
 
 	return (
-		<StyledBack onClick={() => dispatch(setIsBoardEditShow())}>
-			<StyledBox onClick={(e) => e.stopPropagation()}>
+		<PopUp title={'Edit Board'} layoutDispatch={() => dispatch(setIsBoardEditShow())}>
+			<form onSubmit={(event) => handleEditBoard(event)}>
 				<StyledBoxSection>
-					<StyledHeading>Edit Board</StyledHeading>
+					<StyledLabel htmlFor='name'>Board Name</StyledLabel>
+					<StyledInput ref={nameInputsRef} id='name' type='text' placeholder='e.g. Web Design' defaultValue={currentBoard?.name} />
 				</StyledBoxSection>
-				<form onSubmit={(event) => handleEditBoard(event)}>
-					<StyledBoxSection>
-						<StyledLabel htmlFor='name'>Board Name</StyledLabel>
-						<StyledInput ref={nameInputsRef} id='name' type='text' placeholder='e.g. Web Design' defaultValue={currentBoard?.name} />
-					</StyledBoxSection>
-					<StyledBoxSection>
-						<StyledLabel htmlFor='column'>Columns</StyledLabel>
-						{columns?.map((columnInput) => (
-							<StyledColumnInputBox>
-								<StyledInput ref={addToRefs} id={columnInput.id} type='text' defaultValue={columnInput.name} /> <img src={cross} alt='Delete' />
-							</StyledColumnInputBox>
-						))}
-						{columnInputs?.map((columnInput) => (
-							<StyledColumnInputBox>
-								<StyledInput ref={addToRefs} id={columnInput.id} type='text' defaultValue={columnInput.name} /> <img src={cross} alt='Delete' />
-							</StyledColumnInputBox>
-						))}
-						<Button
-							type='button'
-							onClick={() => {
-								setColumnInputs([...columnInputs, { id: uuid(), value: '' }]);
-							}}
-						>
-							Add New Column
-						</Button>
-					</StyledBoxSection>
-					<StyledBoxSection>
-						<Button type='submit'>Save Changes</Button>
-					</StyledBoxSection>
-				</form>
-			</StyledBox>
-		</StyledBack>
+				<StyledBoxSection>
+					<StyledLabel htmlFor='column'>Columns</StyledLabel>
+					{columns?.map((columnInput) => (
+						<StyledColumnInputBox>
+							<StyledInput ref={addToRefs} id={columnInput.id} type='text' defaultValue={columnInput.name} /> <img src={cross} alt='Delete' />
+						</StyledColumnInputBox>
+					))}
+					{columnInputs?.map((columnInput) => (
+						<StyledColumnInputBox>
+							<StyledInput ref={addToRefs} id={columnInput.id} type='text' defaultValue={columnInput.name} /> <img src={cross} alt='Delete' />
+						</StyledColumnInputBox>
+					))}
+					<Button
+						type='button'
+						onClick={() => {
+							setColumnInputs([...columnInputs, { id: uuid(), value: '' }]);
+						}}
+					>
+						Add New Column
+					</Button>
+				</StyledBoxSection>
+				<StyledBoxSection>
+					<Button type='submit'>Save Changes</Button>
+				</StyledBoxSection>
+			</form>
+		</PopUp>
 	);
 };
 

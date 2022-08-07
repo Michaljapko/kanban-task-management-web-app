@@ -31,7 +31,7 @@ export const layoutSlice = createSlice({
 		setIsPopUpShow: (state) => (state = { ...initialState, isPopUpShow: !state.isPopUpShow }),
 		setIsTaskShow: (state) => (state = { ...initialState, isTaskShow: !state.isTaskShow }),
 		setIsTaskEditShow: (state) => (state = { ...initialState, isTaskShow: !state.isTaskShow, isTaskEditShow: !state.isTaskEditShow }),
-		setIsDropDownShow: (state) => (state = { ...initialState, isDropDownShow: !state.isDropDownShow }),
+		setIsDropDownShow: (state) => (state = { ...state, isDropDownShow: !state.isDropDownShow }),
 	},
 });
 

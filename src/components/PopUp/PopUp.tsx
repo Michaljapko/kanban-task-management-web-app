@@ -1,34 +1,15 @@
-import { StyledBack, StyledBox } from './PopUp.styled';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { StyledBack, StyledBox, StyledBoxSection, StyledHeading } from './PopUp.styled';
 
-import Button from '../Button';
-import { deleteBoard } from '../../features/tasks/tasksSlice';
-import { selectCurrentBoard } from '../../features/tasks/boardSlice';
-import { setIsPopUpShow } from '../../features/layout/layoutSlice';
-
-const PopUp = () => {
-	const dispatch = useAppDispatch();
-	const currentBoardId = useAppSelector(selectCurrentBoard);
+const PopUp = ({ children, title, layoutDispatch }: any) => {
 	return (
-		<StyledBack onClick={() => dispatch(setIsPopUpShow())}>
+		<StyledBack onClick={layoutDispatch}>
 			<StyledBox onClick={(e) => e.stopPropagation()}>
-				<h2>Delete this board?</h2>
-				<p>Are you sure you want to delete the ‘Platform Launch’ board? This action will remove all columns and tasks and cannot be reversed.</p>
-				<Button
-					onClick={() => {
-						dispatch(setIsPopUpShow());
-						dispatch(deleteBoard(currentBoardId));
-					}}
-				>
-					Delete
-				</Button>
-				<Button
-					onClick={() => {
-						dispatch(setIsPopUpShow());
-					}}
-				>
-					Cancel
-				</Button>
+				{title && (
+					<StyledBoxSection>
+						<StyledHeading>{title}</StyledHeading>
+					</StyledBoxSection>
+				)}
+				{children}
 			</StyledBox>
 		</StyledBack>
 	);
