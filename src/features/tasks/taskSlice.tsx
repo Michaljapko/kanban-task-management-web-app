@@ -5,9 +5,7 @@ export const TaskViewIdSlice = createSlice({
 	name: 'TaskViewIdSlice',
 	initialState: { currentTaskId: '' },
 	reducers: {
-		changeCurrentTask: (state, action: PayloadAction<string>) => {
-			return (state = { currentTaskId: action.payload });
-		},
+		changeCurrentTask: (state, action: PayloadAction<string>) => (state = { currentTaskId: action.payload }),
 	},
 });
 

@@ -1,5 +1,5 @@
 import { StyledBoxSection, StyledInput, StyledLabel, StyledTextArea } from './TaskEdit.style';
-import { selectCurrentTaskData, selectTasksData, taskColumnChange, taskEdit } from '../../features/tasks/tasksSlice';
+import { selectCurrentTaskData, selectTasksData, columnChangeTask, editTask } from '../../features/tasks/tasksSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useRef, useState } from 'react';
 
@@ -43,7 +43,7 @@ const TaskEdit = () => {
 		};
 
 		dispatch(
-			taskColumnChange({
+			columnChangeTask({
 				columnId: currentColumn,
 				columnTarget: columnInputsRef.current?.value,
 				taskId: task.id,
@@ -52,7 +52,7 @@ const TaskEdit = () => {
 			})
 		);
 		dispatch(
-			taskEdit({
+			editTask({
 				columnId: currentColumn,
 				taskId: task.id,
 				currentBoard: currentBoard,

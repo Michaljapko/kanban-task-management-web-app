@@ -5,9 +5,7 @@ export const columnSlice = createSlice({
 	name: 'currentColumnId',
 	initialState: '',
 	reducers: {
-		changeColumn: (state, action: PayloadAction<string>) => {
-			return (state = action.payload);
-		},
+		changeColumn: (state, action: PayloadAction<string>) => (state = action.payload),
 	},
 });
 

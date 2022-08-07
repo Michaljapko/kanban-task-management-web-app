@@ -1,5 +1,5 @@
-import { StyledBack, StyledBox, StyledBoxSection, StyledDescription, StyledParagraph, StyledSubtaskBox, StyledTitle } from './TaskView.styled';
-import { selectTasksData, taskColumnChange, taskEdit } from '../../features/tasks/tasksSlice';
+import { StyledBoxSection, StyledDescription, StyledParagraph, StyledSubtaskBox, StyledTitle } from './TaskView.styled';
+import { selectTasksData, columnChangeTask, editTask } from '../../features/tasks/tasksSlice';
 import { setIsTaskEditShow, setIsTaskShow } from '../../features/layout/layoutSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useEffect, useState } from 'react';
@@ -73,7 +73,7 @@ const TaskView = ({ taskData }: any) => {
 								};
 								setTask(taskUpdated);
 								dispatch(
-									taskEdit({
+									editTask({
 										columnId: currentColumn,
 										taskId: task.id,
 										currentBoard: currentBoard,
@@ -97,7 +97,7 @@ const TaskView = ({ taskData }: any) => {
 							status: e.target.value,
 						};
 						dispatch(
-							taskColumnChange({
+							columnChangeTask({
 								columnId: currentColumn,
 								columnTarget: e.target.value,
 								taskId: task.id,

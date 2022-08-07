@@ -1,4 +1,4 @@
-import { StyledBack, StyledBox, StyledBoxSection, StyledColumnInputBox, StyledHeading, StyledInput, StyledLabel } from './BoardEdit.styled';
+import { StyledBoxSection, StyledColumnInputBox, StyledInput, StyledLabel } from './BoardEdit.styled';
 import { selectBoards, selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useRef, useState } from 'react';

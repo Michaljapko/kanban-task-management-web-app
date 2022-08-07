@@ -5,9 +5,7 @@ export const boardSlice = createSlice({
 	name: 'currentBoardId',
 	initialState: '',
 	reducers: {
-		changeBoard: (state, action: PayloadAction<string>) => {
-			return (state = action.payload);
-		},
+		changeBoard: (state, action: PayloadAction<string>) => (state = action.payload),
 	},
 });
 
@@ -17,9 +15,6 @@ export const selectCurrentBoard = (state: RootState) => state.currentBoardId;
 
 export const selectCurrentBoardIndex = (state: RootState) => state.tasks.boards.findIndex((board) => board.id === state.currentBoardId);
 
-export const selectBoards = (state: RootState) =>
-	state.tasks.boards.map((board) => {
-		return board;
-	});
+export const selectBoards = (state: RootState) => state.tasks.boards.map((board) => board);
 
 export default boardSlice.reducer;
