@@ -1,12 +1,13 @@
-import { changeBoard, selectBoards, selectCurrentBoard } from '../../features/tasks/boardSlice';
+import { StyledBack, StyledBox, StyledBoxSection, StyledColumnInputBox, StyledHeading, StyledInput, StyledLabel } from './BoardEdit.styled';
+import { selectBoards, selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { addBoard, editBoard } from '../../features/tasks/tasksSlice';
-import { v4 as uuid } from 'uuid';
-import Button from '../Button';
-import { StyledBack, StyledBox, StyledInput, StyledColumnInputBox, StyledLabel, StyledBoxSection, StyledHeading } from './BoardEdit.styled';
-import cross from '../../assets/icon-cross.svg';
-import { setIsBoardAddShow, setIsBoardEditShow } from '../../features/layout/layoutSlice';
 import { useRef, useState } from 'react';
+
+import Button from '../Button';
+import cross from '../../assets/icon-cross.svg';
+import { editBoard } from '../../features/tasks/tasksSlice';
+import { setIsBoardEditShow } from '../../features/layout/layoutSlice';
+import { v4 as uuid } from 'uuid';
 
 const BoardEdit = () => {
 	const currentBoardId = useAppSelector(selectCurrentBoard);

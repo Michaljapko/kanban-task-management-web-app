@@ -1,12 +1,13 @@
-import { TasksData } from '../../Types/types';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { StyledBack, StyledBox, StyledBoxSection, StyledInput, StyledLabel, StyledTextArea, StyledTitle } from './TaskAdd.style';
 import { addTask, selectTasksData } from '../../features/tasks/tasksSlice';
-import { setIsTaskAddShow } from '../../features/layout/layoutSlice';
-import { StyledBack, StyledBox, StyledInput, StyledTextArea, StyledLabel, StyledTitle, StyledBoxSection } from './TaskAdd.style';
-import { selectCurrentBoard } from '../../features/tasks/boardSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useRef, useState } from 'react';
-import { v4 as uuid } from 'uuid';
+
 import Button from '../Button';
+import { TasksData } from '../../Types/types';
+import { selectCurrentBoard } from '../../features/tasks/boardSlice';
+import { setIsTaskAddShow } from '../../features/layout/layoutSlice';
+import { v4 as uuid } from 'uuid';
 
 const TaskAdd = () => {
 	const [subtaskInputs, setSubtaskInputs] = useState([{ id: uuid(), value: '' }]);
@@ -54,7 +55,7 @@ const TaskAdd = () => {
 				</StyledBoxSection>
 				<form onSubmit={(event) => handleAddTask(event)}>
 					<StyledBoxSection>
-						<StyledLabel htmlFor='title'>Title</StyledLabel>
+						<StyledLabel htmlFor='title'>Title </StyledLabel>
 						<StyledInput ref={titleInputsRef} id='title' type='text' placeholder='e.g. Take coffee break'></StyledInput>
 					</StyledBoxSection>
 					<StyledBoxSection>

@@ -1,5 +1,9 @@
-
 export const theme = {
+	color: {
+		backBackground: 'hsla(0, 0%, 0%, 0.22)',
+	},
+	themeLight: { mainBackground: 'hsl(0, 0%, 100%)', mainColor: 'hsl(237, 100%, 3%)' },
+	themeDark: { mainBackground: 'hsl(235, 16%, 15%)', mainColor: 'hsl(0, 0%, 100%)' },
 	textHeading: {
 		xlarge: `
 			font-family: 'Plus Jakarta Sans';
@@ -7,7 +11,6 @@ export const theme = {
 			font-weight: 700;
 			font-size: 24px;
 			line-height: 30px;
-			color: #000112;
 		`,
 		large: `
 			font-family: 'Plus Jakarta Sans';
@@ -15,7 +18,6 @@ export const theme = {
 			font-weight: 700;
 			font-size: 18px;
 			line-height: 23px;
-			color: #000112;
 		`,
 
 		medium: `
@@ -24,7 +26,6 @@ export const theme = {
 			font-weight: 700;
 			font-size: 15px;
 			line-height: 19px;
-			color: #000112;
 		`,
 		small: `
 			font-family: 'Plus Jakarta Sans';
@@ -53,7 +54,6 @@ export const theme = {
 			line-height: 15px;
 			color: #2b2c37;
 		`,
-		
 	},
 };
 

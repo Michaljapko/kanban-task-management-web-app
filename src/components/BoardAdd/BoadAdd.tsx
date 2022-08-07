@@ -1,19 +1,19 @@
-import { useEffect, useRef, useState } from 'react';
-import { changeBoard } from '../../features/tasks/boardSlice';
-import { useAppDispatch } from '../../app/hooks';
-import { addBoard } from '../../features/tasks/tasksSlice';
-import { v4 as uuid } from 'uuid';
+import { StyledBack, StyledBox, StyledBoxSection, StyledColumnInputBox, StyledHeading, StyledInput, StyledLabel } from './BoardAdd.styled';
+import { useRef, useState } from 'react';
+
 import Button from '../Button';
-import { StyledBack, StyledBox, StyledInput, StyledColumnInputBox, StyledLabel, StyledBoxSection, StyledHeading } from './BoardAdd.styled';
+import { addBoard } from '../../features/tasks/tasksSlice';
+import { changeBoard } from '../../features/tasks/boardSlice';
 import cross from '../../assets/icon-cross.svg';
 import { setIsBoardAddShow } from '../../features/layout/layoutSlice';
+import { useAppDispatch } from '../../app/hooks';
+import { v4 as uuid } from 'uuid';
 
 const BoardAdd = () => {
 	const [columnInputs, setColumnInputs] = useState([{ id: uuid(), value: '' }]);
 	const dispatch = useAppDispatch();
 	const nameInputsRef = useRef<HTMLInputElement>(null);
 	const columnInputsRef = useRef<HTMLInputElement[]>([]);
-
 	function addToRefs(element: HTMLInputElement) {
 		if (element && !columnInputsRef.current.includes(element)) {
 			columnInputsRef.current.push(element);

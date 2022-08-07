@@ -1,8 +1,7 @@
-import { StyledButton } from './Button.styled';
 import { ButtonTypes } from '../../Types/types';
-
-import plus from '../../assets/icon-add-task-mobile.svg';
+import { StyledButton } from './Button.styled';
 import board from '../../assets/icon-board.svg';
+import plus from '../../assets/icon-add-task-mobile.svg';
 
 const Button = ({ children, icon, onClick, variant, type }: ButtonTypes) => {
 	const getIcon = (icon: string) => {

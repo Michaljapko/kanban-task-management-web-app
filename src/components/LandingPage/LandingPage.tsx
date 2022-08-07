@@ -1,24 +1,25 @@
-import React from 'react';
-
-import Header from '../Header';
-import Sidebar from '../Sidebar';
-import Button from '../Button';
-import TaskAdd from '../TaskAdd/TaskAdd';
-import TaskCards from '../TaskCards';
-import PopUp from '../PopUp';
-import { addColumn, selectTasksData } from '../../features/tasks/tasksSlice';
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { StyledInfo, StyledWrapper } from './LandingPage.styled';
-import { selectCurrentBoard } from '../../features/tasks/boardSlice';
+import { addColumn, selectTasksData } from '../../features/tasks/tasksSlice';
 import {
-	selectIsSidebarShow,
 	selectIsBoardAddShow,
-	selectIsTaskAddShow,
-	selectIsPopUpShow,
 	selectIsBoardEditShow,
+	selectIsPopUpShow,
+	selectIsSidebarShow,
+	selectIsTaskAddShow,
+	selectIsTaskEditShow,
 } from '../../features/layout/layoutSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+
 import BoardAdd from '../BoardAdd/BoadAdd';
 import BoardEdit from '../BoardEdit';
+import Button from '../Button';
+import Header from '../Header';
+import PopUp from '../PopUp';
+import Sidebar from '../Sidebar';
+import TaskAdd from '../TaskAdd/TaskAdd';
+import TaskCards from '../TaskCards';
+import TaskEdit from '../TaskEdit';
+import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 
 const LandingPage = () => {
 	const tasksData = useAppSelector(selectTasksData);
@@ -28,12 +29,14 @@ const LandingPage = () => {
 	const isBoardEditShow = useAppSelector(selectIsBoardEditShow);
 	const isTaskAddShow = useAppSelector(selectIsTaskAddShow);
 	const isPopUpShow = useAppSelector(selectIsPopUpShow);
+	const isTaskEditShow = useAppSelector(selectIsTaskEditShow);
 	const dispatch = useAppDispatch();
 	return (
 		<>
 			{isBoardAddShow && <BoardAdd />}
 			{isBoardEditShow && <BoardEdit />}
 			{isTaskAddShow && <TaskAdd />}
+			{isTaskEditShow && <TaskEdit />}
 			{isPopUpShow && <PopUp />}
 
 			<Header />

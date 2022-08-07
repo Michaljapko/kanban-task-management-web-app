@@ -1,13 +1,12 @@
+import { StyledBack, StyledHead, StyledRadioBox, StyledWrapper } from './Sidebar.styled';
 import { changeBoard, selectBoards, selectCurrentBoard } from '../../features/tasks/boardSlice';
-import { setIsSidebarShow, setIsBoardAddShow } from '../../features/layout/layoutSlice';
+import { setIsBoardAddShow, setIsSidebarShow } from '../../features/layout/layoutSlice';
+import { toogleTheme } from '../../features/layout/themeSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
-import { StyledWrapper, StyledHead, StyledBack, StyledRadioBox } from './Sidebar.styled';
-
 import Button from '../Button';
-
-import sun from '../../assets/icon-light-theme.svg';
 import moon from '../../assets/icon-dark-theme.svg';
+import sun from '../../assets/icon-light-theme.svg';
 
 const Sidebar = () => {
 	const dispatch = useAppDispatch();
@@ -43,7 +42,7 @@ const Sidebar = () => {
 				</Button>
 				<StyledRadioBox>
 					<img src={sun} alt='Light Theme' />
-					<input type='checkbox' id='theme' value='JavaScript' />
+					<input type='checkbox' id='theme' value='JavaScript' onChange={() => dispatch(toogleTheme())} />
 					<img src={moon} alt='Light Theme' />
 				</StyledRadioBox>
 			</StyledWrapper>

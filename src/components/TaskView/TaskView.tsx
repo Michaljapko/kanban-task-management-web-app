@@ -1,14 +1,18 @@
-import { StyledBack, StyledBox, StyledTitle, StyledDescription, StyledParagraph, StyledSubtaskBox, StyledBoxSection } from './TaskView.styled';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { setIsTaskShow } from '../../features/layout/layoutSlice';
+import { StyledBack, StyledBox, StyledBoxSection, StyledDescription, StyledParagraph, StyledSubtaskBox, StyledTitle } from './TaskView.styled';
 import { selectTasksData, taskColumnChange, taskEdit } from '../../features/tasks/tasksSlice';
-import { selectCurrentBoard } from '../../features/tasks/boardSlice';
+import { setIsTaskEditShow, setIsTaskShow } from '../../features/layout/layoutSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useEffect, useState } from 'react';
 
-const TaskView = ({ taskData, currentColumn }: any) => {
+import ellipsis from '../../assets/icon-vertical-ellipsis.svg';
+import { selectCurrentBoard } from '../../features/tasks/boardSlice';
+import { selectCurrentColumn } from '../../features/tasks/columnSlice';
+
+const TaskView = ({ taskData }: any) => {
 	const [task, setTask] = useState(taskData);
 	const [taskDone, setTaskDone] = useState(0);
 	const dispatch = useAppDispatch();
+	const currentColumn = useAppSelector(selectCurrentColumn);
 	const taskColumn = useAppSelector(selectTasksData);
 	const currentBoard = useAppSelector(selectCurrentBoard);
 
@@ -34,6 +38,13 @@ const TaskView = ({ taskData, currentColumn }: any) => {
 			<StyledBox onClick={(e) => e.stopPropagation()}>
 				<StyledBoxSection>
 					<StyledTitle>{task.title}</StyledTitle>
+					<img
+						src={ellipsis}
+						alt='ellipsis'
+						onClick={() => {
+							dispatch(setIsTaskEditShow());
+						}}
+					/>
 				</StyledBoxSection>
 				<StyledBoxSection>
 					<StyledDescription>{task.description}</StyledDescription>

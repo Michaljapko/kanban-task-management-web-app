@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, current } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
 import { Boards } from '../../Types/types';
@@ -65,8 +65,12 @@ export const selectTasksData = (state: RootState) => {
 export const selectTaskData = (state: RootState) => {
 	const boardIndex = state.tasks.boards.findIndex((board) => board.id === state.currentBoardId);
 	const columnIndex = state.tasks.boards[boardIndex].columns.findIndex((column) => column.id === state.currentColumnId);
-
 	return state.tasks.boards[boardIndex].columns[columnIndex].tasks;
 };
-
+export const selectCurrentTaskData = (state: RootState) => {
+	const boardIndex = state.tasks.boards.findIndex((board) => board.id === state.currentBoardId);
+	const columnIndex = state.tasks.boards[boardIndex].columns.findIndex((column) => column.id === state.currentColumnId);
+	const taskIndex = state.tasks.boards[boardIndex].columns[columnIndex].tasks.findIndex((task) => task.id === state.currentTask.currentTaskId);
+	return state.tasks.boards[boardIndex].columns[columnIndex].tasks[taskIndex];
+};
 export default tasksSlice.reducer;
