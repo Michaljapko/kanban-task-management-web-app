@@ -1,9 +1,12 @@
 export const theme = {
 	color: {
 		backBackground: 'hsla(0, 0%, 0%, 0.22)',
+		primaryButton: 'hsl(242, 48%, 58%)',
+		mainPurple: 'hsl(242, 48%, 57%)',
+		textColor: 'hsl(0, 0%, 100%)',
 	},
-	themeLight: { mainBackground: 'hsl(0, 0%, 100%)', mainColor: 'hsl(237, 100%, 3%)' },
-	themeDark: { mainBackground: 'hsl(235, 16%, 15%)', mainColor: 'hsl(0, 0%, 100%)' },
+	themeLight: { mainBackground: 'hsl(0, 0%, 100%)', mainColor: 'hsl(237, 100%, 3%)', secondaryButton: 'hsla(241, 48%, 57%, 0.1)' },
+	themeDark: { mainBackground: 'hsl(235, 16%, 15%)', mainColor: 'hsl(0, 0%, 100%)', secondaryButton: 'hsl(0, 0%, 100%)' },
 	textHeading: {
 		xlarge: `
 			font-family: 'Plus Jakarta Sans';

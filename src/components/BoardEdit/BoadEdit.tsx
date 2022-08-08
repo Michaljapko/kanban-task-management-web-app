@@ -9,20 +9,29 @@ import { editBoard } from '../../features/tasks/tasksSlice';
 import { setIsBoardEditShow } from '../../features/layout/layoutSlice';
 import { v4 as uuid } from 'uuid';
 import PopUp from '../PopUp';
+import { TasksData } from '../../Types/types';
+import { useFormik } from 'formik';
 
 const BoardEdit = () => {
+	const [columnInputs, setColumnInputs] = useState<{ id: string; name: string; tasks: TasksData[] }[]>([]);
+	const [columnInputsRef, setColumnInputsRef] = useState<any>(useRef([]));
 	const currentBoardId = useAppSelector(selectCurrentBoard);
 	const currentBoard = useAppSelector(selectBoards).find((boards) => boards.id === currentBoardId);
 	const columns = currentBoard?.columns;
-	const [columnInputs, setColumnInputs] = useState<{ id: string; name: string; tasks: [] }[]>([]);
 	const dispatch = useAppDispatch();
 	const nameInputsRef = useRef<HTMLInputElement>(null);
-	const columnInputsRef = useRef<HTMLInputElement[]>([]);
 
 	function addToRefs(element: HTMLInputElement) {
-		if (element && !columnInputsRef.current.includes(element)) {
-			columnInputsRef.current.push(element);
-		}
+		if (element === null) return;
+		if (columnInputsRef.current.includes(element)) return;
+		setColumnInputsRef(element);
+	}
+
+	function deleteColumn(columnId: string) {
+		const newColumns = columnInputs.filter((column) => columnId !== column.id);
+		console.log(columnInputs, 'inputs');
+		const refIndex = columnInputsRef.current.findIndex((column) => columnId === column.id);
+		columnInputsRef.current.splice(refIndex, 1);
 	}
 
 	function handleEditBoard(event: React.FormEvent<HTMLFormElement>) {
@@ -30,19 +39,22 @@ const BoardEdit = () => {
 		if (!nameInputsRef.current) return;
 		if (!columnInputsRef.current) return;
 		if (!currentBoard) return;
-		const columnsInput = columnInputsRef.current.map((input) => input.value);
+		const columnsInput = columnInputsRef.current.map((input) => input);
+
 		const columnsAdded = columnsInput.map((column) => {
-			return { name: column, id: uuid(), tasks: [] };
+			const existingColumn = columns?.find((currentColumn) => currentColumn.id === column.id);
+			if (existingColumn) return { ...existingColumn, name: column.value };
+			return { name: column.value, id: column.id, tasks: [] };
 		});
+
 		const board = {
 			currentBoard: currentBoardId,
 			board: {
 				id: currentBoardId,
 				name: nameInputsRef.current.value,
-				columns: [...currentBoard.columns, ...columnsAdded],
+				columns: [...columnsAdded],
 			},
 		};
-		console.log(board);
 		dispatch(editBoard(board));
 		dispatch(setIsBoardEditShow());
 	}
@@ -57,14 +69,11 @@ const BoardEdit = () => {
 
 				<StyledBoxSection>
 					<StyledLabel htmlFor='column'>Columns</StyledLabel>
-					{columns?.map((columnInput) => (
-						<StyledColumnInputBox>
-							<StyledInput ref={addToRefs} id={columnInput.id} type='text' defaultValue={columnInput.name} /> <img src={cross} alt='Delete' />
-						</StyledColumnInputBox>
-					))}
+
 					{columnInputs?.map((columnInput: { id: string; name: string }) => (
 						<StyledColumnInputBox>
-							<StyledInput ref={addToRefs} id={columnInput.id} type='text' defaultValue={columnInput.name} /> <img src={cross} alt='Delete' />
+							<StyledInput ref={addToRefs} key={columnInput.id} id={columnInput.id} type='text' defaultValue={columnInput.name} />{' '}
+							<img src={cross} key={columnInput.id + 'del'} onClick={() => deleteColumn(columnInput.id)} alt='Delete' />
 						</StyledColumnInputBox>
 					))}
 					<Button

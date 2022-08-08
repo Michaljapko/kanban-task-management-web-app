@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-
 import { Boards, Board, TasksData, Column } from '../../Types/types';
 import { data } from '../../data/data';
 
@@ -16,8 +15,8 @@ export const tasksSlice = createSlice({
 	name: 'tasks',
 	initialState,
 	reducers: {
-		addBoard: ({ boards }, { payload }: PayloadAction<Board>) => {
-			boards = [...boards, payload];
+		addBoard: (state, { payload }: PayloadAction<Board>) => {
+			state.boards = [...state.boards, payload];
 		},
 
 		editBoard: (state, { payload }: PayloadAction<{ currentBoard: string; board: Board }>) => {

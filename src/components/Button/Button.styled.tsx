@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import theme from '../../theme/theme';
 
 export const StyledButton = styled.button`
 	${(props: any) => {
@@ -33,7 +34,6 @@ export const StyledButton = styled.button`
 		}
 
 		return css`
-			margin: 0 12px;
 			border: 0;
 			border-radius: 24px;
 			padding: ${(props: any) => {
@@ -42,13 +42,17 @@ export const StyledButton = styled.button`
 				}
 				return '15px 18px';
 			}};
-			background: #635fc7;
+			width: 100%;
+			background: ${(props: any) => {
+				return props['data-variant'] === 'secondary' ? props.theme.color.secondaryButton : props.theme.color.primaryButton;
+			}};
 			font-size: 15px;
 			font-family: 'Plus Jakarta Sans';
 			font-weight: 700;
 			font-style: normal;
-			text-align: start;
-			color: #fff;
+			color: ${(props: any) => {
+				return props['data-variant'] === 'secondary' ? props.theme.color.mainPurple : props.theme.color.textColor;
+			}};
 			opacity: ${(props: any) => {
 				if (props['data-variant'] === 'header-off') return '0.25';
 			}};

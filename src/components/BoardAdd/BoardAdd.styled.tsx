@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { selectThemeMode } from '../../features/layout/themeSlice';
 import { useAppSelector } from '../../app/hooks';
+import { Field } from 'formik';
 
 export const StyledBack = styled.div`
 	position: absolute;
@@ -29,7 +30,7 @@ export const StyledHeading = styled.h2`
 		return theme[themeMode].mainColor;
 	}};
 `;
-export const StyledInput = styled.input`
+export const StyledInput = styled(Field)`
 	padding: 8px 16px;
 	border: 1px solid rgba(130, 143, 163, 0.25);
 	border-radius: 4px;
