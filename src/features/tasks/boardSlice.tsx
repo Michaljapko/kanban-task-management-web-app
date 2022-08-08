@@ -11,10 +11,10 @@ export const boardSlice = createSlice({
 
 export const { changeBoard } = boardSlice.actions;
 
-export const selectCurrentBoard = (state: RootState) => state.currentBoardId;
+export const selectCurrentBoard = ({ currentBoardId }: RootState) => currentBoardId;
 
 export const selectCurrentBoardIndex = (state: RootState) => state.tasks.boards.findIndex((board) => board.id === state.currentBoardId);
 
-export const selectBoards = (state: RootState) => state.tasks.boards.map((board) => board);
+export const selectBoards = ({ tasks }: RootState) => tasks.boards.map((board) => board);
 
 export default boardSlice.reducer;

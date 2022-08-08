@@ -12,9 +12,9 @@ import { v4 as uuid } from 'uuid';
 import PopUp from '../PopUp';
 
 const TaskEdit = () => {
-	const convertToBoolean = (string: string | any) => (string === 'true' ? true : false);
+	const convertToBoolean = (string: string | null) => (string === 'true' ? true : false);
 
-	const [subtaskInputs, setSubtaskInputs] = useState([]);
+	const [subtaskInputs, setSubtaskInputs] = useState<{ id: string; value: string }[]>([]);
 	const titleInputsRef = useRef<HTMLInputElement>(null);
 	const descriptionInputsRef = useRef<HTMLTextAreaElement>(null);
 	const columnInputsRef = useRef<HTMLSelectElement>(null);
@@ -37,7 +37,7 @@ const TaskEdit = () => {
 			title: titleInputsRef.current?.value,
 			description: descriptionInputsRef.current?.value,
 			subtasks: subtasks.map((subtask) => {
-				return { title: subtask.value, isCompleted: convertToBoolean(subtask.getAttribute('data-done')) };
+				return { id: uuid(), title: subtask.value, isCompleted: convertToBoolean(subtask.getAttribute('data-done')) };
 			}),
 			status: columnInputsRef.current?.value,
 		};

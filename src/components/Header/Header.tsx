@@ -15,12 +15,9 @@ import {
 	setIsBoardEditShow,
 } from '../../features/layout/layoutSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { useState } from 'react';
 import { selectTasksData } from '../../features/tasks/tasksSlice';
 
 const Header = () => {
-	const [isDropMenuShow, setIsDropMenuShow] = useState<boolean>(false);
-
 	const dispatch = useAppDispatch();
 	const taskData = useAppSelector(selectTasksData);
 	const isSidebarShow = useAppSelector(selectIsSidebarShow);

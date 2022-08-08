@@ -20,6 +20,7 @@ import TaskAdd from '../TaskAdd/TaskAdd';
 import TaskCards from '../TaskCards';
 import TaskEdit from '../TaskEdit';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
+import { v4 as uuid } from 'uuid';
 
 const LandingPage = () => {
 	const tasksData = useAppSelector(selectTasksData);
@@ -46,7 +47,10 @@ const LandingPage = () => {
 				{!tasksData && <StyledInfo>This board is empty. Create a new column to get started.</StyledInfo>}
 				{tasksData && tasksData?.length > 0 && <TaskCards />}
 
-				<Button onClick={() => dispatch(addColumn({ columnName: 'New column', currentBoard: currentBoard }))} icon='plus'>
+				<Button
+					onClick={() => dispatch(addColumn({ column: { id: uuid(), name: 'New column', tasks: [] }, currentBoard: currentBoard }))}
+					icon='plus'
+				>
 					Add New Column
 				</Button>
 			</StyledWrapper>

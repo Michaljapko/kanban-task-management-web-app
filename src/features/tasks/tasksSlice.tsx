@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
-import { Boards } from '../../Types/types';
+import { Boards, Board, TasksData, Column } from '../../Types/types';
 import { data } from '../../data/data';
-import { v4 as uuid } from 'uuid';
 
 const initialState: Boards = data;
 
@@ -17,30 +16,37 @@ export const tasksSlice = createSlice({
 	name: 'tasks',
 	initialState,
 	reducers: {
-		addBoard: ({ boards }, { payload }: PayloadAction<any>) => {
+		addBoard: ({ boards }, { payload }: PayloadAction<Board>) => {
 			boards = [...boards, payload];
 		},
-		editBoard: (state, { payload }: PayloadAction<any>) => {
+
+		editBoard: (state, { payload }: PayloadAction<{ currentBoard: string; board: Board }>) => {
 			const boardIndex = getBoardIndex(state, payload.currentBoard);
 			state.boards[boardIndex] = payload.board;
 		},
-		addTask: (state, { payload }: PayloadAction<any>) => {
+
+		addTask: (state, { payload }: PayloadAction<{ currentBoard: string; task: TasksData }>) => {
 			const boardIndex = getBoardIndex(state, payload.currentBoard);
 			const columnIndex = getColumnIndex(state, boardIndex, payload.task.status);
 			state.boards[boardIndex].columns[columnIndex].tasks = [...state.boards[boardIndex].columns[columnIndex].tasks, payload.task];
 		},
 
-		addColumn: (state, { payload }: PayloadAction<any>) => {
+		addColumn: (state, { payload }: PayloadAction<{ currentBoard: string; column: Column }>) => {
 			const boardIndex = getBoardIndex(state, payload.currentBoard);
-			state.boards[boardIndex].columns = [...state.boards[boardIndex].columns, { id: uuid(), name: payload.columnName, tasks: [] }];
+			state.boards[boardIndex].columns = [...state.boards[boardIndex].columns, payload.column];
 		},
-		columnChangeTask: (state, { payload }: PayloadAction<any>) => {
+
+		editTask: (state, { payload }: PayloadAction<{ currentBoard: string; columnId: string; taskId: string; task: TasksData }>) => {
 			const boardIndex = getBoardIndex(state, payload.currentBoard);
 			const columnIndex = getColumnIndex(state, boardIndex, payload.columnId);
 			const taskIndex = getTaskIndex(state, boardIndex, columnIndex, payload.taskId);
 			state.boards[boardIndex].columns[columnIndex].tasks[taskIndex] = payload.task;
 		},
-		columnChangeTask: (state, { payload }: PayloadAction<any>) => {
+
+		columnChangeTask: (
+			state,
+			{ payload }: PayloadAction<{ currentBoard: string; columnId: string; columnTarget: string; taskId: string; task: TasksData }>
+		) => {
 			const boardIndex = getBoardIndex(state, payload.currentBoard);
 			const columnIndex = getColumnIndex(state, boardIndex, payload.columnId);
 			const taskIndex = getTaskIndex(state, boardIndex, columnIndex, payload.taskId);
@@ -52,7 +58,7 @@ export const tasksSlice = createSlice({
 			state.boards[boardIndex].columns[columnIndexTarget].tasks = [...state.boards[boardIndex].columns[columnIndexTarget].tasks, taskToChange];
 		},
 
-		deleteBoard: (state, action: PayloadAction<any>) => {
+		deleteBoard: (state, action: PayloadAction<string>) => {
 			state.boards = state.boards.filter((board) => {
 				return action.payload !== board.id;
 			});

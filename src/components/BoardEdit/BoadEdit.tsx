@@ -14,7 +14,7 @@ const BoardEdit = () => {
 	const currentBoardId = useAppSelector(selectCurrentBoard);
 	const currentBoard = useAppSelector(selectBoards).find((boards) => boards.id === currentBoardId);
 	const columns = currentBoard?.columns;
-	const [columnInputs, setColumnInputs] = useState<any>([]);
+	const [columnInputs, setColumnInputs] = useState<{ id: string; name: string; tasks: [] }[]>([]);
 	const dispatch = useAppDispatch();
 	const nameInputsRef = useRef<HTMLInputElement>(null);
 	const columnInputsRef = useRef<HTMLInputElement[]>([]);
@@ -29,7 +29,7 @@ const BoardEdit = () => {
 		event.preventDefault();
 		if (!nameInputsRef.current) return;
 		if (!columnInputsRef.current) return;
-
+		if (!currentBoard) return;
 		const columnsInput = columnInputsRef.current.map((input) => input.value);
 		const columnsAdded = columnsInput.map((column) => {
 			return { name: column, id: uuid(), tasks: [] };
@@ -38,13 +38,12 @@ const BoardEdit = () => {
 			currentBoard: currentBoardId,
 			board: {
 				id: currentBoardId,
-				name: nameInputsRef.current?.value,
-				columns: [...currentBoard?.columns, ...columnsAdded],
+				name: nameInputsRef.current.value,
+				columns: [...currentBoard.columns, ...columnsAdded],
 			},
 		};
 		console.log(board);
 		dispatch(editBoard(board));
-
 		dispatch(setIsBoardEditShow());
 	}
 
@@ -55,6 +54,7 @@ const BoardEdit = () => {
 					<StyledLabel htmlFor='name'>Board Name</StyledLabel>
 					<StyledInput ref={nameInputsRef} id='name' type='text' placeholder='e.g. Web Design' defaultValue={currentBoard?.name} />
 				</StyledBoxSection>
+
 				<StyledBoxSection>
 					<StyledLabel htmlFor='column'>Columns</StyledLabel>
 					{columns?.map((columnInput) => (
@@ -62,7 +62,7 @@ const BoardEdit = () => {
 							<StyledInput ref={addToRefs} id={columnInput.id} type='text' defaultValue={columnInput.name} /> <img src={cross} alt='Delete' />
 						</StyledColumnInputBox>
 					))}
-					{columnInputs?.map((columnInput) => (
+					{columnInputs?.map((columnInput: { id: string; name: string }) => (
 						<StyledColumnInputBox>
 							<StyledInput ref={addToRefs} id={columnInput.id} type='text' defaultValue={columnInput.name} /> <img src={cross} alt='Delete' />
 						</StyledColumnInputBox>
@@ -70,12 +70,13 @@ const BoardEdit = () => {
 					<Button
 						type='button'
 						onClick={() => {
-							setColumnInputs([...columnInputs, { id: uuid(), value: '' }]);
+							setColumnInputs([...columnInputs, { id: uuid(), name: '', tasks: [] }]);
 						}}
 					>
 						Add New Column
 					</Button>
 				</StyledBoxSection>
+
 				<StyledBoxSection>
 					<Button type='submit'>Save Changes</Button>
 				</StyledBoxSection>

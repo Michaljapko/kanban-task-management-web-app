@@ -11,6 +11,6 @@ export const columnSlice = createSlice({
 
 export const { changeColumn } = columnSlice.actions;
 
-export const selectCurrentColumn = (state: RootState) => state.currentColumnId;
+export const selectCurrentColumn = ({currentColumnId}: RootState) => currentColumnId;
 
 export default columnSlice.reducer;

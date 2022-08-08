@@ -1,4 +1,4 @@
-import { StyledBoxSection, StyledInput, StyledLabel, StyledTextArea, StyledTitle } from './TaskAdd.style';
+import { StyledBoxSection, StyledInput, StyledLabel, StyledTextArea } from './TaskAdd.style';
 import { addTask, selectTasksData } from '../../features/tasks/tasksSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useRef, useState } from 'react';
@@ -34,7 +34,7 @@ const TaskAdd = () => {
 			title: titleInputsRef.current?.value,
 			description: descriptionInputsRef.current?.value,
 			subtasks: subtasks.map((task) => {
-				return { title: task, isCompleted: false };
+				return { id: uuid(), title: task, isCompleted: false };
 			}),
 			status: columnInputsRef.current?.value,
 		};

@@ -1,6 +1,8 @@
 import { StyledBoxSection, StyledColumnInputBox, StyledInput, StyledLabel } from './BoardAdd.styled';
 import { useRef, useState } from 'react';
 
+import { Board } from '../../Types/types';
+
 import Button from '../Button';
 import { addBoard } from '../../features/tasks/tasksSlice';
 import { changeBoard } from '../../features/tasks/boardSlice';
@@ -27,14 +29,7 @@ const BoardAdd = () => {
 		if (!columnInputsRef.current) return;
 
 		const columns = columnInputsRef.current.map((input) => input.value);
-		const board: {
-			id: string;
-			name: string;
-			columns: {
-				id: string;
-				name: string;
-			}[];
-		} = {
+		const board: Board = {
 			id: uuid(),
 			name: nameInputsRef.current?.value,
 			columns: columns.map((column) => {

@@ -1,4 +1,5 @@
 export interface Subtask {
+	id: string;
 	title: string;
 	isCompleted: boolean;
 }
@@ -33,6 +34,21 @@ export interface Boards {
 	}[];
 }
 
+export interface Board {
+	id: string;
+	name: string;
+	columns: {
+		id: string;
+		name: string;
+		tasks: TasksData[];
+	}[];
+}
+
+export interface Column {
+	id: string;
+	name: string;
+	tasks: [];
+}
 export interface TasksData {
 	id: string;
 	title: string;
