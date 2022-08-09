@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import theme from '../../theme/theme';
 
 export const StyledButton = styled.button`
 	${(props: any) => {

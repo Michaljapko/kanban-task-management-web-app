@@ -3,12 +3,13 @@ import { Board } from '../../Types/types';
 import Button from '../Button';
 import { addBoard } from '../../features/tasks/tasksSlice';
 import { changeBoard } from '../../features/tasks/boardSlice';
-import cross from '../../assets/icon-cross.svg';
 import { setIsBoardAddShow } from '../../features/layout/layoutSlice';
+import cross from '../../assets/icon-cross.svg';
 import { useAppDispatch } from '../../app/hooks';
 import { v4 as uuid } from 'uuid';
 import PopUp from '../PopUp';
-import { Formik, Form, FieldArray } from 'formik';
+import { Formik, Form, FieldArray, ErrorMessage } from 'formik';
+import { boardAddSchema } from './helpers/BoardAdd.validation';
 
 const BoardAdd = () => {
 	interface ColumnInputValues {
@@ -19,6 +20,7 @@ const BoardAdd = () => {
 	const dispatch = useAppDispatch();
 
 	function handleAddBoard(values: ColumnInputValues) {
+		console.log(values.columns);
 		const board: Board = {
 			id: uuid(),
 			name: values.name,
@@ -33,22 +35,25 @@ const BoardAdd = () => {
 
 	return (
 		<PopUp title={'Add New Board'} layoutDispatch={() => dispatch(setIsBoardAddShow())}>
-			<Formik initialValues={initialValues} onSubmit={(values) => handleAddBoard(values)}>
+			<Formik initialValues={initialValues} validationSchema={boardAddSchema} onSubmit={(values) => handleAddBoard(values)}>
 				{({ values }) => (
 					<Form>
 						<StyledBoxSection>
 							<StyledLabel htmlFor='name'>Board Name</StyledLabel>
 							<StyledInput name='name' placeholder='e.g. Web Design' />
+							<ErrorMessage name='name' />
 						</StyledBoxSection>
 						<StyledBoxSection>
 							<StyledLabel htmlFor='column'>Board Columns</StyledLabel>
+
 							<FieldArray
 								name='columns'
 								render={({ push, remove }) => (
 									<>
 										{values.columns.length > 0 &&
 											values.columns.map((columns, index) => (
-												<StyledColumnInputBox>
+												<StyledColumnInputBox key={uuid()}>
+													<ErrorMessage name={`columns.${index}.name`} />
 													<StyledInput name={`columns.${index}.name`} placeholder='e.g. In Progress' />
 													<img src={cross} alt='Delete' onClick={() => remove(index)} />
 												</StyledColumnInputBox>
