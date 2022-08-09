@@ -3,7 +3,6 @@ export interface Subtask {
 	title: string;
 	isCompleted: boolean;
 }
-
 export interface ButtonTypes {
 	children?: string;
 	icon?: 'plus' | 'board';
@@ -11,7 +10,6 @@ export interface ButtonTypes {
 	onClick?: any;
 	type?: 'button' | 'reset' | 'submit' | undefined;
 }
-
 export interface Boards {
 	boards: {
 		id: string;
@@ -33,7 +31,6 @@ export interface Boards {
 		}[];
 	}[];
 }
-
 export interface Board {
 	id: string;
 	name: string;
@@ -43,7 +40,6 @@ export interface Board {
 		tasks: TasksData[];
 	}[];
 }
-
 export interface Column {
 	id: string;
 	name: string;
@@ -55,4 +51,9 @@ export interface TasksData {
 	description: string;
 	subtasks: Subtask[];
 	status: string;
+}
+
+export interface ColumnInputValues {
+	name: string;
+	columns: { name: string }[];
 }

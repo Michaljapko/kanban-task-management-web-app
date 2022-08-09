@@ -1,26 +1,21 @@
 import { StyledBoxSection, StyledColumnInputBox, StyledInput, StyledLabel } from './BoardAdd.styled';
-import { Board } from '../../Types/types';
-import Button from '../Button';
+import { Formik, Form, FieldArray, ErrorMessage } from 'formik';
+import { boardAddSchema } from '../../helpers/validationSchema';
+import { Board, ColumnInputValues } from '../../Types/types';
 import { addBoard } from '../../features/tasks/tasksSlice';
 import { changeBoard } from '../../features/tasks/boardSlice';
 import { setIsBoardAddShow } from '../../features/layout/layoutSlice';
-import cross from '../../assets/icon-cross.svg';
 import { useAppDispatch } from '../../app/hooks';
 import { v4 as uuid } from 'uuid';
+import cross from '../../assets/icon-cross.svg';
 import PopUp from '../PopUp';
-import { Formik, Form, FieldArray, ErrorMessage } from 'formik';
-import { boardAddSchema } from './helpers/BoardAdd.validation';
+import Button from '../Button';
 
 const BoardAdd = () => {
-	interface ColumnInputValues {
-		name: string;
-		columns: { name: string }[];
-	}
 	const initialValues: ColumnInputValues = { name: '', columns: [{ name: '' }] };
 	const dispatch = useAppDispatch();
 
-	function handleAddBoard(values: ColumnInputValues) {
-		console.log(values.columns);
+	const handleAddBoard = (values: ColumnInputValues) => {
 		const board: Board = {
 			id: uuid(),
 			name: values.name,
@@ -28,10 +23,11 @@ const BoardAdd = () => {
 				return { name: column.name, id: uuid(), tasks: [] };
 			}),
 		};
+
 		dispatch(addBoard(board));
 		dispatch(changeBoard(board.id));
 		dispatch(setIsBoardAddShow());
-	}
+	};
 
 	return (
 		<PopUp title={'Add New Board'} layoutDispatch={() => dispatch(setIsBoardAddShow())}>
@@ -45,7 +41,6 @@ const BoardAdd = () => {
 						</StyledBoxSection>
 						<StyledBoxSection>
 							<StyledLabel htmlFor='column'>Board Columns</StyledLabel>
-
 							<FieldArray
 								name='columns'
 								render={({ push, remove }) => (
