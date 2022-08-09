@@ -1,5 +1,5 @@
-import { StyledBoxSection, StyledColumnInputBox, StyledInput, StyledLabel } from './BoardAdd.styled';
-import { Formik, Form, FieldArray, ErrorMessage } from 'formik';
+import { StyledBoxSection, StyledColumnInputBox, StyledLabel } from './BoardAdd.styled';
+import { Formik, Form, FieldArray} from 'formik';
 import { boardAddSchema } from '../../helpers/validationSchema';
 import { Board, ColumnInputValues } from '../../Types/types';
 import { addBoard } from '../../features/tasks/tasksSlice';
@@ -10,6 +10,7 @@ import { v4 as uuid } from 'uuid';
 import cross from '../../assets/icon-cross.svg';
 import PopUp from '../PopUp';
 import Button from '../Button';
+import Input from '../Input';
 
 const BoardAdd = () => {
 	const initialValues: ColumnInputValues = { name: '', columns: [{ name: '' }] };
@@ -36,8 +37,7 @@ const BoardAdd = () => {
 					<Form>
 						<StyledBoxSection>
 							<StyledLabel htmlFor='name'>Board Name</StyledLabel>
-							<StyledInput name='name' placeholder='e.g. Web Design' />
-							<ErrorMessage name='name' />
+							<Input name='name' placeholder='e.g. Web Design' />
 						</StyledBoxSection>
 						<StyledBoxSection>
 							<StyledLabel htmlFor='column'>Board Columns</StyledLabel>
@@ -48,8 +48,7 @@ const BoardAdd = () => {
 										{values.columns.length > 0 &&
 											values.columns.map((columns, index) => (
 												<StyledColumnInputBox key={uuid()}>
-													<ErrorMessage name={`columns.${index}.name`} />
-													<StyledInput name={`columns.${index}.name`} placeholder='e.g. In Progress' />
+													<Input name={`columns.${index}.name`} placeholder='e.g. In Progress' />
 													<img src={cross} alt='Delete' onClick={() => remove(index)} />
 												</StyledColumnInputBox>
 											))}
