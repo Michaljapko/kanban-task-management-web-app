@@ -6,7 +6,6 @@ export const StyledInput = styled.input`
 	padding: 8px 16px;
 	border: 1px solid rgba(130, 143, 163, 0.25);
 	border-color: ${(props: any) => {
-		console.log(props.error);
 		return typeof props.error === 'string' ? '#ea5555' : 'rgba(130, 143, 163, 0.25)';
 	}};
 	border-radius: 4px;

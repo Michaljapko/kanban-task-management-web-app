@@ -57,3 +57,10 @@ export interface ColumnInputValues {
 	name: string;
 	columns: { name: string }[];
 }
+
+export interface TaskInputValues {
+	title: string;
+	description: string;
+	subtasks: { title: string }[];
+	status: string;
+}

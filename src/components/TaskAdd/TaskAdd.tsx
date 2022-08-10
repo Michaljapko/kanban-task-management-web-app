@@ -1,100 +1,100 @@
-import { StyledBoxSection, StyledInput, StyledLabel, StyledTextArea } from './TaskAdd.style';
+import { StyledBoxSection, StyledLabel } from './TaskAdd.style';
+import { Formik, Form, FieldArray, Field } from 'formik';
 import { addTask, selectTasksData } from '../../features/tasks/tasksSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { useRef, useState } from 'react';
-
 import Button from '../Button';
-import { TasksData } from '../../Types/types';
+import { TasksData, TaskInputValues } from '../../Types/types';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { setIsTaskAddShow } from '../../features/layout/layoutSlice';
+import cross from '../../assets/icon-cross.svg';
 import { v4 as uuid } from 'uuid';
 import PopUp from '../PopUp';
 
+import Input from '../Input';
+import { taskAddSchema } from '../../helpers/validationSchema';
+
 const TaskAdd = () => {
-	const [subtaskInputs, setSubtaskInputs] = useState([{ id: uuid(), value: '' }]);
-
-	const titleInputsRef = useRef<HTMLInputElement>(null);
-	const descriptionInputsRef = useRef<HTMLTextAreaElement>(null);
-	const columnInputsRef = useRef<HTMLSelectElement>(null);
-	const subtaskInputsRef = useRef<HTMLInputElement[]>([]);
-
 	const dispatch = useAppDispatch();
-	const taskColumn = useAppSelector(selectTasksData);
+	const taskColumns = useAppSelector(selectTasksData);
 	const currentBoard = useAppSelector(selectCurrentBoard);
+	const getColumns = () => {
+		if (taskColumns === undefined) return [{ id: 'null', name: 'null' }];
+		return taskColumns.map((column) => {
+			return { id: column.id, name: column.name };
+		});
+	};
+	const columns = getColumns();
 
-	function handleAddTask(event: React.FormEvent<HTMLFormElement>) {
-		event.preventDefault();
-		if (!titleInputsRef.current) return;
-		if (!descriptionInputsRef.current) return;
-		if (!columnInputsRef.current) return;
+	const initialValues: TaskInputValues = { title: '', description: '', subtasks: [{ title: '' }], status: '' };
 
-		const subtasks = subtaskInputsRef.current.map((input) => input.value);
+	function handleAddTask(values: TaskInputValues) {
 		const task: TasksData = {
 			id: uuid(),
-			title: titleInputsRef.current?.value,
-			description: descriptionInputsRef.current?.value,
-			subtasks: subtasks.map((task) => {
-				return { id: uuid(), title: task, isCompleted: false };
+			title: values.title,
+			description: values.description,
+			subtasks: values.subtasks.map((task) => {
+				return { id: uuid(), title: task.title, isCompleted: false };
 			}),
-			status: columnInputsRef.current?.value,
+			status: values.status,
 		};
+		console.log(task);
 		dispatch(addTask({ task: task, currentBoard: currentBoard }));
 		dispatch(setIsTaskAddShow());
 	}
 
-	function addToRefs(element: HTMLInputElement) {
-		if (element && !subtaskInputsRef.current.includes(element)) {
-			subtaskInputsRef.current.push(element);
-		}
-	}
-
 	return (
 		<PopUp title={'Add New Task'} layoutDispatch={() => dispatch(setIsTaskAddShow())}>
-			<form onSubmit={(event) => handleAddTask(event)}>
-				<StyledBoxSection>
-					<StyledLabel htmlFor='title'>Title </StyledLabel>
-					<StyledInput ref={titleInputsRef} id='title' type='text' placeholder='e.g. Take coffee break'></StyledInput>
-				</StyledBoxSection>
-				<StyledBoxSection>
-					<StyledLabel htmlFor='description'>Description</StyledLabel>
-					<StyledTextArea
-						ref={descriptionInputsRef}
-						id='description'
-						placeholder='e.g. It’s always good to take a break. This 
+			<Formik initialValues={initialValues} validationSchema={taskAddSchema} onSubmit={(values) => handleAddTask(values)}>
+				{({ values }) => (
+					<Form>
+						<StyledBoxSection>
+							<StyledLabel htmlFor='title'>Title </StyledLabel>
+							<Input name='title' type='text' placeholder='e.g. Take coffee break' />
+						</StyledBoxSection>
+						<StyledBoxSection>
+							<StyledLabel htmlFor='description'>Description</StyledLabel>
+							<Input
+								name='description'
+								placeholder='e.g. It’s always good to take a break. This 
 15 minute break will  recharge the batteries 
 a little.'
-					/>
-				</StyledBoxSection>
-				<StyledBoxSection>
-					<StyledLabel htmlFor='subtask'>Subtask</StyledLabel>
-					{subtaskInputs.map((subtaskInput) => (
-						<StyledInput
-							ref={addToRefs}
-							id={subtaskInput.id}
-							type='text'
-							defaultValue={subtaskInput.value}
-							placeholder='e.g. Make coffee'
-						></StyledInput>
-					))}
-					<Button
-						type='button'
-						onClick={() => {
-							setSubtaskInputs([...subtaskInputs, { id: uuid(), value: '' }]);
-						}}
-					>
-						Add New Subtask
-					</Button>
-				</StyledBoxSection>
-				<StyledBoxSection>
-					<StyledLabel htmlFor='status'>Status</StyledLabel>
-					<select ref={columnInputsRef} name='status' id='status'>
-						{taskColumn?.map((column) => (
-							<option value={column.id}>{column.name}</option>
-						))}
-					</select>
-				</StyledBoxSection>
-				<Button type='submit'>Create Task</Button>
-			</form>
+							/>
+						</StyledBoxSection>
+						<StyledBoxSection>
+							<StyledLabel htmlFor='subtask'>Subtask</StyledLabel>
+							<FieldArray
+								name='subtasks'
+								render={({ push, remove }) => (
+									<>
+										{values.subtasks.length > 0 &&
+											values.subtasks.map((subtasks, index) => (
+												<div key={index}>
+													<Input name={`subtasks.${index}.title`} placeholder='e.g. In Progress' />
+													<img src={cross} alt='Delete' onClick={() => remove(index)} />
+												</div>
+											))}
+										<Button type='button' variant='secondary' onClick={() => push({ title: '' })}>
+											+ Add New Column
+										</Button>
+									</>
+								)}
+							/>
+						</StyledBoxSection>
+						<StyledBoxSection>
+							<StyledLabel htmlFor='status'>Status</StyledLabel>
+							<Field as='select' name='status' defaultValue='none'>
+								<option value='none'>Select an Option</option>
+								{columns.map((column, index) => (
+									<option key={index} value={column.id}>
+										{column.name}
+									</option>
+								))}
+							</Field>
+						</StyledBoxSection>
+						<Button type='submit'>Create Task</Button>
+					</Form>
+				)}
+			</Formik>
 		</PopUp>
 	);
 };
