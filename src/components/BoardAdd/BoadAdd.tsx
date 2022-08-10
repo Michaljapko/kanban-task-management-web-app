@@ -1,5 +1,5 @@
 import { StyledBoxSection, StyledColumnInputBox, StyledLabel } from './BoardAdd.styled';
-import { Formik, Form, FieldArray} from 'formik';
+import { Formik, Form, FieldArray } from 'formik';
 import { boardAddSchema } from '../../helpers/validationSchema';
 import { Board, ColumnInputValues } from '../../Types/types';
 import { addBoard } from '../../features/tasks/tasksSlice';
@@ -47,7 +47,7 @@ const BoardAdd = () => {
 									<>
 										{values.columns.length > 0 &&
 											values.columns.map((columns, index) => (
-												<StyledColumnInputBox key={uuid()}>
+												<StyledColumnInputBox key={index}>
 													<Input name={`columns.${index}.name`} placeholder='e.g. In Progress' />
 													<img src={cross} alt='Delete' onClick={() => remove(index)} />
 												</StyledColumnInputBox>
