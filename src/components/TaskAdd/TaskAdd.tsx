@@ -1,4 +1,4 @@
-import { StyledBoxSection, StyledLabel } from './TaskAdd.style';
+import { StyledBoxSection, StyledColumnInputBox, StyledLabel } from './TaskAdd.style';
 import { Formik, Form, FieldArray, Field } from 'formik';
 import { addTask, selectTasksData } from '../../features/tasks/tasksSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -9,7 +9,6 @@ import { setIsTaskAddShow } from '../../features/layout/layoutSlice';
 import cross from '../../assets/icon-cross.svg';
 import { v4 as uuid } from 'uuid';
 import PopUp from '../PopUp';
-
 import Input from '../Input';
 import { taskAddSchema } from '../../helpers/validationSchema';
 
@@ -58,6 +57,7 @@ const TaskAdd = () => {
 								placeholder='e.g. It’s always good to take a break. This 
 15 minute break will  recharge the batteries 
 a little.'
+								as='textarea'
 							/>
 						</StyledBoxSection>
 						<StyledBoxSection>
@@ -68,10 +68,10 @@ a little.'
 									<>
 										{values.subtasks.length > 0 &&
 											values.subtasks.map((subtasks, index) => (
-												<div key={index}>
+												<StyledColumnInputBox key={index}>
 													<Input name={`subtasks.${index}.title`} placeholder='e.g. In Progress' />
 													<img src={cross} alt='Delete' onClick={() => remove(index)} />
-												</div>
+												</StyledColumnInputBox>
 											))}
 										<Button type='button' variant='secondary' onClick={() => push({ title: '' })}>
 											+ Add New Column

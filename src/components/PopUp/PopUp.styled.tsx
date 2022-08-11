@@ -21,7 +21,7 @@ export const StyledBox = styled.div`
 	border-radius: 6px;
 	padding: 24px;
 	width: 100%;
-	max-width: 768px;
+	max-width: 480px;
 	background: ${({ theme }) => {
 		const themeMode = useAppSelector(selectThemeMode);
 		return theme[themeMode].mainBackground;
