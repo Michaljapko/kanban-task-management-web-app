@@ -1,9 +1,7 @@
 import { StyledBoxSection, StyledColumnInputBox, StyledLabel } from './BoardEdit.styled';
 import { selectBoards, selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-
 import { BoardInputValues } from '../../Types/types';
-
 import Button from '../Button';
 import cross from '../../assets/icon-cross.svg';
 import { editBoard } from '../../features/tasks/tasksSlice';
@@ -11,8 +9,8 @@ import { setIsBoardEditShow } from '../../features/layout/layoutSlice';
 import { v4 as uuid } from 'uuid';
 import PopUp from '../PopUp';
 import { Formik, Form, FieldArray } from 'formik';
-
 import Input from '../Input';
+import { boardAddSchema } from '../../helpers/validationSchema';
 
 const BoardEdit = () => {
 	const currentBoardId = useAppSelector(selectCurrentBoard);
@@ -26,7 +24,7 @@ const BoardEdit = () => {
 			return { id: column.id, name: column.name };
 		});
 	};
-
+	
 	const initialValues: BoardInputValues = {
 		name: currentBoard?.name,
 		columns: getColumns().map((column) => {
@@ -37,19 +35,12 @@ const BoardEdit = () => {
 		}),
 	};
 
-	// function deleteColumn(columnId: string) {
-	// 	const newColumns = columnInputs.filter((column) => columnId !== column.id);
-	// 	const refIndex = columnInputsRef.current.findIndex((column) => columnId === column.id);
-	// 	columnInputsRef.current.splice(refIndex, 1);
-	// }
-
 	function handleEditBoard(values: BoardInputValues) {
 		const columnsAdded = values.columns.map((column) => {
 			const existingColumn = columns?.find((currentColumn) => currentColumn.id === column.id);
 			if (existingColumn) return { ...existingColumn, name: column.name };
 			return { name: column.name, id: column.id, tasks: [] };
 		});
-
 		const board = {
 			currentBoard: currentBoardId,
 			board: {
@@ -64,7 +55,7 @@ const BoardEdit = () => {
 
 	return (
 		<PopUp title={'Edit Board'} layoutDispatch={() => dispatch(setIsBoardEditShow())}>
-			<Formik initialValues={initialValues} onSubmit={(values) => handleEditBoard(values)}>
+			<Formik initialValues={initialValues} validationSchema={boardAddSchema} onSubmit={(values) => handleEditBoard(values)}>
 				{({ values }) => (
 					<Form>
 						<StyledBoxSection>
