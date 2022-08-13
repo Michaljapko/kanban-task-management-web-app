@@ -24,9 +24,9 @@ const BoardEdit = () => {
 			return { id: column.id, name: column.name };
 		});
 	};
-	
+
 	const initialValues: BoardInputValues = {
-		name: currentBoard?.name,
+		name: currentBoard!.name,
 		columns: getColumns().map((column) => {
 			return {
 				id: column.id,
