@@ -64,3 +64,8 @@ export interface TaskInputValues {
 	subtasks: { title: string }[];
 	status: string;
 }
+
+export interface BoardInputValues {
+	name: string;
+	columns: { id: string; name: string }[];
+}
