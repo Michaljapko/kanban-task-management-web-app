@@ -1,1 +1,1 @@
-export { default } from './BoadEdit';
+export { default } from './BoardEdit';

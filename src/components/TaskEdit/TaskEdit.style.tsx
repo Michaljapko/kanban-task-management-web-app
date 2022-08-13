@@ -31,3 +31,9 @@ export const StyledLabel = styled.label`
 	margin-bottom:8px;
 	color: #828fa3;
 `;
+export const StyledColumnInputBox = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-bottom: 12px;
+`;

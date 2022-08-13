@@ -73,14 +73,14 @@ export const selectTasksData = (state: RootState) => {
 };
 
 export const selectTaskData = (state: RootState) => {
-	const boardIndex = getBoardIndex(state, state.currentBoardId);
-	const columnIndex = getColumnIndex(state, boardIndex, state.currentColumnId);
+	const boardIndex = getBoardIndex(state.tasks, state.currentBoardId);
+	const columnIndex = getColumnIndex(state.tasks, boardIndex, state.currentColumnId);
 	return state.tasks.boards[boardIndex].columns[columnIndex].tasks;
 };
 export const selectCurrentTaskData = (state: RootState) => {
-	const boardIndex = getBoardIndex(state, state.currentBoardId);
-	const columnIndex = getColumnIndex(state, boardIndex, state.currentColumnId);
-	const taskIndex = getTaskIndex(state, boardIndex, columnIndex, state.currentTask.currentTaskId);
+	const boardIndex = getBoardIndex(state.tasks, state.currentBoardId);
+	const columnIndex = getColumnIndex(state.tasks, boardIndex, state.currentColumnId);
+	const taskIndex = getTaskIndex(state.tasks, boardIndex, columnIndex, state.currentTask.currentTaskId);
 	return state.tasks.boards[boardIndex].columns[columnIndex].tasks[taskIndex];
 };
 export default tasksSlice.reducer;

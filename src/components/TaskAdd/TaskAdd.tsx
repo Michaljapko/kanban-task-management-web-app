@@ -13,6 +13,7 @@ import Input from '../Input';
 import { taskAddSchema } from '../../helpers/validationSchema';
 
 const TaskAdd = () => {
+	const initialValues: TaskInputValues = { title: '', description: '', subtasks: [{ title: '', isCompleted: false }], status: '' };
 	const dispatch = useAppDispatch();
 	const taskColumns = useAppSelector(selectTasksData);
 	const currentBoard = useAppSelector(selectCurrentBoard);
@@ -24,15 +25,13 @@ const TaskAdd = () => {
 	};
 	const columns = getColumns();
 
-	const initialValues: TaskInputValues = { title: '', description: '', subtasks: [{ title: '' }], status: '' };
-
 	function handleAddTask(values: TaskInputValues) {
 		const task: TasksData = {
 			id: uuid(),
 			title: values.title,
 			description: values.description,
 			subtasks: values.subtasks.map((task) => {
-				return { id: uuid(), title: task.title, isCompleted: false };
+				return { id: uuid(), title: task.title, isCompleted: task.isCompleted };
 			}),
 			status: values.status,
 		};

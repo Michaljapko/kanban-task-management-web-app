@@ -61,7 +61,7 @@ export interface ColumnInputValues {
 export interface TaskInputValues {
 	title: string;
 	description: string;
-	subtasks: { title: string }[];
+	subtasks: { title: string; isCompleted: boolean }[];
 	status: string;
 }
 

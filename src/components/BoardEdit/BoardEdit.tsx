@@ -19,8 +19,7 @@ const BoardEdit = () => {
 	const dispatch = useAppDispatch();
 
 	const getColumns = () => {
-		if (columns === undefined) return [{ id: 'null', name: 'null' }];
-		return columns.map((column) => {
+		return columns!.map((column) => {
 			return { id: column.id, name: column.name };
 		});
 	};
