@@ -14,6 +14,7 @@ export interface ButtonTypes {
 export interface ThemeType {
 	mainColor: string;
 	themeColor: string;
+	buttonSecondaryHover: string;
 	backgroundBack: string;
 	textGrey: string;
 	colorError: string;
