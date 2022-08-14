@@ -1,5 +1,6 @@
 const color = {
 	mainPurple: 'rgb(100, 96, 199)',
+	purpleLighter: 'rgba(99, 96, 199, 0.25)',
 	mainPurpleHover: 'rgb(168, 163, 255)',
 	black: 'rgb(0, 1, 20)',
 	blackTrans: 'rgba(0, 1, 20, 0.318)',
@@ -15,13 +16,14 @@ const color = {
 };
 
 export const theme = {
-	mainColor: color.mainPurple,
+	themeColor: color.mainPurple,
 	backgroundBack: color.blackTrans,
 	textGrey: color.mediumGrey,
 	colorError: color.red,
 	buttonText: color.white,
 	buttonPrimary: color.mainPurple,
 	buttonPrimaryHover: color.mainPurpleHover,
+	buttonSecondaryHover: color.purpleLighter,
 	buttonDestructive: color.red,
 	buttonDestructiveHover: color.redHover,
 
@@ -33,6 +35,7 @@ export const theme = {
 	},
 	themeDark: {
 		backgroundMain: color.veryDarkGray,
+		buttonSecondaryHover: color.white,
 		backgroundBody: color.black,
 		mainColor: color.white,
 		buttonSecondary: color.white,

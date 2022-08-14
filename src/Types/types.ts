@@ -1,5 +1,3 @@
-import { string } from 'yup';
-
 export interface Subtask {
 	id: string;
 	title: string;
@@ -15,6 +13,7 @@ export interface ButtonTypes {
 }
 export interface ThemeType {
 	mainColor: string;
+	themeColor: string;
 	backgroundBack: string;
 	textGrey: string;
 	colorError: string;

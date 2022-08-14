@@ -34,17 +34,18 @@ export const StyledButton = styled.button`
 			border-radius: 24px;
 			padding: ${() => (variant === 'header' || variant === 'headerOff' ? '5px 18px' : '15px 18px')}};
 			width: 100%;
-			background: ${() => (variant === 'secondary' ? theme.buttonSecondary : theme.buttonPrimary)};
+			background-color: ${() => (variant === 'secondary' ? theme.buttonSecondary : theme.buttonPrimary)};
 			font-size: 15px;
 			font-family: 'Plus Jakarta Sans';
 			font-weight: 700;
 			font-style: normal;
-			color: ${() => (variant === 'secondary' ? theme.mainColor : theme.buttonText)};
+			color: ${() => (variant === 'secondary' ? theme.themeColor : theme.buttonText)};
 			opacity: ${() => {
 				if (variant === 'headerOff') return '0.25';
 			}};
+			transition: background-color 0.3s ease-out;
 			&:hover {
-				background-color: ${() => theme.buttonPrimaryHover};
+				background-color: ${() => (variant === 'secondary' ? theme.buttonSecondaryHover : theme.buttonPrimaryHover)}};
 			}
 		`;
 	}};
