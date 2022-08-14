@@ -1,4 +1,4 @@
-import { Boards} from '../Types/types';
+import { Boards} from '../types/types';
 
 export const data: Boards  = {
 	boards: [

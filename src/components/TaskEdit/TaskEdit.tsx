@@ -2,7 +2,7 @@ import { StyledBoxSection, StyledLabel, StyledColumnInputBox } from './TaskEdit.
 import { selectCurrentTaskData, selectTasksData, columnChangeTask, editTask } from '../../features/tasks/tasksSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Formik, Form, FieldArray, Field } from 'formik';
-import { TasksData, TaskInputValues } from '../../Types/types';
+import { TasksData, TaskInputValues } from '../../types/types';
 import Button from '../Button';
 import cross from '../../assets/icon-cross.svg';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';

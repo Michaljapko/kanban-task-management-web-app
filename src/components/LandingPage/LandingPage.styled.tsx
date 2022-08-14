@@ -8,11 +8,10 @@ export const StyledWrapper = styled.div`
 	height: 100%;
 	padding: 1rem;
 	gap: 25px;
+	
 `;
 
 export const StyledInfo = styled.p`
-	${({ theme }) => {
-		return theme.textHeading.large;
-	}};
+	${({ theme }) => theme.textHeading.large};
 	color: #828fa3;
 `;

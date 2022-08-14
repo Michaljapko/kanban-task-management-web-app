@@ -49,10 +49,9 @@ table {
 }
 
   body {
-    background: hsl(221, 69%, 94%);
     font-family: 'Plus Jakarta Sans', sans-serif;
     height:100vh;
-    
+	background: ${({ theme }) => theme.backgroundBody};
   }
 
 `;

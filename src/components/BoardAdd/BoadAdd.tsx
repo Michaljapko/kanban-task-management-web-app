@@ -1,7 +1,7 @@
 import { StyledBoxSection, StyledColumnInputBox, StyledLabel } from './BoardAdd.styled';
 import { Formik, Form, FieldArray } from 'formik';
 import { boardAddSchema } from '../../helpers/validationSchema';
-import { Board, ColumnInputValues } from '../../Types/types';
+import { Board, ColumnInputValues } from '../../types/types';
 import { addBoard } from '../../features/tasks/tasksSlice';
 import { changeBoard } from '../../features/tasks/boardSlice';
 import { setIsBoardAddShow } from '../../features/layout/layoutSlice';

@@ -1,7 +1,7 @@
 import { StyledBoxSection, StyledColumnInputBox, StyledLabel } from './BoardEdit.styled';
 import { selectBoards, selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { BoardInputValues } from '../../Types/types';
+import { BoardInputValues } from '../../types/types';
 import Button from '../Button';
 import cross from '../../assets/icon-cross.svg';
 import { editBoard } from '../../features/tasks/tasksSlice';

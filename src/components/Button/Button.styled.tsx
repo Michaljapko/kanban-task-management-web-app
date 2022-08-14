@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
+import { ButtonStyled } from '../../types/types';
 
 export const StyledButton = styled.button`
-	${(props: any) => {
-		if (props['data-variant'] === 'sidebarCurrent') {
+	${({ variant, theme }: ButtonStyled) => {
+		if (variant === 'sidebarCurrent')
 			return css`
 				display: flex;
 				justify-content: flex-start;
@@ -11,13 +12,12 @@ export const StyledButton = styled.button`
 				border-radius: 0px 100px 100px 0px;
 				width: 240px;
 				padding: 15px 24px;
-				background: #635fc7;
-				color: #fff;
+				background: ${() => theme.buttonPrimary};
+				color: ${() => theme.buttonText};
 				text-align: start;
 			`;
-		}
 
-		if (props['data-variant'] === 'sidebar' || props['data-variant'] === 'sidebarBold') {
+		if (variant === 'sidebar' || variant === 'sidebarBold')
 			return css`
 				display: flex;
 				justify-content: flex-start;
@@ -25,36 +25,27 @@ export const StyledButton = styled.button`
 				border: 0;
 				padding: 15px 24px;
 				background: none;
-				color: ${(props: any) => {
-					return props['data-variant'] === 'sidebarBold' ? '#635FC7' : '#828FA3';
-				}};
+				color: ${() => (variant === 'sidebarBold' ? theme.mainColor : theme.textGrey)};
 				text-align: start;
 			`;
-		}
 
 		return css`
 			border: 0;
 			border-radius: 24px;
-			padding: ${(props: any) => {
-				if (props['data-variant'] === 'header' || props['data-variant'] === 'header-off') {
-					return '5px 18px';
-				}
-				return '15px 18px';
-			}};
+			padding: ${() => (variant === 'header' || variant === 'headerOff' ? '5px 18px' : '15px 18px')}};
 			width: 100%;
-			background: ${(props: any) => {
-				return props['data-variant'] === 'secondary' ? props.theme.color.secondaryButton : props.theme.color.primaryButton;
-			}};
+			background: ${() => (variant === 'secondary' ? theme.buttonSecondary : theme.buttonPrimary)};
 			font-size: 15px;
 			font-family: 'Plus Jakarta Sans';
 			font-weight: 700;
 			font-style: normal;
-			color: ${(props: any) => {
-				return props['data-variant'] === 'secondary' ? props.theme.color.mainPurple : props.theme.color.textColor;
+			color: ${() => (variant === 'secondary' ? theme.mainColor : theme.buttonText)};
+			opacity: ${() => {
+				if (variant === 'headerOff') return '0.25';
 			}};
-			opacity: ${(props: any) => {
-				if (props['data-variant'] === 'header-off') return '0.25';
-			}};
+			&:hover {
+				background-color: ${() => theme.buttonPrimaryHover};
+			}
 		`;
 	}};
 `;

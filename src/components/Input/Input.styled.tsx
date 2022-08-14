@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { selectThemeMode } from '../../features/layout/themeSlice';
-import { useAppSelector } from '../../app/hooks';
 
 export const StyledInput = styled.input`
 	padding: 8px 16px;
@@ -11,13 +9,8 @@ export const StyledInput = styled.input`
 	border-radius: 4px;
 	width: 100%;
 	background: none;
-	${({ theme }) => {
-		return theme.text.large;
-	}}
-	color:   ${({ theme }) => {
-		const themeMode = useAppSelector(selectThemeMode);
-		return theme[themeMode].mainColor;
-	}};
+	${({ theme }) => theme.text.large}
+	color: ${({ theme }) =>  theme.mainColor};
 `;
 export const StyledWrapper = styled.div`
 	position: relative;

@@ -1,14 +1,56 @@
+import { string } from 'yup';
+
 export interface Subtask {
 	id: string;
 	title: string;
 	isCompleted: boolean;
 }
+
 export interface ButtonTypes {
 	children?: string;
 	icon?: 'plus' | 'board';
-	variant?: 'header' | 'sidebar' | 'sidebarBold' | 'sidebarCurrent' | 'header-off' | 'secondary';
+	variant?: 'header' | 'sidebar' | 'sidebarBold' | 'sidebarCurrent' | 'headerOff' | 'secondary';
 	onClick?: any;
-	type?: 'button' | 'reset' | 'submit' | undefined;
+	type?: 'button' | 'reset' | 'submit';
+}
+export interface ThemeType {
+	mainColor: string;
+	backgroundBack: string;
+	textGrey: string;
+	colorError: string;
+	buttonText: string;
+	buttonPrimary: string;
+	buttonPrimaryHover: string;
+	buttonDestructive: string;
+	buttonDestructiveHover: string;
+	backgroundMain: string;
+	backgroundBody: string;
+	buttonSecondary: string;
+	textHeading: {
+		xlarge: string;
+		large: string;
+		medium: string;
+		small: string;
+	};
+	text: {
+		large: string;
+		medium: string;
+	};
+}
+
+export interface ButtonStyled {
+	variant: ButtonTypes;
+	theme: ThemeType;
+}
+
+export interface Board {
+	id: string;
+	name: string;
+	columns: {
+		id: string;
+		name: string;
+		tasks: TasksData[];
+	}[];
 }
 export interface Boards {
 	boards: {
@@ -31,15 +73,7 @@ export interface Boards {
 		}[];
 	}[];
 }
-export interface Board {
-	id: string;
-	name: string;
-	columns: {
-		id: string;
-		name: string;
-		tasks: TasksData[];
-	}[];
-}
+
 export interface Column {
 	id: string;
 	name: string;

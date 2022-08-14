@@ -47,7 +47,7 @@ const Header = () => {
 						}}
 					/>
 				)}
-				{!taskData && <Button icon='plus' variant='header-off' />}
+				{!taskData && <Button icon='plus' variant='headerOff' />}
 				<img
 					src={ellipsis}
 					alt='ellipsis'

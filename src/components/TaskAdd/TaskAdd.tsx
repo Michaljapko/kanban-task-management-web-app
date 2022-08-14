@@ -3,7 +3,7 @@ import { Formik, Form, FieldArray, Field } from 'formik';
 import { addTask, selectTasksData } from '../../features/tasks/tasksSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import Button from '../Button';
-import { TasksData, TaskInputValues } from '../../Types/types';
+import { TasksData, TaskInputValues } from '../../types/types';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { setIsTaskAddShow } from '../../features/layout/layoutSlice';
 import cross from '../../assets/icon-cross.svg';

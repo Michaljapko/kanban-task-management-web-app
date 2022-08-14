@@ -1,12 +1,14 @@
-import React from 'react';
 import LandingPage from './components/LandingPage';
 import GlobalStyle from './globalStyles';
-import theme from './theme/theme';
 import { ThemeProvider } from 'styled-components';
+import { useAppSelector } from './app/hooks';
+import { selectThemeMode } from './features/layout/themeSlice';
 
 function App() {
+	const newTheme = useAppSelector(selectThemeMode);
+
 	return (
-		<ThemeProvider theme={theme}>
+		<ThemeProvider theme={newTheme}>
 			<GlobalStyle />
 			<LandingPage />
 		</ThemeProvider>
