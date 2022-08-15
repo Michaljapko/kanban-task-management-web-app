@@ -11,8 +11,10 @@ const Button = ({ children, icon, onClick, variant, type }: ButtonTypes) => {
 
 	return (
 		<StyledButton onClick={onClick} variant={variant} type={type}>
-			{icon && <img src={getIcon(icon)} alt={icon} />}
-			{children}
+			<>
+				{icon && <img src={getIcon(icon)} alt={icon} />}
+				{children}
+			</>
 		</StyledButton>
 	);
 };

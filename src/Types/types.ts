@@ -4,13 +4,22 @@ export interface Subtask {
 	isCompleted: boolean;
 }
 
+export type Variants =
+	| 'header'
+	| 'sidebar'
+	| 'sidebarBold'
+	| 'sidebarCurrent'
+	| 'headerOff'
+	| 'secondary';
+
 export interface ButtonTypes {
-	children?: string;
+	children?: JSX.Element | JSX.Element[] | string;
 	icon?: 'plus' | 'board';
-	variant?: 'header' | 'sidebar' | 'sidebarBold' | 'sidebarCurrent' | 'headerOff' | 'secondary';
+	variant?: Variants;
 	onClick?: any;
 	type?: 'button' | 'reset' | 'submit';
 }
+
 export interface ThemeType {
 	mainColor: string;
 	themeColor: string;
@@ -39,7 +48,7 @@ export interface ThemeType {
 }
 
 export interface ButtonStyled {
-	variant: ButtonTypes;
+	variant?: ButtonTypes;
 	theme: ThemeType;
 }
 

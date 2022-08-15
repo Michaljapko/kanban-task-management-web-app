@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
+
 const GlobalStyle = createGlobalStyle`
 
 *{box-sizing: border-box;}
@@ -47,13 +48,13 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
   body {
+	
     font-family: 'Plus Jakarta Sans', sans-serif;
+	min-width: max-content;
     height:100vh;
-	background: ${({ theme }) => theme.backgroundBody};
+	background: ${({ theme }) => theme.backgroundBack};
   }
-
 `;
 
 export default GlobalStyle;

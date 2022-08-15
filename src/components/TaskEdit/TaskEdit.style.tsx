@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import { styled } from '../../theme/theme';
+
 
 export const StyledBoxSection = styled.div`
 	margin-bottom: 24px;

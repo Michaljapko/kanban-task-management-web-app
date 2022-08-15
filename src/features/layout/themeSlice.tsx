@@ -2,7 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import theme from '../../theme/theme';
 
-const initialState: { theme: 'themeLight' | 'themeDark' } = { theme: 'themeLight' };
+const initialState: { theme: 'themeLight' | 'themeDark' } = {
+	theme: 'themeLight',
+};
 export const themeSlice = createSlice({
 	name: 'themeSlice',
 	initialState,
@@ -18,8 +20,8 @@ export const { toogleTheme } = themeSlice.actions;
 
 export const selectThemeMode = ({ themeSlice }: RootState) => {
 	const themeMode = themeSlice.theme;
-	const newTheme = { ...theme, ...theme[themeMode] };
-	return newTheme;
+	if (themeMode === 'themeDark') return { ...theme, ...theme[themeMode] };
+	return theme;
 };
 
 export default themeSlice.reducer;

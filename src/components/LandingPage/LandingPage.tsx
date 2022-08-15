@@ -10,7 +10,7 @@ import {
 } from '../../features/layout/layoutSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
-import BoardAdd from '../BoardAdd/BoadAdd';
+import BoardAdd from '../BoardAdd';
 import BoardEdit from '../BoardEdit';
 import Button from '../Button';
 import Header from '../Header';
@@ -39,16 +39,26 @@ const LandingPage = () => {
 			{isTaskAddShow && <TaskAdd />}
 			{isTaskEditShow && <TaskEdit />}
 			{isPopUpShow && <PopUp />}
-
 			<Header />
 			{isSidebarShow && <Sidebar />}
 
 			<StyledWrapper>
-				{!tasksData && <StyledInfo>This board is empty. Create a new column to get started.</StyledInfo>}
+				{!tasksData && (
+					<StyledInfo>
+						This board is empty. Create a new column to get started.
+					</StyledInfo>
+				)}
 				{tasksData && tasksData?.length > 0 && <TaskCards />}
 
 				<Button
-					onClick={() => dispatch(addColumn({ column: { id: uuid(), name: 'New column', tasks: [] }, currentBoard: currentBoard }))}
+					onClick={() =>
+						dispatch(
+							addColumn({
+								column: { id: uuid(), name: 'New column', tasks: [] },
+								currentBoard: currentBoard,
+							})
+						)
+					}
 					icon='plus'
 				>
 					Add New Column

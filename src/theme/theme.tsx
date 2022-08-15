@@ -1,3 +1,5 @@
+import baseStyled, { ThemedStyledInterface } from 'styled-components';
+
 const color = {
 	mainPurple: 'rgb(100, 96, 199)',
 	purpleLighter: 'rgba(99, 96, 199, 0.25)',
@@ -26,13 +28,11 @@ export const theme = {
 	buttonSecondaryHover: color.purpleLighter,
 	buttonDestructive: color.red,
 	buttonDestructiveHover: color.redHover,
+	backgroundMain: color.white,
+	backgroundBody: color.lightLines,
+	mainColor: color.black,
+	buttonSecondary: color.lightGrey,
 
-	themeLight: {
-		backgroundMain: color.white,
-		backgroundBody: color.lightLines,
-		mainColor: color.black,
-		buttonSecondary: color.lightGrey,
-	},
 	themeDark: {
 		backgroundMain: color.veryDarkGray,
 		buttonSecondaryHover: color.white,
@@ -93,4 +93,6 @@ export const theme = {
 	},
 };
 
+export type Theme = typeof theme;
+export const styled = baseStyled as ThemedStyledInterface<Theme>;
 export default theme;

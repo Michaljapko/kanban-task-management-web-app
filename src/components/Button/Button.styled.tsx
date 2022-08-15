@@ -1,8 +1,9 @@
-import styled, { css } from 'styled-components';
-import { ButtonStyled } from '../../types/types';
+import { css } from 'styled-components';
+import { styled } from '../../theme/theme';
+import { ButtonTypes } from '../../types/types';
 
-export const StyledButton = styled.button`
-	${({ variant, theme }: ButtonStyled) => {
+export const StyledButton = styled.button<ButtonTypes>`
+	${({ variant, theme }) => {
 		if (variant === 'sidebarCurrent')
 			return css`
 				display: flex;
@@ -25,16 +26,21 @@ export const StyledButton = styled.button`
 				border: 0;
 				padding: 15px 24px;
 				background: none;
-				color: ${() => (variant === 'sidebarBold' ? theme.mainColor : theme.textGrey)};
+				color: ${() =>
+					variant === 'sidebarBold' ? theme.mainColor : theme.textGrey};
 				text-align: start;
 			`;
 
 		return css`
 			border: 0;
 			border-radius: 24px;
-			padding: ${() => (variant === 'header' || variant === 'headerOff' ? '5px 18px' : '15px 18px')}};
+			padding: ${() =>
+				variant === 'header' || variant === 'headerOff'
+					? '5px 18px'
+					: '15px 18px'}};
 			width: 100%;
-			background-color: ${() => (variant === 'secondary' ? theme.buttonSecondary : theme.buttonPrimary)};
+			background-color: ${() =>
+				variant === 'secondary' ? theme.buttonSecondary : theme.buttonPrimary};
 			font-size: 15px;
 			font-family: 'Plus Jakarta Sans';
 			font-weight: 700;
@@ -45,7 +51,10 @@ export const StyledButton = styled.button`
 			}};
 			transition: background-color 0.3s ease-out;
 			&:hover {
-				background-color: ${() => (variant === 'secondary' ? theme.buttonSecondaryHover : theme.buttonPrimaryHover)}};
+				background-color: ${() =>
+					variant === 'secondary'
+						? theme.buttonSecondaryHover
+						: theme.buttonPrimaryHover}};
 			}
 		`;
 	}};
