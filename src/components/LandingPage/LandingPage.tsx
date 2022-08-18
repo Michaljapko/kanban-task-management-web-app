@@ -3,24 +3,24 @@ import { addColumn, selectTasksData } from '../../features/tasks/tasksSlice';
 import {
 	selectIsBoardAddShow,
 	selectIsBoardEditShow,
-	selectIsPopUpShow,
+	selectIsDeleteBoardShow,
+	selectIsDeleteTaskShow,
 	selectIsSidebarShow,
 	selectIsTaskAddShow,
 	selectIsTaskEditShow,
 } from '../../features/layout/layoutSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-
 import BoardAdd from '../BoardAdd';
-import BoardEdit from '../BoardEdit';
 import Button from '../Button';
 import Header from '../Header';
-import PopUp from '../PopUp';
 import Sidebar from '../Sidebar';
 import TaskAdd from '../TaskAdd/TaskAdd';
 import TaskCards from '../TaskCards';
 import TaskEdit from '../TaskEdit';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { v4 as uuid } from 'uuid';
+import BoardEdit from '../BoardEdit';
+import DeleteMenu from '../DeleteMenu';
 
 const LandingPage = () => {
 	const tasksData = useAppSelector(selectTasksData);
@@ -29,16 +29,19 @@ const LandingPage = () => {
 	const isBoardAddShow = useAppSelector(selectIsBoardAddShow);
 	const isBoardEditShow = useAppSelector(selectIsBoardEditShow);
 	const isTaskAddShow = useAppSelector(selectIsTaskAddShow);
-	const isPopUpShow = useAppSelector(selectIsPopUpShow);
+	const isTaskBoardShow = useAppSelector(selectIsDeleteBoardShow);
+	const isTaskDeleteShow = useAppSelector(selectIsDeleteTaskShow);
 	const isTaskEditShow = useAppSelector(selectIsTaskEditShow);
 	const dispatch = useAppDispatch();
+
 	return (
 		<>
 			{isBoardAddShow && <BoardAdd />}
 			{isBoardEditShow && <BoardEdit />}
 			{isTaskAddShow && <TaskAdd />}
 			{isTaskEditShow && <TaskEdit />}
-			{isPopUpShow && <PopUp />}
+			{isTaskBoardShow && <DeleteMenu variant={'board'} />}
+			{isTaskDeleteShow && <DeleteMenu variant={'task'}/>}
 			<Header />
 			{isSidebarShow && <Sidebar />}
 
@@ -49,7 +52,6 @@ const LandingPage = () => {
 					</StyledInfo>
 				)}
 				{tasksData && tasksData?.length > 0 && <TaskCards />}
-
 				<Button
 					onClick={() =>
 						dispatch(

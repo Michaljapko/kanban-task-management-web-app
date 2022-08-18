@@ -1,6 +1,20 @@
-import { StyledBoxSection, StyledDescription, StyledParagraph, StyledSubtaskBox, StyledTitle } from './TaskView.styled';
-import { selectTasksData, columnChangeTask, editTask } from '../../features/tasks/tasksSlice';
-import { setIsTaskEditShow, setIsTaskShow } from '../../features/layout/layoutSlice';
+import {
+	StyledBoxSection,
+	StyledDescription,
+	StyledParagraph,
+	StyledSubtaskBox,
+	StyledTitle,
+} from './TaskView.styled';
+import {
+	selectTasksData,
+	columnChangeTask,
+	editTask,
+} from '../../features/tasks/tasksSlice';
+import {
+	setIsDeleteTaskShow,
+	setIsTaskEditShow,
+	setIsTaskShow,
+} from '../../features/layout/layoutSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useEffect, useState } from 'react';
 
@@ -45,6 +59,13 @@ const TaskView = ({ taskData }: any) => {
 						dispatch(setIsTaskEditShow());
 					}}
 				/>
+				<img
+					src={ellipsis}
+					alt='ellipsis'
+					onClick={() => {
+						dispatch(setIsDeleteTaskShow());
+					}}
+				/>
 			</StyledBoxSection>
 			<StyledBoxSection>
 				<StyledDescription>{task.description}</StyledDescription>
@@ -67,8 +88,13 @@ const TaskView = ({ taskData }: any) => {
 									...task,
 									subtasks: task.subtasks.map((subtaskInSet: any) => {
 										let isCompleted = subtaskInSet.isCompleted;
-										if (subtaskInSet.id === subtask.id) isCompleted = !isCompleted;
-										return { id: subtaskInSet.id, title: subtaskInSet.title, isCompleted: isCompleted };
+										if (subtaskInSet.id === subtask.id)
+											isCompleted = !isCompleted;
+										return {
+											id: subtaskInSet.id,
+											title: subtaskInSet.title,
+											isCompleted: isCompleted,
+										};
 									}),
 								};
 								setTask(taskUpdated);

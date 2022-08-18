@@ -4,12 +4,18 @@ import chevronDown from '../../assets/icon-chevron-down.svg';
 import chavronUp from '../../assets/icon-chevron-up.svg';
 import Button from '../Button';
 
-import { StyledHeader, StyledLogoBox, StyledHeaderBox, StyledLogoText, StyledDropMenu } from './Header.styled';
+import {
+	StyledHeader,
+	StyledLogoBox,
+	StyledHeaderBox,
+	StyledLogoText,
+	StyledDropMenu,
+} from './Header.styled';
 import {
 	selectIsSidebarShow,
 	setIsSidebarShow,
 	setIsTaskAddShow,
-	setIsPopUpShow,
+	setIsDeleteBoardShow,
 	selectIsDropDownShow,
 	setIsDropDownShow,
 	setIsBoardEditShow,
@@ -34,7 +40,11 @@ const Header = () => {
 					}}
 				>
 					<StyledLogoText>Platform Launch</StyledLogoText>
-					{isSidebarShow ? <img src={chavronUp} alt='Arrow Up' /> : <img src={chevronDown} alt='Arrow Down' />}
+					{isSidebarShow ? (
+						<img src={chavronUp} alt='Arrow Up' />
+					) : (
+						<img src={chevronDown} alt='Arrow Down' />
+					)}
 				</StyledLogoBox>
 			</StyledHeaderBox>
 			<StyledHeaderBox>
@@ -59,7 +69,7 @@ const Header = () => {
 					<StyledDropMenu>
 						<button
 							onClick={() => {
-								dispatch(setIsPopUpShow());
+								dispatch(setIsDeleteBoardShow());
 								dispatch(setIsDropDownShow());
 							}}
 						>

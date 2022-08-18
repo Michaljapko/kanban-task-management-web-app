@@ -1,6 +1,6 @@
 import baseStyled, { ThemedStyledInterface } from 'styled-components';
 
-const color = {
+const colors = {
 	mainPurple: 'rgb(100, 96, 199)',
 	purpleLighter: 'rgba(99, 96, 199, 0.25)',
 	mainPurpleHover: 'rgb(168, 163, 255)',
@@ -18,27 +18,27 @@ const color = {
 };
 
 export const theme = {
-	themeColor: color.mainPurple,
-	backgroundBack: color.blackTrans,
-	textGrey: color.mediumGrey,
-	colorError: color.red,
-	buttonText: color.white,
-	buttonPrimary: color.mainPurple,
-	buttonPrimaryHover: color.mainPurpleHover,
-	buttonSecondaryHover: color.purpleLighter,
-	buttonDestructive: color.red,
-	buttonDestructiveHover: color.redHover,
-	backgroundMain: color.white,
-	backgroundBody: color.lightLines,
-	mainColor: color.black,
-	buttonSecondary: color.lightGrey,
+	themeColor: colors.mainPurple,
+	backgroundBack: colors.blackTrans,
+	textGrey: colors.mediumGrey,
+	colorError: colors.red,
+	buttonText: colors.white,
+	buttonPrimary: colors.mainPurple,
+	buttonPrimaryHover: colors.mainPurpleHover,
+	buttonSecondaryHover: colors.purpleLighter,
+	buttonDestructive: colors.red,
+	buttonDestructiveHover: colors.redHover,
+	backgroundMain: colors.white,
+	backgroundBody: colors.lightLines,
+	mainColor: colors.black,
+	buttonSecondary: colors.lightGrey,
 
 	themeDark: {
-		backgroundMain: color.veryDarkGray,
-		buttonSecondaryHover: color.white,
-		backgroundBody: color.black,
-		mainColor: color.white,
-		buttonSecondary: color.white,
+		backgroundMain: colors.veryDarkGray,
+		buttonSecondaryHover: colors.white,
+		backgroundBody: colors.black,
+		mainColor: colors.white,
+		buttonSecondary: colors.white,
 	},
 	textHeading: {
 		xlarge: `
@@ -70,7 +70,7 @@ export const theme = {
 			font-size: 12px;
 			line-height: 15px;
 			letter-spacing: 2.4px;
-			color: #828fa3;
+			colors: #828fa3;
 		`,
 	},
 	text: {
@@ -80,7 +80,7 @@ export const theme = {
 			font-weight: 500;
 			font-size: 13px;
 			line-height: 23px;
-			color: #2b2c37;
+			colors: #2b2c37;
 		`,
 		medium: `
 			font-family: 'Plus Jakarta Sans';
@@ -88,7 +88,7 @@ export const theme = {
 			font-weight: 700;
 			font-size: 12px;
 			line-height: 15px;
-			color: #2b2c37;
+			colors: #2b2c37;
 		`,
 	},
 };

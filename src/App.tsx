@@ -5,8 +5,7 @@ import { useAppSelector } from './app/hooks';
 import { selectThemeMode } from './features/layout/themeSlice';
 
 function App() {
-	const newTheme = useAppSelector(selectThemeMode)
-
+	const newTheme = useAppSelector(selectThemeMode);
 	return (
 		<ThemeProvider theme={newTheme}>
 			<GlobalStyle />
