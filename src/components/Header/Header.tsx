@@ -2,26 +2,23 @@ import logo from '../../assets/logo-mobile.svg';
 import ellipsis from '../../assets/icon-vertical-ellipsis.svg';
 import chevronDown from '../../assets/icon-chevron-down.svg';
 import chavronUp from '../../assets/icon-chevron-up.svg';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { selectTasksData } from '../../features/tasks/tasksSlice';
+import DropDown from '../DropDown';
 import Button from '../Button';
-
 import {
 	StyledHeader,
 	StyledLogoBox,
 	StyledHeaderBox,
 	StyledLogoText,
-	StyledDropMenu,
 } from './Header.styled';
 import {
 	selectIsSidebarShow,
 	setIsSidebarShow,
 	setIsTaskAddShow,
-	setIsDeleteBoardShow,
 	selectIsDropDownShow,
 	setIsDropDownShow,
-	setIsBoardEditShow,
 } from '../../features/layout/layoutSlice';
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { selectTasksData } from '../../features/tasks/tasksSlice';
 
 const Header = () => {
 	const dispatch = useAppDispatch();
@@ -65,26 +62,7 @@ const Header = () => {
 						dispatch(setIsDropDownShow());
 					}}
 				/>
-				{isDropDownShow && (
-					<StyledDropMenu>
-						<button
-							onClick={() => {
-								dispatch(setIsDeleteBoardShow());
-								dispatch(setIsDropDownShow());
-							}}
-						>
-							Delete Board
-						</button>
-						<button
-							onClick={() => {
-								dispatch(setIsBoardEditShow());
-								dispatch(setIsDropDownShow());
-							}}
-						>
-							Edit Board
-						</button>
-					</StyledDropMenu>
-				)}
+				{isDropDownShow && <DropDown variant='board' />}
 			</StyledHeaderBox>
 		</StyledHeader>
 	);

@@ -70,7 +70,7 @@ export const theme = {
 			font-size: 12px;
 			line-height: 15px;
 			letter-spacing: 2.4px;
-			colors: #828fa3;
+			color: #828fa3;
 		`,
 	},
 	text: {
@@ -80,15 +80,15 @@ export const theme = {
 			font-weight: 500;
 			font-size: 13px;
 			line-height: 23px;
-			colors: #2b2c37;
+			color: #2b2c37;
 		`,
 		medium: `
 			font-family: 'Plus Jakarta Sans';
 			font-style: normal;
-			font-weight: 700;
+			font-weight: 500;
 			font-size: 12px;
 			line-height: 15px;
-			colors: #2b2c37;
+			color: #2b2c37;
 		`,
 	},
 };

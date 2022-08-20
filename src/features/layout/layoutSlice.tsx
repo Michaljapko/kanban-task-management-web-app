@@ -36,21 +36,26 @@ export const layoutSlice = createSlice({
 				isSidebarShow: false,
 				isTaskAddShow: !state.isTaskAddShow,
 			}),
+
 		setIsDeleteTaskShow: (state) =>
 			(state = { ...initialState, isTaskDeleteShow: !state.isTaskDeleteShow }),
+
 		setIsDeleteBoardShow: (state) =>
 			(state = {
 				...initialState,
 				isBoardDeleteShow: !state.isBoardDeleteShow,
 			}),
+
 		setIsTaskShow: (state) =>
 			(state = { ...initialState, isTaskShow: !state.isTaskShow }),
+
 		setIsTaskEditShow: (state) =>
 			(state = {
 				...initialState,
 				isTaskShow: !state.isTaskShow,
 				isTaskEditShow: !state.isTaskEditShow,
 			}),
+
 		setIsDropDownShow: (state) =>
 			(state = { ...state, isDropDownShow: !state.isDropDownShow }),
 	},
