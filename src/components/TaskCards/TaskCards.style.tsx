@@ -14,8 +14,9 @@ export const StyledHeading = styled.p`
 `;
 export const StyledTitle = styled.p`
 	${({ theme }) => theme.textHeading.medium}
+	color: ${({ theme }) => theme.mainColor}
 `;
 export const StyledParagraph = styled.p`
 	${({ theme }) => theme.text.medium}
-	color: #828FA3;
+	color: ${({ theme }) => theme.textGrey};
 `;

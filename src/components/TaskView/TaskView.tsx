@@ -3,7 +3,6 @@ import {
 	StyledDescription,
 	StyledParagraph,
 	StyledSubtaskBox,
-	StyledTitle,
 } from './TaskView.styled';
 import {
 	selectTasksData,
@@ -46,12 +45,12 @@ const TaskView = ({ taskData }: any) => {
 
 	return (
 		<PopUp
+			title={task.title}
 			layoutDispatch={() => {
 				dispatch(setIsTaskShow());
 			}}
 		>
 			<StyledBoxSection>
-				<StyledTitle>{task.title}</StyledTitle>
 				<img
 					src={ellipsis}
 					alt='ellipsis'

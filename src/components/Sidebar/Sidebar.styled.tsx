@@ -17,5 +17,5 @@ export const StyledRadioBox = styled.div`
 	width: 235px;
 	height: 48px;
 	border-radius: 6px;
-	background: #f4f7fd;
+	background: ${({ theme }) => theme.backgroundContrast};
 `;

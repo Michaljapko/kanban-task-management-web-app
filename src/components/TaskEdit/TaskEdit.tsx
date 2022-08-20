@@ -1,5 +1,14 @@
-import { StyledBoxSection, StyledLabel, StyledColumnInputBox } from './TaskEdit.style';
-import { selectCurrentTaskData, selectTasksData, columnChangeTask, editTask } from '../../features/tasks/tasksSlice';
+import {
+	StyledBoxSection,
+	StyledLabel,
+	StyledColumnInputBox,
+} from './TaskEdit.style';
+import {
+	selectCurrentTaskData,
+	selectTasksData,
+	columnChangeTask,
+	editTask,
+} from '../../features/tasks/tasksSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Formik, Form, FieldArray, Field } from 'formik';
 import { TasksData, TaskInputValues } from '../../types/types';
@@ -19,23 +28,26 @@ const TaskEdit = () => {
 	const currentColumn = useAppSelector(selectCurrentColumn);
 	const currentBoard = useAppSelector(selectCurrentBoard);
 	const task = useAppSelector(selectCurrentTaskData);
-	console.log(task);
-	const getColumns = () => {
-		return taskColumn!.map((column) => {
-			return { id: column.id, name: column.name };
-		});
-	};
+	const getColumns = () =>
+		taskColumn!.map((column) => ({ id: column.id, name: column.name }));
 
-	const initialValues: TaskInputValues = { title: task.title, description: task.description, subtasks: task.subtasks, status: task.status };
+	const initialValues: TaskInputValues = {
+		title: task.title,
+		description: task.description,
+		subtasks: task.subtasks,
+		status: task.status,
+	};
 
 	function handleEditTask(values: TaskInputValues) {
 		const taskEdited: TasksData = {
 			id: task.id,
 			title: values.title,
 			description: values.description,
-			subtasks: values.subtasks.map((subtask) => {
-				return { id: uuid(), title: subtask.title, isCompleted: subtask.isCompleted };
-			}),
+			subtasks: values.subtasks.map((subtask) => ({
+				id: uuid(),
+				title: subtask.title,
+				isCompleted: subtask.isCompleted,
+			})),
 			status: values.status,
 		};
 		console.log({
@@ -66,13 +78,24 @@ const TaskEdit = () => {
 	}
 
 	return (
-		<PopUp title={'Edit Task'} layoutDispatch={() => dispatch(setIsTaskEditShow())}>
-			<Formik initialValues={initialValues} validationSchema={taskAddSchema} onSubmit={(values) => handleEditTask(values)}>
+		<PopUp
+			title={'Edit Task'}
+			layoutDispatch={() => dispatch(setIsTaskEditShow())}
+		>
+			<Formik
+				initialValues={initialValues}
+				validationSchema={taskAddSchema}
+				onSubmit={(values) => handleEditTask(values)}
+			>
 				{({ values }) => (
 					<Form>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='title'>Title </StyledLabel>
-							<Input name='title' type='text' placeholder='e.g. Take coffee break' />
+							<StyledLabel htmlFor='title'>Title</StyledLabel>
+							<Input
+								name='title'
+								type='text'
+								placeholder='e.g. Take coffee break'
+							/>
 						</StyledBoxSection>
 						<StyledBoxSection>
 							<StyledLabel htmlFor='description'>Description</StyledLabel>
@@ -93,11 +116,22 @@ a little.'
 										{values.subtasks.length > 0 &&
 											values.subtasks.map((subtasks, index) => (
 												<StyledColumnInputBox key={index}>
-													<Input name={`subtasks.${index}.title`} placeholder='e.g. In Progress' />
-													<img src={cross} alt='Delete' onClick={() => remove(index)} />
+													<Input
+														name={`subtasks.${index}.title`}
+														placeholder='e.g. In Progress'
+													/>
+													<img
+														src={cross}
+														alt='Delete'
+														onClick={() => remove(index)}
+													/>
 												</StyledColumnInputBox>
 											))}
-										<Button type='button' variant='secondary' onClick={() => push({ title: '' })}>
+										<Button
+											type='button'
+											variant='secondary'
+											onClick={() => push({ title: '' })}
+										>
 											+ Add New Column
 										</Button>
 									</>

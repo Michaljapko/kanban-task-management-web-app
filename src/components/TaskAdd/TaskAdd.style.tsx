@@ -31,5 +31,5 @@ export const StyledLabel = styled.label`
 	display: block;
 	${({ theme }) => theme.text.medium}
 	margin-bottom:8px;
-	color: #828fa3;
+	color: ${({ theme }) => theme.textGrey};
 `;

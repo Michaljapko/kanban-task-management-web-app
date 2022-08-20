@@ -24,7 +24,7 @@ export const StyledBox = styled.div`
 `;
 export const StyledHeading = styled.h2`
 	${({ theme }) => theme.textHeading.large}
-	color:  ${({ theme }) => theme.mainColor};
+	color: ${({ theme }) => theme.mainColor};
 `;
 export const StyledBoxSection = styled.div`
 	margin-bottom: 24px;

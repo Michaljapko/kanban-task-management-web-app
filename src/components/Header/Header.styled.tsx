@@ -6,7 +6,7 @@ export const StyledHeader = styled.div`
 	align-items: center;
 	padding: 0 16px;
 	height: 64px;
-	background: #fff;
+	background: ${({ theme }) => theme.backgroundMain};
 `;
 
 export const StyledLogoBox = styled.div`
@@ -22,8 +22,6 @@ export const StyledHeaderBox = styled.div`
 `;
 
 export const StyledLogoText = styled.h1`
-	${({ theme }) => {
-		return theme.textHeading.large;
-	}};
+	${({ theme }) => theme.textHeading.large}
+	color:${({ theme }) => theme.mainColor}
 `;
-
