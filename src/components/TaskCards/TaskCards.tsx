@@ -1,5 +1,13 @@
-import { StyledCard, StyledHeading, StyledParagraph, StyledTitle } from './TaskCards.style';
-import { selectIsTaskShow, setIsTaskShow } from '../../features/layout/layoutSlice';
+import {
+	StyledCard,
+	StyledHeading,
+	StyledParagraph,
+	StyledTitle,
+} from './TaskCards.style';
+import {
+	selectIsTaskShow,
+	setIsTaskShow,
+} from '../../features/layout/layoutSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
 import TaskView from '../TaskView';
@@ -34,7 +42,10 @@ const TaskCards = () => {
 
 							{column.tasks.map((task) => {
 								return (
-									<StyledCard onClick={() => showTask(task, column.id)} key={task.id}>
+									<StyledCard
+										onClick={() => showTask(task, column.id)}
+										key={task.id}
+									>
 										<StyledTitle>{task.title}</StyledTitle>
 										<StyledParagraph>
 											{task.subtasks.reduce((taskDone, task) => {

@@ -24,5 +24,7 @@ export const StyledError = styled.p`
 	right: 16px;
 	display: flex;
 	align-items: center;
+	padding-left: 6px;
 	color: ${({ theme }) => theme.colorError};
+	background-color: ${({ theme }) => theme.backgroundMain};
 `;
