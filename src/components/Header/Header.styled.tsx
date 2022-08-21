@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 export const StyledHeader = styled.div`
+	position: fixed;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 0 16px;
 	height: 64px;
+	width: 100%;
 	background: ${({ theme }) => theme.backgroundMain};
 `;
 

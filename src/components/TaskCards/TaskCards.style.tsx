@@ -10,6 +10,7 @@ export const StyledCard = styled.div`
 `;
 export const StyledHeading = styled.p`
 	${({ theme }) => theme.textHeading.small}
+	margin-bottom: 24px;
 	text-transform: uppercase;
 `;
 export const StyledTitle = styled.p`

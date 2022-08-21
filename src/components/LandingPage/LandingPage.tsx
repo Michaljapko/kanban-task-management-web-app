@@ -1,4 +1,8 @@
-import { StyledInfo, StyledWrapper } from './LandingPage.styled';
+import {
+	StyledInfo,
+	StyledWrapperInfo,
+	StyledWrapperCard,
+} from './LandingPage.styled';
 import { addColumn, selectTasksData } from '../../features/tasks/tasksSlice';
 import {
 	selectIsBoardAddShow,
@@ -41,31 +45,37 @@ const LandingPage = () => {
 			{isTaskAddShow && <TaskAdd />}
 			{isTaskEditShow && <TaskEdit />}
 			{isTaskBoardShow && <DeleteMenu variant={'board'} />}
-			{isTaskDeleteShow && <DeleteMenu variant={'task'}/>}
+			{isTaskDeleteShow && <DeleteMenu variant={'task'} />}
 			<Header />
 			{isSidebarShow && <Sidebar />}
 
-			<StyledWrapper>
-				{!tasksData && (
+			{!tasksData && (
+				<StyledWrapperInfo>
 					<StyledInfo>
 						This board is empty. Create a new column to get started.
 					</StyledInfo>
-				)}
-				{tasksData && tasksData?.length > 0 && <TaskCards />}
-				<Button
-					onClick={() =>
-						dispatch(
-							addColumn({
-								column: { id: uuid(), name: 'New column', tasks: [] },
-								currentBoard: currentBoard,
-							})
-						)
-					}
-					icon='plus'
-				>
-					Add New Column
-				</Button>
-			</StyledWrapper>
+
+					<Button
+						variant={'landingPage'}
+						onClick={() =>
+							dispatch(
+								addColumn({
+									column: { id: uuid(), name: 'New column', tasks: [] },
+									currentBoard: currentBoard,
+								})
+							)
+						}
+					>
+						+ Add New Column
+					</Button>
+				</StyledWrapperInfo>
+			)}
+
+			{tasksData && tasksData?.length > 0 && (
+				<StyledWrapperCard>
+					<TaskCards />
+				</StyledWrapperCard>
+			)}
 		</>
 	);
 };

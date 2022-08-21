@@ -36,9 +36,8 @@ export const StyledButton = styled.button<ButtonTypes>`
 			border-radius: 24px;
 			padding: ${() =>
 				variant === 'header' || variant === 'headerOff'
-					? '5px 18px'
-					: '15px 18px'}};
-			width: 100%;
+					? '5px 17px'
+					: '15px 17px'}};
 			background-color: ${() => {
 				if (variant === 'secondary') return theme.buttonSecondary;
 				if (variant === 'delete') return theme.colorError;

@@ -19,7 +19,8 @@ export type Variants =
 	| 'sidebarCurrent'
 	| 'headerOff'
 	| 'secondary'
-	| 'delete';
+	| 'delete'
+	| 'landingPage';
 
 export interface ButtonTypes {
 	children?: JSX.Element | JSX.Element[] | string;
