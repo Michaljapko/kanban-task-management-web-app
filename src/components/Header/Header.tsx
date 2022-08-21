@@ -6,12 +6,14 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { selectTasksData } from '../../features/tasks/tasksSlice';
 import DropDown from '../DropDown';
 import Button from '../Button';
+
 import {
 	StyledHeader,
 	StyledLogoBox,
 	StyledHeaderBox,
 	StyledLogoText,
 } from './Header.styled';
+
 import {
 	selectIsSidebarShow,
 	setIsSidebarShow,

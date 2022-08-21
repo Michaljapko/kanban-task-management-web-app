@@ -4,6 +4,14 @@ export interface Subtask {
 	isCompleted: boolean;
 }
 
+export interface InputTypes {
+	name: string;
+	placeholder: string;
+	as?: 'textarea';
+	type?: string;
+	error?: string;
+}
+
 export type Variants =
 	| 'header'
 	| 'sidebar'

@@ -1,5 +1,12 @@
-import { StyledBoxSection, StyledColumnInputBox, StyledLabel } from './BoardEdit.styled';
-import { selectBoards, selectCurrentBoard } from '../../features/tasks/boardSlice';
+import {
+	StyledBoxSection,
+	StyledColumnInputBox,
+	StyledLabel,
+} from './BoardEdit.styled';
+import {
+	selectBoards,
+	selectCurrentBoard,
+} from '../../features/tasks/boardSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { BoardInputValues } from '../../types/types';
 import Button from '../Button';
@@ -14,7 +21,9 @@ import { boardAddSchema } from '../../helpers/validationSchema';
 
 const BoardEdit = () => {
 	const currentBoardId = useAppSelector(selectCurrentBoard);
-	const currentBoard = useAppSelector(selectBoards).find((boards) => boards.id === currentBoardId);
+	const currentBoard = useAppSelector(selectBoards).find(
+		(boards) => boards.id === currentBoardId
+	);
 	const columns = currentBoard?.columns;
 	const dispatch = useAppDispatch();
 
@@ -36,7 +45,9 @@ const BoardEdit = () => {
 
 	function handleEditBoard(values: BoardInputValues) {
 		const columnsAdded = values.columns.map((column) => {
-			const existingColumn = columns?.find((currentColumn) => currentColumn.id === column.id);
+			const existingColumn = columns?.find(
+				(currentColumn) => currentColumn.id === column.id
+			);
 			if (existingColumn) return { ...existingColumn, name: column.name };
 			return { name: column.name, id: column.id, tasks: [] };
 		});
@@ -53,13 +64,24 @@ const BoardEdit = () => {
 	}
 
 	return (
-		<PopUp title={'Edit Board'} layoutDispatch={() => dispatch(setIsBoardEditShow())}>
-			<Formik initialValues={initialValues} validationSchema={boardAddSchema} onSubmit={(values) => handleEditBoard(values)}>
+		<PopUp
+			title={'Edit Board'}
+			layoutDispatch={() => dispatch(setIsBoardEditShow())}
+		>
+			<Formik
+				initialValues={initialValues}
+				validationSchema={boardAddSchema}
+				onSubmit={(values) => handleEditBoard(values)}
+			>
 				{({ values }) => (
 					<Form>
 						<StyledBoxSection>
 							<StyledLabel htmlFor='name'>Board Name</StyledLabel>
-							<Input name='name' type='text' placeholder='e.g. Take coffee break' />
+							<Input
+								name='name'
+								type='text'
+								placeholder='e.g. Take coffee break'
+							/>
 						</StyledBoxSection>
 						<StyledBoxSection>
 							<StyledLabel htmlFor='columns'>Board Columns</StyledLabel>
@@ -70,11 +92,22 @@ const BoardEdit = () => {
 										{values.columns.length > 0 &&
 											values.columns.map((columns, index) => (
 												<StyledColumnInputBox key={index}>
-													<Input name={`columns.${index}.name`} placeholder='e.g. In Progress' />
-													<img src={cross} alt='Delete' onClick={() => remove(index)} />
+													<Input
+														name={`columns.${index}.name`}
+														placeholder='e.g. In Progress'
+													/>
+													<img
+														src={cross}
+														alt='Delete'
+														onClick={() => remove(index)}
+													/>
 												</StyledColumnInputBox>
 											))}
-										<Button type='button' variant='secondary' onClick={() => push({ id: uuid(), name: '' })}>
+										<Button
+											type='button'
+											variant='secondary'
+											onClick={() => push({ id: uuid(), name: '' })}
+										>
 											+ Add New Column
 										</Button>
 									</>

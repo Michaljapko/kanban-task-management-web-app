@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { InputTypes } from '../../types/types';
 
-export const StyledInput = styled.input<{ error: string }>`
+export const StyledInput = styled.input<InputTypes>`
 	padding: 8px 16px;
 	border: 1px solid ${({ theme }) => theme.borderGray};
 	border-color: ${({ theme, error }) =>
@@ -11,6 +12,7 @@ export const StyledInput = styled.input<{ error: string }>`
 	${({ theme }) => theme.text.large}
 	color: ${({ theme }) => theme.mainColor};
 `;
+
 export const StyledWrapper = styled.div`
 	position: relative;
 	display: flex;

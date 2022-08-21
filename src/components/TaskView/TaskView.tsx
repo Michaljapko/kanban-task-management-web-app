@@ -10,17 +10,17 @@ import {
 	editTask,
 } from '../../features/tasks/tasksSlice';
 import {
-	setIsDeleteTaskShow,
-	setIsTaskEditShow,
+	selectIsDropDownShow,
+	setIsDropDownShow,
 	setIsTaskShow,
 } from '../../features/layout/layoutSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useEffect, useState } from 'react';
-
 import ellipsis from '../../assets/icon-vertical-ellipsis.svg';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { selectCurrentColumn } from '../../features/tasks/columnSlice';
 import PopUp from '../PopUp';
+import DropDown from '../DropDown';
 
 const TaskView = ({ taskData }: any) => {
 	const [task, setTask] = useState(taskData);
@@ -29,6 +29,7 @@ const TaskView = ({ taskData }: any) => {
 	const currentColumn = useAppSelector(selectCurrentColumn);
 	const taskColumn = useAppSelector(selectTasksData);
 	const currentBoard = useAppSelector(selectCurrentBoard);
+	const isDropDownShow = useAppSelector(selectIsDropDownShow);
 
 	function getTaskDone() {
 		setTaskDone(
@@ -38,7 +39,18 @@ const TaskView = ({ taskData }: any) => {
 			}, 0)
 		);
 	}
-
+	const ellipsisButton = (
+		<>
+			<img
+				src={ellipsis}
+				alt='ellipsis'
+				onClick={() => {
+					dispatch(setIsDropDownShow());
+				}}
+			/>
+			{isDropDownShow && <DropDown variant='task' />}
+		</>
+	);
 	useEffect(() => {
 		getTaskDone();
 	}, [task]);
@@ -49,23 +61,9 @@ const TaskView = ({ taskData }: any) => {
 			layoutDispatch={() => {
 				dispatch(setIsTaskShow());
 			}}
+			headingElement={ellipsisButton}
 		>
-			<StyledBoxSection>
-				<img
-					src={ellipsis}
-					alt='ellipsis'
-					onClick={() => {
-						dispatch(setIsTaskEditShow());
-					}}
-				/>
-				<img
-					src={ellipsis}
-					alt='ellipsis'
-					onClick={() => {
-						dispatch(setIsDeleteTaskShow());
-					}}
-				/>
-			</StyledBoxSection>
+			<StyledBoxSection></StyledBoxSection>
 			<StyledBoxSection>
 				<StyledDescription>{task.description}</StyledDescription>
 			</StyledBoxSection>

@@ -12,6 +12,7 @@ export const StyledBack = styled.div`
 	background: ${({ theme }) => theme.backgroundBack};
 `;
 export const StyledBox = styled.div`
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
@@ -28,5 +29,8 @@ export const StyledHeading = styled.h2<{ variant?: 'delete' }>`
 		variant === 'delete' ? theme.colorError : theme.mainColor};
 `;
 export const StyledBoxSection = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 	margin-bottom: 24px;
 `;
