@@ -5,6 +5,7 @@ export const StyledBoxSection = styled.div`
 `;
 
 export const StyledSubtaskBox = styled.div`
+	${({ theme }) => theme.text.large}
 	display: flex;
 	align-items: center;
 	margin-bottom: 8px;
@@ -18,6 +19,7 @@ export const StyledDescription = styled.p`
 	margin-bottom: 16px;
 	color: ${({ theme }) => theme.textGrey};
 `;
+
 export const StyledParagraph = styled.p`
 	${({ theme }) => theme.text.medium}
 	margin-bottom: 16px;

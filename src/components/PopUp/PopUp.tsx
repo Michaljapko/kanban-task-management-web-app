@@ -1,12 +1,17 @@
-import { StyledBack, StyledBox, StyledBoxSection, StyledHeading } from './PopUp.styled';
+import {
+	StyledBack,
+	StyledBox,
+	StyledBoxSection,
+	StyledHeading,
+} from './PopUp.styled';
 
-const PopUp = ({ children, title, layoutDispatch }: any) => {
+const PopUp = ({ children, title, layoutDispatch, variant }: any) => {
 	return (
 		<StyledBack onClick={layoutDispatch}>
 			<StyledBox onClick={(e) => e.stopPropagation()}>
 				{title && (
 					<StyledBoxSection>
-						<StyledHeading>{title}</StyledHeading>
+						<StyledHeading variant={variant}>{title}</StyledHeading>
 					</StyledBoxSection>
 				)}
 				{children}

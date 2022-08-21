@@ -2,6 +2,7 @@ import {
 	StyledBoxSection,
 	StyledLabel,
 	StyledColumnInputBox,
+	StyledField,
 } from './TaskEdit.style';
 import {
 	selectCurrentTaskData,
@@ -10,7 +11,7 @@ import {
 	editTask,
 } from '../../features/tasks/tasksSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { Formik, Form, FieldArray, Field } from 'formik';
+import { Formik, Form, FieldArray } from 'formik';
 import { TasksData, TaskInputValues } from '../../types/types';
 import Button from '../Button';
 import cross from '../../assets/icon-cross.svg';
@@ -140,14 +141,14 @@ a little.'
 						</StyledBoxSection>
 						<StyledBoxSection>
 							<StyledLabel htmlFor='status'>Status</StyledLabel>
-							<Field as='select' name='status' defaultValue='none'>
+							<StyledField as='select' name='status' defaultValue='none'>
 								<option value='none'>Select an Option</option>
 								{getColumns().map((column, index) => (
 									<option key={index} value={column.id}>
 										{column.name}
 									</option>
 								))}
-							</Field>
+							</StyledField>
 						</StyledBoxSection>
 						<Button type='submit'>Create Task</Button>
 					</Form>

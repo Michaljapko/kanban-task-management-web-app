@@ -22,9 +22,10 @@ export const StyledBox = styled.div`
 	max-width: 480px;
 	background: ${({ theme }) => theme.backgroundMain};
 `;
-export const StyledHeading = styled.h2`
+export const StyledHeading = styled.h2<{ variant?: 'delete' }>`
 	${({ theme }) => theme.textHeading.large}
-	color: ${({ theme }) => theme.mainColor};
+	color: ${({ theme, variant }) =>
+		variant === 'delete' ? theme.colorError : theme.mainColor};
 `;
 export const StyledBoxSection = styled.div`
 	margin-bottom: 24px;

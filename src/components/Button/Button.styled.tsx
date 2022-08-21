@@ -39,8 +39,11 @@ export const StyledButton = styled.button<ButtonTypes>`
 					? '5px 18px'
 					: '15px 18px'}};
 			width: 100%;
-			background-color: ${() =>
-				variant === 'secondary' ? theme.buttonSecondary : theme.buttonPrimary};
+			background-color: ${() => {
+				if (variant === 'secondary') return theme.buttonSecondary;
+				if (variant === 'delete') return theme.colorError;
+				return theme.buttonPrimary;
+			}};
 			font-size: 15px;
 			font-family: 'Plus Jakarta Sans';
 			font-weight: 700;

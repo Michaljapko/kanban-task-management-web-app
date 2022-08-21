@@ -17,6 +17,7 @@ import {
 import { deleteBoard, deleteTask } from '../../features/tasks/tasksSlice';
 import Button from '../Button';
 import PopUp from '../PopUp';
+import { StyledText, StyledWrapper } from './DeleteMenu.styled';
 
 const DeleteMenu = ({ variant }: { variant: 'board' | 'task' }) => {
 	const boardId = useAppSelector(selectCurrentBoard);
@@ -32,20 +33,29 @@ const DeleteMenu = ({ variant }: { variant: 'board' | 'task' }) => {
 			<PopUp
 				title={'Delete this board?'}
 				layoutDispatch={() => dispatch(setIsDeleteBoardShow())}
+				variant={'delete'}
 			>
-				<p>
+				<StyledText>
 					Are you sure you want to delete the ‘{boardName}’ board? This action
 					will remove all columns and tasks and cannot be reversed.
-				</p>
-				<Button
-					onClick={() => {
-						dispatch(deleteBoard(boardId));
-						dispatch(setIsDeleteBoardShow());
-					}}
-				>
-					Delete
-				</Button>
-				<Button onClick={() => dispatch(setIsDeleteBoardShow())}>Close</Button>
+				</StyledText>
+				<StyledWrapper>
+					<Button
+						variant='delete'
+						onClick={() => {
+							dispatch(deleteBoard(boardId));
+							dispatch(setIsDeleteBoardShow());
+						}}
+					>
+						Delete
+					</Button>
+					<Button
+						variant='secondary'
+						onClick={() => dispatch(setIsDeleteBoardShow())}
+					>
+						Cancel
+					</Button>
+				</StyledWrapper>
 			</PopUp>
 		);
 
@@ -55,25 +65,33 @@ const DeleteMenu = ({ variant }: { variant: 'board' | 'task' }) => {
 				title={'Delete this task?'}
 				layoutDispatch={() => dispatch(setIsDeleteTaskShow())}
 			>
-				<p>
+				<StyledText>
 					Are you sure you want to delete the ‘{taskName}’ task and its
 					subtasks? This action cannot be reversed.
-				</p>
-				<Button
-					onClick={() => {
-						dispatch(setIsDeleteTaskShow());
-						dispatch(
-							deleteTask({
-								currentBoard: boardId,
-								columnId: columnId,
-								taskId: taskId,
-							})
-						);
-					}}
-				>
-					Delete
-				</Button>
-				<Button onClick={() => dispatch(setIsDeleteTaskShow())}>Close</Button>
+				</StyledText>
+				<StyledWrapper>
+					<Button
+						variant='delete'
+						onClick={() => {
+							dispatch(setIsDeleteTaskShow());
+							dispatch(
+								deleteTask({
+									currentBoard: boardId,
+									columnId: columnId,
+									taskId: taskId,
+								})
+							);
+						}}
+					>
+						Delete
+					</Button>
+					<Button
+						variant='secondary'
+						onClick={() => dispatch(setIsDeleteTaskShow())}
+					>
+						Cancel
+					</Button>
+				</StyledWrapper>
 			</PopUp>
 		);
 

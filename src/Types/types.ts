@@ -10,7 +10,8 @@ export type Variants =
 	| 'sidebarBold'
 	| 'sidebarCurrent'
 	| 'headerOff'
-	| 'secondary';
+	| 'secondary'
+	| 'delete';
 
 export interface ButtonTypes {
 	children?: JSX.Element | JSX.Element[] | string;
