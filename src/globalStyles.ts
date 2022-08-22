@@ -2,8 +2,12 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 
-*{box-sizing: border-box;}
+*{
+	box-sizing: border-box;}
+	
 #root{
+	overflow: scroll;
+-webkit-overflow-scrolling: touch;
 	height: 100%;
 }
 

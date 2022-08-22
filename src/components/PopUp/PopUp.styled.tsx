@@ -18,8 +18,8 @@ export const StyledBox = styled.div`
 	align-items: stretch;
 	margin: 0 16px;
 	border-radius: 6px;
-	padding: 24px;
-	width: 100%;
+	padding: ${({ variant }) => (variant === 'sidebar' ? '24px 0 0' : '24px')};
+	${({ variant }) => (variant === 'sidebar' ? '' : 'width: 100%')};
 	max-width: 480px;
 	background: ${({ theme }) => theme.backgroundMain};
 `;

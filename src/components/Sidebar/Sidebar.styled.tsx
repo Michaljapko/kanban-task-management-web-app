@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+
+
 export const StyledHead = styled.div`
 	margin-bottom: 19px;
 	padding: 0 24px;

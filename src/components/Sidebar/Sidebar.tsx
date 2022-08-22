@@ -1,6 +1,13 @@
 import { StyledHead, StyledRadioBox } from './Sidebar.styled';
-import { changeBoard, selectBoards, selectCurrentBoard } from '../../features/tasks/boardSlice';
-import { setIsBoardAddShow, setIsSidebarShow } from '../../features/layout/layoutSlice';
+import {
+	changeBoard,
+	selectBoards,
+	selectCurrentBoard,
+} from '../../features/tasks/boardSlice';
+import {
+	setIsBoardAddShow,
+	setIsSidebarShow,
+} from '../../features/layout/layoutSlice';
 import { toogleTheme } from '../../features/layout/themeSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
@@ -15,7 +22,10 @@ const Sidebar = () => {
 	const currentBoards = useAppSelector(selectCurrentBoard);
 
 	return (
-		<PopUp layoutDispatch={() => dispatch(setIsSidebarShow())}>
+		<PopUp
+			variant='sidebar'
+			layoutDispatch={() => dispatch(setIsSidebarShow())}
+		>
 			<StyledHead>All Boards ({boards.length})</StyledHead>
 			{boards.map((board) => {
 				let variant: 'sidebar' | 'sidebarCurrent' = 'sidebar';
@@ -37,12 +47,21 @@ const Sidebar = () => {
 				);
 			})}
 
-			<Button onClick={() => dispatch(setIsBoardAddShow())} variant='sidebarBold' icon='board'>
+			<Button
+				onClick={() => dispatch(setIsBoardAddShow())}
+				variant='sidebarBold'
+				icon='board'
+			>
 				+ Create New Board
 			</Button>
 			<StyledRadioBox>
 				<img src={sun} alt='Light Theme' />
-				<input type='checkbox' id='theme' value='JavaScript' onChange={() => dispatch(toogleTheme())} />
+				<input
+					type='checkbox'
+					id='theme'
+					value='JavaScript'
+					onChange={() => dispatch(toogleTheme())}
+				/>
 				<img src={moon} alt='Light Theme' />
 			</StyledRadioBox>
 		</PopUp>

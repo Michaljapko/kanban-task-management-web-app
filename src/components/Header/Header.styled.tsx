@@ -7,7 +7,7 @@ export const StyledHeader = styled.div`
 	align-items: center;
 	padding: 0 16px;
 	height: 64px;
-	width: 100%;
+	width: 100vw;
 	background: ${({ theme }) => theme.backgroundMain};
 `;
 
