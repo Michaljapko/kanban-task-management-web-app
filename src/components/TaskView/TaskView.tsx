@@ -3,6 +3,7 @@ import {
 	StyledDescription,
 	StyledParagraph,
 	StyledSubtaskBox,
+	StyledSubtaskInfo,
 } from './TaskView.styled';
 import {
 	selectTasksData,
@@ -21,6 +22,7 @@ import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { selectCurrentColumn } from '../../features/tasks/columnSlice';
 import PopUp from '../PopUp';
 import DropDown from '../DropDown';
+import CheckBox from '../CheckBox/ChcekBox';
 
 const TaskView = ({ taskData }: any) => {
 	const [task, setTask] = useState(taskData);
@@ -63,7 +65,6 @@ const TaskView = ({ taskData }: any) => {
 			}}
 			headingElement={ellipsisButton}
 		>
-			<StyledBoxSection></StyledBoxSection>
 			<StyledBoxSection>
 				<StyledDescription>{task.description}</StyledDescription>
 			</StyledBoxSection>
@@ -75,10 +76,8 @@ const TaskView = ({ taskData }: any) => {
 
 				{task.subtasks.map((subtask: any) => (
 					<StyledSubtaskBox>
-						<input
+						<CheckBox
 							key={subtask.id}
-							type='checkbox'
-							id='subscribeNews'
 							name='subscribe'
 							onChange={() => {
 								const taskUpdated = {
@@ -107,7 +106,9 @@ const TaskView = ({ taskData }: any) => {
 							}}
 							defaultChecked={subtask.isCompleted}
 						/>
-						<p>{subtask.title}</p>
+						<StyledSubtaskInfo complete={subtask.isCompleted}>
+							{subtask.title}
+						</StyledSubtaskInfo>
 					</StyledSubtaskBox>
 				))}
 			</StyledBoxSection>
@@ -119,6 +120,7 @@ const TaskView = ({ taskData }: any) => {
 							...task,
 							status: e.target.value,
 						};
+						
 						dispatch(
 							columnChangeTask({
 								columnId: currentColumn,

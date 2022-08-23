@@ -5,15 +5,22 @@ export const StyledBoxSection = styled.div`
 `;
 
 export const StyledSubtaskBox = styled.div`
-	${({ theme }) => theme.text.large}
 	display: flex;
 	align-items: center;
 	margin-bottom: 8px;
+	border-radius: 4px;
 	padding: 12px;
 	background: ${({ theme }) => theme.backgroundContrast};
 	color: ${({ theme }) => theme.mainColor};
 `;
-
+export const StyledSubtaskInfo = styled.p`
+	${({ theme }) => theme.textHeading.small}
+	letter-spacing: 0;
+	${({ complete, theme }) => {
+		if (complete) return 'text-decoration: line-through;';
+		return `color: ${theme.mainColor}`;
+	}}
+`;
 export const StyledDescription = styled.p`
 	${({ theme }) => theme.text.large}
 	margin-bottom: 16px;
@@ -21,7 +28,7 @@ export const StyledDescription = styled.p`
 `;
 
 export const StyledParagraph = styled.p`
-	${({ theme }) => theme.text.medium}
+	${({ theme }) => theme.textHeading.small}
 	margin-bottom: 16px;
-	color: ${({ theme }) => theme.textGrey};
+	color: ${({ theme }) => theme.mainColor};
 `;

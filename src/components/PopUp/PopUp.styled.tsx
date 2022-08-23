@@ -10,6 +10,7 @@ export const StyledBack = styled.div`
 	width: 100%;
 	height: 100%;
 	background: ${({ theme }) => theme.backgroundBack};
+	z-index: 1;
 `;
 export const StyledBox = styled.div`
 	position: relative;

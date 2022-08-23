@@ -1,6 +1,6 @@
-import { Boards} from '../types/types';
+import { Boards } from '../types/types';
 
-export const data: Boards  = {
+export const data: Boards = {
 	boards: [
 		{
 			id: '342a21',
@@ -12,15 +12,16 @@ export const data: Boards  = {
 					tasks: [
 						{
 							id: '2441a2',
-							title: 'Research pricing points of various competitors and trial different business models',
+							title:
+								'Research pricing points of various competitors and trial different business models',
 							description:
-								'We know what were planning to build for version one. Now we need to finalise the first pricing model well use. Keep iterating the subtasks until we have a coherent proposition.',
+								'We knndsaaaaaaaaaaaaaaas dsa dsa dsa ad sad assdad s.',
 							status: 'Done',
 							subtasks: [
 								{
 									id: '22223s1',
 									title:
-										'We know what were planning to build for version one. Now we need to finalise the first pricing model well use. Keep iterating the subtasks until we have a coherent proposition.',
+										'We know what were planning to build for version one. Now we need to finalise the first pricing We know what were planning to build for version one. Now we need to finalise the first pricing ',
 									isCompleted: true,
 								},
 								{ id: '22223421', title: 'Go in', isCompleted: false },

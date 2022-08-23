@@ -2,7 +2,6 @@ import {
 	StyledBoxSection,
 	StyledLabel,
 	StyledColumnInputBox,
-	StyledField,
 } from './TaskEdit.style';
 import {
 	selectCurrentTaskData,
@@ -22,6 +21,7 @@ import { v4 as uuid } from 'uuid';
 import PopUp from '../PopUp';
 import { taskAddSchema } from '../../helpers/validationSchema';
 import Input from '../Input';
+import SelectInput from '../SelectInput';
 
 const TaskEdit = () => {
 	const dispatch = useAppDispatch();
@@ -32,6 +32,11 @@ const TaskEdit = () => {
 	const getColumns = () =>
 		taskColumn!.map((column) => ({ id: column.id, name: column.name }));
 
+	const columnsData = getColumns().map((column) => ({
+		value: column.id,
+		label: column.name,
+	}));
+
 	const initialValues: TaskInputValues = {
 		title: task.title,
 		description: task.description,
@@ -40,6 +45,7 @@ const TaskEdit = () => {
 	};
 
 	function handleEditTask(values: TaskInputValues) {
+		console.log(values);
 		const taskEdited: TasksData = {
 			id: task.id,
 			title: values.title,
@@ -51,18 +57,12 @@ const TaskEdit = () => {
 			})),
 			status: values.status,
 		};
-		console.log({
-			columnId: currentColumn,
-			columnTarget: values.status,
-			taskId: task.id,
-			currentBoard: currentBoard,
-			task: taskEdited,
-		});
+
 		dispatch(
 			columnChangeTask({
 				columnId: currentColumn,
-				columnTarget: task.status,
-				taskId: task.id,
+				columnTarget: values.status,
+				taskId: taskEdited.id,
 				currentBoard: currentBoard,
 				task: taskEdited,
 			})
@@ -70,7 +70,7 @@ const TaskEdit = () => {
 		dispatch(
 			editTask({
 				columnId: currentColumn,
-				taskId: task.id,
+				taskId: taskEdited.id,
 				currentBoard: currentBoard,
 				task: taskEdited,
 			})
@@ -141,14 +141,14 @@ a little.'
 						</StyledBoxSection>
 						<StyledBoxSection>
 							<StyledLabel htmlFor='status'>Status</StyledLabel>
-							<StyledField as='select' name='status' defaultValue='none'>
-								<option value='none'>Select an Option</option>
-								{getColumns().map((column, index) => (
-									<option key={index} value={column.id}>
-										{column.name}
-									</option>
-								))}
-							</StyledField>
+							<SelectInput
+								name='status'
+								options={columnsData}
+								defaultValue={columnsData[0]}
+								onChange={(e) => {
+									values.status = e?.value;
+								}}
+							/>
 						</StyledBoxSection>
 						<Button type='submit'>Create Task</Button>
 					</Form>

@@ -56,10 +56,10 @@ table {
 }
   body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-	/* min-width: max-content; */
     height: 100vh;
 	background: ${({ theme }) => theme.backgroundBody};
   }
+
 `;
 
 export default GlobalStyle;
