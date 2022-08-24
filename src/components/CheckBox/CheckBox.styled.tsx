@@ -7,6 +7,12 @@ export const StyledBox = styled.div`
 	margin: 12px 0px 12px 12px;
 	padding-right: 32px;
 `;
+export const StyledIcon = styled.img`
+	position: absolute;
+	width: 10px;
+	z-index: 2;
+	opacity: 0;
+`;
 export const StyledCheckbox = styled.input`
 	outline: 0;
 	user-select: none;
@@ -31,14 +37,12 @@ export const StyledCheckbox = styled.input`
 	}
 	&:checked + label {
 		background-color: ${({ theme }) => theme.themeColor};
+		${StyledIcon} {
+			opacity: 1;
+		}
 	}
 
 	&:focus {
 		outline: none;
 	}
-`;
-export const StyledIcon = styled.img`
-	position: absolute;
-	width: 10px;
-	z-index: 2;
 `;

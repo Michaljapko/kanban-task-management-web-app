@@ -1,5 +1,5 @@
 import { styled } from '../../theme/theme';
-import Select from 'react-select';
+
 
 export const StyledBoxSection = styled.div`
 	margin-bottom: 24px;
