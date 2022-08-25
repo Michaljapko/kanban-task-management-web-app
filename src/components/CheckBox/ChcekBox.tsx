@@ -1,6 +1,8 @@
 import { StyledCheckbox, StyledBox, StyledIcon } from './CheckBox.styled';
 import Check from '../../assets/icon-check.svg';
-const CheckBox = ({ name, onChange, defaultChecked }) => {
+import { CheckBoxTypes } from '../../types/types';
+
+const CheckBox = ({ name, onChange, defaultChecked }: CheckBoxTypes) => {
 	return (
 		<StyledBox>
 			<StyledCheckbox

@@ -116,13 +116,12 @@ const TaskView = ({ taskData }: any) => {
 			<StyledBoxSection>
 				<StyledParagraph>Current state:</StyledParagraph>
 				<SelectInput
-					onChange={(e) => {
-						console.log(e);
+					onChange={(e: any) => {
 						const taskUpdated = {
 							...task,
 							status: e.value,
 						};
-
+ 
 						dispatch(
 							columnChangeTask({
 								columnId: currentColumn,

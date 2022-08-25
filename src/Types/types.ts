@@ -11,6 +11,11 @@ export interface InputTypes {
 	type?: string;
 	error?: string;
 }
+export interface CheckBoxTypes {
+	name?: string;
+	onChange?: () => void;
+	defaultChecked?: string;
+}
 
 export type Variants =
 	| 'header'
