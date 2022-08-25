@@ -1,5 +1,9 @@
-import { StyledBoxSection, StyledColumnInputBox, StyledLabel } from './TaskAdd.style';
-import { Formik, Form, FieldArray, Field } from 'formik';
+import {
+	StyledBoxSection,
+	StyledColumnInputBox,
+	StyledLabel,
+} from './TaskAdd.style';
+import { Formik, Form, FieldArray } from 'formik';
 import { addTask, selectTasksData } from '../../features/tasks/tasksSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import Button from '../Button';
@@ -11,9 +15,15 @@ import { v4 as uuid } from 'uuid';
 import PopUp from '../PopUp';
 import Input from '../Input';
 import { taskAddSchema } from '../../helpers/validationSchema';
+import SelectInput from '../SelectInput';
 
 const TaskAdd = () => {
-	const initialValues: TaskInputValues = { title: '', description: '', subtasks: [{ title: '', isCompleted: false }], status: '' };
+	const initialValues: TaskInputValues = {
+		title: '',
+		description: '',
+		subtasks: [{ title: '', isCompleted: false }],
+		status: '',
+	};
 	const dispatch = useAppDispatch();
 	const taskColumns = useAppSelector(selectTasksData);
 	const currentBoard = useAppSelector(selectCurrentBoard);
@@ -41,13 +51,24 @@ const TaskAdd = () => {
 	}
 
 	return (
-		<PopUp title={'Add New Task'} layoutDispatch={() => dispatch(setIsTaskAddShow())}>
-			<Formik initialValues={initialValues} validationSchema={taskAddSchema} onSubmit={(values) => handleAddTask(values)}>
+		<PopUp
+			title={'Add New Task'}
+			layoutDispatch={() => dispatch(setIsTaskAddShow())}
+		>
+			<Formik
+				initialValues={initialValues}
+				validationSchema={taskAddSchema}
+				onSubmit={(values) => handleAddTask(values)}
+			>
 				{({ values }) => (
 					<Form>
 						<StyledBoxSection>
 							<StyledLabel htmlFor='title'>Title </StyledLabel>
-							<Input name='title' type='text' placeholder='e.g. Take coffee break' />
+							<Input
+								name='title'
+								type='text'
+								placeholder='e.g. Take coffee break'
+							/>
 						</StyledBoxSection>
 						<StyledBoxSection>
 							<StyledLabel htmlFor='description'>Description</StyledLabel>
@@ -68,11 +89,22 @@ a little.'
 										{values.subtasks.length > 0 &&
 											values.subtasks.map((subtasks, index) => (
 												<StyledColumnInputBox key={index}>
-													<Input name={`subtasks.${index}.title`} placeholder='e.g. In Progress' />
-													<img src={cross} alt='Delete' onClick={() => remove(index)} />
+													<Input
+														name={`subtasks.${index}.title`}
+														placeholder='e.g. In Progress'
+													/>
+													<img
+														src={cross}
+														alt='Delete'
+														onClick={() => remove(index)}
+													/>
 												</StyledColumnInputBox>
 											))}
-										<Button type='button' variant='secondary' onClick={() => push({ title: '' })}>
+										<Button
+											type='button'
+											variant='secondary'
+											onClick={() => push({ title: '' })}
+										>
 											+ Add New Column
 										</Button>
 									</>
@@ -81,14 +113,16 @@ a little.'
 						</StyledBoxSection>
 						<StyledBoxSection>
 							<StyledLabel htmlFor='status'>Status</StyledLabel>
-							<Field as='select' name='status' defaultValue='none'>
-								<option value='none'>Select an Option</option>
-								{columns.map((column, index) => (
-									<option key={index} value={column.id}>
-										{column.name}
-									</option>
-								))}
-							</Field>
+							<SelectInput
+								name='status'
+								options={columns.map((column) => ({
+									value: column.id,
+									label: column.name,
+								}))}
+								onChange={(e) => {
+									values.status = e?.value;
+								}}
+							/>
 						</StyledBoxSection>
 						<Button type='submit'>Create Task</Button>
 					</Form>

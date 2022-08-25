@@ -23,6 +23,7 @@ import { selectCurrentColumn } from '../../features/tasks/columnSlice';
 import PopUp from '../PopUp';
 import DropDown from '../DropDown';
 import CheckBox from '../CheckBox/ChcekBox';
+import SelectInput from '../SelectInput';
 
 const TaskView = ({ taskData }: any) => {
 	const [task, setTask] = useState(taskData);
@@ -114,35 +115,30 @@ const TaskView = ({ taskData }: any) => {
 			</StyledBoxSection>
 			<StyledBoxSection>
 				<StyledParagraph>Current state:</StyledParagraph>
-				<select
+				<SelectInput
 					onChange={(e) => {
+						console.log(e);
 						const taskUpdated = {
 							...task,
-							status: e.target.value,
+							status: e.value,
 						};
-						
+
 						dispatch(
 							columnChangeTask({
 								columnId: currentColumn,
-								columnTarget: e.target.value,
+								columnTarget: e.value,
 								taskId: task.id,
 								currentBoard: currentBoard,
 								task: taskUpdated,
 							})
 						);
 					}}
-				>
-					{taskColumn?.map((column) => {
-						if (currentColumn === column.id) {
-							return (
-								<option key={column.id} value={column.name} selected>
-									{column.name}
-								</option>
-							);
-						}
-						return <option value={column.id}>{column.name}</option>;
-					})}
-				</select>
+			
+					options={taskColumn.map((column) => ({
+						value: column.id,
+						label: column.name,
+					}))}
+				/>
 			</StyledBoxSection>
 		</PopUp>
 	);
