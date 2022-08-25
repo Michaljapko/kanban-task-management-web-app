@@ -38,7 +38,7 @@ const BoardEdit = () => {
 		name: currentBoard!.name,
 		columns: columns.map((column) => ({ id: column.id, name: column.name })),
 	};
-	
+
 	const handleEditBoard = (values: BoardInputValues) => {
 		const board = {
 			currentBoard: currentBoardId,
@@ -91,6 +91,7 @@ const BoardEdit = () => {
 										<Button
 											type='button'
 											variant='secondary'
+											width='full'
 											onClick={() => push({ id: uuid(), name: '' })}
 										>
 											{COLUMN_ADD}
@@ -99,7 +100,9 @@ const BoardEdit = () => {
 								)}
 							/>
 						</StyledBoxSection>
-						<Button type='submit'>{SAVE}</Button>
+						<Button type='submit' width='full'>
+							{SAVE}
+						</Button>
 					</Form>
 				)}
 			</Formik>

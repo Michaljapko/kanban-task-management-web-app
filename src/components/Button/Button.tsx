@@ -3,15 +3,21 @@ import { StyledButton } from './Button.styled';
 import board from '../../assets/icon-board.svg';
 import plus from '../../assets/icon-add-task-mobile.svg';
 
-
-const Button = ({ children, icon, onClick, variant, type }: ButtonTypes) => {
+const Button = ({
+	children,
+	icon,
+	onClick,
+	variant,
+	type,
+	width,
+}: ButtonTypes) => {
 	const getIcon = (icon: string) => {
 		if (icon === 'plus') return plus;
 		if (icon === 'board') return board;
 	};
 
 	return (
-		<StyledButton onClick={onClick} variant={variant} type={type}>
+		<StyledButton onClick={onClick} variant={variant} type={type} width={width}>
 			<>
 				{icon && <img src={getIcon(icon)} alt={icon} />}
 				{children}
@@ -19,5 +25,4 @@ const Button = ({ children, icon, onClick, variant, type }: ButtonTypes) => {
 		</StyledButton>
 	);
 };
-
 export default Button;

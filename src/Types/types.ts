@@ -28,6 +28,7 @@ export interface ButtonTypes {
 	variant?: Variants;
 	onClick?: any;
 	type?: 'button' | 'reset' | 'submit';
+	width?: 'full';
 }
 
 export interface ThemeType {

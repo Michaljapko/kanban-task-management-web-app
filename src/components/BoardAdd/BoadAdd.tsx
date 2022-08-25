@@ -6,7 +6,7 @@ import {
 	BOARD_NAME,
 	BOARD_COLUMNS,
 	BOARD_ADD,
-	BOARD_PLACEHOLDER
+	BOARD_PLACEHOLDER,
 } from '../../data/textEN';
 import {
 	StyledBoxSection,
@@ -88,6 +88,7 @@ const BoardAdd = () => {
 										<Button
 											type='button'
 											variant='secondary'
+											width='full'
 											onClick={() => push({ name: '' })}
 										>
 											{COLUMN_ADD}
@@ -96,9 +97,9 @@ const BoardAdd = () => {
 								)}
 							/>
 						</StyledBoxSection>
-						<StyledBoxSection>
-							<Button type='submit'>{BOARD_CREATE}</Button>
-						</StyledBoxSection>
+						<Button type='submit' width='full'>
+							{BOARD_CREATE}
+						</Button>
 					</Form>
 				)}
 			</Formik>
