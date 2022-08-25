@@ -1,21 +1,17 @@
 import styled from 'styled-components';
 
-export const StyledHeading = styled.h2`
-	${({ theme }) => theme.textHeading.large}
-	color:  ${({ theme }) => theme.mainColor}
-`;
 export const StyledLabel = styled.label`
 	display: block;
-	margin-bottom: 8px;
+	margin-bottom: 0.5rem;
 	${({ theme }) => theme.text.medium}
 	color: ${({ theme }) => theme.textGrey};
 `;
 export const StyledColumnInputBox = styled.div`
 	display: flex;
 	align-items: center;
-	gap: 16px;
-	margin-bottom: 12px;
+	gap: 1rem;
+	margin-bottom: 0.7rem;
 `;
 export const StyledBoxSection = styled.div`
-	margin-bottom: 24px;
+	margin-bottom: 1.5rem;
 `;
