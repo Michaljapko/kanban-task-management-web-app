@@ -1,71 +1,60 @@
 import {
+	COLUMN_ADD,
+	BOARD_NAME,
+	BOARD_COLUMNS,
+	COLUMN_PLACEHOLDER,
+	DELETE,
+	BOARD_EDIT,
+	SAVE,
+} from '../../data/textEN';
+import {
 	StyledBoxSection,
 	StyledColumnInputBox,
 	StyledLabel,
 } from './BoardEdit.styled';
 import {
-	selectBoards,
 	selectCurrentBoard,
+	selectCurrentBoardData,
 } from '../../features/tasks/boardSlice';
+import { Formik, Form, FieldArray } from 'formik';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { BoardInputValues } from '../../types/types';
-import Button from '../Button';
-import cross from '../../assets/icon-cross.svg';
-import { editBoard } from '../../features/tasks/tasksSlice';
 import { setIsBoardEditShow } from '../../features/layout/layoutSlice';
+import { BoardInputValues } from '../../types/types';
+import { boardAddSchema } from '../../helpers/validationSchema';
+import { editBoard } from '../../features/tasks/tasksSlice';
 import { v4 as uuid } from 'uuid';
 import PopUp from '../PopUp';
-import { Formik, Form, FieldArray } from 'formik';
 import Input from '../Input';
-import { boardAddSchema } from '../../helpers/validationSchema';
+import Button from '../Button';
+import cross from '../../assets/icon-cross.svg';
+import { filterAddedColumns } from '../../helpers/filterAddedColumns';
 
 const BoardEdit = () => {
-	const currentBoardId = useAppSelector(selectCurrentBoard);
-	const currentBoard = useAppSelector(selectBoards).find(
-		(boards) => boards.id === currentBoardId
-	);
-	const columns = currentBoard?.columns;
 	const dispatch = useAppDispatch();
-
-	const getColumns = () => {
-		return columns!.map((column) => {
-			return { id: column.id, name: column.name };
-		});
-	};
-
+	const currentBoardId = useAppSelector(selectCurrentBoard);
+	const currentBoard = useAppSelector(selectCurrentBoardData);
+	const columns = currentBoard.columns;
 	const initialValues: BoardInputValues = {
 		name: currentBoard!.name,
-		columns: getColumns().map((column) => {
-			return {
-				id: column.id,
-				name: column.name,
-			};
-		}),
+		columns: columns.map((column) => ({ id: column.id, name: column.name })),
 	};
-
-	function handleEditBoard(values: BoardInputValues) {
-		const columnsAdded = values.columns.map((column) => {
-			const existingColumn = columns?.find(
-				(currentColumn) => currentColumn.id === column.id
-			);
-			if (existingColumn) return { ...existingColumn, name: column.name };
-			return { name: column.name, id: column.id, tasks: [] };
-		});
+	
+	const handleEditBoard = (values: BoardInputValues) => {
 		const board = {
 			currentBoard: currentBoardId,
 			board: {
 				id: currentBoardId,
 				name: values.name,
-				columns: [...columnsAdded],
+				columns: [...filterAddedColumns(values.columns, columns)],
 			},
 		};
 		dispatch(editBoard(board));
 		dispatch(setIsBoardEditShow());
-	}
+	};
 
 	return (
 		<PopUp
-			title={'Edit Board'}
+			title={BOARD_EDIT}
 			layoutDispatch={() => dispatch(setIsBoardEditShow())}
 		>
 			<Formik
@@ -76,15 +65,11 @@ const BoardEdit = () => {
 				{({ values }) => (
 					<Form>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='name'>Board Name</StyledLabel>
-							<Input
-								name='name'
-								type='text'
-								placeholder='e.g. Take coffee break'
-							/>
+							<StyledLabel htmlFor='name'>{BOARD_NAME}</StyledLabel>
+							<Input name='name' type='text' />
 						</StyledBoxSection>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='columns'>Board Columns</StyledLabel>
+							<StyledLabel htmlFor='columns'>{BOARD_COLUMNS}</StyledLabel>
 							<FieldArray
 								name='columns'
 								render={({ push, remove }) => (
@@ -94,11 +79,11 @@ const BoardEdit = () => {
 												<StyledColumnInputBox key={index}>
 													<Input
 														name={`columns.${index}.name`}
-														placeholder='e.g. In Progress'
+														placeholder={COLUMN_PLACEHOLDER}
 													/>
 													<img
 														src={cross}
-														alt='Delete'
+														alt={DELETE}
 														onClick={() => remove(index)}
 													/>
 												</StyledColumnInputBox>
@@ -108,13 +93,13 @@ const BoardEdit = () => {
 											variant='secondary'
 											onClick={() => push({ id: uuid(), name: '' })}
 										>
-											+ Add New Column
+											{COLUMN_ADD}
 										</Button>
 									</>
 								)}
 							/>
 						</StyledBoxSection>
-						<Button type='submit'>Save Change</Button>
+						<Button type='submit'>{SAVE}</Button>
 					</Form>
 				)}
 			</Formik>

@@ -6,7 +6,7 @@ export interface Subtask {
 
 export interface InputTypes {
 	name: string;
-	placeholder: string;
+	placeholder?: string;
 	as?: 'textarea';
 	type?: string;
 	error?: string;
@@ -65,12 +65,22 @@ export interface ButtonStyled {
 export interface Board {
 	id: string;
 	name: string;
-	columns: {
-		id: string;
-		name: string;
-		tasks: TasksData[];
-	}[];
+	columns: Columns[];
 }
+export interface Columns {
+	id: string;
+	name: string;
+	tasks: TasksData[];
+}
+
+export interface TasksData {
+	id: string;
+	title: string;
+	description: string;
+	subtasks: Subtask[];
+	status: string;
+}
+
 export interface Boards {
 	boards: {
 		id: string;
@@ -97,13 +107,6 @@ export interface Column {
 	id: string;
 	name: string;
 	tasks: [];
-}
-export interface TasksData {
-	id: string;
-	title: string;
-	description: string;
-	subtasks: Subtask[];
-	status: string;
 }
 
 export interface ColumnInputValues {

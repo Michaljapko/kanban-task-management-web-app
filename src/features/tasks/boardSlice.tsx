@@ -18,6 +18,16 @@ export const selectCurrentBoard = ({ currentBoardId }: RootState) =>
 export const selectCurrentBoardIndex = (state: RootState) =>
 	state.tasks.boards.findIndex((board) => board.id === state.currentBoardId);
 
+export const selectCurrentBoardData = ({
+	currentBoardId,
+	tasks,
+}: RootState) => {
+	const currentBoard = tasks.boards.find(
+		(board) => board.id === currentBoardId
+	);
+	return currentBoard!;
+};
+
 export const selectCurrentBoardName = ({
 	currentBoardId,
 	tasks,
