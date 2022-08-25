@@ -40,8 +40,8 @@ export const StyledButton = styled.button<ButtonTypes>`
 			border-radius: 1.5rem;
 			padding: ${() =>
 				variant === 'header' || variant === 'headerOff'
-					? '5px 17px'
-					: '15px 17px'}};
+					? '0.3rem 1rem'
+					: '0.5rem 1rem'}};
 		
 			background-color: ${() => {
 				if (variant === 'secondary') return theme.buttonSecondary;
@@ -53,6 +53,7 @@ export const StyledButton = styled.button<ButtonTypes>`
 				if (variant === 'headerOff') return '0.25';
 			}};
 			font-size: 0.8rem;
+			line-height:1.4rem;
 			transition: background-color 0.3s ease-out;
 			&:hover {
 				background-color: ${() => {

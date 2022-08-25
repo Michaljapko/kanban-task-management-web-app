@@ -5,8 +5,8 @@ export const StyledText = styled.p`
 	color: ${({ theme }) => theme.textGrey};
 `;
 export const StyledWrapper = styled.div`
-	margin-top: 24px;
+	margin-top: 1.5rem;
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
+	gap: 1rem;
 `;
