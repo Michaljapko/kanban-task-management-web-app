@@ -11,8 +11,8 @@ import {
 	editTask,
 } from '../../features/tasks/tasksSlice';
 import {
-	selectIsDropDownShow,
-	setIsDropDownShow,
+	selectIsDropdownTaskShow,
+	setIsDropdownTaskShow,
 	setIsTaskShow,
 } from '../../features/layout/layoutSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -32,7 +32,7 @@ const TaskView = ({ taskData }: any) => {
 	const currentColumn = useAppSelector(selectCurrentColumn);
 	const taskColumn = useAppSelector(selectTasksData);
 	const currentBoard = useAppSelector(selectCurrentBoard);
-	const isDropDownShow = useAppSelector(selectIsDropDownShow);
+	const isDropdownTaskShow = useAppSelector(selectIsDropdownTaskShow);
 
 	function getTaskDone() {
 		setTaskDone(
@@ -48,10 +48,10 @@ const TaskView = ({ taskData }: any) => {
 				src={ellipsis}
 				alt='ellipsis'
 				onClick={() => {
-					dispatch(setIsDropDownShow());
+					dispatch(setIsDropdownTaskShow());
 				}}
 			/>
-			{isDropDownShow && <DropDown variant='task' />}
+			{isDropdownTaskShow && <DropDown variant='task' />}
 		</>
 	);
 	useEffect(() => {
@@ -121,7 +121,7 @@ const TaskView = ({ taskData }: any) => {
 							...task,
 							status: e.value,
 						};
- 
+
 						dispatch(
 							columnChangeTask({
 								columnId: currentColumn,
@@ -132,7 +132,6 @@ const TaskView = ({ taskData }: any) => {
 							})
 						);
 					}}
-			
 					options={taskColumn.map((column) => ({
 						value: column.id,
 						label: column.name,

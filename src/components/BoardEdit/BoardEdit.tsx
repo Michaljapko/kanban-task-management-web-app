@@ -35,7 +35,7 @@ const BoardEdit = () => {
 	const currentBoard = useAppSelector(selectCurrentBoardData);
 	const columns = currentBoard.columns;
 	const initialValues: BoardInputValues = {
-		name: currentBoard!.name,
+		name: currentBoard.name,
 		columns: columns.map((column) => ({ id: column.id, name: column.name })),
 	};
 

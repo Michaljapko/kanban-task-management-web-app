@@ -9,7 +9,8 @@ const initialState = {
 	isBoardDeleteShow: false,
 	isTaskDeleteShow: false,
 	isTaskShow: false,
-	isDropDownShow: false,
+	isDropdownHeaderShow: false,
+	isDropdownTaskShow: false,
 	isBoardEditShow: false,
 };
 export const layoutSlice = createSlice({
@@ -36,28 +37,26 @@ export const layoutSlice = createSlice({
 				isSidebarShow: false,
 				isTaskAddShow: !state.isTaskAddShow,
 			}),
-
 		setIsDeleteTaskShow: (state) =>
 			(state = { ...initialState, isTaskDeleteShow: !state.isTaskDeleteShow }),
-
+			
 		setIsDeleteBoardShow: (state) =>
 			(state = {
 				...initialState,
 				isBoardDeleteShow: !state.isBoardDeleteShow,
 			}),
-
 		setIsTaskShow: (state) =>
 			(state = { ...initialState, isTaskShow: !state.isTaskShow }),
-
 		setIsTaskEditShow: (state) =>
 			(state = {
 				...initialState,
 				isTaskShow: !state.isTaskShow,
 				isTaskEditShow: !state.isTaskEditShow,
 			}),
-
-		setIsDropDownShow: (state) =>
-			(state = { ...state, isDropDownShow: !state.isDropDownShow }),
+		setIsDropdownHeaderShow: (state) =>
+			(state = { ...state, isDropdownHeaderShow: !state.isDropdownHeaderShow }),
+		setIsDropdownTaskShow: (state) =>
+			(state = { ...state, isDropdownTaskShow: !state.isDropdownTaskShow }),
 	},
 });
 
@@ -68,7 +67,8 @@ export const {
 	setIsDeleteTaskShow,
 	setIsTaskAddShow,
 	setIsTaskShow,
-	setIsDropDownShow,
+	setIsDropdownHeaderShow,
+	setIsDropdownTaskShow,
 	setIsBoardEditShow,
 	setIsTaskEditShow,
 } = layoutSlice.actions;
@@ -89,7 +89,9 @@ export const selectIsDeleteTaskShow = (state: RootState) =>
 	state.layoutSlice.isTaskDeleteShow;
 export const selectIsTaskShow = (state: RootState) =>
 	state.layoutSlice.isTaskShow;
-export const selectIsDropDownShow = (state: RootState) =>
-	state.layoutSlice.isDropDownShow;
+export const selectIsDropdownHeaderShow = (state: RootState) =>
+	state.layoutSlice.isDropdownHeaderShow;
+export const selectIsDropdownTaskShow = (state: RootState) =>
+	state.layoutSlice.isDropdownTaskShow;
 
 export default layoutSlice.reducer;

@@ -1,22 +1,22 @@
 import styled from 'styled-components';
 export const StyledDropMenu = styled.div`
 	position: absolute;
-	top: 50px;
+	top: 3rem;
 	right: 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	gap: 16px;
-	margin-right: 24px;
-	box-shadow: 0px 10px 20px rgba(54, 78, 126, 0.25);
-	border-radius: 8px;
+	gap: 1rem;
+	margin-right: 1.5rem;
+	box-shadow: 1rem 0.625rem 1.25rem rgba(54, 78, 126, 0.25);
+	border-radius: 0.5rem;
 	width: 194px;
 	height: 94px;
-	padding: 16px;
+	padding: 1rem;
 	background: ${({ theme }) => theme.backgroundMain};
 `;
 
-export const StyledDropMenuButton = styled.button<{ variant?: 'delete' }>`
+export const StyledDropMenuButton = styled.button<{ variant?: 'delete'}>`
 	${({ theme }) => theme.text.large};
 	border: none;
 	text-align: start;

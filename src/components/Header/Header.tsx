@@ -18,15 +18,15 @@ import {
 	selectIsSidebarShow,
 	setIsSidebarShow,
 	setIsTaskAddShow,
-	selectIsDropDownShow,
-	setIsDropDownShow,
+	selectIsDropdownHeaderShow,
+	setIsDropdownHeaderShow,
 } from '../../features/layout/layoutSlice';
 
 const Header = () => {
 	const dispatch = useAppDispatch();
 	const taskData = useAppSelector(selectTasksData);
 	const isSidebarShow = useAppSelector(selectIsSidebarShow);
-	const isDropDownShow = useAppSelector(selectIsDropDownShow);
+	const isDropdownHeaderShow = useAppSelector(selectIsDropdownHeaderShow);
 
 	return (
 		<StyledHeader>
@@ -61,10 +61,10 @@ const Header = () => {
 					src={ellipsis}
 					alt='ellipsis'
 					onClick={() => {
-						dispatch(setIsDropDownShow());
+						dispatch(setIsDropdownHeaderShow());
 					}}
 				/>
-				{isDropDownShow && <DropDown variant='board' />}
+				{isDropdownHeaderShow && <DropDown variant='board' />}
 			</StyledHeaderBox>
 		</StyledHeader>
 	);

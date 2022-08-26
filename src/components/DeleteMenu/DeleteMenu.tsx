@@ -32,7 +32,7 @@ const DeleteMenu = ({ variant }: { variant: 'board' | 'task' }) => {
 	const taskId = useAppSelector(selectCurrentTask);
 	const boardName = useAppSelector(selectCurrentBoardName);
 	const taskName = useAppSelector(selectCurrentTaskName);
-	
+
 	const getTitle = () => {
 		if (variant === 'board') return BOARD_DELETE;
 		if (variant === 'task') return TASK_DELETE;
@@ -55,29 +55,27 @@ const DeleteMenu = ({ variant }: { variant: 'board' | 'task' }) => {
 			})
 		);
 	};
-
+	const closeHandler = () => {
+		if (variant === 'board') dispatch(setIsDeleteBoardShow());
+		if (variant === 'task') dispatch(setIsDeleteTaskShow());
+	};
+	const deleteHandler = () => {
+		if (variant === 'board') boardDeleteHandler();
+		if (variant === 'task') taskDeleteHandler();
+	};
 
 	return (
 		<PopUp
 			title={getTitle()}
-			layoutDispatch={() => dispatch(setIsDeleteBoardShow())}
+			layoutDispatch={() => closeHandler()}
 			variant={'delete'}
 		>
 			<StyledText>{getText()}</StyledText>
 			<StyledWrapper>
-				<Button
-					variant='delete'
-					onClick={() => {
-						if (variant === 'board') boardDeleteHandler();
-						if (variant === 'task') taskDeleteHandler();
-					}}
-				>
+				<Button variant='delete' onClick={() => deleteHandler()}>
 					{DELETE}
 				</Button>
-				<Button
-					variant='secondary'
-					onClick={() => dispatch(setIsDeleteBoardShow())}
-				>
+				<Button variant='secondary' onClick={() => () => closeHandler()}>
 					{CANCEL}
 				</Button>
 			</StyledWrapper>

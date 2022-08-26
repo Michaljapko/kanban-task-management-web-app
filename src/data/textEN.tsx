@@ -12,8 +12,9 @@ export {
 	BOARD_PLACEHOLDER,
 	SAVE,
 	CANCEL,
+	EDIT,
 	boardDeleteInfo,
-    taskDeleteInfo
+	taskDeleteInfo,
 };
 
 const DELETE = 'Delete';
@@ -29,6 +30,7 @@ const BOARD_COLUMNS = 'Board Columns';
 const BOARD_PLACEHOLDER = 'e.g. Web Design';
 const SAVE = 'Save Changes';
 const CANCEL = 'Cancel';
+const EDIT = 'Edit';
 const boardDeleteInfo = (
 	boardName: string
 ) => `Are you sure you want to delete the ‘${boardName}’ board? This action
