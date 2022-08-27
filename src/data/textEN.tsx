@@ -21,12 +21,15 @@ export {
 	TASK_PLACEHOLDER,
 	TASK_SUBTASK,
 	ALL_BOARD,
+	STATE,
 	STATUS,
 	SAVE,
 	CANCEL,
 	EDIT,
 	boardDeleteInfo,
 	taskDeleteInfo,
+	subtaskInfo,
+	subtaskInfoCard,
 };
 
 const EMPTY = 'Create or choose a board to get started.';
@@ -56,6 +59,7 @@ const STATUS = 'Status';
 const SAVE = 'Save Changes';
 const CANCEL = 'Cancel';
 const EDIT = 'Edit';
+const STATE = 'Current state:';
 const boardDeleteInfo = (
 	boardName: string
 ) => `Are you sure you want to delete the ‘${boardName}’ board? This action
@@ -64,3 +68,7 @@ const taskDeleteInfo = (
 	taskName: string
 ) => `Are you sure you want to delete the ‘${taskName}’ task and its
 subtasks? This action cannot be reversed.`;
+const subtaskInfo = (subtasksDone: number, subtasksNum: number) =>
+	`Subtask (${subtasksDone} of ${subtasksNum})`;
+const subtaskInfoCard = (subtasksDone: number, subtasksNum: number) =>
+	`${subtasksDone} of ${subtasksNum} subtasks`;

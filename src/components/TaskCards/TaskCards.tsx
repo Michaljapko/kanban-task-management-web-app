@@ -9,29 +9,27 @@ import {
 	setIsTaskShow,
 } from '../../features/layout/layoutSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-
-import TaskView from '../TaskView';
-import { changeColumn } from '../../features/tasks/columnSlice';
 import { changeCurrentTask } from '../../features/tasks/taskSlice';
+import { changeColumn } from '../../features/tasks/columnSlice';
 import { selectTasksData } from '../../features/tasks/tasksSlice';
-import { useState } from 'react';
+import { TasksData } from '../../types/types';
+import { getCompletedTask } from '../../helpers/getCompletedTasks';
+import { subtaskInfoCard } from '../../data/textEN';
+import TaskView from '../TaskView';
 
 const TaskCards = () => {
 	const dispatch = useAppDispatch();
 	const columns = useAppSelector(selectTasksData);
 	const isTaskShow = useAppSelector(selectIsTaskShow);
-	const [taskViewData, setTaskViewData] = useState();
-	// const [currentColumnId, setCurrentColumnId] = useState();
 
-	function showTask(task: any, ColumnId: any) {
+	function showTask(task: TasksData, ColumnId: string) {
 		dispatch(changeColumn(ColumnId));
 		dispatch(changeCurrentTask(task.id));
-		setTaskViewData(task);
 		dispatch(setIsTaskShow());
 	}
 	return (
 		<>
-			{isTaskShow && <TaskView taskData={taskViewData} />}
+			{isTaskShow && <TaskView />}
 			{columns &&
 				columns.map((column) => {
 					return (
@@ -40,23 +38,20 @@ const TaskCards = () => {
 								{column.name} ({column.tasks.length})
 							</StyledHeading>
 
-							{column.tasks.map((task) => {
-								return (
-									<StyledCard
-										onClick={() => showTask(task, column.id)}
-										key={task.id}
-									>
-										<StyledTitle>{task.title}</StyledTitle>
-										<StyledParagraph>
-											{task.subtasks.reduce((taskDone, task) => {
-												if (task.isCompleted) return ++taskDone;
-												return taskDone;
-											}, 0)}{' '}
-											of {task.subtasks.length} substasks
-										</StyledParagraph>
-									</StyledCard>
-								);
-							})}
+							{column.tasks.map((task) => (
+								<StyledCard
+									onClick={() => showTask(task, column.id)}
+									key={task.id}
+								>
+									<StyledTitle>{task.title}</StyledTitle>
+									<StyledParagraph>
+										{subtaskInfoCard(
+											getCompletedTask(task.subtasks),
+											task.subtasks.length
+										)}
+									</StyledParagraph>
+								</StyledCard>
+							))}
 						</div>
 					);
 				})}

@@ -9,39 +9,38 @@ import {
 	selectTasksData,
 	columnChangeTask,
 	editTask,
+	selectCurrentTaskData,
 } from '../../features/tasks/tasksSlice';
 import {
 	selectIsDropdownTaskShow,
 	setIsDropdownTaskShow,
 	setIsTaskShow,
 } from '../../features/layout/layoutSlice';
+import {
+	changeColumn,
+	selectCurrentColumn,
+} from '../../features/tasks/columnSlice';
+import { STATE, subtaskInfo } from '../../data/textEN';
+import { getCompletedTask } from '../../helpers/getCompletedTasks';
+import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useEffect, useState } from 'react';
+import { Subtask } from '../../types/types';
 import ellipsis from '../../assets/icon-vertical-ellipsis.svg';
-import { selectCurrentBoard } from '../../features/tasks/boardSlice';
-import { selectCurrentColumn } from '../../features/tasks/columnSlice';
 import PopUp from '../PopUp';
 import DropDown from '../DropDown';
 import CheckBox from '../CheckBox/ChcekBox';
 import SelectInput from '../SelectInput';
 
-const TaskView = ({ taskData }: any) => {
-	const [task, setTask] = useState(taskData);
+const TaskView = () => {
 	const [taskDone, setTaskDone] = useState(0);
 	const dispatch = useAppDispatch();
 	const currentColumn = useAppSelector(selectCurrentColumn);
-	const taskColumn = useAppSelector(selectTasksData);
 	const currentBoard = useAppSelector(selectCurrentBoard);
+	const taskColumn = useAppSelector(selectTasksData);
 	const isDropdownTaskShow = useAppSelector(selectIsDropdownTaskShow);
+	const task = useAppSelector(selectCurrentTaskData);
 
-	function getTaskDone() {
-		setTaskDone(
-			task.subtasks.reduce((taskDone: number, task: any) => {
-				if (task.isCompleted) return ++taskDone;
-				return taskDone;
-			}, 0)
-		);
-	}
 	const ellipsisButton = (
 		<>
 			<img
@@ -54,8 +53,21 @@ const TaskView = ({ taskData }: any) => {
 			{isDropdownTaskShow && <DropDown variant='task' />}
 		</>
 	);
+	const getUpdateTask = (subtask: Subtask) => ({
+		...task,
+		subtasks: task.subtasks.map((subtaskInSet: Subtask) => {
+			let isCompleted = subtaskInSet.isCompleted;
+			if (subtaskInSet.id === subtask.id) isCompleted = !isCompleted;
+			return {
+				id: subtaskInSet.id,
+				title: subtaskInSet.title,
+				isCompleted: isCompleted,
+			};
+		}),
+	});
+
 	useEffect(() => {
-		getTaskDone();
+		setTaskDone(getCompletedTask(task.subtasks));
 	}, [task]);
 
 	return (
@@ -72,38 +84,22 @@ const TaskView = ({ taskData }: any) => {
 
 			<StyledBoxSection>
 				<StyledParagraph>
-					Subtask ({taskDone} of {task.subtasks.length})
+					{subtaskInfo(taskDone, task.subtasks.length)}
 				</StyledParagraph>
 
-				{task.subtasks.map((subtask: any) => (
-					<StyledSubtaskBox>
+				{task.subtasks.map((subtask, index) => (
+					<StyledSubtaskBox key={subtask.id}>
 						<CheckBox
-							key={subtask.id}
 							name='subscribe'
 							onChange={() => {
-								const taskUpdated = {
-									...task,
-									subtasks: task.subtasks.map((subtaskInSet: any) => {
-										let isCompleted = subtaskInSet.isCompleted;
-										if (subtaskInSet.id === subtask.id)
-											isCompleted = !isCompleted;
-										return {
-											id: subtaskInSet.id,
-											title: subtaskInSet.title,
-											isCompleted: isCompleted,
-										};
-									}),
-								};
-								setTask(taskUpdated);
 								dispatch(
 									editTask({
 										columnId: currentColumn,
 										taskId: task.id,
 										currentBoard: currentBoard,
-										task: taskUpdated,
+										task: getUpdateTask(subtask),
 									})
 								);
-								getTaskDone();
 							}}
 							defaultChecked={subtask.isCompleted}
 						/>
@@ -114,14 +110,11 @@ const TaskView = ({ taskData }: any) => {
 				))}
 			</StyledBoxSection>
 			<StyledBoxSection>
-				<StyledParagraph>Current state:</StyledParagraph>
+				<StyledParagraph>{STATE}</StyledParagraph>
 				<SelectInput
-					onChange={(e: any) => {
-						const taskUpdated = {
-							...task,
-							status: e.value,
-						};
-
+					onChange={(e) => {
+						const taskUpdated = { ...task };
+						dispatch(changeColumn(e.value));
 						dispatch(
 							columnChangeTask({
 								columnId: currentColumn,
@@ -132,7 +125,7 @@ const TaskView = ({ taskData }: any) => {
 							})
 						);
 					}}
-					options={taskColumn.map((column) => ({
+					options={taskColumn!.map((column) => ({
 						value: column.id,
 						label: column.name,
 					}))}

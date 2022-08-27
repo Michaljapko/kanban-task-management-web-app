@@ -14,7 +14,7 @@ export interface InputTypes {
 export interface CheckBoxTypes {
 	name?: string;
 	onChange?: () => void;
-	defaultChecked?: string;
+	defaultChecked?: string | boolean;
 }
 
 export type Variants =
@@ -37,7 +37,7 @@ export interface PopUpTypes {
 	headingElement?: JSX.Element | JSX.Element[] | string;
 }
 export interface SelectInputTypes {
-	name: string;
+	name?: string;
 	options: { value: string; label: string }[];
 	defaultValue?: { value: string; label: string };
 	onChange: (e: { value: string; label: string }) => void;
