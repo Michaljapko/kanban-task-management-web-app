@@ -22,20 +22,26 @@ import PopUp from '../PopUp';
 import { taskAddSchema } from '../../helpers/validationSchema';
 import Input from '../Input';
 import SelectInput from '../SelectInput';
+import {
+	COLUMN_ADD,
+	STATUS,
+	TASK_ADD,
+	TASK_DESCRIPTION,
+	TASK_EDIT,
+	TASK_SUBTASK,
+	TASK_TITLE,
+} from '../../data/textEN';
 
 const TaskEdit = () => {
 	const dispatch = useAppDispatch();
-	const taskColumn = useAppSelector(selectTasksData);
+	const taskColumns = useAppSelector(selectTasksData);
 	const currentColumn = useAppSelector(selectCurrentColumn);
 	const currentBoard = useAppSelector(selectCurrentBoard);
 	const task = useAppSelector(selectCurrentTaskData);
-	const getColumns = () =>
-		taskColumn!.map((column) => ({ id: column.id, name: column.name }));
 
-	const columnsData = getColumns().map((column) => ({
-		value: column.id,
-		label: column.name,
-	}));
+	const getColumns = () =>
+		taskColumns!.map((column) => ({ value: column.id, label: column.name }));
+	const columnsData = getColumns();
 
 	const initialValues: TaskInputValues = {
 		title: task.title,
@@ -45,7 +51,6 @@ const TaskEdit = () => {
 	};
 
 	function handleEditTask(values: TaskInputValues) {
-		console.log(values);
 		const taskEdited: TasksData = {
 			id: task.id,
 			title: values.title,
@@ -80,7 +85,7 @@ const TaskEdit = () => {
 
 	return (
 		<PopUp
-			title={'Edit Task'}
+			title={TASK_EDIT}
 			layoutDispatch={() => dispatch(setIsTaskEditShow())}
 		>
 			<Formik
@@ -91,25 +96,17 @@ const TaskEdit = () => {
 				{({ values }) => (
 					<Form>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='title'>Title</StyledLabel>
-							<Input
-								name='title'
-								type='text'
-								placeholder='e.g. Take coffee break'
-							/>
+							<StyledLabel htmlFor='title'>{TASK_TITLE}</StyledLabel>
+							<Input name='title' type='text' />
 						</StyledBoxSection>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='description'>Description</StyledLabel>
-							<Input
-								name='description'
-								placeholder='e.g. It’s always good to take a break. This 
-15 minute break will  recharge the batteries 
-a little.'
-								as='textarea'
-							/>
+							<StyledLabel htmlFor='description'>
+								{TASK_DESCRIPTION}
+							</StyledLabel>
+							<Input name='description' as='textarea' />
 						</StyledBoxSection>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='subtask'>Subtask</StyledLabel>
+							<StyledLabel htmlFor='subtask'>{TASK_SUBTASK}</StyledLabel>
 							<FieldArray
 								name='subtasks'
 								render={({ push, remove }) => (
@@ -117,10 +114,7 @@ a little.'
 										{values.subtasks.length > 0 &&
 											values.subtasks.map((subtasks, index) => (
 												<StyledColumnInputBox key={index}>
-													<Input
-														name={`subtasks.${index}.title`}
-														placeholder='e.g. In Progress'
-													/>
+													<Input name={`subtasks.${index}.title`} />
 													<img
 														src={cross}
 														alt='Delete'
@@ -131,16 +125,17 @@ a little.'
 										<Button
 											type='button'
 											variant='secondary'
+											width='full'
 											onClick={() => push({ title: '' })}
 										>
-											+ Add New Column
+											{COLUMN_ADD}
 										</Button>
 									</>
 								)}
 							/>
 						</StyledBoxSection>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='status'>Status</StyledLabel>
+							<StyledLabel htmlFor='status'>{STATUS}</StyledLabel>
 							<SelectInput
 								name='status'
 								options={columnsData}
@@ -150,7 +145,9 @@ a little.'
 								}}
 							/>
 						</StyledBoxSection>
-						<Button type='submit'>Create Task</Button>
+						<Button width='full' type='submit'>
+							{TASK_ADD}
+						</Button>
 					</Form>
 				)}
 			</Formik>

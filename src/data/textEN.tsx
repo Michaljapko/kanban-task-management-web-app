@@ -13,6 +13,7 @@ export {
 	BOARD_ADD,
 	BOARD_DELETE,
 	BOARD_PLACEHOLDER,
+	TASK_EDIT,
 	TASK_TITLE,
 	TASK_NAME,
 	TASK_ADD,
@@ -46,6 +47,7 @@ const TASK_TITLE = 'Add New Task';
 const TASK_ADD = 'Create Task';
 const TASK_NAME = 'Title';
 const TASK_DESCRIPTION = 'Description';
+const TASK_EDIT = 'Edit Task';
 const TASK_SUBTASK = 'Subtask';
 const TASK_PLACEHOLDER =
 	'e.g. It’s always good to take a break. This 15 minute break will  recharge the batteries a little.';
