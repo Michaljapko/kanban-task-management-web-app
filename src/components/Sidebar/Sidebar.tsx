@@ -1,4 +1,3 @@
-import { StyledHead, StyledRadioBox } from './Sidebar.styled';
 import {
 	changeBoard,
 	selectBoards,
@@ -8,9 +7,10 @@ import {
 	setIsBoardAddShow,
 	setIsSidebarShow,
 } from '../../features/layout/layoutSlice';
-import { toogleTheme } from '../../features/layout/themeSlice';
+import { ALL_BOARD, BOARD_CREATE } from '../../data/textEN';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-
+import { StyledHead, StyledRadioBox } from './Sidebar.styled';
+import { toogleTheme } from '../../features/layout/themeSlice';
 import Button from '../Button';
 import moon from '../../assets/icon-dark-theme.svg';
 import sun from '../../assets/icon-light-theme.svg';
@@ -26,33 +26,38 @@ const Sidebar = () => {
 			variant='sidebar'
 			layoutDispatch={() => dispatch(setIsSidebarShow())}
 		>
-			<StyledHead>All Boards ({boards.length})</StyledHead>
-			{boards.map((board) => {
-				let variant: 'sidebar' | 'sidebarCurrent' = 'sidebar';
-				if (board.id === currentBoards) {
-					variant = 'sidebarCurrent';
-				}
-				return (
-					<Button
-						onClick={() => {
-							dispatch(changeBoard(board.id));
-							dispatch(setIsSidebarShow());
-						}}
-						key={board.id}
-						variant={variant}
-						icon='board'
-					>
-						{board.name}
-					</Button>
-				);
-			})}
+			<StyledHead>
+				{ALL_BOARD} ({boards.length})
+			</StyledHead>
+			<>
+				{boards.map((board) => {
+					let variant: 'sidebar' | 'sidebarCurrent' = 'sidebar';
+					if (board.id === currentBoards) {
+						variant = 'sidebarCurrent';
+					}
+
+					return (
+						<Button
+							onClick={() => {
+								dispatch(changeBoard(board.id));
+								dispatch(setIsSidebarShow());
+							}}
+							key={board.id}
+							variant={variant}
+							icon='board'
+						>
+							{board.name}
+						</Button>
+					);
+				})}
+			</>
 
 			<Button
 				onClick={() => dispatch(setIsBoardAddShow())}
 				variant='sidebarBold'
 				icon='board'
 			>
-				+ Create New Board
+				{BOARD_CREATE}
 			</Button>
 			<StyledRadioBox>
 				<img src={sun} alt='Light Theme' />

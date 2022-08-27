@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
-
-
 export const StyledHead = styled.div`
-	margin-bottom: 19px;
-	padding: 0 24px;
-	font-size: 12px;
+	margin-bottom: 1.1rem;
+	padding: 0 1.5rem;
+	color: ${({ theme }) => theme.textGrey};
+	font-size: 0.75rem;
+	font-weight: 700;
+	line-height: 0.9rem;
 	letter-spacing: 2.4px;
+
 	text-transform: uppercase;
 `;
 
@@ -14,8 +16,8 @@ export const StyledRadioBox = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 24px;
-	margin: 16px;
+	gap: 1.5rem;
+	margin: 1rem;
 	width: 235px;
 	height: 48px;
 	border-radius: 6px;

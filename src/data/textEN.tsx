@@ -13,6 +13,7 @@ export {
 	BOARD_ADD,
 	BOARD_DELETE,
 	BOARD_PLACEHOLDER,
+	ALL_BOARD,
 	SAVE,
 	CANCEL,
 	EDIT,
@@ -31,9 +32,10 @@ const BOARD_NAME = 'Board Name';
 const BOARD_ADD = 'Add New Board';
 const BOARD_EDIT = 'Edit Board';
 const BOARD_DELETE = 'Delete this board?';
-const BOARD_CREATE = 'Create New Board';
+const BOARD_CREATE = '+ Create New Board';
 const BOARD_COLUMNS = 'Board Columns';
 const BOARD_PLACEHOLDER = 'e.g. Web Design';
+const ALL_BOARD = 'All Board';
 const SAVE = 'Save Changes';
 const CANCEL = 'Cancel';
 const EDIT = 'Edit';

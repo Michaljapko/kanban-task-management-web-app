@@ -6,6 +6,7 @@ export const StyledButton = styled.button<ButtonTypes>`
 	${({ variant, theme, width }) => {
 		if (variant === 'sidebarCurrent')
 			return css`
+				${() => theme.textHeading.medium};
 				display: flex;
 				justify-content: flex-start;
 				gap: 0.7rem;
@@ -15,11 +16,13 @@ export const StyledButton = styled.button<ButtonTypes>`
 				padding: 1rem 1.5rem;
 				background: ${() => theme.buttonPrimary};
 				color: ${() => theme.buttonText};
+				font-weight: 500;
 				text-align: start;
 			`;
 
 		if (variant === 'sidebar' || variant === 'sidebarBold')
 			return css`
+				${() => theme.textHeading.medium};
 				display: flex;
 				justify-content: flex-start;
 				gap: 0.75rem;
@@ -27,7 +30,9 @@ export const StyledButton = styled.button<ButtonTypes>`
 				padding: 1rem 1.5rem;
 				background: none;
 				color: ${() =>
-					variant === 'sidebarBold' ? theme.mainColor : theme.textGrey};
+					variant === 'sidebarBold' ? theme.themeColor : theme.textGrey};
+				font-weight: ${() => (variant === 'sidebarBold' ? 700 : 500)};
+
 				text-align: start;
 			`;
 
