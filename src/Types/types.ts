@@ -27,15 +27,14 @@ export type Variants =
 	| 'delete'
 	| 'landingPage';
 
-export interface PopUpVariants {
-	variant?: 'sidebar' | 'delete';
-}
+export type PopUpVariants = 'sidebar' | 'delete';
+
 export interface PopUpTypes {
 	children?: JSX.Element | JSX.Element[] | string;
 	title?: string;
 	layoutDispatch: () => void;
 	variant?: PopUpVariants;
-	headingElement: JSX.Element | JSX.Element[] | string;
+	headingElement?: JSX.Element | JSX.Element[] | string;
 }
 export interface SelectInputTypes {
 	name: string;
