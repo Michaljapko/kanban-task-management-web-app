@@ -1,10 +1,4 @@
 import {
-	StyledInfo,
-	StyledWrapperInfo,
-	StyledWrapperCard,
-} from './LandingPage.styled';
-import { addColumn, selectTasksData } from '../../features/tasks/tasksSlice';
-import {
 	selectIsBoardAddShow,
 	selectIsBoardEditShow,
 	selectIsDeleteBoardShow,
@@ -12,8 +6,17 @@ import {
 	selectIsSidebarShow,
 	selectIsTaskAddShow,
 	selectIsTaskEditShow,
+	setIsBoardAddShow,
+	setIsBoardEditShow,
 } from '../../features/layout/layoutSlice';
+import {
+	StyledInfo,
+	StyledWrapperInfo,
+	StyledWrapperCard,
+} from './LandingPage.styled';
+import { BOARD_ADD, COLUMN_ADD, EMPTY, EMPTY_BOARD } from '../../data/textEN';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { selectTasksData } from '../../features/tasks/tasksSlice';
 import BoardAdd from '../BoardAdd';
 import Button from '../Button';
 import Header from '../Header';
@@ -21,14 +24,11 @@ import Sidebar from '../Sidebar';
 import TaskAdd from '../TaskAdd/TaskAdd';
 import TaskCards from '../TaskCards';
 import TaskEdit from '../TaskEdit';
-import { selectCurrentBoard } from '../../features/tasks/boardSlice';
-import { v4 as uuid } from 'uuid';
 import BoardEdit from '../BoardEdit';
 import DeleteMenu from '../DeleteMenu';
 
 const LandingPage = () => {
 	const tasksData = useAppSelector(selectTasksData);
-	const currentBoard = useAppSelector(selectCurrentBoard);
 	const isSidebarShow = useAppSelector(selectIsSidebarShow);
 	const isBoardAddShow = useAppSelector(selectIsBoardAddShow);
 	const isBoardEditShow = useAppSelector(selectIsBoardEditShow);
@@ -37,6 +37,7 @@ const LandingPage = () => {
 	const isTaskDeleteShow = useAppSelector(selectIsDeleteTaskShow);
 	const isTaskEditShow = useAppSelector(selectIsTaskEditShow);
 	const dispatch = useAppDispatch();
+	console.log(tasksData);
 
 	return (
 		<>
@@ -49,24 +50,20 @@ const LandingPage = () => {
 			<Header />
 			{isSidebarShow && <Sidebar />}
 
-			{!tasksData && (
+			{(!tasksData || tasksData?.length === 0) && (
 				<StyledWrapperInfo>
 					<StyledInfo>
-						This board is empty. Create a new column to get started.
+						{tasksData?.length === 0 ? EMPTY_BOARD : EMPTY}
 					</StyledInfo>
-
 					<Button
 						variant={'landingPage'}
-						onClick={() =>
-							dispatch(
-								addColumn({
-									column: { id: uuid(), name: 'New column', tasks: [] },
-									currentBoard: currentBoard,
-								})
-							)
-						}
+						onClick={() => {
+							tasksData?.length === 0
+								? dispatch(setIsBoardEditShow())
+								: dispatch(setIsBoardAddShow());
+						}}
 					>
-						+ Add New Column
+						{tasksData?.length === 0 ? COLUMN_ADD : BOARD_ADD}
 					</Button>
 				</StyledWrapperInfo>
 			)}

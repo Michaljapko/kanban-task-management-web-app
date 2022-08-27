@@ -1,4 +1,6 @@
 export {
+	EMPTY,
+	EMPTY_BOARD,
 	APLICATION_TITLE,
 	DELETE,
 	COLUMN_ADD,
@@ -18,6 +20,8 @@ export {
 	taskDeleteInfo,
 };
 
+const EMPTY = 'Create or choose a board to get started.';
+const EMPTY_BOARD = 'This board is empty. Create a new column to get started.';
 const APLICATION_TITLE = 'Platform Launch';
 const DELETE = 'Delete';
 const COLUMN_ADD = '+ Add New Column';

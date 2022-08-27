@@ -7,7 +7,7 @@ export const StyledWrapperInfo = styled.div`
 	justify-content: center;
 	height: 100%;
 	padding: 1rem;
-	gap: 25px;
+	gap: 1.5rem;
 `;
 export const StyledWrapperCard = styled.div`
 	display: flex;
@@ -15,8 +15,8 @@ export const StyledWrapperCard = styled.div`
 	align-items: flex-center;
 	justify-content: flex-start;
 	height: 100%;
-	padding: 88px 16px;
-	gap: 25px;
+	padding: 5.5rem 1rem;
+	gap: 1.5rem;
 `;
 
 export const StyledInfo = styled.p`
