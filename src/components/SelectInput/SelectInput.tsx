@@ -1,6 +1,11 @@
 import { StyledSelect } from './SelectInput.styled';
-
-const SelectInput = ({ name, options, defaultValue, onChange }) => {
+import { SelectInputTypes } from '../../types/types';
+const SelectInput = ({
+	name,
+	options,
+	defaultValue,
+	onChange,
+}: SelectInputTypes) => {
 	return (
 		<StyledSelect
 			isSearchable={false}

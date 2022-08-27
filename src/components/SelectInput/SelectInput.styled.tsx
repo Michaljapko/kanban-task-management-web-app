@@ -3,13 +3,13 @@ import Select from 'react-select';
 
 export const StyledSelect = styled(Select)`
 	.Select__control {
-		width: 100%;
-		background: ${({ theme }) => theme.backgroundMain};
-		border: 1px solid ${({ theme }) => theme.borderGray};
-		border-radius: 4px;
 		box-shadow: none;
+		border: 1px solid ${({ theme }) => theme.borderGray};
+		border-radius: 0.25rem;
 		height: 40px;
-		padding: 0 16px;
+		width: 100%;
+		padding: 0 1rem;
+		background: ${({ theme }) => theme.backgroundMain};
 		cursor: pointer;
 	}
 	.Select__indicator-separator {

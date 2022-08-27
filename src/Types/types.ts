@@ -37,6 +37,12 @@ export interface PopUpTypes {
 	variant?: PopUpVariants;
 	headingElement: JSX.Element | JSX.Element[] | string;
 }
+export interface SelectInputTypes {
+	name: string;
+	options: { value: String; label: string }[];
+	defaultValue: { value: String; label: string };
+	onChange: () => void;
+}
 export interface ButtonTypes {
 	children?: JSX.Element | JSX.Element[] | string;
 	icon?: 'plus' | 'board';
