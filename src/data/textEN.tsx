@@ -13,7 +13,14 @@ export {
 	BOARD_ADD,
 	BOARD_DELETE,
 	BOARD_PLACEHOLDER,
+	TASK_TITLE,
+	TASK_NAME,
+	TASK_ADD,
+	TASK_DESCRIPTION,
+	TASK_PLACEHOLDER,
+	TASK_SUBTASK,
 	ALL_BOARD,
+	STATUS,
 	SAVE,
 	CANCEL,
 	EDIT,
@@ -35,7 +42,15 @@ const BOARD_DELETE = 'Delete this board?';
 const BOARD_CREATE = '+ Create New Board';
 const BOARD_COLUMNS = 'Board Columns';
 const BOARD_PLACEHOLDER = 'e.g. Web Design';
+const TASK_TITLE = 'Add New Task';
+const TASK_ADD = 'Create Task';
+const TASK_NAME = 'Title';
+const TASK_DESCRIPTION = 'Description';
+const TASK_SUBTASK = 'Subtask';
+const TASK_PLACEHOLDER =
+	'e.g. It’s always good to take a break. This 15 minute break will  recharge the batteries a little.';
 const ALL_BOARD = 'All Board';
+const STATUS = 'Status';
 const SAVE = 'Save Changes';
 const CANCEL = 'Cancel';
 const EDIT = 'Edit';

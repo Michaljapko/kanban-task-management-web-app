@@ -38,9 +38,9 @@ export interface PopUpTypes {
 }
 export interface SelectInputTypes {
 	name: string;
-	options: { value: String; label: string }[];
-	defaultValue: { value: String; label: string };
-	onChange: () => void;
+	options: { value: string; label: string }[];
+	defaultValue?: { value: string; label: string };
+	onChange: (e: { value: string; label: string }) => void;
 }
 export interface ButtonTypes {
 	children?: JSX.Element | JSX.Element[] | string;

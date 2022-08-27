@@ -1,21 +1,31 @@
 import {
+	COLUMN_ADD,
+	STATUS,
+	TASK_ADD,
+	TASK_DESCRIPTION,
+	TASK_NAME,
+	TASK_PLACEHOLDER,
+	TASK_SUBTASK,
+	TASK_TITLE,
+} from '../../data/textEN';
+import {
 	StyledBoxSection,
 	StyledColumnInputBox,
 	StyledLabel,
 } from './TaskAdd.style';
-import { Formik, Form, FieldArray } from 'formik';
-import { addTask, selectTasksData } from '../../features/tasks/tasksSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import Button from '../Button';
+import { Formik, Form, FieldArray } from 'formik';
 import { TasksData, TaskInputValues } from '../../types/types';
+import { addTask, selectTasksData } from '../../features/tasks/tasksSlice';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { setIsTaskAddShow } from '../../features/layout/layoutSlice';
-import cross from '../../assets/icon-cross.svg';
+import { taskAddSchema } from '../../helpers/validationSchema';
 import { v4 as uuid } from 'uuid';
+import cross from '../../assets/icon-cross.svg';
+import SelectInput from '../SelectInput';
+import Button from '../Button';
 import PopUp from '../PopUp';
 import Input from '../Input';
-import { taskAddSchema } from '../../helpers/validationSchema';
-import SelectInput from '../SelectInput';
 
 const TaskAdd = () => {
 	const initialValues: TaskInputValues = {
@@ -27,12 +37,8 @@ const TaskAdd = () => {
 	const dispatch = useAppDispatch();
 	const taskColumns = useAppSelector(selectTasksData);
 	const currentBoard = useAppSelector(selectCurrentBoard);
-	const getColumns = () => {
-		if (taskColumns === undefined) return [{ id: 'null', name: 'null' }];
-		return taskColumns.map((column) => {
-			return { id: column.id, name: column.name };
-		});
-	};
+	const getColumns = () =>
+		taskColumns!.map((column) => ({ value: column.id, label: column.name }));
 	const columns = getColumns();
 
 	function handleAddTask(values: TaskInputValues) {
@@ -40,19 +46,20 @@ const TaskAdd = () => {
 			id: uuid(),
 			title: values.title,
 			description: values.description,
-			subtasks: values.subtasks.map((task) => {
-				return { id: uuid(), title: task.title, isCompleted: task.isCompleted };
-			}),
+			subtasks: values.subtasks.map((task) => ({
+				id: uuid(),
+				title: task.title,
+				isCompleted: task.isCompleted,
+			})),
 			status: values.status,
 		};
-		console.log(task);
 		dispatch(addTask({ task: task, currentBoard: currentBoard }));
 		dispatch(setIsTaskAddShow());
 	}
 
 	return (
 		<PopUp
-			title={'Add New Task'}
+			title={TASK_TITLE}
 			layoutDispatch={() => dispatch(setIsTaskAddShow())}
 		>
 			<Formik
@@ -63,7 +70,7 @@ const TaskAdd = () => {
 				{({ values }) => (
 					<Form>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='title'>Title </StyledLabel>
+							<StyledLabel htmlFor='title'>{TASK_NAME}</StyledLabel>
 							<Input
 								name='title'
 								type='text'
@@ -71,17 +78,17 @@ const TaskAdd = () => {
 							/>
 						</StyledBoxSection>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='description'>Description</StyledLabel>
+							<StyledLabel htmlFor='description'>
+								{TASK_DESCRIPTION}
+							</StyledLabel>
 							<Input
 								name='description'
-								placeholder='e.g. It’s always good to take a break. This 
-15 minute break will  recharge the batteries 
-a little.'
+								placeholder={TASK_PLACEHOLDER}
 								as='textarea'
 							/>
 						</StyledBoxSection>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='subtask'>Subtask</StyledLabel>
+							<StyledLabel htmlFor='subtask'>{TASK_SUBTASK}</StyledLabel>
 							<FieldArray
 								name='subtasks'
 								render={({ push, remove }) => (
@@ -103,28 +110,29 @@ a little.'
 										<Button
 											type='button'
 											variant='secondary'
+											width='full'
 											onClick={() => push({ title: '' })}
 										>
-											+ Add New Column
+											{COLUMN_ADD}
 										</Button>
 									</>
 								)}
 							/>
 						</StyledBoxSection>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='status'>Status</StyledLabel>
+							<StyledLabel htmlFor='status'>{STATUS}</StyledLabel>
 							<SelectInput
 								name='status'
-								options={columns.map((column) => ({
-									value: column.id,
-									label: column.name,
-								}))}
+								defaultValue={columns[0]}
+								options={columns}
 								onChange={(e) => {
 									values.status = e?.value;
 								}}
 							/>
 						</StyledBoxSection>
-						<Button type='submit'>Create Task</Button>
+						<Button width='full' type='submit'>
+							{TASK_ADD}
+						</Button>
 					</Form>
 				)}
 			</Formik>
