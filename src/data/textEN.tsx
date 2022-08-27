@@ -1,4 +1,5 @@
 export {
+	APLICATION_TITLE,
 	DELETE,
 	COLUMN_ADD,
 	COLUMN_PLACEHOLDER,
@@ -17,6 +18,7 @@ export {
 	taskDeleteInfo,
 };
 
+const APLICATION_TITLE = 'Platform Launch';
 const DELETE = 'Delete';
 const COLUMN_ADD = '+ Add New Column';
 const COLUMN_PLACEHOLDER = 'e.g. In Progress';

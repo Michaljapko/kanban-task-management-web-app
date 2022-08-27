@@ -1,19 +1,9 @@
-import logo from '../../assets/logo-mobile.svg';
-import ellipsis from '../../assets/icon-vertical-ellipsis.svg';
-import chevronDown from '../../assets/icon-chevron-down.svg';
-import chavronUp from '../../assets/icon-chevron-up.svg';
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { selectTasksData } from '../../features/tasks/tasksSlice';
-import DropDown from '../DropDown';
-import Button from '../Button';
-
 import {
 	StyledHeader,
 	StyledLogoBox,
 	StyledHeaderBox,
 	StyledLogoText,
 } from './Header.styled';
-
 import {
 	selectIsSidebarShow,
 	setIsSidebarShow,
@@ -21,6 +11,15 @@ import {
 	selectIsDropdownHeaderShow,
 	setIsDropdownHeaderShow,
 } from '../../features/layout/layoutSlice';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import { APLICATION_TITLE } from '../../data/textEN';
+import { selectTasksData } from '../../features/tasks/tasksSlice';
+import ellipsis from '../../assets/icon-vertical-ellipsis.svg';
+import chevronDown from '../../assets/icon-chevron-down.svg';
+import chavronUp from '../../assets/icon-chevron-up.svg';
+import logo from '../../assets/logo-mobile.svg';
+import DropDown from '../DropDown';
+import Button from '../Button';
 
 const Header = () => {
 	const dispatch = useAppDispatch();
@@ -38,7 +37,7 @@ const Header = () => {
 						dispatch(setIsSidebarShow());
 					}}
 				>
-					<StyledLogoText>Platform Launch</StyledLogoText>
+					<StyledLogoText>{APLICATION_TITLE}</StyledLogoText>
 					{isSidebarShow ? (
 						<img src={chavronUp} alt='Arrow Up' />
 					) : (
