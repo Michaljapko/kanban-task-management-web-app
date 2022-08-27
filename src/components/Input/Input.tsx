@@ -1,5 +1,5 @@
-import { FieldProps } from 'formik';
 import { StyledInput, StyledError, StyledWrapper } from './Input.styled';
+import { FieldProps } from 'formik';
 import { Field } from 'formik';
 import { InputTypes } from '../../types/types';
 
