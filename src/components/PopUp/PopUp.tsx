@@ -4,6 +4,7 @@ import {
 	StyledBoxSection,
 	StyledHeading,
 } from './PopUp.styled';
+import { PopUpTypes } from '../../types/types';
 
 const PopUp = ({
 	children,
@@ -11,7 +12,7 @@ const PopUp = ({
 	layoutDispatch,
 	variant,
 	headingElement,
-}: any) => {
+}: PopUpTypes) => {
 	return (
 		<StyledBack onClick={layoutDispatch}>
 			<StyledBox variant={variant} onClick={(e) => e.stopPropagation()}>

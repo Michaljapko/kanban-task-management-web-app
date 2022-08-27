@@ -27,6 +27,16 @@ export type Variants =
 	| 'delete'
 	| 'landingPage';
 
+export interface PopUpVariants {
+	variant?: 'sidebar' | 'delete';
+}
+export interface PopUpTypes {
+	children?: JSX.Element | JSX.Element[] | string;
+	title?: string;
+	layoutDispatch: () => void;
+	variant?: PopUpVariants;
+	headingElement: JSX.Element | JSX.Element[] | string;
+}
 export interface ButtonTypes {
 	children?: JSX.Element | JSX.Element[] | string;
 	icon?: 'plus' | 'board';

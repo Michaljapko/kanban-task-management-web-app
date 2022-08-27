@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { PopUpVariants } from '../../types/types';
 
 export const StyledBack = styled.div`
 	position: absolute;
@@ -12,19 +13,20 @@ export const StyledBack = styled.div`
 	background: ${({ theme }) => theme.backgroundBack};
 	z-index: 1;
 `;
-export const StyledBox = styled.div`
+export const StyledBox = styled.div<{ variant?: PopUpVariants }>`
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
-	margin: 0 16px;
+	margin: 0 1rem;
 	border-radius: 6px;
-	padding: ${({ variant }) => (variant === 'sidebar' ? '24px 0 0' : '24px')};
+	padding: ${({ variant }) =>
+		variant === 'sidebar' ? '1.5rem 0 0' : '1.5rem'};
 	${({ variant }) => (variant === 'sidebar' ? '' : 'width: 100%')};
 	max-width: 480px;
 	background: ${({ theme }) => theme.backgroundMain};
 `;
-export const StyledHeading = styled.h2<{ variant?: 'delete' }>`
+export const StyledHeading = styled.h2<{ variant?: PopUpVariants }>`
 	${({ theme }) => theme.textHeading.large}
 	color: ${({ theme, variant }) =>
 		variant === 'delete' ? theme.colorError : theme.mainColor};
@@ -33,5 +35,5 @@ export const StyledBoxSection = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-bottom: 24px;
+	margin-bottom: 1.5rem;
 `;
