@@ -33,6 +33,7 @@ export const theme = {
 	backgroundBody: colors.lightGrey,
 	backgroundContrast: colors.lightGrey,
 	backgroundSelect: colors.white,
+	backgroundSubtaskHover: colors.purpleLighter,
 	borderColor: colors.lightLines,
 	mainColor: colors.black,
 	buttonSecondary: colors.lightGrey,

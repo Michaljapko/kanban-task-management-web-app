@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const StyledBoxSection = styled.div`
 	margin-bottom: 24px;
 `;
@@ -13,6 +12,9 @@ export const StyledSubtaskBox = styled.div`
 	padding: 12px;
 	background: ${({ theme }) => theme.backgroundContrast};
 	color: ${({ theme }) => theme.mainColor};
+	&:hover {
+		background: ${({ theme }) => theme.backgroundSubtaskHover};
+	}
 `;
 export const StyledSubtaskInfo = styled.p<{ complete: boolean }>`
 	${({ theme }) => theme.textHeading.small}
