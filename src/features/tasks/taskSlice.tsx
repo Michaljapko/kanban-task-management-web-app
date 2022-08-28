@@ -1,23 +1,27 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-const getBoardIndex = ({ boards }: any, boardId: string) =>
-	boards.findIndex((board: any) => board.id === boardId);
+import { Boards, Board, Columns, TasksData } from '../../types/types';
+
+const getBoardIndex = ({ boards }: Boards, boardId: string) =>
+	boards.findIndex((board: Board) => board.id === boardId);
 
 const getColumnIndex = (
-	{ boards }: any,
-	boardIndex: string,
+	{ boards }: Boards,
+	boardIndex: number,
 	columnId: string
 ) =>
-	boards[boardIndex].columns.findIndex((column: any) => column.id === columnId);
+	boards[boardIndex].columns.findIndex(
+		(column: Columns) => column.id === columnId
+	);
 
 const getTaskIndex = (
-	{ boards }: any,
-	boardIndex: string,
-	columnIndex: string,
+	{ boards }: Boards,
+	boardIndex: number,
+	columnIndex: number,
 	taskId: string
 ) =>
 	boards[boardIndex].columns[columnIndex].tasks.findIndex(
-		(task: any) => task.id === taskId
+		(task: TasksData) => task.id === taskId
 	);
 
 export const TaskViewIdSlice = createSlice({

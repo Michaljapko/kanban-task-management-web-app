@@ -17,7 +17,7 @@ export interface CheckBoxTypes {
 	defaultChecked?: string | boolean;
 }
 
-export type Variants =
+export type ButtonVariants =
 	| 'header'
 	| 'sidebar'
 	| 'sidebarBold'
@@ -45,7 +45,7 @@ export interface SelectInputTypes {
 export interface ButtonTypes {
 	children?: JSX.Element | JSX.Element[] | string;
 	icon?: 'plus' | 'board';
-	variant?: Variants;
+	variant?: ButtonVariants;
 	onClick?: any;
 	type?: 'button' | 'reset' | 'submit';
 	width?: 'full';
