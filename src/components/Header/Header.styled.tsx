@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledHeader = styled.div`
+export const StyledHeader = styled.div<{ isSidebarShow: boolean }>`
 	position: fixed;
 	display: flex;
 	justify-content: space-between;
@@ -8,7 +8,15 @@ export const StyledHeader = styled.div`
 	padding: 0 1rem;
 	height: 4rem;
 	width: 100vw;
+
 	background: ${({ theme }) => theme.backgroundMain};
+
+	@media (min-width: 992px) {
+		padding: 0;
+		padding-right: 2rem;
+		height: 97px;
+		border-bottom: 1px solid ${({ theme }) => theme.borderColor};
+	}
 `;
 
 export const StyledLogoBox = styled.div`
@@ -23,6 +31,11 @@ export const StyledHeaderBox = styled.div`
 	gap: 1rem;
 `;
 
+export const StyledArrow = styled.img`
+	@media (min-width: 992px) {
+		display: none;
+	}
+`;
 export const StyledLogoText = styled.h1`
 	${({ theme }) => theme.textHeading.large}
 	color:${({ theme }) => theme.mainColor}

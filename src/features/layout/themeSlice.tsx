@@ -18,6 +18,9 @@ export const themeSlice = createSlice({
 
 export const { toogleTheme } = themeSlice.actions;
 
+export const selectCurrentTheme = ({ themeSlice }: RootState) =>
+	themeSlice.theme;
+
 export const selectThemeMode = ({ themeSlice }: RootState) => {
 	const themeMode = themeSlice.theme;
 	if (themeMode === 'themeDark') return { ...theme, ...theme[themeMode] };

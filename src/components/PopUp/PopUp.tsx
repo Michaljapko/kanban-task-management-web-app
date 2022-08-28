@@ -14,7 +14,7 @@ const PopUp = ({
 	headingElement,
 }: PopUpTypes) => {
 	return (
-		<StyledBack onClick={layoutDispatch}>
+		<StyledBack variant={variant} onClick={layoutDispatch}>
 			<StyledBox variant={variant} onClick={(e) => e.stopPropagation()}>
 				{title && (
 					<StyledBoxSection>

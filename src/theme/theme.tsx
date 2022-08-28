@@ -10,7 +10,7 @@ const colors = {
 	darkGray: 'rgb(43, 44, 55)',
 	darkLines: 'rgb(61, 62, 76)',
 	mediumGrey: 'rgb(129, 142, 162)',
-	lightLines: 'rgb(229, 236, 250)',
+	lightLines: 'rgb(228, 235, 250)',
 	lightGrey: 'rgb(244, 247, 253)',
 	white: 'rgb(255, 255, 255)',
 	red: 'rgb(234,85,85)',
@@ -30,9 +30,10 @@ export const theme = {
 	buttonDestructiveHover: colors.redHover,
 	backgroundBack: colors.blackTrans,
 	backgroundMain: colors.white,
-	backgroundBody: colors.lightLines,
+	backgroundBody: colors.lightGrey,
 	backgroundContrast: colors.lightGrey,
 	backgroundSelect: colors.white,
+	borderColor: colors.lightLines,
 	mainColor: colors.black,
 	buttonSecondary: colors.lightGrey,
 	borderGray: colors.transparentGray,
@@ -45,6 +46,7 @@ export const theme = {
 		backgroundSelect: colors.veryDarkGray,
 		mainColor: colors.white,
 		buttonSecondary: colors.white,
+		borderColor: colors.darkLines,
 	},
 	textHeading: {
 		xlarge: `

@@ -3,6 +3,7 @@ import {
 	StyledLogoBox,
 	StyledHeaderBox,
 	StyledLogoText,
+	StyledArrow,
 } from './Header.styled';
 import {
 	selectIsSidebarShow,
@@ -17,9 +18,10 @@ import { selectTasksData } from '../../features/tasks/tasksSlice';
 import ellipsis from '../../assets/icon-vertical-ellipsis.svg';
 import chevronDown from '../../assets/icon-chevron-down.svg';
 import chavronUp from '../../assets/icon-chevron-up.svg';
-import logo from '../../assets/logo-mobile.svg';
+
 import DropDown from '../DropDown';
 import Button from '../Button';
+import Logo from '../Logo';
 
 const Header = () => {
 	const dispatch = useAppDispatch();
@@ -28,9 +30,9 @@ const Header = () => {
 	const isDropdownHeaderShow = useAppSelector(selectIsDropdownHeaderShow);
 
 	return (
-		<StyledHeader>
+		<StyledHeader isSidebarShow={isSidebarShow}>
 			<StyledHeaderBox>
-				<img src={logo} alt='Kanban Logo' />
+			<Logo />
 				<StyledLogoBox
 					onClick={(event) => {
 						event.stopPropagation();
@@ -39,9 +41,9 @@ const Header = () => {
 				>
 					<StyledLogoText>{APLICATION_TITLE}</StyledLogoText>
 					{isSidebarShow ? (
-						<img src={chavronUp} alt='Arrow Up' />
+						<StyledArrow src={chavronUp} alt='Arrow Up' />
 					) : (
-						<img src={chevronDown} alt='Arrow Down' />
+						<StyledArrow src={chevronDown} alt='Arrow Down' />
 					)}
 				</StyledLogoBox>
 			</StyledHeaderBox>
