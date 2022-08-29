@@ -32,8 +32,13 @@ export const StyledButton = styled.button<ButtonTypes>`
 				color: ${() =>
 					variant === 'sidebarBold' ? theme.themeColor : theme.textGrey};
 				font-weight: ${() => (variant === 'sidebarBold' ? 700 : 500)};
-
 				text-align: start;
+				&:hover {
+					color: ${() => theme.themeColor};
+					background-color: ${() => theme.buttonSecondaryHover};
+					border-radius: 0rem 6.25rem 6.25rem 0rem;
+					width: 15rem;
+				}
 			`;
 
 		return css`
