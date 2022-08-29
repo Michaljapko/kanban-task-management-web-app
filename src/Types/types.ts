@@ -14,7 +14,7 @@ export interface InputTypes {
 export interface CheckBoxTypes {
 	name?: string;
 	onChange?: () => void;
-	defaultChecked?: string | boolean;
+	defaultChecked?: boolean;
 }
 
 export type ButtonVariants =
