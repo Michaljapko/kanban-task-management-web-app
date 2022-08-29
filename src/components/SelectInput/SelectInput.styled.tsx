@@ -1,6 +1,26 @@
 import styled from 'styled-components';
 import Select from 'react-select';
-export const StyledSelect = styled(Select)`
+import { SelectInputTypes } from '../../types/types';
+
+const SelectInput = ({
+	name,
+	options,
+	defaultValue,
+	onChange,
+}: SelectInputTypes) => {
+	return (
+		<Select
+			isSearchable={false}
+			classNamePrefix='Select'
+			name={name}
+			options={options}
+			defaultValue={defaultValue}
+			onChange={onChange}
+		/>
+	);
+};
+
+export const StyledSelect = styled(SelectInput)`
 	.Select__control {
 		box-shadow: none;
 		border: 1px solid ${({ theme }) => theme.borderGray};

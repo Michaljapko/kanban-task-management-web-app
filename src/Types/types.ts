@@ -1,3 +1,5 @@
+import { ActionMeta } from 'react-select';
+
 export interface Subtask {
 	id: string;
 	title: string;
@@ -36,12 +38,16 @@ export interface PopUpTypes {
 	variant?: PopUpVariants;
 	headingElement?: JSX.Element | JSX.Element[] | string;
 }
+
+export type SelectInputOption = { value: string; label: string };
+
 export interface SelectInputTypes {
 	name?: string;
-	options: { value: string; label: string }[];
+	options: SelectInputOption[];
 	defaultValue?: { value: string; label: string };
-	onChange: (e: { value: string; label: string }) => void;
+	onChange: (option: SelectInputOption | null, actionMeta: ActionMeta<SelectInputOption>) => void;
 }
+
 export interface ButtonTypes {
 	children?: JSX.Element | JSX.Element[] | string;
 	icon?: 'plus' | 'board';

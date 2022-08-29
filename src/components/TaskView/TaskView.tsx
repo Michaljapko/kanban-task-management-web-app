@@ -114,11 +114,11 @@ const TaskView = () => {
 				<SelectInput
 					onChange={(e) => {
 						const taskUpdated = { ...task };
-						dispatch(changeColumn(e.value));
+						dispatch(changeColumn(e!.value));
 						dispatch(
 							columnChangeTask({
 								columnId: currentColumn,
-								columnTarget: e.value,
+								columnTarget: e!.value,
 								taskId: task.id,
 								currentBoard: currentBoard,
 								task: taskUpdated,

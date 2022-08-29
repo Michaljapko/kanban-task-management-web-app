@@ -126,7 +126,7 @@ const TaskAdd = () => {
 								defaultValue={columns[0]}
 								options={columns}
 								onChange={(e) => {
-									values.status = e?.value;
+									values.status = e!.value;
 								}}
 							/>
 						</StyledBoxSection>

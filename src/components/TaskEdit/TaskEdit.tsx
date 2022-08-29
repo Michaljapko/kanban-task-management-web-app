@@ -141,7 +141,7 @@ const TaskEdit = () => {
 								options={columnsData}
 								defaultValue={columnsData[0]}
 								onChange={(e) => {
-									values.status = e?.value;
+									values.status = e!.value;
 								}}
 							/>
 						</StyledBoxSection>
