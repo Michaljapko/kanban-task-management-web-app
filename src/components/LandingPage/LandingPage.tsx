@@ -8,12 +8,14 @@ import {
 	selectIsTaskEditShow,
 	setIsBoardAddShow,
 	setIsBoardEditShow,
+	setIsSidebarShow,
 } from '../../features/layout/layoutSlice';
 import {
 	StyledInfo,
 	StyledWrapperInfo,
 	StyledWrapperCard,
 	StyledWrapper,
+	StyledHidebox,
 } from './LandingPage.styled';
 import { BOARD_ADD, COLUMN_ADD, EMPTY, EMPTY_BOARD } from '../../data/textEN';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -27,6 +29,7 @@ import TaskCards from '../TaskCards';
 import TaskEdit from '../TaskEdit';
 import BoardEdit from '../BoardEdit';
 import DeleteMenu from '../DeleteMenu';
+import show from '../../assets/icon-show-sidebar.svg';
 
 const LandingPage = () => {
 	const tasksData = useAppSelector(selectTasksData);
@@ -50,7 +53,11 @@ const LandingPage = () => {
 			<Header />
 			<StyledWrapper>
 				{isSidebarShow && <Sidebar />}
-
+				{!isSidebarShow && (
+					<StyledHidebox onClick={(event) => dispatch(setIsSidebarShow())}>
+						<img src={show} alt='show sidebar' />
+					</StyledHidebox>
+				)}
 				{(!tasksData || tasksData?.length === 0) && (
 					<StyledWrapperInfo>
 						<StyledInfo>

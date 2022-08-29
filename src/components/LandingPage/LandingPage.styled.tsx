@@ -28,6 +28,22 @@ export const StyledWrapperCard = styled.div`
 	}
 `;
 
+export const StyledHidebox = styled.div`
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 56px;
+	height: 48px;
+	left: 0px;
+	bottom: 32px;
+	background: ${({ theme }) => theme.buttonPrimary};
+	border-radius: 0px 100px 100px 0px;
+	&:hover {
+		background: ${({ theme }) => theme.buttonPrimaryHover};
+	}
+`;
+
 export const StyledInfo = styled.p`
 	${({ theme }) => theme.textHeading.large};
 	color: ${({ theme }) => theme.textGrey};
