@@ -1,1 +1,1 @@
-export { default } from './BoadAdd';
+export { default } from './BoardAdd';
