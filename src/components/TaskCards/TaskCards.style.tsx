@@ -8,8 +8,10 @@ export const StyledCard = styled.div`
 	box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.101545);
 	border-radius: 8px;
 `;
-export const StyledHeading = styled.p`
+export const StyledHeading = styled.div`
 	${({ theme }) => theme.textHeading.small}
+	display: flex;
+	
 	margin-bottom: 24px;
 	text-transform: uppercase;
 `;

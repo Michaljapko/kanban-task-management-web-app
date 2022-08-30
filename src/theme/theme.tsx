@@ -16,6 +16,9 @@ const colors = {
 	red: 'rgb(234,85,85)',
 	redHover: 'rgb(255,152,152)',
 	transparentGray: 'rgba(130, 143, 163, 0.25)',
+	blue: 'rgb(73, 196, 229)',
+	green: 'rgb(103, 226, 174)',
+	yellow: 'rgb(222, 226, 103)',
 };
 
 export const theme = {
@@ -38,6 +41,10 @@ export const theme = {
 	mainColor: colors.black,
 	buttonSecondary: colors.lightGrey,
 	borderGray: colors.transparentGray,
+	dotFirst: colors.blue,
+	dotSecond: colors.mainPurple,
+	dotThird: colors.green,
+	dotFourth: colors.yellow,
 
 	themeDark: {
 		buttonSecondaryHover: colors.white,
