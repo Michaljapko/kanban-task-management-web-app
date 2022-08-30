@@ -5,7 +5,6 @@ import columnSlice from '../features/tasks/columnSlice';
 import tasksReducer from '../features/tasks/tasksSlice';
 import taskSlice from '../features/tasks/taskSlice';
 import themeSlice from '../features/layout/themeSlice';
-import resolutionDeviceSlice from '../features/layout/resolutionDeviceSlice';
 
 export const store = configureStore({
 	reducer: {
@@ -15,7 +14,6 @@ export const store = configureStore({
 		currentTask: taskSlice,
 		layoutSlice: layoutSlice,
 		themeSlice: themeSlice,
-		resolutionDevice: resolutionDeviceSlice,
 	},
 });
 

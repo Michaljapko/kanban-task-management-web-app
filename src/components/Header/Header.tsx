@@ -32,7 +32,7 @@ const Header = () => {
 	return (
 		<StyledHeader isSidebarShow={isSidebarShow}>
 			<StyledHeaderBox>
-			<Logo />
+				<Logo />
 				<StyledLogoBox
 					onClick={(event) => {
 						event.stopPropagation();

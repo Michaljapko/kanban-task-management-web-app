@@ -5,7 +5,7 @@ import {
 	selectCurrentDevice,
 	setDesktop,
 	setMobile,
-} from '../features/layout/resolutionDeviceSlice';
+} from '../features/layout/layoutSlice';
 
 export const useDetectScreen = () => {
 	const [width, changeWidth] = useState(window.innerWidth);
@@ -14,6 +14,7 @@ export const useDetectScreen = () => {
 
 	useEffect(() => {
 		window.addEventListener('resize', () => changeWidth(window.innerWidth));
+		console.log(width, currentDevice);
 		if (width >= 992 && currentDevice !== 'desktop') {
 			dispatch(setDesktop());
 		}
