@@ -22,6 +22,7 @@ import chavronUp from '../../assets/icon-chevron-up.svg';
 import DropDown from '../DropDown';
 import Button from '../Button';
 import Logo from '../Logo';
+import Ellipsis from '../Ellipsis';
 
 const Header = () => {
 	const dispatch = useAppDispatch();
@@ -58,9 +59,7 @@ const Header = () => {
 					/>
 				)}
 				{!taskData && <Button icon='plus' variant='headerOff' />}
-				<img
-					src={ellipsis}
-					alt='ellipsis'
+				<Ellipsis
 					onClick={() => {
 						dispatch(setIsDropdownHeaderShow());
 					}}

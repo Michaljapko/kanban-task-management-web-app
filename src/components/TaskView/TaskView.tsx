@@ -26,11 +26,11 @@ import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useEffect, useState } from 'react';
 import { Subtask } from '../../types/types';
-import ellipsis from '../../assets/icon-vertical-ellipsis.svg';
 import PopUp from '../PopUp';
 import DropDown from '../DropDown';
 import CheckBox from '../CheckBox/ChcekBox';
 import SelectInput from '../SelectInput';
+import Ellipsis from '../Ellipsis';
 
 const TaskView = () => {
 	const [taskDone, setTaskDone] = useState(0);
@@ -43,9 +43,7 @@ const TaskView = () => {
 
 	const ellipsisButton = (
 		<>
-			<img
-				src={ellipsis}
-				alt='ellipsis'
+			<Ellipsis
 				onClick={() => {
 					dispatch(setIsDropdownTaskShow());
 				}}

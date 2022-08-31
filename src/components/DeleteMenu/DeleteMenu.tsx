@@ -29,8 +29,9 @@ const DeleteMenu = ({ variant }: { variant: 'board' | 'task' }) => {
 	const dispatch = useAppDispatch();
 	const columnId = useAppSelector(selectCurrentColumn);
 	const boardId = useAppSelector(selectCurrentBoard);
-	const taskId = useAppSelector(selectCurrentTask);
 	const boardName = useAppSelector(selectCurrentBoardName);
+
+	const taskId = useAppSelector(selectCurrentTask)
 	const taskName = useAppSelector(selectCurrentTaskName);
 
 	const getTitle = () => {
@@ -75,11 +76,7 @@ const DeleteMenu = ({ variant }: { variant: 'board' | 'task' }) => {
 				<Button variant='delete' width='full' onClick={() => deleteHandler()}>
 					{DELETE}
 				</Button>
-				<Button
-					variant='secondary'
-					width='full'
-					onClick={() => () => closeHandler()}
-				>
+				<Button variant='secondary' width='full'  onClick={() => () => closeHandler()}>
 					{CANCEL}
 				</Button>
 			</StyledWrapper>
