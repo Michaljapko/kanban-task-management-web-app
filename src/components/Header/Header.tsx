@@ -15,10 +15,8 @@ import {
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { APLICATION_TITLE } from '../../data/textEN';
 import { selectTasksData } from '../../features/tasks/tasksSlice';
-import ellipsis from '../../assets/icon-vertical-ellipsis.svg';
 import chevronDown from '../../assets/icon-chevron-down.svg';
 import chavronUp from '../../assets/icon-chevron-up.svg';
-
 import DropDown from '../DropDown';
 import Button from '../Button';
 import Logo from '../Logo';
@@ -32,14 +30,13 @@ const Header = () => {
 
 	return (
 		<StyledHeader isSidebarShow={isSidebarShow}>
-			<StyledHeaderBox>
+			<StyledHeaderBox
+				onClick={(event) => {
+					dispatch(setIsSidebarShow());
+				}}
+			>
 				<Logo />
-				<StyledLogoBox
-					onClick={(event) => {
-						event.stopPropagation();
-						dispatch(setIsSidebarShow());
-					}}
-				>
+				<StyledLogoBox>
 					<StyledLogoText>{APLICATION_TITLE}</StyledLogoText>
 					{isSidebarShow ? (
 						<StyledArrow src={chavronUp} alt='Arrow Up' />
