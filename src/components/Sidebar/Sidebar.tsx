@@ -10,18 +10,10 @@ import {
 } from '../../features/layout/layoutSlice';
 import { ALL_BOARD, BOARD_CREATE, HIDE_SIDEBAR } from '../../data/textEN';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import {
-	StyledFooter,
-	StyledHead,
-	StyledHideBox,
-	StyledRadioBox,
-} from './Sidebar.styled';
-import { toogleTheme } from '../../features/layout/themeSlice';
+import { StyledFooter, StyledHead, StyledHideBox } from './Sidebar.styled';
 import Button from '../Button';
-import moon from '../../assets/icon-dark-theme.svg';
-import sun from '../../assets/icon-light-theme.svg';
-
 import PopUp from '../PopUp';
+import ThemeBox from '../ThemeBox';
 
 const Sidebar = () => {
 	const dispatch = useAppDispatch();
@@ -48,7 +40,6 @@ const Sidebar = () => {
 							<Button
 								onClick={() => {
 									if (currentDevice === 'desktop') {
-										console.log('?');
 										dispatch(changeBoard(board.id));
 										return;
 									}
@@ -74,16 +65,7 @@ const Sidebar = () => {
 				</Button>
 			</div>
 			<StyledFooter>
-				<StyledRadioBox>
-					<img src={sun} alt='Light Theme' />
-					<input
-						type='checkbox'
-						id='theme'
-						value='JavaScript'
-						onChange={() => dispatch(toogleTheme())}
-					/>
-					<img src={moon} alt='Light Theme' />
-				</StyledRadioBox>
+				<ThemeBox />
 				<StyledHideBox>
 					<Button
 						onClick={() => dispatch(setIsSidebarShow())}

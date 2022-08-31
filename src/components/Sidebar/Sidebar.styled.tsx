@@ -35,5 +35,6 @@ export const StyledFooter = styled.div`
 	@media (min-width: 992px) {
 		position: absolute;
 		bottom: 0;
+		width: 100%;
 	}
 `;
