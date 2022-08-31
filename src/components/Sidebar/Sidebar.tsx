@@ -8,7 +8,7 @@ import {
 	setIsBoardAddShow,
 	setIsSidebarShow,
 } from '../../features/layout/layoutSlice';
-import { ALL_BOARD, BOARD_CREATE } from '../../data/textEN';
+import { ALL_BOARD, BOARD_CREATE, HIDE_SIDEBAR } from '../../data/textEN';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
 	StyledFooter,
@@ -20,7 +20,7 @@ import { toogleTheme } from '../../features/layout/themeSlice';
 import Button from '../Button';
 import moon from '../../assets/icon-dark-theme.svg';
 import sun from '../../assets/icon-light-theme.svg';
-import hide from '../../assets/icon-hide-sidebar.svg';
+
 import PopUp from '../PopUp';
 
 const Sidebar = () => {
@@ -90,8 +90,13 @@ const Sidebar = () => {
 						dispatch(setIsSidebarShow());
 					}}
 				>
-					<img src={hide} alt='hide sidebar' />
-					<p>Hide Sidebar</p>
+					<Button
+						onClick={() => dispatch(setIsSidebarShow())}
+						variant={'sidebar'}
+						icon='hide'
+					>
+						{HIDE_SIDEBAR}
+					</Button>
 				</StyledHideBox>
 			</StyledFooter>
 		</PopUp>

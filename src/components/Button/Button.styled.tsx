@@ -18,6 +18,7 @@ export const StyledButton = styled.button<ButtonTypes>`
 				color: ${() => theme.buttonText};
 				font-weight: 500;
 				text-align: start;
+				cursor: pointer;
 			`;
 
 		if (variant === 'sidebar' || variant === 'sidebarBold')
@@ -33,6 +34,7 @@ export const StyledButton = styled.button<ButtonTypes>`
 					variant === 'sidebarBold' ? theme.themeColor : theme.textGrey};
 				font-weight: ${() => (variant === 'sidebarBold' ? 700 : 500)};
 				text-align: start;
+				cursor: pointer;
 				&:hover {
 					color: ${() => theme.themeColor};
 					background-color: ${() => theme.buttonSecondaryHover};
@@ -65,6 +67,7 @@ export const StyledButton = styled.button<ButtonTypes>`
 			font-size: 0.8rem;
 			line-height:1.4rem;
 			transition: background-color 0.3s ease-out;
+			cursor: pointer;
 			&:hover {
 				background-color: ${() => {
 					if (variant === 'secondary') return theme.buttonSecondaryHover;

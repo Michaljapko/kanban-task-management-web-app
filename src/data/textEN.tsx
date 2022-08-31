@@ -26,6 +26,7 @@ export {
 	SAVE,
 	CANCEL,
 	EDIT,
+	HIDE_SIDEBAR,
 	boardDeleteInfo,
 	taskDeleteInfo,
 	subtaskInfo,
@@ -60,6 +61,7 @@ const SAVE = 'Save Changes';
 const CANCEL = 'Cancel';
 const EDIT = 'Edit';
 const STATE = 'Current state:';
+const HIDE_SIDEBAR = 'Hide Sidebar';
 const boardDeleteInfo = (
 	boardName: string
 ) => `Are you sure you want to delete the ‘${boardName}’ board? This action

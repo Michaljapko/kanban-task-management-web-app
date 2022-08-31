@@ -42,7 +42,7 @@ const TaskCards = () => {
 					return (
 						<div key={column.id}>
 							<StyledHeading>
-								<Dot colorIndex={sequence[index]} />
+								<Dot colorIndex={sequenceArr[index]} />
 								{column.name} ({column.tasks.length})
 							</StyledHeading>
 							{column.tasks.map((task) => (

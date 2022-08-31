@@ -45,12 +45,15 @@ export interface SelectInputTypes {
 	name?: string;
 	options: SelectInputOption[];
 	defaultValue?: { value: string; label: string };
-	onChange: (option: SelectInputOption | null, actionMeta: ActionMeta<SelectInputOption>) => void;
+	onChange: (
+		option: SelectInputOption | null,
+		actionMeta: ActionMeta<SelectInputOption>
+	) => void;
 }
 
 export interface ButtonTypes {
 	children?: JSX.Element | JSX.Element[] | string;
-	icon?: 'plus' | 'board';
+	icon?: 'plus' | 'board' | 'hide';
 	variant?: ButtonVariants;
 	onClick?: any;
 	type?: 'button' | 'reset' | 'submit';
