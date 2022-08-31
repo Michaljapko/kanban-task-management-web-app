@@ -84,12 +84,7 @@ const Sidebar = () => {
 					/>
 					<img src={moon} alt='Light Theme' />
 				</StyledRadioBox>
-				<StyledHideBox
-					onClick={(event) => {
-						event.stopPropagation();
-						dispatch(setIsSidebarShow());
-					}}
-				>
+				<StyledHideBox>
 					<Button
 						onClick={() => dispatch(setIsSidebarShow())}
 						variant={'sidebar'}

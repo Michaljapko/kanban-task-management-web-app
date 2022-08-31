@@ -27,7 +27,8 @@ export type ButtonVariants =
 	| 'headerOff'
 	| 'secondary'
 	| 'delete'
-	| 'landingPage';
+	| 'landingPage'
+	| 'buttonBig';
 
 export type PopUpVariants = 'sidebar' | 'delete';
 

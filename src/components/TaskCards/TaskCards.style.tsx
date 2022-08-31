@@ -11,7 +11,7 @@ export const StyledCard = styled.div`
 export const StyledHeading = styled.div`
 	${({ theme }) => theme.textHeading.small}
 	display: flex;
-	
+
 	margin-bottom: 24px;
 	text-transform: uppercase;
 `;

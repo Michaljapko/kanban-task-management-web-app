@@ -42,7 +42,21 @@ export const StyledButton = styled.button<ButtonTypes>`
 					width: 15rem;
 				}
 			`;
-
+		if (variant === 'buttonBig')
+			return css`
+				display: flex;
+				align-items: center;
+				${({ theme }) => theme.textHeading.xlarge}
+				padding: 0 55px;
+				border: none;
+				border-radius: 6px;
+				background: ${({ theme }) => theme.buttonBig};
+				color: ${({ theme }) => theme.textGrey};
+				cursor: pointer;
+				&:hover {
+					color: ${({ theme }) => theme.themeColor};
+				}
+			`;
 		return css`
 		    ${() => theme.textHeading.medium};
 			${() => {

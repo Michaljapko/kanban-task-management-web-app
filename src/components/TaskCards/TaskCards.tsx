@@ -6,6 +6,7 @@ import {
 } from './TaskCards.style';
 import {
 	selectIsTaskShow,
+	setIsBoardEditShow,
 	setIsTaskShow,
 } from '../../features/layout/layoutSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -15,9 +16,10 @@ import { selectTasksData } from '../../features/tasks/tasksSlice';
 import { TasksData } from '../../types/types';
 import { getCompletedTask } from '../../helpers/getCompletedTasks';
 import { subtaskInfoCard } from '../../data/textEN';
+import { getSequenceArr } from '../../helpers/getSequenceArr';
 import TaskView from '../TaskView';
 import Dot from '../Dot';
-import { getSequenceArr } from '../../helpers/getSequenceArr';
+import Button from '../Button';
 
 const TaskCards = () => {
 	const dispatch = useAppDispatch();
@@ -62,6 +64,12 @@ const TaskCards = () => {
 						</div>
 					);
 				})}
+			<Button
+				onClick={() => dispatch(setIsBoardEditShow())}
+				variant={'buttonBig'}
+			>
+				+ New Column
+			</Button>
 		</>
 	);
 };

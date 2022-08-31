@@ -19,6 +19,10 @@ const colors = {
 	blue: 'rgb(73, 196, 229)',
 	green: 'rgb(103, 226, 174)',
 	yellow: 'rgb(222, 226, 103)',
+	gradientLight:
+		'linear-gradient(180deg,#e9effa 0%,	rgba(233, 239, 250, 0.5) 100%)',
+	gradientDark:
+		'linear-gradient(180deg, rgba(43, 44, 55, 0.25) 0%, rgba(43, 44, 55, 0.125) 100%);',
 };
 
 export const theme = {
@@ -31,6 +35,7 @@ export const theme = {
 	buttonSecondaryHover: colors.purpleLighter,
 	buttonDestructive: colors.red,
 	buttonDestructiveHover: colors.redHover,
+	buttonBig: colors.gradientLight,
 	backgroundBack: colors.blackTrans,
 	backgroundMain: colors.white,
 	backgroundBody: colors.lightGrey,
@@ -48,12 +53,13 @@ export const theme = {
 
 	themeDark: {
 		buttonSecondaryHover: colors.white,
+		buttonSecondary: colors.white,
+		buttonBig: colors.gradientDark,
 		backgroundBody: colors.veryDarkGray,
 		backgroundMain: colors.darkGray,
 		backgroundContrast: colors.veryDarkGray,
 		backgroundSelect: colors.veryDarkGray,
 		mainColor: colors.white,
-		buttonSecondary: colors.white,
 		borderColor: colors.darkLines,
 	},
 	textHeading: {
