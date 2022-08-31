@@ -72,10 +72,14 @@ const DeleteMenu = ({ variant }: { variant: 'board' | 'task' }) => {
 		>
 			<StyledText>{getText()}</StyledText>
 			<StyledWrapper>
-				<Button variant='delete' onClick={() => deleteHandler()}>
+				<Button variant='delete' width='full' onClick={() => deleteHandler()}>
 					{DELETE}
 				</Button>
-				<Button variant='secondary' onClick={() => () => closeHandler()}>
+				<Button
+					variant='secondary'
+					width='full'
+					onClick={() => () => closeHandler()}
+				>
 					{CANCEL}
 				</Button>
 			</StyledWrapper>
