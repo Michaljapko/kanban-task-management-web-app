@@ -30,7 +30,6 @@ const Sidebar = () => {
 				<StyledHead>
 					{ALL_BOARD} ({boards.length})
 				</StyledHead>
-				<>
 					{boards.map((board) => {
 						let variant: 'sidebar' | 'sidebarCurrent' = 'sidebar';
 						if (board.id === currentBoards) {
@@ -54,8 +53,6 @@ const Sidebar = () => {
 							</Button>
 						);
 					})}
-				</>
-
 				<Button
 					onClick={() => dispatch(setIsBoardAddShow())}
 					variant='sidebarBold'

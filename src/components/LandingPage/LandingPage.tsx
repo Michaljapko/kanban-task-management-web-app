@@ -64,7 +64,7 @@ const LandingPage = () => {
 							{tasksData?.length === 0 ? EMPTY_BOARD : EMPTY}
 						</StyledInfo>
 						<Button
-							variant={'landingPage'}
+							variant={'header'}
 							onClick={() => {
 								tasksData?.length === 0
 									? dispatch(setIsBoardEditShow())

@@ -11,9 +11,10 @@ import {
 	setIsTaskAddShow,
 	selectIsDropdownHeaderShow,
 	setIsDropdownHeaderShow,
+	selectCurrentDevice,
 } from '../../features/layout/layoutSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { APLICATION_TITLE } from '../../data/textEN';
+import { APLICATION_TITLE, TASK_ADD_HEADER } from '../../data/textEN';
 import { selectTasksData } from '../../features/tasks/tasksSlice';
 import chevronDown from '../../assets/icon-chevron-down.svg';
 import chavronUp from '../../assets/icon-chevron-up.svg';
@@ -27,6 +28,36 @@ const Header = () => {
 	const taskData = useAppSelector(selectTasksData);
 	const isSidebarShow = useAppSelector(selectIsSidebarShow);
 	const isDropdownHeaderShow = useAppSelector(selectIsDropdownHeaderShow);
+	const currentDevice = useAppSelector(selectCurrentDevice);
+
+	const renderButton = () => {
+		if (taskData && currentDevice === 'desktop')
+			return (
+				<Button
+					variant='header'
+					onClick={() => {
+						dispatch(setIsTaskAddShow());
+					}}
+				>
+					{TASK_ADD_HEADER}
+				</Button>
+			);
+		if (taskData && currentDevice === 'mobile')
+			return (
+				<Button
+					icon='plus'
+					variant='headerMobile'
+					onClick={() => {
+						dispatch(setIsTaskAddShow());
+					}}
+				/>
+			);
+		if (currentDevice === 'desktop')
+			return <Button variant='headerOff'>{TASK_ADD_HEADER}</Button>;
+
+		if (currentDevice === 'mobile')
+			return <Button icon='plus' variant='headerOffMobile' />;
+	};
 
 	return (
 		<StyledHeader isSidebarShow={isSidebarShow}>
@@ -46,16 +77,7 @@ const Header = () => {
 				</StyledLogoBox>
 			</StyledHeaderBox>
 			<StyledHeaderBox>
-				{taskData && (
-					<Button
-						icon='plus'
-						variant='header'
-						onClick={() => {
-							dispatch(setIsTaskAddShow());
-						}}
-					/>
-				)}
-				{!taskData && <Button icon='plus' variant='headerOff' />}
+				{renderButton()}
 				<Ellipsis
 					onClick={() => {
 						dispatch(setIsDropdownHeaderShow());

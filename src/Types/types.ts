@@ -21,13 +21,14 @@ export interface CheckBoxTypes {
 
 export type ButtonVariants =
 	| 'header'
+	| 'headerMobile'
 	| 'sidebar'
 	| 'sidebarBold'
 	| 'sidebarCurrent'
 	| 'headerOff'
+	| 'headerOffMobile'
 	| 'secondary'
 	| 'delete'
-	| 'landingPage'
 	| 'buttonBig';
 
 export type PopUpVariants = 'sidebar' | 'delete';

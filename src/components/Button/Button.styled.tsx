@@ -64,10 +64,13 @@ export const StyledButton = styled.button<ButtonTypes>`
 			}}
 			border: 0;
 			border-radius: 1.5rem;
-			padding: ${() =>
-				variant === 'header' || variant === 'headerOff'
-					? '0.3rem 1rem'
-					: '0.5rem 1rem'}};
+			padding: ${() => {
+				if (variant === 'headerMobile' || variant === 'headerOffMobile')
+					return '0.3rem 1rem';
+				if (variant === 'headerOff' || variant === 'header')
+					return '1rem 1.5rem';
+				return '0.5rem 1rem';
+			}}};
 		
 			background-color: ${() => {
 				if (variant === 'secondary') return theme.buttonSecondary;
@@ -76,9 +79,14 @@ export const StyledButton = styled.button<ButtonTypes>`
 			}};
 			color: ${() => (variant === 'secondary' ? theme.themeColor : theme.buttonText)};
 			opacity: ${() => {
+				if (variant === 'headerOffMobile') return '0.25';
 				if (variant === 'headerOff') return '0.25';
 			}};
-			font-size: 0.8rem;
+			font-size: ${() => {
+				if (variant === 'headerOff' || variant === 'header') return '1rem';
+				return '0.8rem';
+			}};
+	       font-weight: ${() => (variant === 'secondary' ? 700 : 500)};
 			line-height:1.4rem;
 			transition: background-color 0.3s ease-out;
 			cursor: pointer;

@@ -14,7 +14,6 @@ export const useDetectScreen = () => {
 
 	useEffect(() => {
 		window.addEventListener('resize', () => changeWidth(window.innerWidth));
-		console.log(width, currentDevice);
 		if (width >= 992 && currentDevice !== 'desktop') {
 			dispatch(setDesktop());
 		}

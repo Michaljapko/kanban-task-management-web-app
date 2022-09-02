@@ -17,6 +17,7 @@ export {
 	TASK_TITLE,
 	TASK_NAME,
 	TASK_ADD,
+	TASK_ADD_HEADER,
 	TASK_DESCRIPTION,
 	TASK_PLACEHOLDER,
 	TASK_SUBTASK,
@@ -47,6 +48,7 @@ const BOARD_DELETE = 'Delete this board?';
 const BOARD_CREATE = '+ Create New Board';
 const BOARD_COLUMNS = 'Board Columns';
 const BOARD_PLACEHOLDER = 'e.g. Web Design';
+const TASK_ADD_HEADER = '+ Add New Task';
 const TASK_TITLE = 'Add New Task';
 const TASK_ADD = 'Create Task';
 const TASK_NAME = 'Title';
