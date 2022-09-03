@@ -150,6 +150,42 @@ export const tasksSlice = createSlice({
 				taskToChange,
 			];
 		},
+		columnChangeTaskDrag: (
+			state,
+			{
+				payload,
+			}: PayloadAction<{
+				currentBoard: string;
+				columnId: string;
+				columnTarget: string;
+				taskId: string;
+				index: number;
+			}>
+		) => {
+			const boardIndex = getBoardIndex(state, payload.currentBoard);
+			const columnIndex = getColumnIndex(state, boardIndex, payload.columnId);
+			const taskIndex = getTaskIndex(
+				state,
+				boardIndex,
+				columnIndex,
+				payload.taskId
+			);
+			const taskToChange =
+				state.boards[boardIndex].columns[columnIndex].tasks[taskIndex];
+
+			state.boards[boardIndex].columns[columnIndex].tasks = state.boards[
+				boardIndex
+			].columns[columnIndex].tasks.filter((task) => {
+				return payload.taskId !== task.id;
+			});
+			const columnIndexTarget = state.boards[boardIndex].columns.findIndex(
+				(column) => column.id === payload.columnTarget
+			);
+			const newTasks =
+				state.boards[boardIndex].columns[columnIndexTarget].tasks;
+			newTasks.splice(payload.index, 0, taskToChange);
+			state.boards[boardIndex].columns[columnIndexTarget].tasks = newTasks;
+		},
 	},
 });
 
@@ -162,6 +198,7 @@ export const {
 	editTask,
 	editBoard,
 	columnChangeTask,
+	columnChangeTaskDrag,
 } = tasksSlice.actions;
 
 export const selectTasksData = (state: RootState) => {

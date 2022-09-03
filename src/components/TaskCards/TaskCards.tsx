@@ -9,10 +9,19 @@ import {
 	setIsBoardEditShow,
 	setIsTaskShow,
 } from '../../features/layout/layoutSlice';
+import {
+	DragDropContext,
+	Draggable,
+	Droppable,
+	DropResult,
+} from 'react-beautiful-dnd';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { changeCurrentTask } from '../../features/tasks/taskSlice';
 import { changeColumn } from '../../features/tasks/columnSlice';
-import { selectTasksData } from '../../features/tasks/tasksSlice';
+import {
+	selectTasksData,
+	columnChangeTaskDrag,
+} from '../../features/tasks/tasksSlice';
 import { TasksData } from '../../types/types';
 import { getCompletedTask } from '../../helpers/getCompletedTasks';
 import { subtaskInfoCard } from '../../data/textEN';
@@ -20,11 +29,13 @@ import { getSequenceArr } from '../../helpers/getSequenceArr';
 import TaskView from '../TaskView';
 import Dot from '../Dot';
 import Button from '../Button';
+import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 
 const TaskCards = () => {
 	const dispatch = useAppDispatch();
 	const columns = useAppSelector(selectTasksData);
 	const isTaskShow = useAppSelector(selectIsTaskShow);
+	const currentBoard = useAppSelector(selectCurrentBoard);
 
 	const DOT_COLORS_NUM = 4;
 	const sequenceLength = columns!.length;
@@ -35,35 +46,72 @@ const TaskCards = () => {
 		dispatch(changeCurrentTask(task.id));
 		dispatch(setIsTaskShow());
 	};
-
+	const onDragEndHadnle = (event: DropResult) => {
+		if (!event.destination) return;
+		const payload: {
+			currentBoard: string;
+			columnId: string;
+			columnTarget: string;
+			taskId: string;
+			index: number;
+		} = {
+			currentBoard: currentBoard,
+			columnId: event.source.droppableId,
+			columnTarget: event.destination.droppableId,
+			taskId: event.draggableId,
+			index: event.destination.index,
+		};
+		dispatch(columnChangeTaskDrag(payload));
+	};
 	return (
 		<>
 			{isTaskShow && <TaskView />}
-			{columns &&
-				columns.map((column, index) => {
-					return (
-						<div key={column.id}>
-							<StyledHeading>
-								<Dot colorIndex={sequenceArr[index]} />
-								{column.name} ({column.tasks.length})
-							</StyledHeading>
-							{column.tasks.map((task) => (
-								<StyledCard
-									onClick={() => showTask(task, column.id)}
-									key={task.id}
-								>
-									<StyledTitle>{task.title}</StyledTitle>
-									<StyledParagraph>
-										{subtaskInfoCard(
-											getCompletedTask(task.subtasks),
-											task.subtasks.length
-										)}
-									</StyledParagraph>
-								</StyledCard>
-							))}
-						</div>
-					);
-				})}
+			<DragDropContext
+				key='{drop}'
+				onDragEnd={(event) => onDragEndHadnle(event)}
+			>
+				{columns &&
+					columns.map((column, index) => {
+						return (
+							<Droppable key={column.id} droppableId={column.id}>
+								{(provided) => (
+									<div {...provided.droppableProps} ref={provided.innerRef}>
+										<StyledHeading>
+											<Dot colorIndex={sequenceArr[index]} />
+											{column.name} ({column.tasks.length})
+										</StyledHeading>
+										{columns &&
+											column.tasks.map((task, index) => (
+												<Draggable
+													key={task.id}
+													draggableId={task.id}
+													index={index}
+												>
+													{(provided) => (
+														<StyledCard
+															onClick={() => showTask(task, column.id)}
+															{...provided.draggableProps}
+															{...provided.dragHandleProps}
+															ref={provided.innerRef}
+														>
+															<StyledTitle>{task.title}</StyledTitle>
+															<StyledParagraph>
+																{subtaskInfoCard(
+																	getCompletedTask(task.subtasks),
+																	task.subtasks.length
+																)}
+															</StyledParagraph>
+														</StyledCard>
+													)}
+												</Draggable>
+											))}
+										{provided.placeholder}
+									</div>
+								)}
+							</Droppable>
+						);
+					})}
+			</DragDropContext>
 			<Button
 				onClick={() => dispatch(setIsBoardEditShow())}
 				variant={'buttonBig'}
