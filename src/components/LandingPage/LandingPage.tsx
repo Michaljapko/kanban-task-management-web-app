@@ -19,7 +19,7 @@ import {
 } from './LandingPage.styled';
 import { BOARD_CREATE, COLUMN_ADD, EMPTY, EMPTY_BOARD } from '../../data/textEN';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { selectTasksData } from '../../features/tasks/tasksSlice';
+import { selectTasksData } from '../../features/tasks/taskActionSlice';
 import BoardAdd from '../BoardAdd';
 import Button from '../Button';
 import Header from '../Header';

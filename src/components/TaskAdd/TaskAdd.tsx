@@ -16,7 +16,7 @@ import {
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Formik, Form, FieldArray } from 'formik';
 import { TasksData, TaskInputValues } from '../../types/types';
-import { addTask, selectTasksData } from '../../features/tasks/tasksSlice';
+import { addTask, selectTasksData } from '../../features/tasks/taskActionSlice';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { setIsTaskAddShow } from '../../features/layout/layoutSlice';
 import { taskAddSchema } from '../../helpers/validationSchema';

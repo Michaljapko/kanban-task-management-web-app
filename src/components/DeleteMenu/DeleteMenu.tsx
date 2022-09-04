@@ -18,7 +18,7 @@ import {
 	selectCurrentTask,
 	selectCurrentTaskName,
 } from '../../features/tasks/taskSlice';
-import { deleteBoard, deleteTask } from '../../features/tasks/tasksSlice';
+import { deleteBoard, deleteTask } from '../../features/tasks/taskActionSlice';
 import { selectCurrentColumn } from '../../features/tasks/columnSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { StyledText, StyledWrapper } from './DeleteMenu.styled';

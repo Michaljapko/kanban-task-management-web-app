@@ -15,7 +15,7 @@ import {
 } from '../../features/layout/layoutSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { APLICATION_TITLE, TASK_ADD_HEADER } from '../../data/textEN';
-import { selectTasksData } from '../../features/tasks/tasksSlice';
+import { selectTasksData } from '../../features/tasks/taskActionSlice';
 import chevronDown from '../../assets/icon-chevron-down.svg';
 import chavronUp from '../../assets/icon-chevron-up.svg';
 import DropDown from '../DropDown';

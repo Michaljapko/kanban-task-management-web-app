@@ -16,13 +16,13 @@ export const selectCurrentBoard = ({ currentBoardId }: RootState) =>
 	currentBoardId;
 
 export const selectCurrentBoardIndex = (state: RootState) =>
-	state.tasks.boards.findIndex((board) => board.id === state.currentBoardId);
+	state.taskAction.boards.findIndex((board) => board.id === state.currentBoardId);
 
 export const selectCurrentBoardData = ({
 	currentBoardId,
-	tasks,
+	taskAction,
 }: RootState) => {
-	const currentBoard = tasks.boards.find(
+	const currentBoard = taskAction.boards.find(
 		(board) => board.id === currentBoardId
 	);
 	return currentBoard!;
@@ -30,15 +30,15 @@ export const selectCurrentBoardData = ({
 
 export const selectCurrentBoardName = ({
 	currentBoardId,
-	tasks,
+	taskAction,
 }: RootState) => {
-	const currentBoard = tasks.boards.find(
+	const currentBoard = taskAction.boards.find(
 		(board) => board.id === currentBoardId
 	);
 	return currentBoard!.name;
 };
 
-export const selectBoards = ({ tasks }: RootState) =>
-	tasks.boards.map((board) => board);
+export const selectBoards = ({ taskAction }: RootState) =>
+taskAction.boards.map((board) => board);
 
 export default boardSlice.reducer;

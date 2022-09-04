@@ -21,7 +21,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { setIsBoardEditShow } from '../../features/layout/layoutSlice';
 import { BoardInputValues } from '../../types/types';
 import { boardAddSchema } from '../../helpers/validationSchema';
-import { editBoard } from '../../features/tasks/tasksSlice';
+import { editBoard } from '../../features/tasks/taskActionSlice';
 import { v4 as uuid } from 'uuid';
 import PopUp from '../PopUp';
 import Input from '../Input';

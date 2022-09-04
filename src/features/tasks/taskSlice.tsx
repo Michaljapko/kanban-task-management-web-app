@@ -39,19 +39,19 @@ export const selectCurrentTask = (state: RootState) =>
 	state.currentTask.currentTaskId;
 
 export const selectCurrentTaskName = (state: RootState) => {
-	const boardIndex = getBoardIndex(state.tasks, state.currentBoardId);
+	const boardIndex = getBoardIndex(state.taskAction, state.currentBoardId);
 	const columnIndex = getColumnIndex(
-		state.tasks,
+		state.taskAction,
 		boardIndex,
 		state.currentColumnId
 	);
 	const taskIndex = getTaskIndex(
-		state.tasks,
+		state.taskAction,
 		boardIndex,
 		columnIndex,
 		state.currentTask.currentTaskId
 	);
-	return state.tasks.boards[boardIndex].columns[columnIndex].tasks[taskIndex]
+	return state.taskAction.boards[boardIndex].columns[columnIndex].tasks[taskIndex]
 		.title;
 };
 export default TaskViewIdSlice.reducer;

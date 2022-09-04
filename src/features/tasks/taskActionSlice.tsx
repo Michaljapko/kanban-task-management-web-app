@@ -25,8 +25,8 @@ const getTaskIndex = (
 		(task: any) => task.id === taskId
 	);
 
-export const tasksSlice = createSlice({
-	name: 'tasks',
+export const taskActionSlice = createSlice({
+	name: 'taskAction',
 	initialState,
 	reducers: {
 		addBoard: (state, { payload }: PayloadAction<Board>) => {
@@ -199,39 +199,39 @@ export const {
 	editBoard,
 	columnChangeTask,
 	columnChangeTaskDrag,
-} = tasksSlice.actions;
+} = taskActionSlice.actions;
 
 export const selectTasksData = (state: RootState) => {
-	const board = state.tasks.boards.find(
+	const board = state.taskAction.boards.find(
 		(board) => board.id === state.currentBoardId
 	);
 	return board?.columns;
 };
 
 export const selectTaskData = (state: RootState) => {
-	const boardIndex = getBoardIndex(state.tasks, state.currentBoardId);
+	const boardIndex = getBoardIndex(state.taskAction, state.currentBoardId);
 	const columnIndex = getColumnIndex(
-		state.tasks,
+		state.taskAction,
 		boardIndex,
 		state.currentColumnId
 	);
-	return state.tasks.boards[boardIndex].columns[columnIndex].tasks;
+	return state.taskAction.boards[boardIndex].columns[columnIndex].tasks;
 };
 
 export const selectCurrentTaskData = (state: RootState) => {
-	const boardIndex = getBoardIndex(state.tasks, state.currentBoardId);
+	const boardIndex = getBoardIndex(state.taskAction, state.currentBoardId);
 	const columnIndex = getColumnIndex(
-		state.tasks,
+		state.taskAction,
 		boardIndex,
 		state.currentColumnId
 	);
 	const taskIndex = getTaskIndex(
-		state.tasks,
+		state.taskAction,
 		boardIndex,
 		columnIndex,
 		state.currentTask.currentTaskId
 	);
-	return state.tasks.boards[boardIndex].columns[columnIndex].tasks[taskIndex];
+	return state.taskAction.boards[boardIndex].columns[columnIndex].tasks[taskIndex];
 };
 
-export default tasksSlice.reducer;
+export default taskActionSlice.reducer;

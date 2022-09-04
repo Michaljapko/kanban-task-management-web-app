@@ -10,7 +10,7 @@ import {
 	columnChangeTask,
 	editTask,
 	selectCurrentTaskData,
-} from '../../features/tasks/tasksSlice';
+} from '../../features/tasks/taskActionSlice';
 import {
 	selectIsDropdownTaskShow,
 	setIsDropdownTaskShow,

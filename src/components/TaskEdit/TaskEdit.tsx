@@ -8,7 +8,7 @@ import {
 	selectTasksData,
 	columnChangeTask,
 	editTask,
-} from '../../features/tasks/tasksSlice';
+} from '../../features/tasks/taskActionSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Formik, Form, FieldArray } from 'formik';
 import { TasksData, TaskInputValues } from '../../types/types';

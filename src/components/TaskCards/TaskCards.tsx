@@ -21,7 +21,7 @@ import { changeColumn } from '../../features/tasks/columnSlice';
 import {
 	selectTasksData,
 	columnChangeTaskDrag,
-} from '../../features/tasks/tasksSlice';
+} from '../../features/tasks/taskActionSlice';
 import { TasksData } from '../../types/types';
 import { getCompletedTask } from '../../helpers/getCompletedTasks';
 import { subtaskInfoCard } from '../../data/textEN';
