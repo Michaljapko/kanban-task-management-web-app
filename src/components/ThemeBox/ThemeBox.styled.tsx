@@ -19,6 +19,7 @@ export const StyledRadioBox = styled.div`
 	height: 48px;
 	border-radius: 6px;
 	background: ${({ theme }) => theme.backgroundContrast};
+
 	@media (min-width: 992px) {
 		margin: 0 2rem;
 	}
@@ -33,6 +34,7 @@ export const StyledSwitch = styled.input`
 	margin: 0;
 	opacity: 0;
 	z-index: 1;
+	cursor: pointer;
 
 	& + label {
 		position: absolute;
@@ -45,6 +47,7 @@ export const StyledSwitch = styled.input`
 		border-radius: 12px;
 		z-index: 0;
 		background-color: ${({ theme }) => theme.themeColor};
+		cursor: pointer;
 	}
 	& + label::after {
 		${switchDot};

@@ -46,8 +46,7 @@ const DropDown = ({ variant }: { variant: 'board' | 'task' }) => {
 					dispatch(closeFunction());
 				}}
 			>
-				{DELETE}
-				{variant}
+				{DELETE} {variant}
 			</StyledDropMenuButton>
 		</StyledDropMenu>
 	);

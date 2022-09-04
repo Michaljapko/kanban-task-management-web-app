@@ -57,7 +57,7 @@ const TASK_EDIT = 'Edit Task';
 const TASK_SUBTASK = 'Subtask';
 const TASK_PLACEHOLDER =
 	'e.g. It’s always good to take a break. This 15 minute break will  recharge the batteries a little.';
-const ALL_BOARD = 'All Board';
+const ALL_BOARD = 'All Boards';
 const STATUS = 'Status';
 const SAVE = 'Save Changes';
 const CANCEL = 'Cancel';

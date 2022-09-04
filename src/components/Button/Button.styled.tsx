@@ -12,7 +12,7 @@ export const StyledButton = styled.button<ButtonTypes>`
 				gap: 0.7rem;
 				border: 0;
 				border-radius: 0rem 6.25rem 6.25rem 0rem;
-				width: 15rem;
+				width: 92%;
 				padding: 1rem 1.5rem;
 				background: ${() => theme.buttonPrimary};
 				color: ${() => theme.buttonText};
@@ -28,6 +28,8 @@ export const StyledButton = styled.button<ButtonTypes>`
 				justify-content: flex-start;
 				gap: 0.75rem;
 				border: 0;
+				border-radius: 0rem 6.25rem 6.25rem 0rem;
+				width: 92%;
 				padding: 1rem 1.5rem;
 				background: none;
 				color: ${() =>
@@ -38,8 +40,6 @@ export const StyledButton = styled.button<ButtonTypes>`
 				&:hover {
 					color: ${() => theme.themeColor};
 					background-color: ${() => theme.buttonSecondaryHover};
-					border-radius: 0rem 6.25rem 6.25rem 0rem;
-					width: 15rem;
 				}
 			`;
 		if (variant === 'buttonBig')

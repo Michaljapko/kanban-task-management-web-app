@@ -17,7 +17,7 @@ import {
 	StyledWrapper,
 	StyledHidebox,
 } from './LandingPage.styled';
-import { BOARD_ADD, COLUMN_ADD, EMPTY, EMPTY_BOARD } from '../../data/textEN';
+import { BOARD_CREATE, COLUMN_ADD, EMPTY, EMPTY_BOARD } from '../../data/textEN';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { selectTasksData } from '../../features/tasks/tasksSlice';
 import BoardAdd from '../BoardAdd';
@@ -71,7 +71,7 @@ const LandingPage = () => {
 									: dispatch(setIsBoardAddShow());
 							}}
 						>
-							{tasksData?.length === 0 ? COLUMN_ADD : BOARD_ADD}
+							{tasksData?.length === 0 ? COLUMN_ADD : BOARD_CREATE}
 						</Button>
 					</StyledWrapperInfo>
 				)}

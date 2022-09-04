@@ -29,6 +29,7 @@ export const StyledHeaderBox = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 1rem;
+	cursor: pointer;
 `;
 
 export const StyledArrow = styled.img`
@@ -38,5 +39,9 @@ export const StyledArrow = styled.img`
 `;
 export const StyledLogoText = styled.h1`
 	${({ theme }) => theme.textHeading.large}
-	color:${({ theme }) => theme.mainColor}
+	color:${({ theme }) => theme.mainColor};
+	@media (min-width: 992px) {
+		font-size: 24px;
+		line-height: 30px;
+	}
 `;
