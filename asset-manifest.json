@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.js": "/Michaljapko/kanban-task-management-web-app/static/js/main.0cac9289.js",
-    "static/media/logo-dark.svg": "/Michaljapko/kanban-task-management-web-app/static/media/logo-dark.ac4c8e487da046e58b1d44d8797a975e.svg",
-    "static/media/logo-light.svg": "/Michaljapko/kanban-task-management-web-app/static/media/logo-light.1e20d87d61c965503a5323cc3bd2c827.svg",
-    "index.html": "/Michaljapko/kanban-task-management-web-app/index.html",
-    "static/media/icon-light-theme.svg": "/Michaljapko/kanban-task-management-web-app/static/media/icon-light-theme.b98efecd506358014a7ae1eadb34e36c.svg",
-    "static/media/icon-hide-sidebar.svg": "/Michaljapko/kanban-task-management-web-app/static/media/icon-hide-sidebar.0e2c68ccd652fb10d8ba0c0c7f3a2f60.svg",
-    "static/media/icon-dark-theme.svg": "/Michaljapko/kanban-task-management-web-app/static/media/icon-dark-theme.9812582fa58ec8051801098dbfd8c29d.svg",
-    "static/media/icon-board.svg": "/Michaljapko/kanban-task-management-web-app/static/media/icon-board.29b48f5174742b4dd3a04f52d710293c.svg",
-    "static/media/icon-show-sidebar.svg": "/Michaljapko/kanban-task-management-web-app/static/media/icon-show-sidebar.b186c9a8e4a2e4d7d83e0676d3e128fc.svg",
-    "static/media/logo-mobile.svg": "/Michaljapko/kanban-task-management-web-app/static/media/logo-mobile.e60c2fbc3dcefa4256e0569ffba5e523.svg",
-    "static/media/icon-vertical-ellipsis.svg": "/Michaljapko/kanban-task-management-web-app/static/media/icon-vertical-ellipsis.5c8996197d4a9dd7a7adfa20ce4abef9.svg",
-    "static/media/icon-cross.svg": "/Michaljapko/kanban-task-management-web-app/static/media/icon-cross.d4ca9e0d2a82f7ea4ae08238a42f84ed.svg",
-    "static/media/icon-add-task-mobile.svg": "/Michaljapko/kanban-task-management-web-app/static/media/icon-add-task-mobile.2a8e26ad102dab09554faa37c9d62c19.svg",
-    "static/media/icon-check.svg": "/Michaljapko/kanban-task-management-web-app/static/media/icon-check.4e068cb6e6e3395eda40ccf42917b447.svg",
-    "static/media/icon-chevron-down.svg": "/Michaljapko/kanban-task-management-web-app/static/media/icon-chevron-down.77595c15c9072ba0ef8a21ab5cc8c376.svg",
-    "static/media/icon-chevron-up.svg": "/Michaljapko/kanban-task-management-web-app/static/media/icon-chevron-up.6918f905519d47589a92103b48580f45.svg",
-    "main.0cac9289.js.map": "/Michaljapko/kanban-task-management-web-app/static/js/main.0cac9289.js.map"
+    "main.js": "/kanban-task-management-web-app/static/js/main.1d3f50e7.js",
+    "static/media/logo-dark.svg": "/kanban-task-management-web-app/static/media/logo-dark.ac4c8e487da046e58b1d44d8797a975e.svg",
+    "static/media/logo-light.svg": "/kanban-task-management-web-app/static/media/logo-light.1e20d87d61c965503a5323cc3bd2c827.svg",
+    "index.html": "/kanban-task-management-web-app/index.html",
+    "static/media/icon-light-theme.svg": "/kanban-task-management-web-app/static/media/icon-light-theme.b98efecd506358014a7ae1eadb34e36c.svg",
+    "static/media/icon-hide-sidebar.svg": "/kanban-task-management-web-app/static/media/icon-hide-sidebar.0e2c68ccd652fb10d8ba0c0c7f3a2f60.svg",
+    "static/media/icon-dark-theme.svg": "/kanban-task-management-web-app/static/media/icon-dark-theme.9812582fa58ec8051801098dbfd8c29d.svg",
+    "static/media/icon-board.svg": "/kanban-task-management-web-app/static/media/icon-board.29b48f5174742b4dd3a04f52d710293c.svg",
+    "static/media/icon-show-sidebar.svg": "/kanban-task-management-web-app/static/media/icon-show-sidebar.b186c9a8e4a2e4d7d83e0676d3e128fc.svg",
+    "static/media/logo-mobile.svg": "/kanban-task-management-web-app/static/media/logo-mobile.e60c2fbc3dcefa4256e0569ffba5e523.svg",
+    "static/media/icon-vertical-ellipsis.svg": "/kanban-task-management-web-app/static/media/icon-vertical-ellipsis.5c8996197d4a9dd7a7adfa20ce4abef9.svg",
+    "static/media/icon-cross.svg": "/kanban-task-management-web-app/static/media/icon-cross.d4ca9e0d2a82f7ea4ae08238a42f84ed.svg",
+    "static/media/icon-add-task-mobile.svg": "/kanban-task-management-web-app/static/media/icon-add-task-mobile.2a8e26ad102dab09554faa37c9d62c19.svg",
+    "static/media/icon-check.svg": "/kanban-task-management-web-app/static/media/icon-check.4e068cb6e6e3395eda40ccf42917b447.svg",
+    "static/media/icon-chevron-down.svg": "/kanban-task-management-web-app/static/media/icon-chevron-down.77595c15c9072ba0ef8a21ab5cc8c376.svg",
+    "static/media/icon-chevron-up.svg": "/kanban-task-management-web-app/static/media/icon-chevron-up.6918f905519d47589a92103b48580f45.svg",
+    "main.1d3f50e7.js.map": "/kanban-task-management-web-app/static/js/main.1d3f50e7.js.map"
   },
   "entrypoints": [
-    "static/js/main.0cac9289.js"
+    "static/js/main.1d3f50e7.js"
   ]
 }
