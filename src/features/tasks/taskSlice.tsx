@@ -1,28 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { Boards, Board, Columns, TasksData } from '../../types/types';
-
-const getBoardIndex = ({ boards }: Boards, boardId: string) =>
-	boards.findIndex((board: Board) => board.id === boardId);
-
-const getColumnIndex = (
-	{ boards }: Boards,
-	boardIndex: number,
-	columnId: string
-) =>
-	boards[boardIndex].columns.findIndex(
-		(column: Columns) => column.id === columnId
-	);
-
-const getTaskIndex = (
-	{ boards }: Boards,
-	boardIndex: number,
-	columnIndex: number,
-	taskId: string
-) =>
-	boards[boardIndex].columns[columnIndex].tasks.findIndex(
-		(task: TasksData) => task.id === taskId
-	);
+import {
+	getBoardIndex,
+	getColumnIndex,
+	getTaskIndex,
+} from '../../helpers/reducersHelpers';
 
 export const TaskViewIdSlice = createSlice({
 	name: 'TaskViewIdSlice',
@@ -51,7 +33,8 @@ export const selectCurrentTaskName = (state: RootState) => {
 		columnIndex,
 		state.currentTask.currentTaskId
 	);
-	return state.taskAction.boards[boardIndex].columns[columnIndex].tasks[taskIndex]
-		.title;
+	return state.taskAction.boards[boardIndex].columns[columnIndex].tasks[
+		taskIndex
+	].title;
 };
 export default TaskViewIdSlice.reducer;

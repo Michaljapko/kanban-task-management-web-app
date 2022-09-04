@@ -2,28 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import { Boards, Board, TasksData, Column } from '../../types/types';
 import { data } from '../../data/data';
+import { getBoardIndex, getColumnIndex, getTaskIndex } from '../../helpers/reducersHelpers';
 
 const initialState: Boards = data;
-
-const getBoardIndex = ({ boards }: any, boardId: string) =>
-	boards.findIndex((board: any) => board.id === boardId);
-
-const getColumnIndex = (
-	{ boards }: any,
-	boardIndex: string,
-	columnId: string
-) =>
-	boards[boardIndex].columns.findIndex((column: any) => column.id === columnId);
-
-const getTaskIndex = (
-	{ boards }: any,
-	boardIndex: string,
-	columnIndex: string,
-	taskId: string
-) =>
-	boards[boardIndex].columns[columnIndex].tasks.findIndex(
-		(task: any) => task.id === taskId
-	);
 
 export const taskActionSlice = createSlice({
 	name: 'taskAction',
