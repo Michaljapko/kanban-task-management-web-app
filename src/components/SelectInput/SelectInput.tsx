@@ -2,7 +2,6 @@ import { StyledSelect } from './SelectInput.styled';
 import { SelectInputTypes } from '../../types/types';
 import Select from 'react-select';
 
-
 const SelectInput = ({
 	name,
 	options,
@@ -11,13 +10,15 @@ const SelectInput = ({
 }: SelectInputTypes) => {
 	return (
 		<StyledSelect>
-		<Select
-			classNamePrefix='Select'
-			name={name}
-			options={options}
-			defaultValue={defaultValue}
-			onChange={onChange}
-		/>
+			<Select
+				classNamePrefix='Select'
+				name={name}
+				options={options}
+				value={defaultValue}
+				onChange={onChange}
+				controlShouldRenderValue={true}
+				isSearchable={false}
+			/>
 		</StyledSelect>
 	);
 };

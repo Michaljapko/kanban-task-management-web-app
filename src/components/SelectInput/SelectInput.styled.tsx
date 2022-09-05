@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const StyledSelect = styled.div`
 	.Select__control {
 		box-shadow: none;
@@ -46,5 +45,11 @@ export const StyledSelect = styled.div`
 	}
 	.Select__listbox {
 		background-color: ${({ theme }) => theme.backgroundSelect};
+	}
+	.Select__dropdown-indicator {
+		color: ${({ theme }) => theme.themeColor};
+		&:hover {
+			color: ${({ theme }) => theme.themeColor};
+		}
 	}
 `;

@@ -14,9 +14,12 @@ export const StyledDropMenu = styled.div`
 	height: 94px;
 	padding: 1rem;
 	background: ${({ theme }) => theme.backgroundMain};
+	@media (min-width: 992px) {
+		top: 4.5rem;
+	}
 `;
 
-export const StyledDropMenuButton = styled.button<{ variant?: 'delete'}>`
+export const StyledDropMenuButton = styled.button<{ variant?: 'delete' }>`
 	${({ theme }) => theme.text.large};
 	border: none;
 	text-align: start;
