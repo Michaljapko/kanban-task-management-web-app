@@ -28,6 +28,210 @@ export const data: Boards = {
 							],
 						},
 						{
+							id: '2441a2',
+							title:
+								'Research pricing points of various competitors and trial different business models',
+							description:
+								'We knndsaaaaaaaaaaaaaaas dsa dsa dsa ad sad assdad s.',
+							status: 'Done',
+							subtasks: [
+								{
+									id: '22223s1',
+									title:
+										'We know what were planning to build for version one. Now we need to finalise the first pricing We know what were planning to build for version one. Now we need to finalise the first pricing ',
+									isCompleted: true,
+								},
+								{ id: '22223421', title: 'Go in', isCompleted: false },
+							],
+						},
+						{
+							id: '2441a2',
+							title:
+								'Research pricing points of various competitors and trial different business models',
+							description:
+								'We knndsaaaaaaaaaaaaaaas dsa dsa dsa ad sad assdad s.',
+							status: 'Done',
+							subtasks: [
+								{
+									id: '22223s1',
+									title:
+										'We know what were planning to build for version one. Now we need to finalise the first pricing We know what were planning to build for version one. Now we need to finalise the first pricing ',
+									isCompleted: true,
+								},
+								{ id: '22223421', title: 'Go in', isCompleted: false },
+							],
+						},
+						{
+							id: '2441a2',
+							title:
+								'Research pricing points of various competitors and trial different business models',
+							description:
+								'We knndsaaaaaaaaaaaaaaas dsa dsa dsa ad sad assdad s.',
+							status: 'Done',
+							subtasks: [
+								{
+									id: '22223s1',
+									title:
+										'We know what were planning to build for version one. Now we need to finalise the first pricing We know what were planning to build for version one. Now we need to finalise the first pricing ',
+									isCompleted: true,
+								},
+								{ id: '22223421', title: 'Go in', isCompleted: false },
+							],
+						},
+						{
+							id: '2441a2',
+							title:
+								'Research pricing points of various competitors and trial different business models',
+							description:
+								'We knndsaaaaaaaaaaaaaaas dsa dsa dsa ad sad assdad s.',
+							status: 'Done',
+							subtasks: [
+								{
+									id: '22223s1',
+									title:
+										'We know what were planning to build for version one. Now we need to finalise the first pricing We know what were planning to build for version one. Now we need to finalise the first pricing ',
+									isCompleted: true,
+								},
+								{ id: '22223421', title: 'Go in', isCompleted: false },
+							],
+						},
+						{
+							id: '2441a2',
+							title:
+								'Research pricing points of various competitors and trial different business models',
+							description:
+								'We knndsaaaaaaaaaaaaaaas dsa dsa dsa ad sad assdad s.',
+							status: 'Done',
+							subtasks: [
+								{
+									id: '22223s1',
+									title:
+										'We know what were planning to build for version one. Now we need to finalise the first pricing We know what were planning to build for version one. Now we need to finalise the first pricing ',
+									isCompleted: true,
+								},
+								{ id: '22223421', title: 'Go in', isCompleted: false },
+							],
+						},
+						{
+							id: '2441a2',
+							title:
+								'Research pricing points of various competitors and trial different business models',
+							description:
+								'We knndsaaaaaaaaaaaaaaas dsa dsa dsa ad sad assdad s.',
+							status: 'Done',
+							subtasks: [
+								{
+									id: '22223s1',
+									title:
+										'We know what were planning to build for version one. Now we need to finalise the first pricing We know what were planning to build for version one. Now we need to finalise the first pricing ',
+									isCompleted: true,
+								},
+								{ id: '22223421', title: 'Go in', isCompleted: false },
+							],
+						},
+						{
+							id: '2441a2',
+							title:
+								'Research pricing points of various competitors and trial different business models',
+							description:
+								'We knndsaaaaaaaaaaaaaaas dsa dsa dsa ad sad assdad s.',
+							status: 'Done',
+							subtasks: [
+								{
+									id: '22223s1',
+									title:
+										'We know what were planning to build for version one. Now we need to finalise the first pricing We know what were planning to build for version one. Now we need to finalise the first pricing ',
+									isCompleted: true,
+								},
+								{ id: '22223421', title: 'Go in', isCompleted: false },
+							],
+						},
+						{
+							id: '2441a2',
+							title:
+								'Research pricing points of various competitors and trial different business models',
+							description:
+								'We knndsaaaaaaaaaaaaaaas dsa dsa dsa ad sad assdad s.',
+							status: 'Done',
+							subtasks: [
+								{
+									id: '22223s1',
+									title:
+										'We know what were planning to build for version one. Now we need to finalise the first pricing We know what were planning to build for version one. Now we need to finalise the first pricing ',
+									isCompleted: true,
+								},
+								{ id: '22223421', title: 'Go in', isCompleted: false },
+							],
+						},
+						{
+							id: '2441a2',
+							title:
+								'Research pricing points of various competitors and trial different business models',
+							description:
+								'We knndsaaaaaaaaaaaaaaas dsa dsa dsa ad sad assdad s.',
+							status: 'Done',
+							subtasks: [
+								{
+									id: '22223s1',
+									title:
+										'We know what were planning to build for version one. Now we need to finalise the first pricing We know what were planning to build for version one. Now we need to finalise the first pricing ',
+									isCompleted: true,
+								},
+								{ id: '22223421', title: 'Go in', isCompleted: false },
+							],
+						},
+						{
+							id: '2441a2',
+							title:
+								'Research pricing points of various competitors and trial different business models',
+							description:
+								'We knndsaaaaaaaaaaaaaaas dsa dsa dsa ad sad assdad s.',
+							status: 'Done',
+							subtasks: [
+								{
+									id: '22223s1',
+									title:
+										'We know what were planning to build for version one. Now we need to finalise the first pricing We know what were planning to build for version one. Now we need to finalise the first pricing ',
+									isCompleted: true,
+								},
+								{ id: '22223421', title: 'Go in', isCompleted: false },
+							],
+						},
+						{
+							id: '2441a2',
+							title:
+								'Research pricing points of various competitors and trial different business models',
+							description:
+								'We knndsaaaaaaaaaaaaaaas dsa dsa dsa ad sad assdad s.',
+							status: 'Done',
+							subtasks: [
+								{
+									id: '22223s1',
+									title:
+										'We know what were planning to build for version one. Now we need to finalise the first pricing We know what were planning to build for version one. Now we need to finalise the first pricing ',
+									isCompleted: true,
+								},
+								{ id: '22223421', title: 'Go in', isCompleted: false },
+							],
+						},
+						{
+							id: '2441a2',
+							title:
+								'Research pricing points of various competitors and trial different business models',
+							description:
+								'We knndsaaaaaaaaaaaaaaas dsa dsa dsa ad sad assdad s.',
+							status: 'Done',
+							subtasks: [
+								{
+									id: '22223s1',
+									title:
+										'We know what were planning to build for version one. Now we need to finalise the first pricing We know what were planning to build for version one. Now we need to finalise the first pricing ',
+									isCompleted: true,
+								},
+								{ id: '22223421', title: 'Go in', isCompleted: false },
+							],
+						},
+						{
 							id: '24412a2',
 							title: 'Do smth',
 							description: 'Go out and smth',

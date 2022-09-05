@@ -1,5 +1,4 @@
 import {
-	DELETE,
 	COLUMN_ADD,
 	COLUMN_PLACEHOLDER,
 	BOARD_CREATE,
@@ -11,6 +10,7 @@ import {
 import {
 	StyledBoxSection,
 	StyledColumnInputBox,
+	StyledCrossIcon,
 	StyledLabel,
 } from './BoardAdd.styled';
 import { Formik, Form, FieldArray } from 'formik';
@@ -21,7 +21,6 @@ import { changeBoard } from '../../features/tasks/boardSlice';
 import { setIsBoardAddShow } from '../../features/layout/layoutSlice';
 import { useAppDispatch } from '../../app/hooks';
 import { v4 as uuid } from 'uuid';
-import cross from '../../assets/icon-cross.svg';
 import PopUp from '../PopUp';
 import Button from '../Button';
 import Input from '../Input';
@@ -78,11 +77,7 @@ const BoardAdd = () => {
 														name={`columns.${index}.name`}
 														placeholder={COLUMN_PLACEHOLDER}
 													/>
-													<img
-														src={cross}
-														alt={DELETE}
-														onClick={() => remove(index)}
-													/>
+													<StyledCrossIcon onClick={() => remove(index)} />
 												</StyledColumnInputBox>
 											))}
 										<Button

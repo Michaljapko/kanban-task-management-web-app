@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ReactComponent as Cross } from '../../assets/icon-cross.svg';
 
 export const StyledBoxSection = styled.div`
 	margin-bottom: 24px;
@@ -32,4 +33,11 @@ export const StyledLabel = styled.label`
 	${({ theme }) => theme.text.medium}
 	margin-bottom:8px;
 	color: ${({ theme }) => theme.textGrey};
+`;
+
+export const StyledCrossIcon = styled(Cross)`
+	fill: ${({ theme }) => theme.textGrey};
+	&:hover {
+		fill: ${({ theme }) => theme.colorError};
+	}
 `;

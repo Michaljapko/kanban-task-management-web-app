@@ -1,8 +1,7 @@
 import { ButtonTypes } from '../../types/types';
-import { StyledButton } from './Button.styled';
-import board from '../../assets/icon-board.svg';
-import plus from '../../assets/icon-add-task-mobile.svg';
-import hide from '../../assets/icon-hide-sidebar.svg';
+import { StyledBoardIcon, StyledHideIcon, StyledButton } from './Button.styled';
+
+import { ReactComponent as Plus } from '../../assets/icon-add-task-mobile.svg';
 
 const Button = ({
 	children,
@@ -13,15 +12,15 @@ const Button = ({
 	width,
 }: ButtonTypes) => {
 	const getIcon = (icon: string) => {
-		if (icon === 'plus') return plus;
-		if (icon === 'board') return board;
-		if (icon === 'hide') return hide;
+		if (icon === 'plus') return <Plus />;
+		if (icon === 'board') return <StyledBoardIcon variant={variant} />;
+		if (icon === 'hide') return <StyledHideIcon variant={variant} />;
 	};
 
 	return (
 		<StyledButton onClick={onClick} variant={variant} type={type} width={width}>
 			<>
-				{icon && <img src={getIcon(icon)} alt={icon} />}
+				{icon && getIcon(icon)}
 				{children}
 			</>
 		</StyledButton>

@@ -11,6 +11,7 @@ import {
 import {
 	StyledBoxSection,
 	StyledColumnInputBox,
+	StyledCrossIcon,
 	StyledLabel,
 } from './TaskAdd.style';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -21,7 +22,6 @@ import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { setIsTaskAddShow } from '../../features/layout/layoutSlice';
 import { taskAddSchema } from '../../helpers/validationSchema';
 import { v4 as uuid } from 'uuid';
-import cross from '../../assets/icon-cross.svg';
 import SelectInput from '../SelectInput';
 import Button from '../Button';
 import PopUp from '../PopUp';
@@ -100,11 +100,7 @@ const TaskAdd = () => {
 														name={`subtasks.${index}.title`}
 														placeholder='e.g. In Progress'
 													/>
-													<img
-														src={cross}
-														alt='Delete'
-														onClick={() => remove(index)}
-													/>
+													<StyledCrossIcon onClick={() => remove(index)} />
 												</StyledColumnInputBox>
 											))}
 										<Button

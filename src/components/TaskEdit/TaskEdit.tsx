@@ -2,6 +2,7 @@ import {
 	StyledBoxSection,
 	StyledLabel,
 	StyledColumnInputBox,
+	StyledCrossIcon,
 } from './TaskEdit.style';
 import {
 	selectCurrentTaskData,
@@ -13,7 +14,6 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Formik, Form, FieldArray } from 'formik';
 import { TasksData, TaskInputValues } from '../../types/types';
 import Button from '../Button';
-import cross from '../../assets/icon-cross.svg';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { selectCurrentColumn } from '../../features/tasks/columnSlice';
 import { setIsTaskEditShow } from '../../features/layout/layoutSlice';
@@ -115,11 +115,7 @@ const TaskEdit = () => {
 											values.subtasks.map((subtasks, index) => (
 												<StyledColumnInputBox key={index}>
 													<Input name={`subtasks.${index}.title`} />
-													<img
-														src={cross}
-														alt='Delete'
-														onClick={() => remove(index)}
-													/>
+													<StyledCrossIcon onClick={() => remove(index)} />
 												</StyledColumnInputBox>
 											))}
 										<Button

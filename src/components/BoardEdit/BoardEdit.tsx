@@ -10,6 +10,7 @@ import {
 import {
 	StyledBoxSection,
 	StyledColumnInputBox,
+	StyledCrossIcon,
 	StyledLabel,
 } from './BoardEdit.styled';
 import {
@@ -26,7 +27,6 @@ import { v4 as uuid } from 'uuid';
 import PopUp from '../PopUp';
 import Input from '../Input';
 import Button from '../Button';
-import cross from '../../assets/icon-cross.svg';
 import { filterAddedColumns } from '../../helpers/filterAddedColumns';
 
 const BoardEdit = () => {
@@ -81,11 +81,7 @@ const BoardEdit = () => {
 														name={`columns.${index}.name`}
 														placeholder={COLUMN_PLACEHOLDER}
 													/>
-													<img
-														src={cross}
-														alt={DELETE}
-														onClick={() => remove(index)}
-													/>
+													<StyledCrossIcon onClick={() => remove(index)} />
 												</StyledColumnInputBox>
 											))}
 										<Button
