@@ -42,6 +42,11 @@ const TaskView = () => {
 	const isDropdownTaskShow = useAppSelector(selectIsDropdownTaskShow);
 	const task = useAppSelector(selectCurrentTaskData);
 
+	const taskColumsData = taskColumn!.map((column) => ({
+		value: column.id,
+		label: column.name,
+	}));
+
 	const ellipsisButton = (
 		<>
 			<Ellipsis
@@ -125,10 +130,10 @@ const TaskView = () => {
 							})
 						);
 					}}
-					options={taskColumn!.map((column) => ({
-						value: column.id,
-						label: column.name,
-					}))}
+					options={taskColumsData}
+					defaultValue={taskColumsData.find(
+						(columns) => columns.value === currentColumn
+					)}
 				/>
 			</StyledBoxSection>
 		</PopUp>

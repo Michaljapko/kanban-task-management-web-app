@@ -39,18 +39,21 @@ const TaskEdit = () => {
 	const currentBoard = useAppSelector(selectCurrentBoard);
 	const task = useAppSelector(selectCurrentTaskData);
 
-	const getColumns = () =>
-		taskColumns!.map((column) => ({ value: column.id, label: column.name }));
-	const columnsData = getColumns();
+	const taskColumnsData = taskColumns!.map((column) => ({
+		value: column.id,
+		label: column.name,
+	}));
+	const currentColumnValue = taskColumnsData.find(
+		(column) => column.value === currentColumn
+	);
 
 	const initialValues: TaskInputValues = {
 		title: task.title,
 		description: task.description,
 		subtasks: task.subtasks,
-		status: task.status,
+		status: currentColumn,
 	};
-
-	function handleEditTask(values: TaskInputValues) {
+	const handleEditTask = (values: TaskInputValues) => {
 		const taskEdited: TasksData = {
 			id: task.id,
 			title: values.title,
@@ -81,7 +84,7 @@ const TaskEdit = () => {
 			})
 		);
 		dispatch(setIsTaskEditShow());
-	}
+	};
 
 	return (
 		<PopUp
@@ -133,11 +136,10 @@ const TaskEdit = () => {
 						<StyledBoxSection>
 							<StyledLabel htmlFor='status'>{STATUS}</StyledLabel>
 							<SelectInput
-								name='status'
-								options={columnsData}
-								defaultValue={columnsData[0]}
-								onChange={(e) => {
-									values.status = e!.value;
+								options={taskColumnsData}
+								defaultValue={currentColumnValue}
+								onChange={(event) => {
+									values.status = event!.value;
 								}}
 							/>
 						</StyledBoxSection>

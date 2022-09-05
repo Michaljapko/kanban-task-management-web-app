@@ -29,7 +29,6 @@ const Header = () => {
 	const isSidebarShow = useAppSelector(selectIsSidebarShow);
 	const isDropdownHeaderShow = useAppSelector(selectIsDropdownHeaderShow);
 	const currentDevice = useAppSelector(selectCurrentDevice);
-	console.log(taskData);
 	const renderButton = () => {
 		if (taskData && taskData.length > 0 && currentDevice === 'desktop')
 			return (

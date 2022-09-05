@@ -76,7 +76,6 @@ export const layoutSlice = createSlice({
 		setIsTaskEditShow: (state) =>
 			(state = {
 				...initialState,
-				isTaskShow: !state.isTaskShow,
 				isTaskEditShow: !state.isTaskEditShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
