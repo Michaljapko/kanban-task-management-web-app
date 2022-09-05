@@ -29,9 +29,9 @@ const Header = () => {
 	const isSidebarShow = useAppSelector(selectIsSidebarShow);
 	const isDropdownHeaderShow = useAppSelector(selectIsDropdownHeaderShow);
 	const currentDevice = useAppSelector(selectCurrentDevice);
-
+	console.log(taskData);
 	const renderButton = () => {
-		if (taskData?.length !== 0 && currentDevice === 'desktop')
+		if (taskData && taskData.length > 0 && currentDevice === 'desktop')
 			return (
 				<Button
 					variant='header'
@@ -42,7 +42,7 @@ const Header = () => {
 					{TASK_ADD_HEADER}
 				</Button>
 			);
-		if (taskData?.length !== 0 && currentDevice === 'mobile')
+		if (taskData && taskData.length > 0 && currentDevice === 'mobile')
 			return (
 				<Button
 					icon='plus'
