@@ -14,7 +14,7 @@ export const StyledLogo = styled.div<{ isSidebarShow: boolean }>`
 			if (isSidebarShow)
 				return `
 			border-color: ${theme.borderColor};
-			border-bottom: 1px solid white;`;
+			border-bottom: 1px solid ${theme.backgroundMain};`;
 		}};
 	}
 `;
