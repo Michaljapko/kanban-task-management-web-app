@@ -14,7 +14,7 @@ export const StyledHeader = styled.div<{ isSidebarShow: boolean }>`
 	@media (min-width: 992px) {
 		padding: 0;
 		padding-right: 2rem;
-		height: 97px;
+		height: 7vh;
 		border-bottom: 1px solid ${({ theme }) => theme.borderColor};
 	}
 `;

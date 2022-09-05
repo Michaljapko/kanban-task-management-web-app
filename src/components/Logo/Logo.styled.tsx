@@ -7,10 +7,14 @@ export const StyledLogo = styled.div<{ isSidebarShow: boolean }>`
 		align-items: center;
 		justify-content: center;
 		width: 300px;
-		height: 97px;
+		height: 7vh;
 		border-right: 1px solid transparent;
+
 		${({ isSidebarShow, theme }) => {
-			if (isSidebarShow) return `border-color: ${theme.borderColor}`;
+			if (isSidebarShow)
+				return `
+			border-color: ${theme.borderColor};
+			border-bottom: 1px solid white;`;
 		}};
 	}
 `;

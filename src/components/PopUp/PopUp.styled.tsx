@@ -15,12 +15,14 @@ export const StyledBack = styled.div<{ variant?: PopUpVariants }>`
 	${({ variant }) => {
 		if (variant === 'sidebar')
 			return css`
+				align-items: flex-start;
 				@media (min-width: 992px) {
 					position: relative;
+					display: flex;
 					justify-content: flex-start;
 					background-color: transparent;
 					width: 300px;
-					padding-top: 96px;
+					margin-top: 7vh;
 					z-index: 0;
 				}
 			`;
@@ -42,14 +44,21 @@ export const StyledBox = styled.div<{ variant?: PopUpVariants }>`
 	${({ variant }) => {
 		if (variant === 'sidebar')
 			return css`
+				top: 80px;
+				width: 264px;
 				@media (min-width: 992px) {
-					position: relative;
+					position: fixed;
+					flex-direction: column;
+					justify-content: space-between;
 					width: 300px;
-					height: 100%;
+					min-height: 93vh;
+					top: 7vh;
 					margin: 0;
 					padding: 0;
 					border-radius: 0px;
 					border-right: 1px solid ${({ theme }) => theme.borderColor};
+					padding-top: 15px;
+					padding-bottom: 32px;
 				}
 			`;
 	}}

@@ -24,16 +24,14 @@ export const StyledRadioBox = styled.div`
 `;
 export const StyledHideBox = styled.div`
 	display: none;
-
 	@media (min-width: 992px) {
 		display: flex;
-		margin-bottom: 47px;
 		margin-top: 22px;
 	}
 `;
 export const StyledFooter = styled.div`
 	@media (min-width: 992px) {
-		position: absolute;
+		position: relative;
 		bottom: 0;
 		width: 100%;
 	}
