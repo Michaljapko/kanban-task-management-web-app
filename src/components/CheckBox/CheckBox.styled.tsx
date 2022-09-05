@@ -23,6 +23,7 @@ export const StyledCheckbox = styled.input`
 	margin: 0;
 	opacity: 0;
 	z-index: 1;
+	cursor: pointer;
 
 	& + label {
 		position: absolute;
@@ -39,6 +40,7 @@ export const StyledCheckbox = styled.input`
 
 	&:checked + label {
 		background-color: ${({ theme }) => theme.themeColor};
+
 		${StyledIcon} {
 			opacity: 1;
 		}
