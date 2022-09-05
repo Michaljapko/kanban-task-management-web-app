@@ -31,7 +31,7 @@ const Header = () => {
 	const currentDevice = useAppSelector(selectCurrentDevice);
 
 	const renderButton = () => {
-		if (taskData && currentDevice === 'desktop')
+		if (taskData?.length !== 0 && currentDevice === 'desktop')
 			return (
 				<Button
 					variant='header'
@@ -42,7 +42,7 @@ const Header = () => {
 					{TASK_ADD_HEADER}
 				</Button>
 			);
-		if (taskData && currentDevice === 'mobile')
+		if (taskData?.length !== 0 && currentDevice === 'mobile')
 			return (
 				<Button
 					icon='plus'
