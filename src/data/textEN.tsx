@@ -32,6 +32,7 @@ export {
 	taskDeleteInfo,
 	subtaskInfo,
 	subtaskInfoCard,
+	SUBTASK_ADD,
 };
 
 const EMPTY = 'Create or choose a board to get started.';
@@ -55,8 +56,10 @@ const TASK_NAME = 'Title';
 const TASK_DESCRIPTION = 'Description';
 const TASK_EDIT = 'Edit Task';
 const TASK_SUBTASK = 'Subtask';
+const SUBTASK_ADD = '+ Add New Column';
 const TASK_PLACEHOLDER =
 	'e.g. It’s always good to take a break. This 15 minute break will  recharge the batteries a little.';
+
 const ALL_BOARD = 'All Boards';
 const STATUS = 'Status';
 const SAVE = 'Save Changes';

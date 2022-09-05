@@ -1,6 +1,7 @@
 import {
 	COLUMN_ADD,
 	STATUS,
+	SUBTASK_ADD,
 	TASK_ADD,
 	TASK_DESCRIPTION,
 	TASK_NAME,
@@ -109,7 +110,7 @@ const TaskAdd = () => {
 											width='full'
 											onClick={() => push({ title: '' })}
 										>
-											{COLUMN_ADD}
+											{SUBTASK_ADD}
 										</Button>
 									</>
 								)}
