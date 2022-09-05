@@ -20,10 +20,11 @@ import {
 	changeColumn,
 	selectCurrentColumn,
 } from '../../features/tasks/columnSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { STATE, subtaskInfo } from '../../data/textEN';
 import { getCompletedTask } from '../../helpers/getCompletedTasks';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { changeCurrentTask } from '../../features/tasks/taskSlice';
 import { useEffect, useState } from 'react';
 import { Subtask } from '../../types/types';
 import PopUp from '../PopUp';
@@ -73,6 +74,7 @@ const TaskView = () => {
 			title={task.title}
 			layoutDispatch={() => {
 				dispatch(setIsTaskShow());
+				dispatch(changeCurrentTask(''));
 			}}
 			headingElement={ellipsisButton}
 		>
