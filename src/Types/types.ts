@@ -46,7 +46,8 @@ export type SelectInputOption = { value: string; label: string };
 export interface SelectInputTypes {
 	name?: string;
 	options: SelectInputOption[];
-	defaultValue?: { value: string; label: string };
+	defaultValue?: SelectInputOption;
+	classNamePrefix?: string;
 	onChange: (
 		option: SelectInputOption | null,
 		actionMeta: ActionMeta<SelectInputOption>

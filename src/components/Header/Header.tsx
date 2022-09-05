@@ -78,11 +78,13 @@ const Header = () => {
 			</StyledHeaderBox>
 			<StyledHeaderBox>
 				{renderButton()}
-				<Ellipsis
-					onClick={() => {
-						dispatch(setIsDropdownHeaderShow());
-					}}
-				/>
+				{taskData && (
+					<Ellipsis
+						onClick={() => {
+							dispatch(setIsDropdownHeaderShow());
+						}}
+					/>
+				)}
 				{isDropdownHeaderShow && <DropDown variant='board' />}
 			</StyledHeaderBox>
 		</StyledHeader>

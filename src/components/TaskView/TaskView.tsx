@@ -110,13 +110,13 @@ const TaskView = () => {
 			<StyledBoxSection>
 				<StyledParagraph>{STATE}</StyledParagraph>
 				<SelectInput
-					onChange={(e) => {
+					onChange={(event) => {
 						const taskUpdated = { ...task };
-						dispatch(changeColumn(e!.value));
+						dispatch(changeColumn(event!.value));
 						dispatch(
 							columnChangeTask({
 								columnId: currentColumn,
-								columnTarget: e!.value,
+								columnTarget: event!.value,
 								taskId: task.id,
 								currentBoard: currentBoard,
 								task: taskUpdated,

@@ -15,6 +15,7 @@ import {
 	selectCurrentBoardName,
 } from '../../features/tasks/boardSlice';
 import {
+	changeCurrentTask,
 	selectCurrentTask,
 	selectCurrentTaskName,
 } from '../../features/tasks/taskSlice';
@@ -30,8 +31,7 @@ const DeleteMenu = ({ variant }: { variant: 'board' | 'task' }) => {
 	const columnId = useAppSelector(selectCurrentColumn);
 	const boardId = useAppSelector(selectCurrentBoard);
 	const boardName = useAppSelector(selectCurrentBoardName);
-
-	const taskId = useAppSelector(selectCurrentTask)
+	const taskId = useAppSelector(selectCurrentTask);
 	const taskName = useAppSelector(selectCurrentTaskName);
 
 	const getTitle = () => {
@@ -40,13 +40,14 @@ const DeleteMenu = ({ variant }: { variant: 'board' | 'task' }) => {
 	};
 	const getText = () => {
 		if (variant === 'board') return boardDeleteInfo(boardName);
-		if (variant === 'task') return taskDeleteInfo(taskName);
+		if (variant === 'task') return taskDeleteInfo(taskName!);
 	};
 	const boardDeleteHandler = () => {
 		dispatch(deleteBoard(boardId));
 		dispatch(setIsDeleteBoardShow());
 	};
 	const taskDeleteHandler = () => {
+		dispatch(changeCurrentTask(''));
 		dispatch(setIsDeleteTaskShow());
 		dispatch(
 			deleteTask({
@@ -76,7 +77,11 @@ const DeleteMenu = ({ variant }: { variant: 'board' | 'task' }) => {
 				<Button variant='delete' width='full' onClick={() => deleteHandler()}>
 					{DELETE}
 				</Button>
-				<Button variant='secondary' width='full'  onClick={() => () => closeHandler()}>
+				<Button
+					variant='secondary'
+					width='full'
+					onClick={() => () => closeHandler()}
+				>
 					{CANCEL}
 				</Button>
 			</StyledWrapper>

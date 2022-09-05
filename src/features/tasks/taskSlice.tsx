@@ -21,6 +21,8 @@ export const selectCurrentTask = (state: RootState) =>
 	state.currentTask.currentTaskId;
 
 export const selectCurrentTaskName = (state: RootState) => {
+	if (!state.currentTask.currentTaskId) return '';
+	if (!state.currentTask.currentTaskId) return '';
 	const boardIndex = getBoardIndex(state.taskAction, state.currentBoardId);
 	const columnIndex = getColumnIndex(
 		state.taskAction,

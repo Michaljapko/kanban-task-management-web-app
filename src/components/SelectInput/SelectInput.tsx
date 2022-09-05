@@ -1,5 +1,7 @@
 import { StyledSelect } from './SelectInput.styled';
 import { SelectInputTypes } from '../../types/types';
+import Select from 'react-select';
+
 
 const SelectInput = ({
 	name,
@@ -8,12 +10,15 @@ const SelectInput = ({
 	onChange,
 }: SelectInputTypes) => {
 	return (
-		<StyledSelect
+		<StyledSelect>
+		<Select
+			classNamePrefix='Select'
 			name={name}
 			options={options}
 			defaultValue={defaultValue}
 			onChange={onChange}
 		/>
+		</StyledSelect>
 	);
 };
 
