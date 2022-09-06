@@ -28,8 +28,9 @@ export const StyledBack = styled.div<{ variant?: PopUpVariants }>`
 	justify-content: center;
 	align-content: flex-start;
 	width: 100%;
-	height: 100%;
+	padding-bottom: 2rem;
 	padding-top: 64px;
+
 	@media (min-width: 992px) {
 		height: 100%;
 		align-items: center;
