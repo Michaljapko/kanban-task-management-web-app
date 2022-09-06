@@ -8,13 +8,12 @@ export const StyledHeader = styled.div<{ isSidebarShow: boolean }>`
 	padding: 0 1rem;
 	height: 4rem;
 	width: 100vw;
-
 	background: ${({ theme }) => theme.backgroundMain};
 
 	@media (min-width: 992px) {
 		padding: 0;
 		padding-right: 2rem;
-		height: 7vh;
+		height: 96px;
 		border-bottom: 1px solid ${({ theme }) => theme.borderColor};
 	}
 `;

@@ -10,7 +10,12 @@ import {
 } from '../../features/layout/layoutSlice';
 import { ALL_BOARD, BOARD_CREATE, HIDE_SIDEBAR } from '../../data/textEN';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { StyledFooter, StyledHead, StyledHideBox } from './Sidebar.styled';
+import {
+	StyledFooter,
+	StyledHead,
+	StyledHideBox,
+	StyledWrapper,
+} from './Sidebar.styled';
 import Button from '../Button';
 import PopUp from '../PopUp';
 import ThemeBox from '../ThemeBox';
@@ -30,6 +35,7 @@ const Sidebar = () => {
 				<StyledHead>
 					{ALL_BOARD} ({boards.length})
 				</StyledHead>
+				<StyledWrapper>
 					{boards.map((board) => {
 						let variant: 'sidebar' | 'sidebarCurrent' = 'sidebar';
 						if (board.id === currentBoards) {
@@ -53,6 +59,7 @@ const Sidebar = () => {
 							</Button>
 						);
 					})}
+				</StyledWrapper>
 				<Button
 					onClick={() => dispatch(setIsBoardAddShow())}
 					variant='sidebarBold'

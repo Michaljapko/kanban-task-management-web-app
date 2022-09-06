@@ -1,5 +1,4 @@
 import {
-	
 	STATUS,
 	SUBTASK_ADD,
 	TASK_ADD,
@@ -29,19 +28,19 @@ import PopUp from '../PopUp';
 import Input from '../Input';
 
 const TaskAdd = () => {
+	const dispatch = useAppDispatch();
+	const taskColumns = useAppSelector(selectTasksData);
+	const currentBoard = useAppSelector(selectCurrentBoard);
+	const taskColumnsData = taskColumns!.map((column) => ({
+		value: column.id,
+		label: column.name,
+	}));
 	const initialValues: TaskInputValues = {
 		title: '',
 		description: '',
 		subtasks: [{ title: '', isCompleted: false }],
-		status: '',
+		status: taskColumnsData[0].value,
 	};
-	const dispatch = useAppDispatch();
-	const taskColumns = useAppSelector(selectTasksData);
-	const currentBoard = useAppSelector(selectCurrentBoard);
-	const getColumns = () =>
-		taskColumns!.map((column) => ({ value: column.id, label: column.name }));
-	const columns = getColumns();
-
 	function handleAddTask(values: TaskInputValues) {
 		const task: TasksData = {
 			id: uuid(),
@@ -71,7 +70,7 @@ const TaskAdd = () => {
 				{({ values }) => (
 					<Form>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='title'>{TASK_NAME}</StyledLabel>
+							<StyledLabel>{TASK_NAME}</StyledLabel>
 							<Input
 								name='title'
 								type='text'
@@ -120,8 +119,8 @@ const TaskAdd = () => {
 							<StyledLabel htmlFor='status'>{STATUS}</StyledLabel>
 							<SelectInput
 								name='status'
-								defaultValue={columns[0]}
-								options={columns}
+								defaultValue={taskColumnsData[0]}
+								options={taskColumnsData}
 								onChange={(event) => {
 									values.status = event!.value;
 								}}

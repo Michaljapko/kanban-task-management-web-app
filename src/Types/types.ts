@@ -7,7 +7,7 @@ export interface Subtask {
 }
 
 export interface InputTypes {
-	name: string;
+	name?: string;
 	placeholder?: string;
 	as?: 'textarea';
 	type?: string;

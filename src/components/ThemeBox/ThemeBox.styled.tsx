@@ -29,8 +29,8 @@ export const StyledSwitch = styled.input`
 	user-select: none;
 	display: inline-block;
 	position: absolute;
-	width: 1rem;
-	height: 1rem;
+	width: 40px;
+	height: 20px;
 	margin: 0;
 	opacity: 0;
 	z-index: 1;

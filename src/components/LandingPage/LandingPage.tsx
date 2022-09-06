@@ -17,14 +17,19 @@ import {
 	StyledWrapper,
 	StyledHidebox,
 } from './LandingPage.styled';
-import { BOARD_CREATE, COLUMN_ADD, EMPTY, EMPTY_BOARD } from '../../data/textEN';
+import {
+	BOARD_CREATE,
+	COLUMN_ADD,
+	EMPTY,
+	EMPTY_BOARD,
+} from '../../data/textEN';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { selectTasksData } from '../../features/tasks/taskActionSlice';
 import BoardAdd from '../BoardAdd';
 import Button from '../Button';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
-import TaskAdd from '../TaskAdd/TaskAdd';
+import TaskAdd from '../TaskAdd';
 import TaskCards from '../TaskCards';
 import TaskEdit from '../TaskEdit';
 import BoardEdit from '../BoardEdit';

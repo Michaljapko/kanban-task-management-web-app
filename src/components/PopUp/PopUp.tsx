@@ -1,5 +1,6 @@
 import {
 	StyledBack,
+	StyledBackdrop,
 	StyledBox,
 	StyledBoxSection,
 	StyledHeading,
@@ -14,17 +15,20 @@ const PopUp = ({
 	headingElement,
 }: PopUpTypes) => {
 	return (
-		<StyledBack variant={variant} onClick={layoutDispatch}>
-			<StyledBox variant={variant} onClick={(e) => e.stopPropagation()}>
-				{title && (
-					<StyledBoxSection>
-						<StyledHeading variant={variant}>{title}</StyledHeading>
-						{headingElement}
-					</StyledBoxSection>
-				)}
-				{children}
-			</StyledBox>
-		</StyledBack>
+		<>
+			<StyledBackdrop variant={variant} onClick={layoutDispatch} />
+			<StyledBack variant={variant}>
+				<StyledBox variant={variant} onClick={(e) => e.stopPropagation()}>
+					{title && (
+						<StyledBoxSection>
+							<StyledHeading variant={variant}>{title}</StyledHeading>
+							{headingElement}
+						</StyledBoxSection>
+					)}
+					{children}
+				</StyledBox>
+			</StyledBack>
+		</>
 	);
 };
 export default PopUp;

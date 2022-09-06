@@ -24,9 +24,23 @@ export const StyledRadioBox = styled.div`
 `;
 export const StyledHideBox = styled.div`
 	display: none;
+
 	@media (min-width: 992px) {
 		display: flex;
 		margin-top: 22px;
+	}
+`;
+export const StyledWrapper = styled.div`
+	max-height: 70vh;
+	overflow: auto;
+	@media (max-height: 1200px) {
+		max-height: 65vh;
+	}
+	@media (max-height: 930px) {
+		max-height: 50vh;
+	}
+	@media (max-height: 700px) {
+		max-height: 40vh;
 	}
 `;
 export const StyledFooter = styled.div`

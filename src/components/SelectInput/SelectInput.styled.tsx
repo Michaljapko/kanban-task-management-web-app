@@ -42,6 +42,9 @@ export const StyledSelect = styled.div`
 		&:active {
 			background-color: ${({ theme }) => theme.backgroundSelect};
 		}
+		&:hover {
+			background-color: ${({ theme }) => theme.selectHover};
+		}
 	}
 	.Select__listbox {
 		background-color: ${({ theme }) => theme.backgroundSelect};

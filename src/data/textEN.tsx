@@ -56,7 +56,7 @@ const TASK_NAME = 'Title';
 const TASK_DESCRIPTION = 'Description';
 const TASK_EDIT = 'Edit Task';
 const TASK_SUBTASK = 'Subtask';
-const SUBTASK_ADD = '+ Add New Column';
+const SUBTASK_ADD = '+ Add New Subtask';
 const TASK_PLACEHOLDER =
 	'e.g. It’s always good to take a break. This 15 minute break will  recharge the batteries a little.';
 

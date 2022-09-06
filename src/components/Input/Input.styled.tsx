@@ -8,6 +8,8 @@ export const StyledInput = styled.input<InputTypes>`
 		typeof error === 'string' ? theme.colorError : theme.borderGray};
 	border-radius: 0.25rem;
 	width: 100%;
+	min-width: 100%;
+	max-height: 400px;
 	background: none;
 	${({ theme }) => theme.text.large}
 	color: ${({ theme }) => theme.mainColor};

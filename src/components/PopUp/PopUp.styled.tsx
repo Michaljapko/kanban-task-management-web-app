@@ -1,6 +1,24 @@
 import styled, { css } from 'styled-components';
 import { PopUpVariants } from '../../types/types';
 
+export const StyledBackdrop = styled.div<{ variant?: PopUpVariants }>`
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: ${({ theme }) => theme.backgroundBack};
+	z-index: 1;
+
+	${({ variant }) => {
+		if (variant === 'sidebar')
+			return css`
+				@media (min-width: 992px) {
+					display: none;
+				}
+			`;
+	}}
+`;
 export const StyledBack = styled.div<{ variant?: PopUpVariants }>`
 	position: absolute;
 	top: 0;
@@ -8,10 +26,15 @@ export const StyledBack = styled.div<{ variant?: PopUpVariants }>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	align-content: flex-start;
 	width: 100%;
 	height: 100%;
-	background: ${({ theme }) => theme.backgroundBack};
-	z-index: 1;
+	padding-top: 64px;
+	@media (min-width: 992px) {
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+	}
 	${({ variant }) => {
 		if (variant === 'sidebar')
 			return css`
@@ -21,8 +44,9 @@ export const StyledBack = styled.div<{ variant?: PopUpVariants }>`
 					display: flex;
 					justify-content: flex-start;
 					background-color: transparent;
-					width: 300px;
-					margin-top: 7vh;
+					padding-right: 300px;
+					width: 0;
+					margin-top: 95px;
 					z-index: 0;
 				}
 			`;
@@ -40,25 +64,28 @@ export const StyledBox = styled.div<{ variant?: PopUpVariants }>`
 	${({ variant }) => (variant === 'sidebar' ? '' : 'width: 100%')};
 	max-width: 480px;
 	background: ${({ theme }) => theme.backgroundMain};
-
+	z-index: 2;
 	${({ variant }) => {
 		if (variant === 'sidebar')
 			return css`
-				top: 80px;
 				width: 264px;
+
 				@media (min-width: 992px) {
 					position: fixed;
 					flex-direction: column;
 					justify-content: space-between;
 					width: 300px;
 					min-height: 93vh;
-					top: 7vh;
+					top: 95px;
 					margin: 0;
 					padding: 0;
 					border-radius: 0px;
 					border-right: 1px solid ${({ theme }) => theme.borderColor};
 					padding-top: 15px;
 					padding-bottom: 32px;
+				}
+				@media (max-height: 800px) and (min-width: 992px) {
+					padding-bottom: 62px;
 				}
 			`;
 	}}
