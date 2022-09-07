@@ -22,11 +22,11 @@ import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { setIsTaskAddShow } from '../../features/layout/layoutSlice';
 import { taskAddSchema } from '../../helpers/validationSchema';
 import { v4 as uuid } from 'uuid';
-import SelectInput from '../SelectInput';
-import Button from '../Button';
-import PopUp from '../PopUp';
-import Input from '../Input';
-import ScrollWrapper from '../ScrollWrapper';
+import SelectInput from '../UI/SelectInput';
+import Button from '../UI/Button';
+import PopUp from '../UI/PopUp';
+import Input from '../UI/Input';
+import ScrollWrapper from '../UI/ScrollWrapper';
 
 const TaskAdd = () => {
 	const dispatch = useAppDispatch();

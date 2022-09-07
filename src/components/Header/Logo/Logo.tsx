@@ -1,9 +1,9 @@
-import { useAppSelector } from '../../app/hooks';
-import logoDark from '../../assets/logo-dark.svg';
-import logoLight from '../../assets/logo-light.svg';
-import logoMobile from '../../assets/logo-mobile.svg';
-import { selectIsSidebarShow } from '../../features/layout/layoutSlice';
-import { selectCurrentTheme } from '../../features/layout/themeSlice';
+import { useAppSelector } from '../../../app/hooks';
+import logoDark from '../../../assets/logo-dark.svg';
+import logoLight from '../../../assets/logo-light.svg';
+import logoMobile from '../../../assets/logo-mobile.svg';
+import { selectIsSidebarShow } from '../../../features/layout/layoutSlice';
+import { selectCurrentTheme } from '../../../features/layout/themeSlice';
 import { StyledLogo, StyledLogoMobile } from './Logo.styled';
 
 const Logo = () => {

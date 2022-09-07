@@ -1,7 +1,6 @@
-import { ButtonTypes } from '../../types/types';
+import { ButtonTypes } from '../../../types/types';
 import { StyledBoardIcon, StyledHideIcon, StyledButton } from './Button.styled';
-
-import { ReactComponent as Plus } from '../../assets/icon-add-task-mobile.svg';
+import { ReactComponent as Plus } from '../../../assets/icon-add-task-mobile.svg';
 
 const Button = ({
 	children,

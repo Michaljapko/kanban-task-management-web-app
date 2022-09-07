@@ -13,15 +13,15 @@ import {
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Formik, Form, FieldArray } from 'formik';
 import { TasksData, TaskInputValues } from '../../types/types';
-import Button from '../Button';
+import Button from '../UI/Button';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { selectCurrentColumn } from '../../features/tasks/columnSlice';
 import { setIsTaskEditShow } from '../../features/layout/layoutSlice';
 import { v4 as uuid } from 'uuid';
-import PopUp from '../PopUp';
+import PopUp from '../UI/PopUp';
 import { taskAddSchema } from '../../helpers/validationSchema';
-import Input from '../Input';
-import SelectInput from '../SelectInput';
+import Input from '../UI/Input';
+import SelectInput from '../UI/SelectInput';
 import {
 	COLUMN_ADD,
 	STATUS,
@@ -31,7 +31,7 @@ import {
 	TASK_SUBTASK,
 	TASK_TITLE,
 } from '../../data/textEN';
-import ScrollWrapper from '../ScrollWrapper';
+import ScrollWrapper from '../UI/ScrollWrapper';
 
 const TaskEdit = () => {
 	const dispatch = useAppDispatch();

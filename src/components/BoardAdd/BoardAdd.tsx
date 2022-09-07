@@ -21,10 +21,10 @@ import { changeBoard } from '../../features/tasks/boardSlice';
 import { setIsBoardAddShow } from '../../features/layout/layoutSlice';
 import { useAppDispatch } from '../../app/hooks';
 import { v4 as uuid } from 'uuid';
-import PopUp from '../PopUp';
-import Button from '../Button';
-import Input from '../Input';
-import ScrollWrapper from '../ScrollWrapper/ScrollWrapper';
+import PopUp from '../UI/PopUp';
+import Button from '../UI/Button';
+import Input from '../UI/Input';
+import ScrollWrapper from '../UI/ScrollWrapper/ScrollWrapper';
 
 
 const BoardAdd = () => {

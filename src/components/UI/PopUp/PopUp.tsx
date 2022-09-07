@@ -5,7 +5,7 @@ import {
 	StyledBoxSection,
 	StyledHeading,
 } from './PopUp.styled';
-import { PopUpTypes } from '../../types/types';
+import { PopUpTypes } from '../../../types/types';
 
 const PopUp = ({
 	children,

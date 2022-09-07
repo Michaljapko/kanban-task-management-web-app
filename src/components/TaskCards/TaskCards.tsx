@@ -27,8 +27,8 @@ import { getCompletedTask } from '../../helpers/getCompletedTasks';
 import { subtaskInfoCard } from '../../data/textEN';
 import { getSequenceArr } from '../../helpers/getSequenceArr';
 import TaskView from '../TaskView';
-import Dot from '../Dot';
-import Button from '../Button';
+import Dot from './Dot';
+import Button from '../UI/Button';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 
 const TaskCards = () => {

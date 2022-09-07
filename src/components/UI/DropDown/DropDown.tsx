@@ -5,10 +5,10 @@ import {
 	setIsDropdownTaskShow,
 	setIsDropdownHeaderShow,
 	setIsTaskEditShow,
-} from '../../features/layout/layoutSlice';
+} from '../../../features/layout/layoutSlice';
 import { StyledDropMenu, StyledDropMenuButton } from './DropDown.styled';
-import { useAppDispatch } from '../../app/hooks';
-import { DELETE, EDIT } from '../../data/textEN';
+import { useAppDispatch } from '../../../app/hooks';
+import { DELETE, EDIT } from '../../../data/textEN';
 
 const DropDown = ({ variant }: { variant: 'board' | 'task' }) => {
 	const dispatch = useAppDispatch();

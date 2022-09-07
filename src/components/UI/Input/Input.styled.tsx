@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { InputTypes } from '../../types/types';
+import { InputTypes } from '../../../types/types';
 
 export const StyledInput = styled.input<InputTypes>`
 	padding: 0.5rem 1rem;

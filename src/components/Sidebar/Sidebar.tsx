@@ -16,9 +16,9 @@ import {
 	StyledHideBox,
 	StyledWrapper,
 } from './Sidebar.styled';
-import Button from '../Button';
-import PopUp from '../PopUp';
-import ThemeBox from '../ThemeBox';
+import Button from '../UI/Button';
+import PopUp from '../UI/PopUp';
+import ThemeBox from './ThemeBox';
 
 const Sidebar = () => {
 	const dispatch = useAppDispatch();

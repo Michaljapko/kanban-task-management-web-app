@@ -23,18 +23,18 @@ import {
 	EMPTY,
 	EMPTY_BOARD,
 } from '../../data/textEN';
+import { ReactComponent as ShowSidebar } from '../../assets/icon-add-task-mobile.svg';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { selectTasksData } from '../../features/tasks/taskActionSlice';
 import BoardAdd from '../BoardAdd';
-import Button from '../Button';
+import Button from '../UI/Button';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
 import TaskAdd from '../TaskAdd';
 import TaskCards from '../TaskCards';
 import TaskEdit from '../TaskEdit';
 import BoardEdit from '../BoardEdit';
-import DeleteMenu from '../DeleteMenu';
-import show from '../../assets/icon-show-sidebar.svg';
+import DeleteMenu from '../UI/DeleteMenu';
 
 const LandingPage = () => {
 	const tasksData = useAppSelector(selectTasksData);
@@ -46,6 +46,11 @@ const LandingPage = () => {
 	const isTaskDeleteShow = useAppSelector(selectIsDeleteTaskShow);
 	const isTaskEditShow = useAppSelector(selectIsTaskEditShow);
 	const dispatch = useAppDispatch();
+
+	const buttonHandler = () =>
+		tasksData?.length === 0
+			? dispatch(setIsBoardEditShow())
+			: dispatch(setIsBoardAddShow());
 
 	return (
 		<>
@@ -60,7 +65,7 @@ const LandingPage = () => {
 				{isSidebarShow && <Sidebar />}
 				{!isSidebarShow && (
 					<StyledHidebox onClick={(event) => dispatch(setIsSidebarShow())}>
-						<img src={show} alt='show sidebar' />
+						<ShowSidebar />
 					</StyledHidebox>
 				)}
 				{(!tasksData || tasksData?.length === 0) && (
@@ -68,14 +73,7 @@ const LandingPage = () => {
 						<StyledInfo>
 							{tasksData?.length === 0 ? EMPTY_BOARD : EMPTY}
 						</StyledInfo>
-						<Button
-							variant={'header'}
-							onClick={() => {
-								tasksData?.length === 0
-									? dispatch(setIsBoardEditShow())
-									: dispatch(setIsBoardAddShow());
-							}}
-						>
+						<Button variant={'header'} onClick={() => buttonHandler()}>
 							{tasksData?.length === 0 ? COLUMN_ADD : BOARD_CREATE}
 						</Button>
 					</StyledWrapperInfo>

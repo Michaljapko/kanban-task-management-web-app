@@ -27,12 +27,12 @@ import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { changeCurrentTask } from '../../features/tasks/taskSlice';
 import { useEffect, useState } from 'react';
 import { Subtask } from '../../types/types';
-import PopUp from '../PopUp';
-import DropDown from '../DropDown';
-import CheckBox from '../CheckBox/ChcekBox';
-import SelectInput from '../SelectInput';
-import Ellipsis from '../Ellipsis';
-import ScrollWrapper from '../ScrollWrapper';
+import ScrollWrapper from '../UI/ScrollWrapper';
+import SelectInput from '../UI/SelectInput';
+import Ellipsis from '../UI/Ellipsis';
+import CheckBox from '../UI/CheckBox';
+import DropDown from '../UI/DropDown';
+import PopUp from '../UI/PopUp';
 
 const TaskView = () => {
 	const [taskDone, setTaskDone] = useState(0);
@@ -58,6 +58,7 @@ const TaskView = () => {
 			{isDropdownTaskShow && <DropDown variant='task' />}
 		</>
 	);
+
 	const getUpdateTask = (subtask: Subtask) => ({
 		...task,
 		subtasks: task.subtasks.map((subtaskInSet: Subtask) => {
@@ -116,6 +117,7 @@ const TaskView = () => {
 					))}
 				</ScrollWrapper>
 			</StyledBoxSection>
+			
 			<StyledBoxSection>
 				<StyledParagraph>{STATE}</StyledParagraph>
 				<SelectInput

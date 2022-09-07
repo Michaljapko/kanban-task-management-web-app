@@ -1,5 +1,5 @@
 import { StyledBox } from './Ellipsis.styled';
-import ellipsis from '../../assets/icon-vertical-ellipsis.svg';
+import ellipsis from '../../../assets/icon-vertical-ellipsis.svg';
 
 const Ellipsis = ({ onClick }: { onClick: () => void }) => {
 	return (

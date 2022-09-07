@@ -5,23 +5,23 @@ import {
 	TASK_DELETE,
 	boardDeleteInfo,
 	taskDeleteInfo,
-} from '../../data/textEN';
+} from '../../../data/textEN';
 import {
 	setIsDeleteBoardShow,
 	setIsDeleteTaskShow,
-} from '../../features/layout/layoutSlice';
+} from '../../../features/layout/layoutSlice';
 import {
 	selectCurrentBoard,
 	selectCurrentBoardName,
-} from '../../features/tasks/boardSlice';
+} from '../../../features/tasks/boardSlice';
 import {
 	changeCurrentTask,
 	selectCurrentTask,
 	selectCurrentTaskName,
-} from '../../features/tasks/taskSlice';
-import { deleteBoard, deleteTask } from '../../features/tasks/taskActionSlice';
-import { selectCurrentColumn } from '../../features/tasks/columnSlice';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+} from '../../../features/tasks/taskSlice';
+import { deleteBoard, deleteTask } from '../../../features/tasks/taskActionSlice';
+import { selectCurrentColumn } from '../../../features/tasks/columnSlice';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { StyledText, StyledWrapper } from './DeleteMenu.styled';
 import Button from '../Button';
 import PopUp from '../PopUp';

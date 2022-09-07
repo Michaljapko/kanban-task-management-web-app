@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
-import { styled } from '../../theme/theme';
-import { ButtonTypes, ButtonVariants } from '../../types/types';
-import { ReactComponent as Board } from '../../assets/icon-board.svg';
-import { ReactComponent as Hide } from '../../assets/icon-hide-sidebar.svg';
+import { styled } from '../../../theme/theme';
+import { ButtonTypes, ButtonVariants } from '../../../types/types';
+import { ReactComponent as Board } from '../../../assets/icon-board.svg';
+import { ReactComponent as Hide } from '../../../assets/icon-hide-sidebar.svg';
 
 export const StyledBoardIcon = styled(Board)<{ variant?: ButtonVariants }>`
 	fill: ${({ variant, theme }) => {

@@ -18,10 +18,10 @@ import { APLICATION_TITLE, TASK_ADD_HEADER } from '../../data/textEN';
 import { selectTasksData } from '../../features/tasks/taskActionSlice';
 import chevronDown from '../../assets/icon-chevron-down.svg';
 import chavronUp from '../../assets/icon-chevron-up.svg';
-import DropDown from '../DropDown';
-import Button from '../Button';
-import Logo from '../Logo';
-import Ellipsis from '../Ellipsis';
+import DropDown from '../UI/DropDown';
+import Button from '../UI/Button';
+import Logo from './Logo';
+import Ellipsis from '../UI/Ellipsis';
 
 const Header = () => {
 	const dispatch = useAppDispatch();
@@ -29,6 +29,7 @@ const Header = () => {
 	const isSidebarShow = useAppSelector(selectIsSidebarShow);
 	const isDropdownHeaderShow = useAppSelector(selectIsDropdownHeaderShow);
 	const currentDevice = useAppSelector(selectCurrentDevice);
+	
 	const renderButton = () => {
 		if (taskData && taskData.length > 0 && currentDevice === 'desktop')
 			return (

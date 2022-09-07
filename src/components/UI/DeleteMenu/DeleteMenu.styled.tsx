@@ -1,4 +1,4 @@
-import { styled } from '../../theme/theme';
+import { styled } from '../../../theme/theme';
 
 export const StyledText = styled.p`
 	${({ theme }) => theme.text.large};

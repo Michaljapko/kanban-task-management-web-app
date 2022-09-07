@@ -7,7 +7,7 @@ export const StyledHead = styled.div`
 	font-size: 0.75rem;
 	font-weight: 700;
 	line-height: 0.9rem;
-	letter-spacing: 2.4px;
+	letter-spacing: 0.15rem;
 	text-transform: uppercase;
 `;
 

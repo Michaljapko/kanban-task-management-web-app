@@ -24,11 +24,11 @@ import { BoardInputValues } from '../../types/types';
 import { boardAddSchema } from '../../helpers/validationSchema';
 import { editBoard } from '../../features/tasks/taskActionSlice';
 import { v4 as uuid } from 'uuid';
-import PopUp from '../PopUp';
-import Input from '../Input';
-import Button from '../Button';
+import PopUp from '../UI/PopUp';
+import Input from '../UI/Input';
+import Button from '../UI/Button';
 import { filterAddedColumns } from '../../helpers/filterAddedColumns';
-import ScrollWrapper from '../ScrollWrapper';
+import ScrollWrapper from '../UI/ScrollWrapper';
 
 const BoardEdit = () => {
 	const dispatch = useAppDispatch();
