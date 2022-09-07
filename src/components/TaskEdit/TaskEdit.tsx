@@ -31,6 +31,7 @@ import {
 	TASK_SUBTASK,
 	TASK_TITLE,
 } from '../../data/textEN';
+import ScrollWrapper from '../ScrollWrapper';
 
 const TaskEdit = () => {
 	const dispatch = useAppDispatch();
@@ -114,13 +115,15 @@ const TaskEdit = () => {
 								name='subtasks'
 								render={({ push, remove }) => (
 									<>
-										{values.subtasks.length > 0 &&
-											values.subtasks.map((subtasks, index) => (
-												<StyledColumnInputBox key={index}>
-													<Input name={`subtasks.${index}.title`} />
-													<StyledCrossIcon onClick={() => remove(index)} />
-												</StyledColumnInputBox>
-											))}
+										<ScrollWrapper>
+											{values.subtasks.length > 0 &&
+												values.subtasks.map((subtasks, index) => (
+													<StyledColumnInputBox key={index}>
+														<Input name={`subtasks.${index}.title`} />
+														<StyledCrossIcon onClick={() => remove(index)} />
+													</StyledColumnInputBox>
+												))}
+										</ScrollWrapper>
 										<Button
 											type='button'
 											variant='secondary'

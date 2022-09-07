@@ -3,7 +3,7 @@ import {
 	BOARD_NAME,
 	BOARD_COLUMNS,
 	COLUMN_PLACEHOLDER,
-	DELETE,
+	
 	BOARD_EDIT,
 	SAVE,
 } from '../../data/textEN';
@@ -28,6 +28,7 @@ import PopUp from '../PopUp';
 import Input from '../Input';
 import Button from '../Button';
 import { filterAddedColumns } from '../../helpers/filterAddedColumns';
+import ScrollWrapper from '../ScrollWrapper';
 
 const BoardEdit = () => {
 	const dispatch = useAppDispatch();
@@ -74,16 +75,18 @@ const BoardEdit = () => {
 								name='columns'
 								render={({ push, remove }) => (
 									<>
-										{values.columns.length > 0 &&
-											values.columns.map((columns, index) => (
-												<StyledColumnInputBox key={index}>
-													<Input
-														name={`columns.${index}.name`}
-														placeholder={COLUMN_PLACEHOLDER}
-													/>
-													<StyledCrossIcon onClick={() => remove(index)} />
-												</StyledColumnInputBox>
-											))}
+										<ScrollWrapper>
+											{values.columns.length > 0 &&
+												values.columns.map((columns, index) => (
+													<StyledColumnInputBox key={index}>
+														<Input
+															name={`columns.${index}.name`}
+															placeholder={COLUMN_PLACEHOLDER}
+														/>
+														<StyledCrossIcon onClick={() => remove(index)} />
+													</StyledColumnInputBox>
+												))}
+										</ScrollWrapper>
 										<Button
 											type='button'
 											variant='secondary'

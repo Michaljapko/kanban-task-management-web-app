@@ -26,6 +26,7 @@ import SelectInput from '../SelectInput';
 import Button from '../Button';
 import PopUp from '../PopUp';
 import Input from '../Input';
+import ScrollWrapper from '../ScrollWrapper';
 
 const TaskAdd = () => {
 	const dispatch = useAppDispatch();
@@ -93,16 +94,18 @@ const TaskAdd = () => {
 								name='subtasks'
 								render={({ push, remove }) => (
 									<>
-										{values.subtasks.length > 0 &&
-											values.subtasks.map((subtasks, index) => (
-												<StyledColumnInputBox key={index}>
-													<Input
-														name={`subtasks.${index}.title`}
-														placeholder='e.g. In Progress'
-													/>
-													<StyledCrossIcon onClick={() => remove(index)} />
-												</StyledColumnInputBox>
-											))}
+										<ScrollWrapper>
+											{values.subtasks.length > 0 &&
+												values.subtasks.map((subtasks, index) => (
+													<StyledColumnInputBox key={index}>
+														<Input
+															name={`subtasks.${index}.title`}
+															placeholder='e.g. In Progress'
+														/>
+														<StyledCrossIcon onClick={() => remove(index)} />
+													</StyledColumnInputBox>
+												))}
+										</ScrollWrapper>
 										<Button
 											type='button'
 											variant='secondary'

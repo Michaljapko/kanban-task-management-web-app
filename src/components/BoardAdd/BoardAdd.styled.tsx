@@ -18,6 +18,7 @@ export const StyledBoxSection = styled.div`
 `;
 export const StyledCrossIcon = styled(Cross)`
 	fill: ${({ theme }) => theme.textGrey};
+	overflow: unset;
 	&:hover {
 		fill: ${({ theme }) => theme.colorError};
 	}

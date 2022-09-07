@@ -32,6 +32,7 @@ import DropDown from '../DropDown';
 import CheckBox from '../CheckBox/ChcekBox';
 import SelectInput from '../SelectInput';
 import Ellipsis from '../Ellipsis';
+import ScrollWrapper from '../ScrollWrapper';
 
 const TaskView = () => {
 	const [taskDone, setTaskDone] = useState(0);
@@ -91,28 +92,29 @@ const TaskView = () => {
 				<StyledParagraph>
 					{subtaskInfo(taskDone, task.subtasks.length)}
 				</StyledParagraph>
-
-				{task.subtasks.map((subtask, index) => (
-					<StyledSubtaskBox key={subtask.id}>
-						<CheckBox
-							name='subscribe'
-							onChange={() => {
-								dispatch(
-									editTask({
-										columnId: currentColumn,
-										taskId: task.id,
-										currentBoard: currentBoard,
-										task: getUpdateTask(subtask),
-									})
-								);
-							}}
-							defaultChecked={subtask.isCompleted}
-						/>
-						<StyledSubtaskInfo complete={subtask.isCompleted}>
-							{subtask.title}
-						</StyledSubtaskInfo>
-					</StyledSubtaskBox>
-				))}
+				<ScrollWrapper>
+					{task.subtasks.map((subtask, index) => (
+						<StyledSubtaskBox key={subtask.id}>
+							<CheckBox
+								name='subscribe'
+								onChange={() => {
+									dispatch(
+										editTask({
+											columnId: currentColumn,
+											taskId: task.id,
+											currentBoard: currentBoard,
+											task: getUpdateTask(subtask),
+										})
+									);
+								}}
+								defaultChecked={subtask.isCompleted}
+							/>
+							<StyledSubtaskInfo complete={subtask.isCompleted}>
+								{subtask.title}
+							</StyledSubtaskInfo>
+						</StyledSubtaskBox>
+					))}
+				</ScrollWrapper>
 			</StyledBoxSection>
 			<StyledBoxSection>
 				<StyledParagraph>{STATE}</StyledParagraph>

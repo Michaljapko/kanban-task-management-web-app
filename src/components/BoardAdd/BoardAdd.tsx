@@ -24,6 +24,8 @@ import { v4 as uuid } from 'uuid';
 import PopUp from '../PopUp';
 import Button from '../Button';
 import Input from '../Input';
+import ScrollWrapper from '../ScrollWrapper/ScrollWrapper';
+
 
 const BoardAdd = () => {
 	const dispatch = useAppDispatch();
@@ -70,16 +72,18 @@ const BoardAdd = () => {
 								name='columns'
 								render={({ push, remove }) => (
 									<>
-										{values.columns.length > 0 &&
-											values.columns.map((columns, index) => (
-												<StyledColumnInputBox key={index}>
-													<Input
-														name={`columns.${index}.name`}
-														placeholder={COLUMN_PLACEHOLDER}
-													/>
-													<StyledCrossIcon onClick={() => remove(index)} />
-												</StyledColumnInputBox>
-											))}
+										<ScrollWrapper>
+											{values.columns.length > 0 &&
+												values.columns.map((columns, index) => (
+													<StyledColumnInputBox key={index}>
+														<Input
+															name={`columns.${index}.name`}
+															placeholder={COLUMN_PLACEHOLDER}
+														/>
+														<StyledCrossIcon onClick={() => remove(index)} />
+													</StyledColumnInputBox>
+												))}
+										</ScrollWrapper>
 										<Button
 											type='button'
 											variant='secondary'
