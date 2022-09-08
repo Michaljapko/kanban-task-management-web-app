@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { ReactComponent as CheckIcon } from '../../../assets/icon-check.svg';
 export const StyledBox = styled.div`
 	position: relative;
 	width: 1rem;
@@ -7,7 +7,7 @@ export const StyledBox = styled.div`
 	margin: 0.7rem 0px 0.7rem 0.7rem;
 	padding-right: 2rem;
 `;
-export const StyledIcon = styled.img`
+export const StyledIcon = styled(CheckIcon)`
 	position: absolute;
 	width: 0.625rem;
 	z-index: 2;

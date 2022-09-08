@@ -11,9 +11,8 @@ import {
 import {
 	StyledBoxSection,
 	StyledColumnInputBox,
-	StyledCrossIcon,
 	StyledLabel,
-} from './TaskAdd.style';
+} from '../../theme/MenuBox.styled';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Formik, Form, FieldArray } from 'formik';
 import { TasksData, TaskInputValues } from '../../types/types';
@@ -27,6 +26,7 @@ import Button from '../UI/Button';
 import PopUp from '../UI/PopUp';
 import Input from '../UI/Input';
 import ScrollWrapper from '../UI/ScrollWrapper';
+import CrossIcon from '../UI/CrossIcon';
 
 const TaskAdd = () => {
 	const dispatch = useAppDispatch();
@@ -102,7 +102,7 @@ const TaskAdd = () => {
 															name={`subtasks.${index}.title`}
 															placeholder='e.g. In Progress'
 														/>
-														<StyledCrossIcon onClick={() => remove(index)} />
+														<CrossIcon onClick={() => remove(index)} />
 													</StyledColumnInputBox>
 												))}
 										</ScrollWrapper>

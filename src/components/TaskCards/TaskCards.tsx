@@ -30,6 +30,7 @@ import TaskView from '../TaskView';
 import Dot from './Dot';
 import Button from '../UI/Button';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
+import theme from '../../theme/theme';
 
 const TaskCards = () => {
 	const dispatch = useAppDispatch();
@@ -37,9 +38,9 @@ const TaskCards = () => {
 	const isTaskShow = useAppSelector(selectIsTaskShow);
 	const currentBoard = useAppSelector(selectCurrentBoard);
 
-	const DOT_COLORS_NUM = 4;
+	const dotColorsNum = theme.dotColors.length;
 	const sequenceLength = columns!.length;
-	const sequenceArr = getSequenceArr(sequenceLength, DOT_COLORS_NUM);
+	const sequenceArr = getSequenceArr(sequenceLength, dotColorsNum);
 
 	const showTask = (task: TasksData, ColumnId: string) => {
 		dispatch(changeColumn(ColumnId));

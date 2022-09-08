@@ -1,5 +1,4 @@
 import {
-	StyledBoxSection,
 	StyledDescription,
 	StyledParagraph,
 	StyledSubtaskBox,
@@ -27,6 +26,7 @@ import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { changeCurrentTask } from '../../features/tasks/taskSlice';
 import { useEffect, useState } from 'react';
 import { Subtask } from '../../types/types';
+import { StyledBoxSection } from '../../theme/MenuBox.styled';
 import ScrollWrapper from '../UI/ScrollWrapper';
 import SelectInput from '../UI/SelectInput';
 import Ellipsis from '../UI/Ellipsis';
@@ -117,7 +117,7 @@ const TaskView = () => {
 					))}
 				</ScrollWrapper>
 			</StyledBoxSection>
-			
+
 			<StyledBoxSection>
 				<StyledParagraph>{STATE}</StyledParagraph>
 				<SelectInput

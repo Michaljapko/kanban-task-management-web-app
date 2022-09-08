@@ -2,8 +2,7 @@ import {
 	StyledBoxSection,
 	StyledLabel,
 	StyledColumnInputBox,
-	StyledCrossIcon,
-} from './TaskEdit.style';
+} from '../../theme/MenuBox.styled';
 import {
 	selectCurrentTaskData,
 	selectTasksData,
@@ -32,6 +31,7 @@ import {
 	TASK_TITLE,
 } from '../../data/textEN';
 import ScrollWrapper from '../UI/ScrollWrapper';
+import CrossIcon from '../UI/CrossIcon';
 
 const TaskEdit = () => {
 	const dispatch = useAppDispatch();
@@ -120,7 +120,7 @@ const TaskEdit = () => {
 												values.subtasks.map((subtasks, index) => (
 													<StyledColumnInputBox key={index}>
 														<Input name={`subtasks.${index}.title`} />
-														<StyledCrossIcon onClick={() => remove(index)} />
+														<CrossIcon onClick={() => remove(index)} />
 													</StyledColumnInputBox>
 												))}
 										</ScrollWrapper>

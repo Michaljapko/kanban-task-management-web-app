@@ -10,9 +10,8 @@ import {
 import {
 	StyledBoxSection,
 	StyledColumnInputBox,
-	StyledCrossIcon,
 	StyledLabel,
-} from './BoardAdd.styled';
+} from '../../theme/MenuBox.styled';
 import { Formik, Form, FieldArray } from 'formik';
 import { boardAddSchema } from '../../helpers/validationSchema';
 import { Board, ColumnInputValues } from '../../types/types';
@@ -25,7 +24,7 @@ import PopUp from '../UI/PopUp';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import ScrollWrapper from '../UI/ScrollWrapper/ScrollWrapper';
-
+import CrossIcon from '../UI/CrossIcon';
 
 const BoardAdd = () => {
 	const dispatch = useAppDispatch();
@@ -80,7 +79,7 @@ const BoardAdd = () => {
 															name={`columns.${index}.name`}
 															placeholder={COLUMN_PLACEHOLDER}
 														/>
-														<StyledCrossIcon onClick={() => remove(index)} />
+														<CrossIcon onClick={() => remove(index)} />
 													</StyledColumnInputBox>
 												))}
 										</ScrollWrapper>

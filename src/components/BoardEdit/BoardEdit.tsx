@@ -3,16 +3,14 @@ import {
 	BOARD_NAME,
 	BOARD_COLUMNS,
 	COLUMN_PLACEHOLDER,
-	
 	BOARD_EDIT,
 	SAVE,
 } from '../../data/textEN';
 import {
 	StyledBoxSection,
 	StyledColumnInputBox,
-	StyledCrossIcon,
 	StyledLabel,
-} from './BoardEdit.styled';
+}  from '../../theme/MenuBox.styled';
 import {
 	selectCurrentBoard,
 	selectCurrentBoardData,
@@ -29,6 +27,7 @@ import Input from '../UI/Input';
 import Button from '../UI/Button';
 import { filterAddedColumns } from '../../helpers/filterAddedColumns';
 import ScrollWrapper from '../UI/ScrollWrapper';
+import CrossIcon from '../UI/CrossIcon';
 
 const BoardEdit = () => {
 	const dispatch = useAppDispatch();
@@ -83,7 +82,7 @@ const BoardEdit = () => {
 															name={`columns.${index}.name`}
 															placeholder={COLUMN_PLACEHOLDER}
 														/>
-														<StyledCrossIcon onClick={() => remove(index)} />
+														<CrossIcon onClick={() => remove(index)} />
 													</StyledColumnInputBox>
 												))}
 										</ScrollWrapper>

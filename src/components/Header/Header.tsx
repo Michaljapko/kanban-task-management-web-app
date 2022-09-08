@@ -3,61 +3,28 @@ import {
 	StyledLogoBox,
 	StyledHeaderBox,
 	StyledLogoText,
-	StyledArrow,
+	StyledArrowUp,
+	StyledArrowDown,
 } from './Header.styled';
 import {
 	selectIsSidebarShow,
 	setIsSidebarShow,
-	setIsTaskAddShow,
 	selectIsDropdownHeaderShow,
 	setIsDropdownHeaderShow,
-	selectCurrentDevice,
 } from '../../features/layout/layoutSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { APLICATION_TITLE, TASK_ADD_HEADER } from '../../data/textEN';
+import { APLICATION_TITLE } from '../../data/textEN';
 import { selectTasksData } from '../../features/tasks/taskActionSlice';
-import chevronDown from '../../assets/icon-chevron-down.svg';
-import chavronUp from '../../assets/icon-chevron-up.svg';
-import DropDown from '../UI/DropDown';
-import Button from '../UI/Button';
-import Logo from './Logo';
+import AddTaskButton from './AddTaskButton';
 import Ellipsis from '../UI/Ellipsis';
+import DropDown from '../UI/DropDown';
+import Logo from './Logo';
 
 const Header = () => {
 	const dispatch = useAppDispatch();
 	const taskData = useAppSelector(selectTasksData);
 	const isSidebarShow = useAppSelector(selectIsSidebarShow);
 	const isDropdownHeaderShow = useAppSelector(selectIsDropdownHeaderShow);
-	const currentDevice = useAppSelector(selectCurrentDevice);
-	
-	const renderButton = () => {
-		if (taskData && taskData.length > 0 && currentDevice === 'desktop')
-			return (
-				<Button
-					variant='header'
-					onClick={() => {
-						dispatch(setIsTaskAddShow());
-					}}
-				>
-					{TASK_ADD_HEADER}
-				</Button>
-			);
-		if (taskData && taskData.length > 0 && currentDevice === 'mobile')
-			return (
-				<Button
-					icon='plus'
-					variant='headerMobile'
-					onClick={() => {
-						dispatch(setIsTaskAddShow());
-					}}
-				/>
-			);
-		if (currentDevice === 'desktop')
-			return <Button variant='headerOff'>{TASK_ADD_HEADER}</Button>;
-
-		if (currentDevice === 'mobile')
-			return <Button icon='plus' variant='headerOffMobile' />;
-	};
 
 	return (
 		<StyledHeader isSidebarShow={isSidebarShow}>
@@ -69,15 +36,11 @@ const Header = () => {
 				<Logo />
 				<StyledLogoBox>
 					<StyledLogoText>{APLICATION_TITLE}</StyledLogoText>
-					{isSidebarShow ? (
-						<StyledArrow src={chavronUp} alt='Arrow Up' />
-					) : (
-						<StyledArrow src={chevronDown} alt='Arrow Down' />
-					)}
+					{isSidebarShow ? <StyledArrowUp /> : <StyledArrowDown />}
 				</StyledLogoBox>
 			</StyledHeaderBox>
 			<StyledHeaderBox>
-				{renderButton()}
+				<AddTaskButton />
 				{taskData && (
 					<Ellipsis
 						onClick={() => {

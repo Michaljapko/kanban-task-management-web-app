@@ -10,6 +10,7 @@ const Button = ({
 	type,
 	width,
 }: ButtonTypes) => {
+	
 	const getIcon = (icon: string) => {
 		if (icon === 'plus') return <Plus />;
 		if (icon === 'board') return <StyledBoardIcon variant={variant} />;

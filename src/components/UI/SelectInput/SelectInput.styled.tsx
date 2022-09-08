@@ -5,7 +5,7 @@ export const StyledSelect = styled.div`
 		box-shadow: none;
 		border: 1px solid ${({ theme }) => theme.borderGray};
 		border-radius: 0.25rem;
-		height: 40px;
+		height: 2.5rem;
 		width: 100%;
 		padding: 0 1rem;
 		background: ${({ theme }) => theme.backgroundMain};

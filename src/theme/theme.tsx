@@ -47,10 +47,8 @@ export const theme = {
 	mainColor: colors.black,
 	buttonSecondary: colors.lightGrey,
 	borderGray: colors.transparentGray,
-	dotFirst: colors.blue,
-	dotSecond: colors.mainPurple,
-	dotThird: colors.green,
-	dotFourth: colors.yellow,
+
+	dotColors: [colors.blue, colors.mainPurple, colors.green, colors.yellow],
 
 	themeDark: {
 		buttonSecondaryHover: colors.white,
@@ -64,6 +62,7 @@ export const theme = {
 		mainColor: colors.white,
 		borderColor: colors.darkLines,
 	},
+	
 	textHeading: {
 		xlarge: `
 			font-family: 'Plus Jakarta Sans';

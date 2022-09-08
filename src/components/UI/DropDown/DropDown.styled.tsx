@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const StyledDropMenu = styled.div`
 	position: absolute;
 	top: 3rem;
@@ -10,8 +11,8 @@ export const StyledDropMenu = styled.div`
 	margin-right: 1.5rem;
 	box-shadow: 1rem 0.625rem 1.25rem rgba(54, 78, 126, 0.25);
 	border-radius: 0.5rem;
-	width: 194px;
-	height: 94px;
+	width: 12rem;
+	height: 5.875rem;
 	padding: 1rem;
 	background: ${({ theme }) => theme.backgroundMain};
 	@media (min-width: 992px) {

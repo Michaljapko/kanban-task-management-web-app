@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { ReactComponent as ChevronDown}  from '../../assets/icon-chevron-down.svg';
+import { ReactComponent as ChevronUp} from '../../assets/icon-chevron-up.svg';
 
 export const StyledHeader = styled.div<{ isSidebarShow: boolean }>`
 	position: fixed;
@@ -31,7 +33,12 @@ export const StyledHeaderBox = styled.div`
 	cursor: pointer;
 `;
 
-export const StyledArrow = styled.img`
+export const StyledArrowUp = styled(ChevronUp)`
+	@media (min-width: 992px) {
+		display: none;
+	}
+`;
+export const StyledArrowDown = styled(ChevronDown)`
 	@media (min-width: 992px) {
 		display: none;
 	}

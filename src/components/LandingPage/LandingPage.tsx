@@ -60,14 +60,17 @@ const LandingPage = () => {
 			{isTaskEditShow && <TaskEdit />}
 			{isTaskBoardShow && <DeleteMenu variant={'board'} />}
 			{isTaskDeleteShow && <DeleteMenu variant={'task'} />}
+			
 			<Header />
 			<StyledWrapper>
+
 				{isSidebarShow && <Sidebar />}
 				{!isSidebarShow && (
 					<StyledHidebox onClick={(event) => dispatch(setIsSidebarShow())}>
 						<ShowSidebar />
 					</StyledHidebox>
 				)}
+
 				{(!tasksData || tasksData?.length === 0) && (
 					<StyledWrapperInfo>
 						<StyledInfo>

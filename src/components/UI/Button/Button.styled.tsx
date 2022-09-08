@@ -59,9 +59,9 @@ export const StyledButton = styled.button<ButtonTypes>`
 				display: flex;
 				align-items: center;
 				${({ theme }) => theme.textHeading.xlarge}
-				padding: 0 55px;
+				padding: 0 3.4375rem;
 				border: none;
-				border-radius: 6px;
+				border-radius: 0.375rem;
 				background: ${({ theme }) => theme.buttonBig};
 				color: ${({ theme }) => theme.textGrey};
 				cursor: pointer;

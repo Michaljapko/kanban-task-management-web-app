@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-export const StyledBoxSection = styled.div`
-	margin-bottom: 1.5rem;
-`;
 
 export const StyledSubtaskBox = styled.div`
 	display: flex;

@@ -29,7 +29,7 @@ export const StyledBack = styled.div<{ variant?: PopUpVariants }>`
 	align-content: flex-start;
 	width: 100%;
 	padding-bottom: 2rem;
-	padding-top: 64px;
+	padding-top: 4rem;
 
 	@media (min-width: 992px) {
 		height: 100%;
@@ -46,8 +46,8 @@ export const StyledBack = styled.div<{ variant?: PopUpVariants }>`
 					justify-content: flex-start;
 					background-color: transparent;
 					padding-right: 300px;
+					margin-top: 6rem;
 					width: 0;
-					margin-top: 95px;
 					z-index: 0;
 				}
 			`;
@@ -59,7 +59,7 @@ export const StyledBox = styled.div<{ variant?: PopUpVariants }>`
 	flex-direction: column;
 	align-items: stretch;
 	margin: 0 1rem;
-	border-radius: 6px;
+	border-radius: 0.375rem;
 	padding: ${({ variant }) =>
 		variant === 'sidebar' ? '1.5rem 0 0' : '1.5rem'};
 	${({ variant }) => (variant === 'sidebar' ? '' : 'width: 100%')};
@@ -70,23 +70,22 @@ export const StyledBox = styled.div<{ variant?: PopUpVariants }>`
 		if (variant === 'sidebar')
 			return css`
 				width: 264px;
-
 				@media (min-width: 992px) {
 					position: fixed;
 					flex-direction: column;
 					justify-content: space-between;
 					width: 300px;
 					min-height: 93vh;
-					top: 95px;
+					top: 6rem;
 					margin: 0;
 					padding: 0;
 					border-radius: 0px;
 					border-right: 1px solid ${({ theme }) => theme.borderColor};
-					padding-top: 15px;
-					padding-bottom: 32px;
+					padding-top: 0.9375rem;
+					padding-bottom: 2rem;
 				}
 				@media (max-height: 800px) and (min-width: 992px) {
-					padding-bottom: 62px;
+					padding-bottom: 3.875rem;
 				}
 			`;
 	}}

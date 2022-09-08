@@ -6,7 +6,7 @@ import { InputTypes } from '../../../types/types';
 const Input = ({ name, placeholder, as }: InputTypes) => {
 	return (
 		<StyledWrapper>
-			<Field name={name}>
+			<Field name={name} >
 				{({ field, form, meta }: FieldProps) => (
 					<>
 						<StyledInput

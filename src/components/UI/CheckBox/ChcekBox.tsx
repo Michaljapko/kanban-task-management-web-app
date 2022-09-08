@@ -1,5 +1,4 @@
 import { StyledCheckbox, StyledBox, StyledIcon } from './CheckBox.styled';
-import Check from '../../../assets/icon-check.svg';
 import { CheckBoxTypes } from '../../../types/types';
 
 const CheckBox = ({ name, onChange, defaultChecked }: CheckBoxTypes) => {
@@ -12,7 +11,7 @@ const CheckBox = ({ name, onChange, defaultChecked }: CheckBoxTypes) => {
 				defaultChecked={defaultChecked}
 			/>
 			<label htmlFor={name}>
-				<StyledIcon src={Check} alt='Check' />
+				<StyledIcon />
 			</label>
 		</StyledBox>
 	);

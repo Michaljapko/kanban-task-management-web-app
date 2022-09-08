@@ -11,7 +11,7 @@ export const StyledScrollWrapper = styled.div<{
 	}}
 	&::-webkit-scrollbar {
 		display: block;
-		width: 5px;
+		width: 0.3rem;
 		border-radius: 9999px;
 		background-color: ${({ theme }) => theme.backgroundContrast};
 	}
