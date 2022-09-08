@@ -2,9 +2,19 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import { Boards, Board, TasksData, Column } from '../../types/types';
 import { data } from '../../data/data';
-import { getBoardIndex, getColumnIndex, getTaskIndex } from '../../helpers/reducersHelpers';
+import {
+	getBoardIndex,
+	getColumnIndex,
+	getTaskIndex,
+} from '../../helpers/reducersHelpers';
 
-const initialState: Boards = data;
+const getData = () => {
+	if (localStorage.getItem('tasksData')) {
+		return { boards: JSON.parse(localStorage.getItem('tasksData')!) };
+	}
+	return data;
+};
+const initialState: Boards = getData();
 
 export const taskActionSlice = createSlice({
 	name: 'taskAction',
@@ -12,6 +22,7 @@ export const taskActionSlice = createSlice({
 	reducers: {
 		addBoard: (state, { payload }: PayloadAction<Board>) => {
 			state.boards = [...state.boards, payload];
+			localStorage.setItem('tasksData', JSON.stringify(state.boards));
 		},
 
 		editBoard: (
@@ -20,12 +31,14 @@ export const taskActionSlice = createSlice({
 		) => {
 			const boardIndex = getBoardIndex(state, payload.currentBoard);
 			state.boards[boardIndex] = payload.board;
+			localStorage.setItem('tasksData', JSON.stringify(state.boards));
 		},
 
 		deleteBoard: (state, action: PayloadAction<string>) => {
 			state.boards = state.boards.filter((board) => {
 				return action.payload !== board.id;
 			});
+			localStorage.setItem('tasksData', JSON.stringify(state.boards));
 		},
 
 		addTask: (
@@ -42,6 +55,7 @@ export const taskActionSlice = createSlice({
 				...state.boards[boardIndex].columns[columnIndex].tasks,
 				payload.task,
 			];
+			localStorage.setItem('tasksData', JSON.stringify(state.boards));
 		},
 
 		addColumn: (
@@ -53,6 +67,7 @@ export const taskActionSlice = createSlice({
 				...state.boards[boardIndex].columns,
 				payload.column,
 			];
+			localStorage.setItem('tasksData', JSON.stringify(state.boards));
 		},
 
 		editTask: (
@@ -76,6 +91,7 @@ export const taskActionSlice = createSlice({
 			);
 			state.boards[boardIndex].columns[columnIndex].tasks[taskIndex] =
 				payload.task;
+			localStorage.setItem('tasksData', JSON.stringify(state.boards));
 		},
 		deleteTask: (
 			state,
@@ -93,6 +109,7 @@ export const taskActionSlice = createSlice({
 				columnIndex
 			].tasks.filter((task) => task.id !== payload.taskId);
 			state.boards[boardIndex].columns[columnIndex].tasks = newTasks;
+			localStorage.setItem('tasksData', JSON.stringify(state.boards));
 		},
 
 		columnChangeTask: (
@@ -130,6 +147,7 @@ export const taskActionSlice = createSlice({
 				...state.boards[boardIndex].columns[columnIndexTarget].tasks,
 				taskToChange,
 			];
+			localStorage.setItem('tasksData', JSON.stringify(state.boards));
 		},
 		columnChangeTaskDrag: (
 			state,
@@ -166,6 +184,7 @@ export const taskActionSlice = createSlice({
 				state.boards[boardIndex].columns[columnIndexTarget].tasks;
 			newTasks.splice(payload.index, 0, taskToChange);
 			state.boards[boardIndex].columns[columnIndexTarget].tasks = newTasks;
+			localStorage.setItem('tasksData', JSON.stringify(state.boards));
 		},
 	},
 });
@@ -212,7 +231,9 @@ export const selectCurrentTaskData = (state: RootState) => {
 		columnIndex,
 		state.currentTask.currentTaskId
 	);
-	return state.taskAction.boards[boardIndex].columns[columnIndex].tasks[taskIndex];
+	return state.taskAction.boards[boardIndex].columns[columnIndex].tasks[
+		taskIndex
+	];
 };
 
 export default taskActionSlice.reducer;
