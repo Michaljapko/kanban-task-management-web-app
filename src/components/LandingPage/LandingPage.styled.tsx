@@ -24,23 +24,25 @@ export const StyledWrapperCard = styled.div`
 	padding: 5.5rem 1rem;
 	gap: 1.5rem;
 	@media (min-width: 992px) {
-		padding: 121px 24px;
+		padding: 7.5rem 1.5rem;
 	}
 `;
 
-export const StyledHidebox = styled.div`
+export const StyledHidebox = styled.button`
 	display: none;
 	@media (min-width: 992px) {
 		position: absolute;
+		left: 0px;
+		bottom: 2rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 56px;
-		height: 48px;
-		left: 0px;
-		bottom: 32px;
+		border: none;
+		width: 3.5rem;
+		height: 3rem;
 		background: ${({ theme }) => theme.buttonPrimary};
-		border-radius: 0px 100px 100px 0px;
+		border-radius: 0rem 6.25rem 6.25rem 0rem;
+		cursor: pointer;
 		&:hover {
 			background: ${({ theme }) => theme.buttonPrimaryHover};
 		}
