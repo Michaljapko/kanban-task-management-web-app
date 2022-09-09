@@ -67,10 +67,7 @@ const TaskCards = () => {
 	return (
 		<>
 			{isTaskShow && <TaskView />}
-			<DragDropContext
-				key='{drop}'
-				onDragEnd={(event) => onDragEndHadnle(event)}
-			>
+			<DragDropContext key='{drop}' onDragEnd={(event) => onDragEndHadnle(event)}>
 				{columns &&
 					columns.map((column, index) => {
 						return (
@@ -83,11 +80,7 @@ const TaskCards = () => {
 										</StyledHeading>
 										{columns &&
 											column.tasks.map((task, index) => (
-												<Draggable
-													key={task.id}
-													draggableId={task.id}
-													index={index}
-												>
+												<Draggable key={task.id} draggableId={task.id} index={index}>
 													{(provided) => (
 														<StyledCard
 															onClick={() => showTask(task, column.id)}
@@ -97,10 +90,7 @@ const TaskCards = () => {
 														>
 															<StyledTitle>{task.title}</StyledTitle>
 															<StyledParagraph>
-																{subtaskInfoCard(
-																	getCompletedTask(task.subtasks),
-																	task.subtasks.length
-																)}
+																{subtaskInfoCard(getCompletedTask(task.subtasks), task.subtasks.length)}
 															</StyledParagraph>
 														</StyledCard>
 													)}
@@ -113,10 +103,7 @@ const TaskCards = () => {
 						);
 					})}
 			</DragDropContext>
-			<Button
-				onClick={() => dispatch(setIsBoardEditShow())}
-				variant={'buttonBig'}
-			>
+			<Button onClick={() => dispatch(setIsBoardEditShow())} variant={'buttonBig'}>
 				+ New Column
 			</Button>
 		</>

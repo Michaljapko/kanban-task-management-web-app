@@ -53,7 +53,7 @@ const Sidebar = () => {
 						}
 						return (
 							<Button
-								onClick={() => boardButtonHandler(board)}
+								onClick={() =>boardButtonHandler(board)}
 								key={board.id}
 								variant={variant}
 								icon='board'
