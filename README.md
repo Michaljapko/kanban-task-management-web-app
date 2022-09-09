@@ -12,7 +12,7 @@ https://michaljapko.github.io/kanban-task-management-web-app
 
 ![My Skills](https://skillicons.dev/icons?i=react,ts,styledcomponents,figma)
 
-- React,
+- React
 - Redux + toolkit
 - Typescript
 - Styled-components
