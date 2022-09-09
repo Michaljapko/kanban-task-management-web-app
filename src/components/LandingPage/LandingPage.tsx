@@ -48,7 +48,7 @@ const LandingPage = () => {
 	const dispatch = useAppDispatch();
 
 	const buttonHandler = () =>
-		tasksData?.length === 0
+		tasksData?.length
 			? dispatch(setIsBoardEditShow())
 			: dispatch(setIsBoardAddShow());
 
@@ -60,10 +60,9 @@ const LandingPage = () => {
 			{isTaskEditShow && <TaskEdit />}
 			{isTaskBoardShow && <DeleteMenu variant={'board'} />}
 			{isTaskDeleteShow && <DeleteMenu variant={'task'} />}
-			
+
 			<Header />
 			<StyledWrapper>
-
 				{isSidebarShow && <Sidebar />}
 				{!isSidebarShow && (
 					<StyledHidebox onClick={(event) => dispatch(setIsSidebarShow())}>
@@ -71,18 +70,16 @@ const LandingPage = () => {
 					</StyledHidebox>
 				)}
 
-				{(!tasksData || tasksData?.length === 0) && (
+				{(!tasksData || tasksData?.length) && (
 					<StyledWrapperInfo>
-						<StyledInfo>
-							{tasksData?.length === 0 ? EMPTY_BOARD : EMPTY}
-						</StyledInfo>
+						<StyledInfo>{tasksData?.length ? EMPTY_BOARD : EMPTY}</StyledInfo>
 						<Button variant={'header'} onClick={() => buttonHandler()}>
-							{tasksData?.length === 0 ? COLUMN_ADD : BOARD_CREATE}
+							{tasksData?.length ? COLUMN_ADD : BOARD_CREATE}
 						</Button>
 					</StyledWrapperInfo>
 				)}
 
-				{tasksData && tasksData?.length > 0 && (
+				{tasksData && tasksData?.length && (
 					<StyledWrapperCard>
 						<TaskCards />
 					</StyledWrapperCard>
