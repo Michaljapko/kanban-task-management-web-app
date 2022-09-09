@@ -63,36 +63,9 @@ export interface ButtonTypes {
 	width?: 'full';
 }
 
-export interface ThemeType {
-	mainColor: string;
-	themeColor: string;
-	buttonSecondaryHover: string;
-	backgroundBack: string;
-	textGrey: string;
-	colorError: string;
-	buttonText: string;
-	buttonPrimary: string;
-	buttonPrimaryHover: string;
-	buttonDestructive: string;
-	buttonDestructiveHover: string;
-	backgroundMain: string;
-	backgroundBody: string;
-	buttonSecondary: string;
-	textHeading: {
-		xlarge: string;
-		large: string;
-		medium: string;
-		small: string;
-	};
-	text: {
-		large: string;
-		medium: string;
-	};
-}
 
 export interface ButtonStyled {
 	variant?: ButtonTypes;
-	theme: ThemeType;
 }
 
 export interface Board {
