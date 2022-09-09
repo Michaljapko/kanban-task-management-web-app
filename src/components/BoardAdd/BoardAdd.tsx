@@ -29,14 +29,15 @@ import CrossIcon from '../UI/CrossIcon';
 const BoardAdd = () => {
 	const dispatch = useAppDispatch();
 	const initialValues: ColumnInputValues = {
-		name: '',
+		boardName: '',
 		columns: [{ name: '' }],
 	};
 
 	const handleAddBoard = (values: ColumnInputValues) => {
+		console.log(values)
 		const board: Board = {
 			id: uuid(),
-			name: values.name,
+			name: values.boardName,
 			columns: values.columns.map((column) => ({
 				id: uuid(),
 				name: column.name,
@@ -61,8 +62,8 @@ const BoardAdd = () => {
 				{({ values }) => (
 					<Form>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='name'>{BOARD_NAME}</StyledLabel>
-							<Input name='name' placeholder={BOARD_PLACEHOLDER} />
+							<StyledLabel htmlFor='boardName'>{BOARD_NAME}</StyledLabel>
+							<Input  name='boardName' placeholder={BOARD_PLACEHOLDER} />
 						</StyledBoxSection>
 
 						<StyledBoxSection>

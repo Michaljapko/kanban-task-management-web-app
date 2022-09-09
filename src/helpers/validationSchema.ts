@@ -10,7 +10,7 @@ yup.setLocale({
 });
 
 export const boardAddSchema = yup.object().shape({
-	name: yup.string().max(20).required(),
+	boardName: yup.string().max(20).required(),
 	columns: yup
 		.array()
 		.of(yup.object().shape({ name: yup.string().max(40).required() })),

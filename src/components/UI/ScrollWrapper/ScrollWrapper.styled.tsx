@@ -6,7 +6,6 @@ export const StyledScrollWrapper = styled.div<{
 	max-height: 300px;
 	overflow: auto;
 	${({ currentHeight }) => {
-		console.log(currentHeight);
 		if (currentHeight >= 260) return 'padding-right:10px; margin-bottom:10px;';
 	}}
 	&::-webkit-scrollbar {

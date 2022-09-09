@@ -10,7 +10,7 @@ import {
 	StyledBoxSection,
 	StyledColumnInputBox,
 	StyledLabel,
-}  from '../../theme/MenuBox.styled';
+} from '../../theme/MenuBox.styled';
 import {
 	selectCurrentBoard,
 	selectCurrentBoardData,
@@ -35,7 +35,7 @@ const BoardEdit = () => {
 	const currentBoard = useAppSelector(selectCurrentBoardData);
 	const columns = currentBoard.columns;
 	const initialValues: BoardInputValues = {
-		name: currentBoard.name,
+		boardName: currentBoard.name,
 		columns: columns.map((column) => ({ id: column.id, name: column.name })),
 	};
 
@@ -44,7 +44,7 @@ const BoardEdit = () => {
 			currentBoard: currentBoardId,
 			board: {
 				id: currentBoardId,
-				name: values.name,
+				name: values.boardName,
 				columns: [...filterAddedColumns(values.columns, columns)],
 			},
 		};
@@ -65,8 +65,8 @@ const BoardEdit = () => {
 				{({ values }) => (
 					<Form>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='name'>{BOARD_NAME}</StyledLabel>
-							<Input name='name' type='text' />
+							<StyledLabel htmlFor='boardName'>{BOARD_NAME}</StyledLabel>
+							<Input name='boardName' type='text' />
 						</StyledBoxSection>
 						<StyledBoxSection>
 							<StyledLabel htmlFor='columns'>{BOARD_COLUMNS}</StyledLabel>

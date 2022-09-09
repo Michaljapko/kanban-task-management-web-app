@@ -143,7 +143,7 @@ export interface Column {
 }
 
 export interface ColumnInputValues {
-	name: string;
+	boardName: string;
 	columns: { name: string }[];
 }
 
@@ -155,6 +155,6 @@ export interface TaskInputValues {
 }
 
 export interface BoardInputValues {
-	name: string;
+	boardName: string;
 	columns: { id: string; name: string }[];
 }

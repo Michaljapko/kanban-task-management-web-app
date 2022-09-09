@@ -6,10 +6,11 @@ import { InputTypes } from '../../../types/types';
 const Input = ({ name, placeholder, as }: InputTypes) => {
 	return (
 		<StyledWrapper>
-			<Field name={name} >
+			<Field name={name}>
 				{({ field, form, meta }: FieldProps) => (
 					<>
 						<StyledInput
+							id={name}
 							as={as}
 							type='text'
 							{...field}
@@ -17,7 +18,7 @@ const Input = ({ name, placeholder, as }: InputTypes) => {
 							error={meta.error}
 						/>
 						{meta.touched && meta.error && (
-							<StyledError>{meta.error}</StyledError>
+							<StyledError id={name}>{meta.error}</StyledError>
 						)}
 					</>
 				)}
