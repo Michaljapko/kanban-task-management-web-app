@@ -23,7 +23,7 @@ import {
 	EMPTY,
 	EMPTY_BOARD,
 } from '../../data/textEN';
-import { ReactComponent as ShowSidebar } from '../../assets/icon-add-task-mobile.svg';
+import { ReactComponent as ShowSidebar } from '../../assets/icon-show-sidebar.svg';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { selectTasksData } from '../../features/tasks/taskActionSlice';
 import BoardAdd from '../BoardAdd';

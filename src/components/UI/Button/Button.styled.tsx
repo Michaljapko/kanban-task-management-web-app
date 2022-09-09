@@ -100,7 +100,6 @@ export const StyledButton = styled.button<ButtonTypes>`
 			}};
 	       font-weight: ${() => (variant === 'secondary' ? 700 : 500)};
 			line-height:1.4rem;
-			transition: background-color 0.3s ease-out;
 			cursor: pointer;
 			&:hover {
 				background-color: ${() => {

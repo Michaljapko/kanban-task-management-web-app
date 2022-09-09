@@ -24,7 +24,7 @@ const AddTaskButton = () => {
 					{TASK_ADD_HEADER}
 				</Button>
 			)}
-            
+
 			{taskData && taskData.length > 0 && currentDevice === 'mobile' && (
 				<Button
 					icon='plus'
@@ -35,11 +35,11 @@ const AddTaskButton = () => {
 				/>
 			)}
 
-			{currentDevice === 'desktop' && (
+			{!taskData && currentDevice === 'desktop' && (
 				<Button variant='headerOff'>{TASK_ADD_HEADER}</Button>
 			)}
 
-			{currentDevice === 'mobile' && (
+			{!taskData && currentDevice === 'mobile' && (
 				<Button icon='plus' variant='headerOffMobile' />
 			)}
 		</>
