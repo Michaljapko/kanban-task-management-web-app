@@ -54,6 +54,7 @@ const TaskEdit = () => {
 		subtasks: task.subtasks,
 		status: currentColumn,
 	};
+	
 	const handleEditTask = (values: TaskInputValues) => {
 		const taskEdited: TasksData = {
 			id: task.id,
@@ -88,10 +89,7 @@ const TaskEdit = () => {
 	};
 
 	return (
-		<PopUp
-			title={TASK_EDIT}
-			layoutDispatch={() => dispatch(setIsTaskEditShow())}
-		>
+		<PopUp title={TASK_EDIT} layoutDispatch={() => dispatch(setIsTaskEditShow())}>
 			<Formik
 				initialValues={initialValues}
 				validationSchema={taskAddSchema}
@@ -104,9 +102,7 @@ const TaskEdit = () => {
 							<Input name='title' type='text' />
 						</StyledBoxSection>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='description'>
-								{TASK_DESCRIPTION}
-							</StyledLabel>
+							<StyledLabel htmlFor='description'>{TASK_DESCRIPTION}</StyledLabel>
 							<Input name='description' as='textarea' />
 						</StyledBoxSection>
 						<StyledBoxSection>

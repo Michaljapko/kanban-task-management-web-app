@@ -70,7 +70,7 @@ const LandingPage = () => {
 					</StyledHidebox>
 				)}
 
-				{(!tasksData || tasksData?.length) && (
+				{(!tasksData || !tasksData.length) && (
 					<StyledWrapperInfo>
 						<StyledInfo>{tasksData?.length ? EMPTY_BOARD : EMPTY}</StyledInfo>
 						<Button variant={'header'} onClick={() => buttonHandler()}>
@@ -79,7 +79,7 @@ const LandingPage = () => {
 					</StyledWrapperInfo>
 				)}
 
-				{tasksData && tasksData?.length && (
+				{tasksData && !tasksData.length && (
 					<StyledWrapperCard>
 						<TaskCards />
 					</StyledWrapperCard>
