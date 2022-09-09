@@ -19,12 +19,22 @@ import {
 import Button from '../UI/Button';
 import PopUp from '../UI/PopUp';
 import ThemeBox from './ThemeBox';
+import { Board } from '../../types/types';
 
 const Sidebar = () => {
 	const dispatch = useAppDispatch();
 	const boards = useAppSelector(selectBoards);
 	const currentBoards = useAppSelector(selectCurrentBoard);
 	const currentDevice = useAppSelector(selectCurrentDevice);
+
+	const boardButtonHandler = (board: Board) => {
+		if (currentDevice === 'desktop') {
+			dispatch(changeBoard(board.id));
+			return;
+		}
+		dispatch(changeBoard(board.id));
+		dispatch(setIsSidebarShow());
+	};
 
 	return (
 		<PopUp
@@ -43,14 +53,7 @@ const Sidebar = () => {
 						}
 						return (
 							<Button
-								onClick={() => {
-									if (currentDevice === 'desktop') {
-										dispatch(changeBoard(board.id));
-										return;
-									}
-									dispatch(changeBoard(board.id));
-									dispatch(setIsSidebarShow());
-								}}
+								onClick={() => boardButtonHandler(board)}
 								key={board.id}
 								variant={variant}
 								icon='board'
