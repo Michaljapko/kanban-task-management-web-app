@@ -8,12 +8,12 @@ import {
 } from '../features/layout/layoutSlice';
 
 export const useDetectScreen = () => {
-	const [width, changeWidth] = useState(window.innerWidth);
+	const [width, setWidth] = useState(window.innerWidth);
 	const dispatch = useDispatch();
 	const currentDevice = useAppSelector(selectCurrentDevice);
 
 	useEffect(() => {
-		window.addEventListener('resize', () => changeWidth(window.innerWidth));
+		window.addEventListener('resize', () => setWidth(window.innerWidth));
 		if (width >= 992 && currentDevice !== 'desktop') {
 			dispatch(setDesktop());
 		}
@@ -21,7 +21,7 @@ export const useDetectScreen = () => {
 			dispatch(setMobile());
 		}
 		return () => {
-			window.addEventListener('resize', () => changeWidth(window.innerWidth));
+			window.addEventListener('resize', () => setWidth(window.innerWidth));
 		};
 	}, [width, dispatch, currentDevice]);
 };
