@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
 	display: flex;
-
 	height: 100%;
 `;
 export const StyledWrapperInfo = styled.div`
@@ -10,7 +9,7 @@ export const StyledWrapperInfo = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: 100%;
+	min-height: 100vh;
 	width: 100%;
 	padding: 1rem;
 	gap: 1.5rem;
@@ -20,11 +19,22 @@ export const StyledWrapperCard = styled.div`
 	flex-direction: row;
 	align-items: flex-center;
 	justify-content: flex-start;
-	height: 100%;
+	min-height: 100vh;
 	padding: 5.5rem 1rem;
 	gap: 1.5rem;
+	overflow: auto;
 	@media (min-width: 992px) {
 		padding: 7.5rem 1.5rem;
+	}
+
+	&::-webkit-scrollbar {
+		display: block;
+		height: 0.5rem;
+		width: 0.5rem;
+		background-color: ${({ theme }) => theme.backgroundContrast};
+	}
+	&::-webkit-scrollbar-thumb {
+		background: ${({ theme }) => theme.themeColor};
 	}
 `;
 

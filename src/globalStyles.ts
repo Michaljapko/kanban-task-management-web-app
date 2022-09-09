@@ -11,7 +11,6 @@ const GlobalStyle = createGlobalStyle`
 #root{
 	overflow: scroll;
 -webkit-overflow-scrolling: touch;
-	height: 100%;
 }
 
 html, body, div, span, applet, object, iframe,
