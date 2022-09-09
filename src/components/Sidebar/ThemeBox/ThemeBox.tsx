@@ -9,10 +9,10 @@ const ThemeBox = () => {
 
 	return (
 		<StyledRadioBox>
-			<Moon />
+			<Sun />
 			<StyledSwitch type='checkbox' onChange={() => dispatch(toogleTheme())} />
 			<label />
-			<Sun />
+			<Moon />
 		</StyledRadioBox>
 	);
 };
