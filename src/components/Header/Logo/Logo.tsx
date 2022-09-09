@@ -9,12 +9,12 @@ import { StyledLogo, StyledLogoMobile } from './Logo.styled';
 const Logo = () => {
 	const currentTheme = useAppSelector(selectCurrentTheme);
 	const isSidebarShow = useAppSelector(selectIsSidebarShow);
-	
+
 	return (
 		<>
 			<StyledLogo isSidebarShow={isSidebarShow}>
 				<img
-					src={currentTheme === 'themeLight' ? logoLight : logoDark}
+					src={currentTheme === 'themeLight' ? logoDark : logoLight }
 					alt='Kanban Logo'
 				/>
 			</StyledLogo>
