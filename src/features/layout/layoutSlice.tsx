@@ -119,27 +119,6 @@ export const {
 	setDesktop,
 } = layoutSlice.actions;
 
-export const selectIsSidebarShow = ({ layoutSlice }: RootState) =>
-	layoutSlice.isSidebarShow;
-export const selectIsBoardAddShow = ({ layoutSlice }: RootState) =>
-	layoutSlice.isBoardAddShow;
-export const selectIsBoardEditShow = ({ layoutSlice }: RootState) =>
-	layoutSlice.isBoardEditShow;
-export const selectIsTaskAddShow = ({ layoutSlice }: RootState) =>
-	layoutSlice.isTaskAddShow;
-export const selectIsTaskEditShow = ({ layoutSlice }: RootState) =>
-	layoutSlice.isTaskEditShow;
-export const selectIsDeleteBoardShow = ({ layoutSlice }: RootState) =>
-	layoutSlice.isBoardDeleteShow;
-export const selectIsDeleteTaskShow = ({ layoutSlice }: RootState) =>
-	layoutSlice.isTaskDeleteShow;
-export const selectIsTaskShow = ({ layoutSlice }: RootState) =>
-	layoutSlice.isTaskShow;
-export const selectIsDropdownHeaderShow = ({ layoutSlice }: RootState) =>
-	layoutSlice.isDropdownHeaderShow;
-export const selectIsDropdownTaskShow = ({ layoutSlice }: RootState) =>
-	layoutSlice.isDropdownTaskShow;
-export const selectCurrentDevice = ({ layoutSlice }: RootState) =>
-	layoutSlice.device;
+export const selectLayout = ({ layoutSlice }: RootState) => layoutSlice;
 
 export default layoutSlice.reducer;

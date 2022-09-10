@@ -1,11 +1,5 @@
 import {
-	selectIsBoardAddShow,
-	selectIsBoardEditShow,
-	selectIsDeleteBoardShow,
-	selectIsDeleteTaskShow,
-	selectIsSidebarShow,
-	selectIsTaskAddShow,
-	selectIsTaskEditShow,
+	selectLayout,
 	setIsBoardAddShow,
 	setIsBoardEditShow,
 	setIsSidebarShow,
@@ -38,13 +32,13 @@ import DeleteMenu from '../UI/DeleteMenu';
 
 const LandingPage = () => {
 	const tasksData = useAppSelector(selectTasksData);
-	const isSidebarShow = useAppSelector(selectIsSidebarShow);
-	const isBoardAddShow = useAppSelector(selectIsBoardAddShow);
-	const isBoardEditShow = useAppSelector(selectIsBoardEditShow);
-	const isTaskAddShow = useAppSelector(selectIsTaskAddShow);
-	const isTaskBoardShow = useAppSelector(selectIsDeleteBoardShow);
-	const isTaskDeleteShow = useAppSelector(selectIsDeleteTaskShow);
-	const isTaskEditShow = useAppSelector(selectIsTaskEditShow);
+	const isSidebarShow = useAppSelector(selectLayout).isSidebarShow;
+	const isBoardAddShow = useAppSelector(selectLayout).isBoardAddShow;
+	const isBoardEditShow = useAppSelector(selectLayout).isBoardEditShow;
+	const isTaskAddShow = useAppSelector(selectLayout).isTaskAddShow;
+	const isBoardDeleteShow = useAppSelector(selectLayout).isBoardDeleteShow;
+	const isTaskDeleteShow = useAppSelector(selectLayout).isTaskDeleteShow;
+	const isTaskEditShow = useAppSelector(selectLayout).isTaskEditShow;
 	const dispatch = useAppDispatch();
 
 	const buttonHandler = () =>
@@ -58,7 +52,7 @@ const LandingPage = () => {
 			{isBoardEditShow && <BoardEdit />}
 			{isTaskAddShow && <TaskAdd />}
 			{isTaskEditShow && <TaskEdit />}
-			{isTaskBoardShow && <DeleteMenu variant={'board'} />}
+			{isBoardDeleteShow && <DeleteMenu variant={'board'} />}
 			{isTaskDeleteShow && <DeleteMenu variant={'task'} />}
 
 			<Header />

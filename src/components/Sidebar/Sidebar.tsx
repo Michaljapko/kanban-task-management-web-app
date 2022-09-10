@@ -4,7 +4,7 @@ import {
 	selectCurrentBoard,
 } from '../../features/tasks/boardSlice';
 import {
-	selectCurrentDevice,
+	selectLayout,
 	setIsBoardAddShow,
 	setIsSidebarShow,
 } from '../../features/layout/layoutSlice';
@@ -25,7 +25,7 @@ const Sidebar = () => {
 	const dispatch = useAppDispatch();
 	const boards = useAppSelector(selectBoards);
 	const currentBoards = useAppSelector(selectCurrentBoard);
-	const currentDevice = useAppSelector(selectCurrentDevice);
+	const currentDevice = useAppSelector(selectLayout).device;
 
 	const boardButtonHandler = (board: Board) => {
 		if (currentDevice === 'desktop') {
@@ -37,10 +37,7 @@ const Sidebar = () => {
 	};
 
 	return (
-		<PopUp
-			variant='sidebar'
-			layoutDispatch={() => dispatch(setIsSidebarShow())}
-		>
+		<PopUp variant='sidebar' layoutDispatch={() => dispatch(setIsSidebarShow())}>
 			<div>
 				<StyledHead>
 					{ALL_BOARD} ({boards.length})
@@ -53,7 +50,7 @@ const Sidebar = () => {
 						}
 						return (
 							<Button
-								onClick={() =>boardButtonHandler(board)}
+								onClick={() => boardButtonHandler(board)}
 								key={board.id}
 								variant={variant}
 								icon='board'

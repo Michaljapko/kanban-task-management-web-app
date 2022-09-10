@@ -4,7 +4,7 @@ import {
 	selectCurrentTaskData,
 } from '../../features/tasks/taskActionSlice';
 import {
-	selectIsDropdownTaskShow,
+	selectLayout,
 	setIsDropdownTaskShow,
 	setIsTaskShow,
 } from '../../features/layout/layoutSlice';
@@ -30,7 +30,7 @@ const TaskView = () => {
 	const currentColumn = useAppSelector(selectCurrentColumn);
 	const currentBoard = useAppSelector(selectCurrentBoard);
 	const taskColumn = useAppSelector(selectTasksData);
-	const isDropdownTaskShow = useAppSelector(selectIsDropdownTaskShow);
+	const isDropdownTaskShow = useAppSelector(selectLayout).isDropdownTaskShow;
 	const task = useAppSelector(selectCurrentTaskData);
 
 	const taskColumsData = taskColumn!.map((column) => ({

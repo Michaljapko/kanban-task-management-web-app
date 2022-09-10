@@ -1,6 +1,6 @@
 import {
 	setIsTaskAddShow,
-	selectCurrentDevice,
+	selectLayout,
 } from '../../../features/layout/layoutSlice';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 import { TASK_ADD_HEADER } from '../../../data/textEN';
@@ -10,7 +10,7 @@ import Button from '../../UI/Button';
 const AddTaskButton = () => {
 	const dispatch = useAppDispatch();
 	const taskData = useAppSelector(selectTasksData);
-	const currentDevice = useAppSelector(selectCurrentDevice);
+	const currentDevice = useAppSelector(selectLayout).device;
 
 	return (
 		<>

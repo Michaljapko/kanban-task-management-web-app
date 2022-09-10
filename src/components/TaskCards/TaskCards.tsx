@@ -5,7 +5,7 @@ import {
 	StyledTitle,
 } from './TaskCards.style';
 import {
-	selectIsTaskShow,
+	selectLayout,
 	setIsBoardEditShow,
 	setIsTaskShow,
 } from '../../features/layout/layoutSlice';
@@ -35,7 +35,7 @@ import theme from '../../theme/theme';
 const TaskCards = () => {
 	const dispatch = useAppDispatch();
 	const columns = useAppSelector(selectTasksData);
-	const isTaskShow = useAppSelector(selectIsTaskShow);
+	const isTaskShow = useAppSelector(selectLayout).isTaskShow;
 	const currentBoard = useAppSelector(selectCurrentBoard);
 
 	const dotColorsNum = theme.dotColors.length;

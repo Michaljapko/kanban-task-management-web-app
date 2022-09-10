@@ -7,9 +7,8 @@ import {
 	StyledArrowDown,
 } from './Header.styled';
 import {
-	selectIsSidebarShow,
+	selectLayout,
 	setIsSidebarShow,
-	selectIsDropdownHeaderShow,
 	setIsDropdownHeaderShow,
 } from '../../features/layout/layoutSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
@@ -23,8 +22,8 @@ import Logo from './Logo';
 const Header = () => {
 	const dispatch = useAppDispatch();
 	const taskData = useAppSelector(selectTasksData);
-	const isSidebarShow = useAppSelector(selectIsSidebarShow);
-	const isDropdownHeaderShow = useAppSelector(selectIsDropdownHeaderShow);
+	const isSidebarShow = useAppSelector(selectLayout).isSidebarShow;
+	const isDropdownHeaderShow = useAppSelector(selectLayout).isDropdownHeaderShow;
 
 	return (
 		<StyledHeader isSidebarShow={isSidebarShow}>
