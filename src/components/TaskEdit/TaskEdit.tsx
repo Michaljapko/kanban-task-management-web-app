@@ -54,7 +54,7 @@ const TaskEdit = () => {
 		subtasks: task.subtasks,
 		status: currentColumn,
 	};
-	
+
 	const handleEditTask = (values: TaskInputValues) => {
 		const taskEdited: TasksData = {
 			id: task.id,
@@ -67,24 +67,15 @@ const TaskEdit = () => {
 			})),
 			status: values.status,
 		};
-
-		dispatch(
-			columnChangeTask({
-				columnId: currentColumn,
-				columnTarget: values.status,
-				taskId: taskEdited.id,
-				currentBoard: currentBoard,
-				task: taskEdited,
-			})
-		);
-		dispatch(
-			editTask({
-				columnId: currentColumn,
-				taskId: taskEdited.id,
-				currentBoard: currentBoard,
-				task: taskEdited,
-			})
-		);
+		
+		const taskStateValues = {
+			currentBoard: currentBoard,
+			columnId: currentColumn,
+			taskId: taskEdited.id,
+			task: taskEdited,
+		};
+		dispatch(columnChangeTask({ columnTarget: values.status, ...taskStateValues }));
+		dispatch(editTask(taskStateValues));
 		dispatch(setIsTaskEditShow());
 	};
 
