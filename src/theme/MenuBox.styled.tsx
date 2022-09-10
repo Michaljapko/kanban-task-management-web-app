@@ -15,3 +15,8 @@ export const StyledColumnInputBox = styled.div`
 export const StyledBoxSection = styled.div`
 	margin-bottom: 1.5rem;
 `;
+export const StyledParagraph = styled.p`
+	${({ theme }) => theme.textHeading.small}
+	margin-bottom: 1rem;
+	color: ${({ theme }) => theme.mainColor};
+`;

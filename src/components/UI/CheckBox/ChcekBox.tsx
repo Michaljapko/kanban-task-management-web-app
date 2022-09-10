@@ -8,6 +8,7 @@ const CheckBox = ({ name, onChange, defaultChecked }: CheckBoxTypes) => {
 				type='checkbox'
 				name={name}
 				checked={defaultChecked}
+				readOnly={true}
 			/>
 			<label htmlFor={name}>
 				<StyledIcon />

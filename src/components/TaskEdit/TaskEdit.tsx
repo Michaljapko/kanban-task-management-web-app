@@ -24,7 +24,7 @@ import PopUp from '../UI/PopUp';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import SelectInput from '../UI/SelectInput';
-import SubtaskEdit from './SubtaskEdit/SubtaskEdit';
+import SubtaskEdit from './SubtaskEdit';
 
 const TaskEdit = () => {
 	const dispatch = useAppDispatch();

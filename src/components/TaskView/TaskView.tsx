@@ -1,13 +1,6 @@
 import {
-	StyledDescription,
-	StyledParagraph,
-	StyledSubtaskBox,
-	StyledSubtaskInfo,
-} from './TaskView.styled';
-import {
 	selectTasksData,
 	columnChangeTask,
-	editTask,
 	selectCurrentTaskData,
 } from '../../features/tasks/taskActionSlice';
 import {
@@ -19,24 +12,20 @@ import {
 	changeColumn,
 	selectCurrentColumn,
 } from '../../features/tasks/columnSlice';
+import { StyledBoxSection, StyledParagraph } from '../../theme/MenuBox.styled';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { STATE, subtaskInfo } from '../../data/textEN';
-import { getCompletedTask } from '../../helpers/getCompletedTasks';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { changeCurrentTask } from '../../features/tasks/taskSlice';
-import { useEffect, useState } from 'react';
-import { StyledBoxSection } from '../../theme/MenuBox.styled';
-import { getUpdateTask } from '../../helpers/getUpdateTask';
-import ScrollWrapper from '../UI/ScrollWrapper';
+import { StyledDescription } from './TaskView.styled';
+import { SelectInputOption } from '../../types/types';
+import { STATE } from '../../data/textEN';
 import SelectInput from '../UI/SelectInput';
 import Ellipsis from '../UI/Ellipsis';
-import CheckBox from '../UI/CheckBox';
 import DropDown from '../UI/DropDown';
 import PopUp from '../UI/PopUp';
-import { SelectInputOption, Subtask } from '../../types/types';
+import SubtaskView from './SubtaskView';
 
 const TaskView = () => {
-	const [taskDone, setTaskDone] = useState(0);
 	const dispatch = useAppDispatch();
 	const currentColumn = useAppSelector(selectCurrentColumn);
 	const currentBoard = useAppSelector(selectCurrentBoard);
@@ -48,17 +37,6 @@ const TaskView = () => {
 		value: column.id,
 		label: column.name,
 	}));
-
-	const taskCheckHandler = (subtask: Subtask) => {
-		dispatch(
-			editTask({
-				columnId: currentColumn,
-				taskId: task.id,
-				currentBoard: currentBoard,
-				task: getUpdateTask(subtask, task),
-			})
-		);
-	};
 
 	const columnChangeHandler = (event: SelectInputOption) => {
 		const taskUpdated = { ...task };
@@ -85,10 +63,6 @@ const TaskView = () => {
 		</>
 	);
 
-	useEffect(() => {
-		setTaskDone(getCompletedTask(task.subtasks));
-	}, [task, task.subtasks]);
-
 	return (
 		<PopUp
 			title={task.title}
@@ -101,21 +75,7 @@ const TaskView = () => {
 			<StyledBoxSection>
 				<StyledDescription>{task.description}</StyledDescription>
 			</StyledBoxSection>
-
-			<StyledBoxSection>
-				<StyledParagraph>{subtaskInfo(taskDone, task.subtasks.length)}</StyledParagraph>
-				<ScrollWrapper>
-					{task.subtasks.map((subtask) => (
-						<StyledSubtaskBox key={subtask.id} onClick={() => taskCheckHandler(subtask)}>
-							<CheckBox name='subscribe' defaultChecked={subtask.isCompleted} />
-							<StyledSubtaskInfo complete={subtask.isCompleted}>
-								{subtask.title}
-							</StyledSubtaskInfo>
-						</StyledSubtaskBox>
-					))}
-				</ScrollWrapper>
-			</StyledBoxSection>
-
+			<SubtaskView task={task} />
 			<StyledBoxSection>
 				<StyledParagraph>{STATE}</StyledParagraph>
 				<SelectInput
