@@ -60,8 +60,7 @@ export const StyledBox = styled.div<{ variant?: PopUpVariants }>`
 	align-items: stretch;
 	margin: 0 1rem;
 	border-radius: 0.375rem;
-	padding: ${({ variant }) =>
-		variant === 'sidebar' ? '1.5rem 0 0' : '1.5rem'};
+	padding: ${({ variant }) => (variant === 'sidebar' ? '1.5rem 0 0' : '1.5rem')};
 	${({ variant }) => (variant === 'sidebar' ? '' : 'width: 100%')};
 	max-width: 480px;
 	background: ${({ theme }) => theme.backgroundMain};
@@ -100,4 +99,10 @@ export const StyledBoxSection = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	margin-bottom: 1.5rem;
+`;
+
+export const StyledToolBox = styled.div`
+	display: flex;
+	gap: 1rem;
+	align-items: center;
 `;

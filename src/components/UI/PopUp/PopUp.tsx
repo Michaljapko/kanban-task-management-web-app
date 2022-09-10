@@ -4,9 +4,10 @@ import {
 	StyledBox,
 	StyledBoxSection,
 	StyledHeading,
+	StyledToolBox,
 } from './PopUp.styled';
 import { PopUpTypes } from '../../../types/types';
-
+import CrossIcon from '../CrossIcon';
 
 const PopUp = ({
 	children,
@@ -23,7 +24,10 @@ const PopUp = ({
 					{title && (
 						<StyledBoxSection>
 							<StyledHeading variant={variant}>{title}</StyledHeading>
-							{headingElement}
+							<StyledToolBox>
+								{headingElement}
+								<CrossIcon onClick={layoutDispatch} />
+							</StyledToolBox>
 						</StyledBoxSection>
 					)}
 					{children}
