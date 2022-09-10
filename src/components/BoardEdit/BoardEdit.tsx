@@ -7,7 +7,7 @@ import {
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Formik, Form } from 'formik';
 import { setIsBoardEditShow } from '../../features/layout/layoutSlice';
-import { BoardInputValues } from '../../types/types';
+import { BoardInputValues } from '../../types';
 import { boardAddSchema } from '../../helpers/validationSchema';
 import { editBoard } from '../../features/tasks/taskActionSlice';
 import { filterAddedColumns } from '../../helpers/filterAddedColumns';

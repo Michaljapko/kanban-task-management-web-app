@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { Boards, Board, TasksData, Column } from '../../types/types';
+import { Boards, Board, TasksData, Column } from '../../types';
 import { data } from '../../data/data';
 import {
 	getBoardIndex,

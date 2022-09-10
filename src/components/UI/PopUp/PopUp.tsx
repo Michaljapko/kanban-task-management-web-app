@@ -6,7 +6,7 @@ import {
 	StyledHeading,
 	StyledToolBox,
 } from './PopUp.styled';
-import { PopUpTypes } from '../../../types/types';
+import { PopUpTypes } from '../../../types';
 import CrossIcon from '../CrossIcon';
 
 const PopUp = ({

@@ -13,7 +13,7 @@ import {
 	TASK_TITLE,
 } from '../../data/textEN';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { TasksData, TaskInputValues } from '../../types/types';
+import { TasksData, TaskInputValues } from '../../types';
 import { Formik, Form } from 'formik';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { selectCurrentColumn } from '../../features/tasks/columnSlice';

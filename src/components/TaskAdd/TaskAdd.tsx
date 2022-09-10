@@ -15,7 +15,7 @@ import {
 } from '../../theme/MenuBox.styled';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Formik, Form, FieldArray } from 'formik';
-import { TasksData, TaskInputValues } from '../../types/types';
+import { TasksData, TaskInputValues } from '../../types';
 import { addTask, selectTasksData } from '../../features/tasks/taskActionSlice';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { setIsTaskAddShow } from '../../features/layout/layoutSlice';

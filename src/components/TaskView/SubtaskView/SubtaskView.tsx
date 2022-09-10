@@ -4,7 +4,7 @@ import {
 } from '../../../theme/MenuBox.styled';
 import { StyledSubtaskBox, StyledSubtaskInfo } from './SubtaskView.styled';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { Subtask, TasksData } from '../../../types/types';
+import { Subtask, TasksData } from '../../../types';
 import { useEffect, useState } from 'react';
 import { selectCurrentBoard } from '../../../features/tasks/boardSlice';
 import { selectCurrentColumn } from '../../../features/tasks/columnSlice';
@@ -16,7 +16,6 @@ import CheckBox from '../../UI/CheckBox';
 import ScrollWrapper from '../../UI/ScrollWrapper';
 
 const SubtaskView = ({ task }: { task: TasksData }) => {
-    
 	const [taskDone, setTaskDone] = useState(0);
 
 	const dispatch = useAppDispatch();

@@ -5,7 +5,7 @@ import {
 	StyledColumnInputBox,
 	StyledLabel,
 } from '../../../theme/MenuBox.styled';
-import { TaskInputValues } from '../../../types/types';
+import { TaskInputValues } from '../../../types';
 import Button from '../../UI/Button';
 import CrossIcon from '../../UI/CrossIcon';
 import Input from '../../UI/Input';

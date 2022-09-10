@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { PopUpVariants } from '../../../types/types';
+import { PopUpVariants } from '../../../types';
 
 export const StyledBackdrop = styled.div<{ variant?: PopUpVariants }>`
 	position: fixed;

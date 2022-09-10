@@ -1,6 +1,6 @@
-import { Boards } from '../types/types';
+import { Board } from '../types';
 
-export const data: Boards = {
+export const data: { boards: Board[] } = {
 	boards: [
 		{
 			id: '342a21',

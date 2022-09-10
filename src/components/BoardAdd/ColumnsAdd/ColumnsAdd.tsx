@@ -8,7 +8,7 @@ import {
 	StyledColumnInputBox,
 	StyledLabel,
 } from '../../../theme/MenuBox.styled';
-import { ColumnInputValues } from '../../../types/types';
+import { ColumnInputValues } from '../../../types';
 import { FieldArray } from 'formik';
 import Button from '../../UI/Button';
 import CrossIcon from '../../UI/CrossIcon';

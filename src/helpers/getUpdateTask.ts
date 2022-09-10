@@ -1,4 +1,4 @@
-import { Subtask, TasksData } from '../types/types';
+import { Subtask, TasksData } from '../types';
 
 export const getUpdateTask = (subtask: Subtask, task: TasksData) => ({
 	...task,

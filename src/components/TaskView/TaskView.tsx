@@ -17,7 +17,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { selectCurrentBoard } from '../../features/tasks/boardSlice';
 import { changeCurrentTask } from '../../features/tasks/taskSlice';
 import { StyledDescription } from './TaskView.styled';
-import { SelectInputOption } from '../../types/types';
+import { SelectInputOption } from '../../types';
 import { STATE } from '../../data/textEN';
 import SelectInput from '../UI/SelectInput';
 import Ellipsis from '../UI/Ellipsis';

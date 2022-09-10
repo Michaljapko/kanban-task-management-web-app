@@ -8,7 +8,7 @@ import {
 	StyledColumnInputBox,
 	StyledLabel,
 } from '../../../theme/MenuBox.styled';
-import { BoardInputValues } from '../../../types/types';
+import { BoardInputValues } from '../../../types';
 import { FieldArray } from 'formik';
 import { v4 as uuid } from 'uuid';
 import Button from '../../UI/Button';

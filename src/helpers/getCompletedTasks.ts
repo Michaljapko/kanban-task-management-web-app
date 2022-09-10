@@ -1,4 +1,4 @@
-import { Subtask } from '../types/types';
+import { Subtask } from '../types';
 
 export const getCompletedTask = (subtasks: Subtask[]) =>
 	subtasks.reduce((taskDone: number, task: Subtask) => {

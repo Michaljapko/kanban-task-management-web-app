@@ -7,7 +7,7 @@ import {
 import { StyledBoxSection, StyledLabel } from '../../theme/MenuBox.styled';
 import { Formik, Form } from 'formik';
 import { boardAddSchema } from '../../helpers/validationSchema';
-import { Board, ColumnInputValues } from '../../types/types';
+import { Board, ColumnInputValues } from '../../types';
 import { addBoard } from '../../features/tasks/taskActionSlice';
 import { changeBoard } from '../../features/tasks/boardSlice';
 import { setIsBoardAddShow } from '../../features/layout/layoutSlice';

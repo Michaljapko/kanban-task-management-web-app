@@ -1,11 +1,11 @@
-import { Columns } from '../types/types';
+import { Column } from '../types';
 
 export const filterAddedColumns = (
 	addedColumns: {
 		id: string;
 		name: string;
 	}[],
-	columns: Columns[]
+	columns: Column[]
 ) =>
 	addedColumns.map((column) => {
 		const existingColumn = columns.find(

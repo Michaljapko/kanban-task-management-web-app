@@ -1,5 +1,5 @@
 import { StyledSelect } from './SelectInput.styled';
-import { SelectInputTypes } from '../../../types/types';
+import { SelectInputTypes } from '../../../types';
 import Select from 'react-select';
 
 const SelectInput = ({

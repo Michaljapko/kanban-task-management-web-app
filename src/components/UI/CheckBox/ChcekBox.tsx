@@ -1,5 +1,5 @@
 import { StyledCheckbox, StyledBox, StyledIcon } from './CheckBox.styled';
-import { CheckBoxTypes } from '../../../types/types';
+import { CheckBoxTypes } from '../../../types';
 
 const CheckBox = ({ name, onChange, defaultChecked }: CheckBoxTypes) => {
 	return (

@@ -22,7 +22,7 @@ import {
 	selectTasksData,
 	columnChangeTaskDrag,
 } from '../../features/tasks/taskActionSlice';
-import { TasksData } from '../../types/types';
+import { TasksData } from '../../types';
 import { getCompletedTask } from '../../helpers/getCompletedTasks';
 import { subtaskInfoCard } from '../../data/textEN';
 import { getSequenceArr } from '../../helpers/getSequenceArr';

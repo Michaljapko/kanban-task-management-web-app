@@ -19,7 +19,7 @@ import {
 import Button from '../UI/Button';
 import PopUp from '../UI/PopUp';
 import ThemeBox from './ThemeBox';
-import { Board } from '../../types/types';
+import { Board } from '../../types';
 
 const Sidebar = () => {
 	const dispatch = useAppDispatch();

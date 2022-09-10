@@ -1,7 +1,7 @@
 import { StyledInput, StyledError, StyledWrapper } from './Input.styled';
 import { FieldProps } from 'formik';
 import { Field } from 'formik';
-import { InputTypes } from '../../../types/types';
+import { InputTypes } from '../../../types';
 
 const Input = ({ name, placeholder, as }: InputTypes) => {
 	return (
