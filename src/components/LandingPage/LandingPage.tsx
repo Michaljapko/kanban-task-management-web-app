@@ -79,7 +79,7 @@ const LandingPage = () => {
 					</StyledWrapperInfo>
 				)}
 
-				{tasksData && !tasksData.length && (
+				{tasksData && tasksData?.length > 0 && (
 					<StyledWrapperCard>
 						<TaskCards />
 					</StyledWrapperCard>

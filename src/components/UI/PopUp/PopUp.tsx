@@ -7,6 +7,7 @@ import {
 } from './PopUp.styled';
 import { PopUpTypes } from '../../../types/types';
 
+
 const PopUp = ({
 	children,
 	title,

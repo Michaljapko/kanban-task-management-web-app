@@ -7,8 +7,7 @@ const CheckBox = ({ name, onChange, defaultChecked }: CheckBoxTypes) => {
 			<StyledCheckbox
 				type='checkbox'
 				name={name}
-				onChange={onChange}
-				defaultChecked={defaultChecked}
+				checked={defaultChecked}
 			/>
 			<label htmlFor={name}>
 				<StyledIcon />

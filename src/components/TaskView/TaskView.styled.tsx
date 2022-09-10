@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const StyledSubtaskBox = styled.div`
 	display: flex;
 	align-items: center;
@@ -9,6 +8,7 @@ export const StyledSubtaskBox = styled.div`
 	padding: 0.75rem;
 	background: ${({ theme }) => theme.backgroundContrast};
 	color: ${({ theme }) => theme.mainColor};
+	cursor: pointer;
 	&:hover {
 		background: ${({ theme }) => theme.backgroundSubtaskHover};
 	}
