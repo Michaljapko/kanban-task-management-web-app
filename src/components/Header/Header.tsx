@@ -29,7 +29,7 @@ const Header = () => {
 	return (
 		<StyledHeader isSidebarShow={isSidebarShow}>
 			<StyledHeaderBox
-				onClick={(event) => {
+				onClick={() => {
 					dispatch(setIsSidebarShow());
 				}}
 			>
