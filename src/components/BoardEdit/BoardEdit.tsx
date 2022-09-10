@@ -1,33 +1,20 @@
-import {
-	COLUMN_ADD,
-	BOARD_NAME,
-	BOARD_COLUMNS,
-	COLUMN_PLACEHOLDER,
-	BOARD_EDIT,
-	SAVE,
-} from '../../data/textEN';
-import {
-	StyledBoxSection,
-	StyledColumnInputBox,
-	StyledLabel,
-} from '../../theme/MenuBox.styled';
+import { BOARD_NAME, BOARD_EDIT, SAVE } from '../../data/textEN';
+import { StyledBoxSection, StyledLabel } from '../../theme/MenuBox.styled';
 import {
 	selectCurrentBoard,
 	selectCurrentBoardData,
 } from '../../features/tasks/boardSlice';
-import { Formik, Form, FieldArray } from 'formik';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { Formik, Form } from 'formik';
 import { setIsBoardEditShow } from '../../features/layout/layoutSlice';
 import { BoardInputValues } from '../../types/types';
 import { boardAddSchema } from '../../helpers/validationSchema';
 import { editBoard } from '../../features/tasks/taskActionSlice';
-import { v4 as uuid } from 'uuid';
+import { filterAddedColumns } from '../../helpers/filterAddedColumns';
 import PopUp from '../UI/PopUp';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
-import { filterAddedColumns } from '../../helpers/filterAddedColumns';
-import ScrollWrapper from '../UI/ScrollWrapper';
-import CrossIcon from '../UI/CrossIcon';
+import ColumnsEdit from './ColumnsEdit';
 
 const BoardEdit = () => {
 	const dispatch = useAppDispatch();
@@ -53,10 +40,7 @@ const BoardEdit = () => {
 	};
 
 	return (
-		<PopUp
-			title={BOARD_EDIT}
-			layoutDispatch={() => dispatch(setIsBoardEditShow())}
-		>
+		<PopUp title={BOARD_EDIT} layoutDispatch={() => dispatch(setIsBoardEditShow())}>
 			<Formik
 				initialValues={initialValues}
 				validationSchema={boardAddSchema}
@@ -68,36 +52,7 @@ const BoardEdit = () => {
 							<StyledLabel htmlFor='boardName'>{BOARD_NAME}</StyledLabel>
 							<Input name='boardName' type='text' />
 						</StyledBoxSection>
-						<StyledBoxSection>
-							<StyledLabel htmlFor='columns'>{BOARD_COLUMNS}</StyledLabel>
-							<FieldArray
-								name='columns'
-								render={({ push, remove }) => (
-									<>
-										<ScrollWrapper>
-											{values.columns.length > 0 &&
-												values.columns.map((columns, index) => (
-													<StyledColumnInputBox key={index}>
-														<Input
-															name={`columns.${index}.name`}
-															placeholder={COLUMN_PLACEHOLDER}
-														/>
-														<CrossIcon onClick={() => remove(index)} />
-													</StyledColumnInputBox>
-												))}
-										</ScrollWrapper>
-										<Button
-											type='button'
-											variant='secondary'
-											width='full'
-											onClick={() => push({ id: uuid(), name: '' })}
-										>
-											{COLUMN_ADD}
-										</Button>
-									</>
-								)}
-							/>
-						</StyledBoxSection>
+						<ColumnsEdit values={values} />
 						<Button type='submit' width='full'>
 							{SAVE}
 						</Button>
