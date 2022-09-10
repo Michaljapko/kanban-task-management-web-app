@@ -67,7 +67,7 @@ export const data: Boards = {
 									isCompleted: false,
 								},
 								{ id: '22223421', title: 'Edit board', isCompleted: false },
-								{ id: '22223421', title: 'Delete board', isCompleted: false },
+								{ id: '3421', title: 'Delete board', isCompleted: false },
 							],
 						},
 					],
