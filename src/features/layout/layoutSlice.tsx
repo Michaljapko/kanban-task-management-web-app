@@ -16,8 +16,12 @@ const initialState = {
 };
 
 const isSidebarShow = (state: typeof initialState) => {
-	if (state.device === 'desktop') return state.isSidebarShow;
-	if (state.device === 'mobile') return false;
+	if (state.device === 'desktop') {
+		return state.isSidebarShow;
+	}
+	if (state.device === 'mobile') {
+		return false;
+	}
 };
 export const layoutSlice = createSlice({
 	name: 'layoutSlice',

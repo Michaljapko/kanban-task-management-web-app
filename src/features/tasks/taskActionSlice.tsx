@@ -1,6 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { Boards, Board, TasksData, Column } from '../../types';
+import {
+	Boards,
+	Board,
+	ColumnChangeDragType,
+	ColumnChangeType,
+	EditBoardType,
+	AddTaskType,
+	AddColumnType,
+	EditTaskType,
+	DeleteTaskType,
+} from '../../types';
 import { data } from '../../data/data';
 import {
 	getBoardIndex,
@@ -25,10 +35,7 @@ export const taskActionSlice = createSlice({
 			localStorage.setItem('tasksData', JSON.stringify(state.boards));
 		},
 
-		editBoard: (
-			state,
-			{ payload }: PayloadAction<{ currentBoard: string; board: Board }>
-		) => {
+		editBoard: (state, { payload }: PayloadAction<EditBoardType>) => {
 			const boardIndex = getBoardIndex(state, payload.currentBoard);
 			state.boards[boardIndex] = payload.board;
 			localStorage.setItem('tasksData', JSON.stringify(state.boards));
@@ -41,16 +48,9 @@ export const taskActionSlice = createSlice({
 			localStorage.setItem('tasksData', JSON.stringify(state.boards));
 		},
 
-		addTask: (
-			state,
-			{ payload }: PayloadAction<{ currentBoard: string; task: TasksData }>
-		) => {
+		addTask: (state, { payload }: PayloadAction<AddTaskType>) => {
 			const boardIndex = getBoardIndex(state, payload.currentBoard);
-			const columnIndex = getColumnIndex(
-				state,
-				boardIndex,
-				payload.task.status
-			);
+			const columnIndex = getColumnIndex(state, boardIndex, payload.task.status);
 			state.boards[boardIndex].columns[columnIndex].tasks = [
 				...state.boards[boardIndex].columns[columnIndex].tasks,
 				payload.task,
@@ -58,10 +58,7 @@ export const taskActionSlice = createSlice({
 			localStorage.setItem('tasksData', JSON.stringify(state.boards));
 		},
 
-		addColumn: (
-			state,
-			{ payload }: PayloadAction<{ currentBoard: string; column: Column }>
-		) => {
+		addColumn: (state, { payload }: PayloadAction<AddColumnType>) => {
 			const boardIndex = getBoardIndex(state, payload.currentBoard);
 			state.boards[boardIndex].columns = [
 				...state.boards[boardIndex].columns,
@@ -70,68 +67,30 @@ export const taskActionSlice = createSlice({
 			localStorage.setItem('tasksData', JSON.stringify(state.boards));
 		},
 
-		editTask: (
-			state,
-			{
-				payload,
-			}: PayloadAction<{
-				currentBoard: string;
-				columnId: string;
-				taskId: string;
-				task: TasksData;
-			}>
-		) => {
+		editTask: (state, { payload }: PayloadAction<EditTaskType>) => {
 			const boardIndex = getBoardIndex(state, payload.currentBoard);
 			const columnIndex = getColumnIndex(state, boardIndex, payload.columnId);
-			const taskIndex = getTaskIndex(
-				state,
-				boardIndex,
-				columnIndex,
-				payload.taskId
-			);
-			state.boards[boardIndex].columns[columnIndex].tasks[taskIndex] =
-				payload.task;
+			const taskIndex = getTaskIndex(state, boardIndex, columnIndex, payload.taskId);
+
+			state.boards[boardIndex].columns[columnIndex].tasks[taskIndex] = payload.task;
 			localStorage.setItem('tasksData', JSON.stringify(state.boards));
 		},
-		deleteTask: (
-			state,
-			{
-				payload,
-			}: PayloadAction<{
-				currentBoard: string;
-				columnId: string;
-				taskId: string;
-			}>
-		) => {
+
+		deleteTask: (state, { payload }: PayloadAction<DeleteTaskType>) => {
 			const boardIndex = getBoardIndex(state, payload.currentBoard);
 			const columnIndex = getColumnIndex(state, boardIndex, payload.columnId);
-			const newTasks = state.boards[boardIndex].columns[
-				columnIndex
-			].tasks.filter((task) => task.id !== payload.taskId);
+			const newTasks = state.boards[boardIndex].columns[columnIndex].tasks.filter(
+				(task) => task.id !== payload.taskId
+			);
 			state.boards[boardIndex].columns[columnIndex].tasks = newTasks;
 			localStorage.setItem('tasksData', JSON.stringify(state.boards));
 		},
 
-		columnChangeTask: (
-			state,
-			{
-				payload,
-			}: PayloadAction<{
-				currentBoard: string;
-				columnId: string;
-				columnTarget: string;
-				taskId: string;
-				task: TasksData;
-			}>
-		) => {
+		columnChangeTask: (state, { payload }: PayloadAction<ColumnChangeType>) => {
 			const boardIndex = getBoardIndex(state, payload.currentBoard);
 			const columnIndex = getColumnIndex(state, boardIndex, payload.columnId);
-			const taskIndex = getTaskIndex(
-				state,
-				boardIndex,
-				columnIndex,
-				payload.taskId
-			);
+			const taskIndex = getTaskIndex(state, boardIndex, columnIndex, payload.taskId);
+
 			const taskToChange = (state.boards[boardIndex].columns[columnIndex].tasks[
 				taskIndex
 			] = payload.task);
@@ -140,6 +99,7 @@ export const taskActionSlice = createSlice({
 			].columns[columnIndex].tasks.filter((task) => {
 				return payload.taskId !== task.id;
 			});
+
 			const columnIndexTarget = state.boards[boardIndex].columns.findIndex(
 				(column) => column.id === payload.columnTarget
 			);
@@ -151,37 +111,24 @@ export const taskActionSlice = createSlice({
 		},
 		columnChangeTaskDrag: (
 			state,
-			{
-				payload,
-			}: PayloadAction<{
-				currentBoard: string;
-				columnId: string;
-				columnTarget: string;
-				taskId: string;
-				index: number;
-			}>
+			{ payload }: PayloadAction<ColumnChangeDragType>
 		) => {
 			const boardIndex = getBoardIndex(state, payload.currentBoard);
 			const columnIndex = getColumnIndex(state, boardIndex, payload.columnId);
-			const taskIndex = getTaskIndex(
-				state,
-				boardIndex,
-				columnIndex,
-				payload.taskId
-			);
+			const taskIndex = getTaskIndex(state, boardIndex, columnIndex, payload.taskId);
+
 			const taskToChange =
 				state.boards[boardIndex].columns[columnIndex].tasks[taskIndex];
-
 			state.boards[boardIndex].columns[columnIndex].tasks = state.boards[
 				boardIndex
 			].columns[columnIndex].tasks.filter((task) => {
 				return payload.taskId !== task.id;
 			});
+
 			const columnIndexTarget = state.boards[boardIndex].columns.findIndex(
 				(column) => column.id === payload.columnTarget
 			);
-			const newTasks =
-				state.boards[boardIndex].columns[columnIndexTarget].tasks;
+			const newTasks = state.boards[boardIndex].columns[columnIndexTarget].tasks;
 			newTasks.splice(payload.index, 0, taskToChange);
 			state.boards[boardIndex].columns[columnIndexTarget].tasks = newTasks;
 			localStorage.setItem('tasksData', JSON.stringify(state.boards));
