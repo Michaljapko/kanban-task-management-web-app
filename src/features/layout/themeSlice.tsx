@@ -6,6 +6,7 @@ import { ThemeVariant } from '../../types';
 const initialState: ThemeVariant = {
 	theme: 'themeLight',
 };
+
 export const themeSlice = createSlice({
 	name: 'themeSlice',
 	initialState,

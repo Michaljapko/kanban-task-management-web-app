@@ -7,6 +7,7 @@ import { useDetectScreen } from './hooks/useDetectScreen';
 
 function App() {
 	const newTheme = useAppSelector(selectThemeMode);
+
 	useDetectScreen();
 
 	return (

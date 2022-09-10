@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
 const initialState = {
-	isSidebarShow: false,
+	isSidebarShow: true,
 	isTaskAddShow: false,
 	isTaskEditShow: false,
 	isBoardAddShow: false,
@@ -23,6 +23,7 @@ const isSidebarShow = (state: typeof initialState) => {
 		return false;
 	}
 };
+
 export const layoutSlice = createSlice({
 	name: 'layoutSlice',
 	initialState,
