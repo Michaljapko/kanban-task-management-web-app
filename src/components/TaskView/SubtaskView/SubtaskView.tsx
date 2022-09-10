@@ -3,12 +3,12 @@ import {
 	StyledParagraph,
 } from '../../../theme/MenuBox.styled';
 import { StyledSubtaskBox, StyledSubtaskInfo } from './SubtaskView.styled';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { Subtask, TasksData } from '../../../types';
 import { useEffect, useState } from 'react';
-import { selectCurrentBoard } from '../../../features/tasks/boardSlice';
-import { selectCurrentColumn } from '../../../features/tasks/columnSlice';
-import { editTask } from '../../../features/tasks/taskActionSlice';
+import { selectCurrentBoard } from '../../../store/slices/boardSlice/boardSlice';
+import { selectCurrentColumn } from '../../../store/slices/columnSlice/columnSlice';
+import { editTask } from '../../../store/slices/taskActionSlice/taskActionSlice';
 import { getCompletedTask } from '../../../helpers/getCompletedTasks';
 import { getUpdateTask } from '../../../helpers/getUpdateTask';
 import { subtaskInfo } from '../../../data/textEN';

@@ -1,10 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import layoutSlice from '../features/layout/layoutSlice';
-import boardSlice from '../features/tasks/boardSlice';
-import columnSlice from '../features/tasks/columnSlice';
-import taskActionSlice from '../features/tasks/taskActionSlice';
-import taskSlice from '../features/tasks/taskSlice';
-import themeSlice from '../features/layout/themeSlice';
+import layoutSlice from './slices/layoutSlice/layoutSlice';
+import boardSlice from './slices/boardSlice/boardSlice';
+import columnSlice from './slices/columnSlice/columnSlice';
+import taskActionSlice from './slices/taskActionSlice/taskActionSlice';
+import taskSlice from './slices/taskSlice/taskSlice';
+import themeSlice from './slices/themeSlice/themeSlice';
 
 export const store = configureStore({
 	reducer: {

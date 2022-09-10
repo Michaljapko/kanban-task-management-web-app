@@ -3,7 +3,7 @@ import {
 	setIsBoardAddShow,
 	setIsBoardEditShow,
 	setIsSidebarShow,
-} from '../../features/layout/layoutSlice';
+} from '../../store/slices/layoutSlice/layoutSlice';
 import {
 	StyledInfo,
 	StyledWrapperInfo,
@@ -18,8 +18,8 @@ import {
 	EMPTY_BOARD,
 } from '../../data/textEN';
 import { ReactComponent as ShowSidebar } from '../../assets/icon-show-sidebar.svg';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { selectTasksData } from '../../features/tasks/taskActionSlice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { selectTasksData } from '../../store/slices/taskActionSlice/taskActionSlice';
 import BoardAdd from '../BoardAdd';
 import Button from '../UI/Button';
 import Header from '../Header';

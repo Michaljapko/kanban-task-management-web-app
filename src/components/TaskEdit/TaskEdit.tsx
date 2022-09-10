@@ -4,7 +4,7 @@ import {
 	selectTasksData,
 	columnChangeTask,
 	editTask,
-} from '../../features/tasks/taskActionSlice';
+} from '../../store/slices/taskActionSlice/taskActionSlice';
 import {
 	STATUS,
 	TASK_ADD,
@@ -12,12 +12,12 @@ import {
 	TASK_EDIT,
 	TASK_TITLE,
 } from '../../data/textEN';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { TasksData, TaskInputValues } from '../../types';
 import { Formik, Form } from 'formik';
-import { selectCurrentBoard } from '../../features/tasks/boardSlice';
-import { selectCurrentColumn } from '../../features/tasks/columnSlice';
-import { setIsTaskEditShow } from '../../features/layout/layoutSlice';
+import { selectCurrentBoard } from '../../store/slices/boardSlice/boardSlice';
+import { selectCurrentColumn } from '../../store/slices/columnSlice/columnSlice';
+import { setIsTaskEditShow } from '../../store/slices/layoutSlice/layoutSlice';
 import { taskAddSchema } from '../../helpers/validationSchema';
 import { v4 as uuid } from 'uuid';
 import PopUp from '../UI/PopUp';

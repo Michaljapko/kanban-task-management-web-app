@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useAppSelector } from '../app/hooks';
+import { useAppSelector } from '../store/hooks';
 import {
 	selectLayout,
 	setDesktop,
 	setMobile,
 	setIsSidebarShow,
-} from '../features/layout/layoutSlice';
+} from '../store/slices/layoutSlice/layoutSlice';
 
 export const useDetectScreen = () => {
 	const [width, setWidth] = useState(window.innerWidth);

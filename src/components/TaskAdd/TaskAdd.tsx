@@ -13,12 +13,15 @@ import {
 	StyledColumnInputBox,
 	StyledLabel,
 } from '../../theme/MenuBox.styled';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { Formik, Form, FieldArray } from 'formik';
 import { TasksData, TaskInputValues } from '../../types';
-import { addTask, selectTasksData } from '../../features/tasks/taskActionSlice';
-import { selectCurrentBoard } from '../../features/tasks/boardSlice';
-import { setIsTaskAddShow } from '../../features/layout/layoutSlice';
+import {
+	addTask,
+	selectTasksData,
+} from '../../store/slices/taskActionSlice/taskActionSlice';
+import { selectCurrentBoard } from '../../store/slices/boardSlice/boardSlice';
+import { setIsTaskAddShow } from '../../store/slices/layoutSlice/layoutSlice';
 import { taskAddSchema } from '../../helpers/validationSchema';
 import { v4 as uuid } from 'uuid';
 import SelectInput from '../UI/SelectInput';
@@ -59,10 +62,7 @@ const TaskAdd = () => {
 	}
 
 	return (
-		<PopUp
-			title={TASK_TITLE}
-			layoutDispatch={() => dispatch(setIsTaskAddShow())}
-		>
+		<PopUp title={TASK_TITLE} layoutDispatch={() => dispatch(setIsTaskAddShow())}>
 			<Formik
 				initialValues={initialValues}
 				validationSchema={taskAddSchema}
@@ -72,21 +72,11 @@ const TaskAdd = () => {
 					<Form>
 						<StyledBoxSection>
 							<StyledLabel>{TASK_NAME}</StyledLabel>
-							<Input
-								name='title'
-								type='text'
-								placeholder='e.g. Take coffee break'
-							/>
+							<Input name='title' type='text' placeholder='e.g. Take coffee break' />
 						</StyledBoxSection>
 						<StyledBoxSection>
-							<StyledLabel htmlFor='description'>
-								{TASK_DESCRIPTION}
-							</StyledLabel>
-							<Input
-								name='description'
-								placeholder={TASK_PLACEHOLDER}
-								as='textarea'
-							/>
+							<StyledLabel htmlFor='description'>{TASK_DESCRIPTION}</StyledLabel>
+							<Input name='description' placeholder={TASK_PLACEHOLDER} as='textarea' />
 						</StyledBoxSection>
 						<StyledBoxSection>
 							<StyledLabel htmlFor='subtask'>{TASK_SUBTASK}</StyledLabel>
@@ -98,10 +88,7 @@ const TaskAdd = () => {
 											{values.subtasks.length > 0 &&
 												values.subtasks.map((subtasks, index) => (
 													<StyledColumnInputBox key={index}>
-														<Input
-															name={`subtasks.${index}.title`}
-															placeholder='e.g. In Progress'
-														/>
+														<Input name={`subtasks.${index}.title`} placeholder='e.g. In Progress' />
 														<CrossIcon onClick={() => remove(index)} />
 													</StyledColumnInputBox>
 												))}

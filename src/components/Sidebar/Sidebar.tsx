@@ -2,14 +2,14 @@ import {
 	changeBoard,
 	selectBoards,
 	selectCurrentBoard,
-} from '../../features/tasks/boardSlice';
+} from '../../store/slices/boardSlice/boardSlice';
 import {
 	selectLayout,
 	setIsBoardAddShow,
 	setIsSidebarShow,
-} from '../../features/layout/layoutSlice';
+} from '../../store/slices/layoutSlice/layoutSlice';
 import { ALL_BOARD, BOARD_CREATE, HIDE_SIDEBAR } from '../../data/textEN';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
 	StyledFooter,
 	StyledHead,

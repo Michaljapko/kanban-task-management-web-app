@@ -2,20 +2,20 @@ import {
 	selectTasksData,
 	columnChangeTask,
 	selectCurrentTaskData,
-} from '../../features/tasks/taskActionSlice';
+} from '../../store/slices/taskActionSlice/taskActionSlice';
 import {
 	selectLayout,
 	setIsDropdownTaskShow,
 	setIsTaskShow,
-} from '../../features/layout/layoutSlice';
+} from '../../store/slices/layoutSlice/layoutSlice';
 import {
 	changeColumn,
 	selectCurrentColumn,
-} from '../../features/tasks/columnSlice';
+} from '../../store/slices/columnSlice/columnSlice';
 import { StyledBoxSection, StyledParagraph } from '../../theme/MenuBox.styled';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { selectCurrentBoard } from '../../features/tasks/boardSlice';
-import { changeCurrentTask } from '../../features/tasks/taskSlice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { selectCurrentBoard } from '../../store/slices/boardSlice/boardSlice';
+import { changeCurrentTask } from '../../store/slices/taskSlice/taskSlice';
 import { StyledDescription } from './TaskView.styled';
 import { SelectInputOption } from '../../types';
 import { STATE } from '../../data/textEN';

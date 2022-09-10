@@ -10,10 +10,10 @@ import {
 	selectLayout,
 	setIsSidebarShow,
 	setIsDropdownHeaderShow,
-} from '../../features/layout/layoutSlice';
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
+} from '../../store/slices/layoutSlice/layoutSlice';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { APLICATION_TITLE } from '../../data/textEN';
-import { selectTasksData } from '../../features/tasks/taskActionSlice';
+import { selectTasksData } from '../../store/slices/taskActionSlice/taskActionSlice';
 import AddTaskButton from './AddTaskButton';
 import Ellipsis from '../UI/Ellipsis';
 import DropDown from '../UI/DropDown';

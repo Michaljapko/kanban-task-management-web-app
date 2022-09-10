@@ -8,20 +8,20 @@ import {
 	selectLayout,
 	setIsBoardEditShow,
 	setIsTaskShow,
-} from '../../features/layout/layoutSlice';
+} from '../../store/slices/layoutSlice/layoutSlice';
 import {
 	DragDropContext,
 	Draggable,
 	Droppable,
 	DropResult,
 } from 'react-beautiful-dnd';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { changeCurrentTask } from '../../features/tasks/taskSlice';
-import { changeColumn } from '../../features/tasks/columnSlice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { changeCurrentTask } from '../../store/slices/taskSlice/taskSlice';
+import { changeColumn } from '../../store/slices/columnSlice/columnSlice';
 import {
 	selectTasksData,
 	columnChangeTaskDrag,
-} from '../../features/tasks/taskActionSlice';
+} from '../../store/slices/taskActionSlice/taskActionSlice';
 import { TasksData } from '../../types';
 import { getCompletedTask } from '../../helpers/getCompletedTasks';
 import { subtaskInfoCard } from '../../data/textEN';
@@ -29,7 +29,7 @@ import { getSequenceArr } from '../../helpers/getSequenceArr';
 import TaskView from '../TaskView';
 import Dot from './Dot';
 import Button from '../UI/Button';
-import { selectCurrentBoard } from '../../features/tasks/boardSlice';
+import { selectCurrentBoard } from '../../store/slices/boardSlice/boardSlice';
 import theme from '../../theme/theme';
 
 const TaskCards = () => {

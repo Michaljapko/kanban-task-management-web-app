@@ -3,13 +3,13 @@ import { StyledBoxSection, StyledLabel } from '../../theme/MenuBox.styled';
 import {
 	selectCurrentBoard,
 	selectCurrentBoardData,
-} from '../../features/tasks/boardSlice';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+} from '../../store/slices/boardSlice/boardSlice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { Formik, Form } from 'formik';
-import { setIsBoardEditShow } from '../../features/layout/layoutSlice';
+import { setIsBoardEditShow } from '../../store/slices/layoutSlice/layoutSlice';
 import { BoardInputValues } from '../../types';
 import { boardAddSchema } from '../../helpers/validationSchema';
-import { editBoard } from '../../features/tasks/taskActionSlice';
+import { editBoard } from '../../store/slices/taskActionSlice/taskActionSlice';
 import { filterAddedColumns } from '../../helpers/filterAddedColumns';
 import PopUp from '../UI/PopUp';
 import Input from '../UI/Input';

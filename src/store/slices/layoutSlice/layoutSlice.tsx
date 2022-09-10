@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
+import { RootState } from '../../store';
 
 const initialState = {
 	isSidebarShow: true,
@@ -42,6 +42,7 @@ export const layoutSlice = createSlice({
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
 			}),
+
 		setIsBoardEditShow: (state) =>
 			(state = {
 				...initialState,
@@ -49,6 +50,7 @@ export const layoutSlice = createSlice({
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
 			}),
+
 		setIsTaskAddShow: (state) =>
 			(state = {
 				...initialState,
@@ -56,6 +58,7 @@ export const layoutSlice = createSlice({
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
 			}),
+
 		setIsDeleteTaskShow: (state) =>
 			(state = {
 				...initialState,
@@ -71,6 +74,7 @@ export const layoutSlice = createSlice({
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
 			}),
+
 		setIsTaskShow: (state) =>
 			(state = {
 				...initialState,
@@ -78,6 +82,7 @@ export const layoutSlice = createSlice({
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
 			}),
+
 		setIsTaskEditShow: (state) =>
 			(state = {
 				...initialState,
@@ -85,6 +90,7 @@ export const layoutSlice = createSlice({
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
 			}),
+
 		setIsDropdownHeaderShow: (state) =>
 			(state = {
 				...state,
@@ -92,6 +98,7 @@ export const layoutSlice = createSlice({
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
 			}),
+			
 		setIsDropdownTaskShow: (state) =>
 			(state = {
 				...state,
