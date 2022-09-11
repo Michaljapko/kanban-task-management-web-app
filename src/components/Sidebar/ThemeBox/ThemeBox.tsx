@@ -1,16 +1,25 @@
 import { StyledRadioBox, StyledSwitch } from './ThemeBox.styled';
 import { ReactComponent as Moon } from '../../../assets/icon-dark-theme.svg';
 import { ReactComponent as Sun } from '../../../assets/icon-light-theme.svg';
-import { toogleTheme } from '../../../store/slices/themeSlice/themeSlice';
-import { useAppDispatch } from '../../../store/hooks';
+import {
+	selectCurrentTheme,
+	toogleTheme,
+} from '../../../store/slices/themeSlice/themeSlice';
+
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 
 const ThemeBox = () => {
 	const dispatch = useAppDispatch();
+	const currentTheme = useAppSelector(selectCurrentTheme);
 
 	return (
 		<StyledRadioBox>
 			<Sun />
-			<StyledSwitch type='checkbox' onChange={() => dispatch(toogleTheme())} />
+			<StyledSwitch
+				type='checkbox'
+				currentTheme={currentTheme}
+				onChange={() => dispatch(toogleTheme())}
+			/>
 			<label />
 			<Moon />
 		</StyledRadioBox>

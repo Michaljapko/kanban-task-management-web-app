@@ -4,8 +4,11 @@ import { ThemeVariant } from '../../../types';
 import { toogleThemeReducer } from './helpers/toogleTheme';
 import { getThemeMode } from './helpers/getThemeMode';
 
-const initialState: ThemeVariant = {
-	theme: 'themeLight',
+const initialState: () => ThemeVariant = () => {
+	if (localStorage.getItem('themeSlice')) {
+		return JSON.parse(localStorage.getItem('themeSlice')!);
+	}
+	return { theme: 'themeLight' };
 };
 
 export const themeSlice = createSlice({

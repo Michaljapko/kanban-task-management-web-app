@@ -1,7 +1,7 @@
 import {
 	getBoardIndex,
 	getColumnIndex,
-} from '../../../../helpers/reducersHelpers';
+} from '../../helpers/reducersHelpers';
 import { WritableDraft } from 'immer/dist/internal';
 import { DeleteTaskType, Boards } from '../../../../types';
 

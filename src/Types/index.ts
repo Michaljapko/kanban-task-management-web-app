@@ -23,3 +23,4 @@ export * from './addColumn.type';
 export * from './editTask.type';
 export * from './deleteTask.type';
 export * from './themeVariant.type';
+export * from './middleware.type';

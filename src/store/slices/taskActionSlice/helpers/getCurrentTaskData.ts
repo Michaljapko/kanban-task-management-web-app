@@ -2,7 +2,7 @@ import {
 	getBoardIndex,
 	getColumnIndex,
 	getTaskIndex,
-} from '../../../../helpers/reducersHelpers';
+} from '../../helpers/reducersHelpers';
 import { RootState } from '../../../store';
 
 export const getCurrentTaskData = (state: RootState) => {

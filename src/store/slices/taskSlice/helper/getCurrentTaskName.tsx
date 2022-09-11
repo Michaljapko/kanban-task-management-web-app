@@ -3,7 +3,7 @@ import {
 	getBoardIndex,
 	getColumnIndex,
 	getTaskIndex,
-} from '../../../../helpers/reducersHelpers';
+} from '../../helpers/reducersHelpers';
 
 export const getCurrentTaskName = (state: RootState) => {
 	if (!state.currentTask.currentTaskId) return '';

@@ -27,8 +27,8 @@ import {
 import { data } from '../../../data/data';
 
 const initialState: () => Boards = () => {
-	if (localStorage.getItem('tasksData')) {
-		return { boards: JSON.parse(localStorage.getItem('tasksData')!) };
+	if (localStorage.getItem('taskAction')) {;
+		return JSON.parse(localStorage.getItem('taskAction')!);
 	}
 	return data;
 };

@@ -2,7 +2,7 @@ import {
 	getBoardIndex,
 	getColumnIndex,
 	getTaskIndex,
-} from '../../../../helpers/reducersHelpers';
+} from '../../helpers/reducersHelpers';
 import { WritableDraft } from 'immer/dist/internal';
 import { ColumnChangeDragType, Boards } from '../../../../types';
 

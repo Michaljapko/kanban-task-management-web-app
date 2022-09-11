@@ -26,7 +26,9 @@ export const StyledRadioBox = styled.div`
 	}
 `;
 
-export const StyledSwitch = styled.input`
+export const StyledSwitch = styled.input<{
+	currentTheme: 'themeLight' | 'themeDark';
+}>`
 	outline: 0;
 	user-select: none;
 	display: inline-block;
@@ -54,12 +56,12 @@ export const StyledSwitch = styled.input`
 
 	& + label::after {
 		${switchDot};
-		transform: translateX(-0.625rem);
-	}
-
-	&:checked + label::after {
-		${switchDot};
-		transform: translateX(0.625rem);
+		transform: translateX(
+			${({ currentTheme }) => {
+				console.log(currentTheme);
+				return currentTheme === 'themeLight' ? '-0.625rem' : '0.625rem';
+			}}
+		);
 	}
 
 	&:focus {

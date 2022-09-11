@@ -1,4 +1,4 @@
-import { getBoardIndex } from '../../../../helpers/reducersHelpers';
+import { getBoardIndex } from '../../helpers/reducersHelpers';
 import { WritableDraft } from 'immer/dist/internal';
 import { AddColumnType, Boards } from '../../../../types';
 

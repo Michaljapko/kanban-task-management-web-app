@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 
-const initialState = {
+const initialStateData = {
 	isSidebarShow: true,
 	isTaskAddShow: false,
 	isTaskEditShow: false,
@@ -14,8 +14,13 @@ const initialState = {
 	isBoardEditShow: false,
 	device: 'desktop',
 };
-
-const isSidebarShow = (state: typeof initialState) => {
+const initialState = () => {
+	if (localStorage.getItem('layoutSlice')) {
+		return JSON.parse(localStorage.getItem('layoutSlice')!);
+	}
+	return initialStateData;
+};
+const isSidebarShow = (state: typeof initialStateData) => {
 	if (state.device === 'desktop') {
 		return state.isSidebarShow;
 	}
@@ -30,14 +35,14 @@ export const layoutSlice = createSlice({
 	reducers: {
 		setIsSidebarShow: (state) =>
 			(state = {
-				...initialState,
+				...initialStateData,
 				isSidebarShow: !state.isSidebarShow,
 				device: state.device,
 			}),
 
 		setIsBoardAddShow: (state) =>
 			(state = {
-				...initialState,
+				...initialStateData,
 				isBoardAddShow: !state.isBoardAddShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
@@ -45,7 +50,7 @@ export const layoutSlice = createSlice({
 
 		setIsBoardEditShow: (state) =>
 			(state = {
-				...initialState,
+				...initialStateData,
 				isBoardEditShow: !state.isBoardEditShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
@@ -53,7 +58,7 @@ export const layoutSlice = createSlice({
 
 		setIsTaskAddShow: (state) =>
 			(state = {
-				...initialState,
+				...initialStateData,
 				isTaskAddShow: !state.isTaskAddShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
@@ -61,7 +66,7 @@ export const layoutSlice = createSlice({
 
 		setIsDeleteTaskShow: (state) =>
 			(state = {
-				...initialState,
+				...initialStateData,
 				isTaskDeleteShow: !state.isTaskDeleteShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
@@ -69,7 +74,7 @@ export const layoutSlice = createSlice({
 
 		setIsDeleteBoardShow: (state) =>
 			(state = {
-				...initialState,
+				...initialStateData,
 				isBoardDeleteShow: !state.isBoardDeleteShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
@@ -77,7 +82,7 @@ export const layoutSlice = createSlice({
 
 		setIsTaskShow: (state) =>
 			(state = {
-				...initialState,
+				...initialStateData,
 				isTaskShow: !state.isTaskShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
@@ -85,7 +90,7 @@ export const layoutSlice = createSlice({
 
 		setIsTaskEditShow: (state) =>
 			(state = {
-				...initialState,
+				...initialStateData,
 				isTaskEditShow: !state.isTaskEditShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
@@ -98,7 +103,7 @@ export const layoutSlice = createSlice({
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
 			}),
-			
+
 		setIsDropdownTaskShow: (state) =>
 			(state = {
 				...state,

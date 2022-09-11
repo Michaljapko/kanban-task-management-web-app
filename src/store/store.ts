@@ -1,4 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { localStorageMiddleware } from './slices/helpers/localStorageMiddleware';
 import layoutSlice from './slices/layoutSlice/layoutSlice';
 import boardSlice from './slices/boardSlice/boardSlice';
 import columnSlice from './slices/columnSlice/columnSlice';
@@ -15,6 +16,8 @@ export const store = configureStore({
 		layoutSlice: layoutSlice,
 		themeSlice: themeSlice,
 	},
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware().concat(localStorageMiddleware),
 });
 
 export type AppDispatch = typeof store.dispatch;

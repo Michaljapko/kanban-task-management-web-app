@@ -1,4 +1,4 @@
-import { getBoardIndex } from '../../../../helpers/reducersHelpers';
+import { getBoardIndex } from '../../helpers/reducersHelpers';
 import { EditBoardType } from '../../../../types';
 import { WritableDraft } from 'immer/dist/internal';
 import { Boards } from '../../../../types';
