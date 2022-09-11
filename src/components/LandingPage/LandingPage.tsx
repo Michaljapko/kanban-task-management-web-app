@@ -42,7 +42,7 @@ const LandingPage = () => {
 	const dispatch = useAppDispatch();
 
 	const buttonHandler = () =>
-		tasksData?.length
+		tasksData?.length === 0
 			? dispatch(setIsBoardEditShow())
 			: dispatch(setIsBoardAddShow());
 
@@ -66,9 +66,9 @@ const LandingPage = () => {
 
 				{(!tasksData || !tasksData.length) && (
 					<StyledWrapperInfo>
-						<StyledInfo>{tasksData?.length ? EMPTY_BOARD : EMPTY}</StyledInfo>
+						<StyledInfo>{tasksData?.length === 0 ? EMPTY_BOARD : EMPTY}</StyledInfo>
 						<Button variant={'header'} onClick={() => buttonHandler()}>
-							{tasksData?.length ? COLUMN_ADD : BOARD_CREATE}
+							{tasksData?.length === 0 ? COLUMN_ADD : BOARD_CREATE}
 						</Button>
 					</StyledWrapperInfo>
 				)}

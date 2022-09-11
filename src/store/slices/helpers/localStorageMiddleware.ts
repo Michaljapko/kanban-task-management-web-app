@@ -1,6 +1,6 @@
-import { MiddlewareType } from '../../../types';
+import { Middleware } from '@reduxjs/toolkit';
 
-export const localStorageMiddleware: MiddlewareType =
+export const localStorageMiddleware: Middleware =
 	(store) => (next) => (action) => {
 		const result = next(action);
 		if (result.type.startsWith('taskAction/')) {
