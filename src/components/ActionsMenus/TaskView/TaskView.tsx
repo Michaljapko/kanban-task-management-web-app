@@ -2,28 +2,25 @@ import {
 	selectTasksData,
 	columnChangeTask,
 	selectCurrentTaskData,
-} from '../../store/slices/taskActionSlice/taskActionSlice';
+} from 'store/slices/taskActionSlice/taskActionSlice';
 import {
 	selectLayout,
 	setIsDropdownTaskShow,
 	setIsTaskShow,
-} from '../../store/slices/layoutSlice/layoutSlice';
+} from 'store/slices/layoutSlice/layoutSlice';
 import {
 	changeColumn,
 	selectCurrentColumn,
-} from '../../store/slices/columnSlice/columnSlice';
-import { StyledBoxSection, StyledParagraph } from '../../theme/MenuBox.styled';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { selectCurrentBoard } from '../../store/slices/boardSlice/boardSlice';
-import { changeCurrentTask } from '../../store/slices/taskSlice/taskSlice';
-import { SelectInputOption } from '../UI/SelectInput/SelectInput.type';
+} from 'store/slices/columnSlice/columnSlice';
+import { StyledBoxSection, StyledParagraph } from 'theme/MenuBox.styled';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { selectCurrentBoard } from 'store/slices/boardSlice/boardSlice';
+import { changeCurrentTask } from 'store/slices/taskSlice/taskSlice';
+import { SelectInputOption } from 'components/UI/SelectInput/SelectInput.type';
 import { StyledDescription } from './TaskView.styled';
-import { STATE } from '../../data/textEN';
-import SelectInput from '../UI/SelectInput';
-import Ellipsis from '../UI/Ellipsis';
-import DropDown from '../UI/DropDown';
-import PopUp from '../UI/PopUp';
+import { STATE } from 'data/textEN';
 import SubtaskView from './SubtaskView';
+import { DropDown, Ellipsis, PopUp, SelectInput } from 'components/UI';
 
 const TaskView = () => {
 	const dispatch = useAppDispatch();

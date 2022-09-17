@@ -1,20 +1,13 @@
-import {
-	BOARD_COLUMNS,
-	COLUMN_ADD,
-	COLUMN_PLACEHOLDER,
-} from '../../../data/textEN';
+import { BOARD_COLUMNS, COLUMN_ADD, COLUMN_PLACEHOLDER } from 'data/textEN';
 import {
 	StyledBoxSection,
 	StyledColumnInputBox,
 	StyledLabel,
-} from '../../../theme/MenuBox.styled';
-import { BoardInputValues } from '../../../types';
+} from 'theme/MenuBox.styled';
+import { Button, ScrollWrapper, Input, CrossIcon } from 'components/UI';
+import { BoardInputValues } from 'types';
 import { FieldArray } from 'formik';
 import { v4 as uuid } from 'uuid';
-import Button from '../../UI/Button';
-import CrossIcon from '../../UI/CrossIcon';
-import Input from '../../UI/Input';
-import ScrollWrapper from '../../UI/ScrollWrapper';
 
 const ColumnsEdit = ({ values }: { values: BoardInputValues }) => {
 	return (

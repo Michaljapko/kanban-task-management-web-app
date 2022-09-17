@@ -7,30 +7,32 @@ import {
 	TASK_PLACEHOLDER,
 	TASK_SUBTASK,
 	TASK_TITLE,
-} from '../../data/textEN';
+} from 'data/textEN';
 import {
 	StyledBoxSection,
 	StyledColumnInputBox,
 	StyledLabel,
-} from '../../theme/MenuBox.styled';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+} from 'theme/MenuBox.styled';
+import {
+	Button,
+	CrossIcon,
+	Input,
+	PopUp,
+	ScrollWrapper,
+	SelectInput,
+} from 'components/UI';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { Formik, Form, FieldArray } from 'formik';
-import { TaskInputValues } from '../../types';
+import { TaskInputValues } from 'types';
 import {
 	addTask,
 	selectTasksData,
-} from '../../store/slices/taskActionSlice/taskActionSlice';
-import { selectCurrentBoard } from '../../store/slices/boardSlice/boardSlice';
-import { setIsTaskAddShow } from '../../store/slices/layoutSlice/layoutSlice';
-import { taskAddSchema } from '../../helpers/validationSchema';
+} from 'store/slices/taskActionSlice/taskActionSlice';
+import { selectCurrentBoard } from 'store/slices/boardSlice/boardSlice';
+import { setIsTaskAddShow } from 'store/slices/layoutSlice/layoutSlice';
+import { taskAddSchema } from 'helpers/validationSchema';
 import { v4 as uuid } from 'uuid';
-import SelectInput from '../UI/SelectInput';
-import Button from '../UI/Button';
-import PopUp from '../UI/PopUp';
-import Input from '../UI/Input';
-import ScrollWrapper from '../UI/ScrollWrapper';
-import CrossIcon from '../UI/CrossIcon';
-import { TasksData } from '../../data/types/taskData.type';
+import { TasksData } from 'data/types/taskData.type';
 
 const TaskAdd = () => {
 	const dispatch = useAppDispatch();

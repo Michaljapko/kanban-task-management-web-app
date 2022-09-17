@@ -5,30 +5,29 @@ import {
 	TASK_DELETE,
 	boardDeleteInfo,
 	taskDeleteInfo,
-} from '../../../data/textEN';
+} from 'data/textEN';
 import {
 	setIsDeleteBoardShow,
 	setIsDeleteTaskShow,
-} from '../../../store/slices/layoutSlice/layoutSlice';
+} from 'store/slices/layoutSlice/layoutSlice';
 import {
 	selectCurrentBoard,
 	selectCurrentBoardName,
-} from '../../../store/slices/boardSlice/boardSlice';
+} from 'store/slices/boardSlice/boardSlice';
 import {
 	changeCurrentTask,
 	selectCurrentTask,
 	selectCurrentTaskName,
-} from '../../../store/slices/taskSlice/taskSlice';
+} from 'store/slices/taskSlice/taskSlice';
 import {
 	deleteBoard,
 	deleteTask,
-} from '../../../store/slices/taskActionSlice/taskActionSlice';
-import { selectCurrentColumn } from '../../../store/slices/columnSlice/columnSlice';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+} from 'store/slices/taskActionSlice/taskActionSlice';
+import { selectCurrentColumn } from 'store/slices/columnSlice/columnSlice';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { StyledText, StyledWrapper } from './DeleteMenu.styled';
-import Button from '../Button';
-import PopUp from '../PopUp';
 import { DeleteMenuProps } from './DeleteMenu.types';
+import { Button, PopUp } from 'components/UI';
 
 const DeleteMenu = ({ variant }: DeleteMenuProps) => {
 	const dispatch = useAppDispatch();

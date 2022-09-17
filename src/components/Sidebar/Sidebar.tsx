@@ -2,24 +2,23 @@ import {
 	changeBoard,
 	selectBoards,
 	selectCurrentBoard,
-} from '../../store/slices/boardSlice/boardSlice';
+} from 'store/slices/boardSlice/boardSlice';
 import {
 	selectLayout,
 	setIsBoardAddShow,
 	setIsSidebarShow,
-} from '../../store/slices/layoutSlice/layoutSlice';
-import { ALL_BOARD, BOARD_CREATE, HIDE_SIDEBAR } from '../../data/textEN';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+} from 'store/slices/layoutSlice/layoutSlice';
+import { ALL_BOARD, BOARD_CREATE, HIDE_SIDEBAR } from 'data/textEN';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
 import {
 	StyledFooter,
 	StyledHead,
 	StyledHideBox,
 	StyledWrapper,
 } from './Sidebar.styled';
-import Button from '../UI/Button';
-import PopUp from '../UI/PopUp';
 import ThemeBox from './ThemeBox';
 import { Board } from '../../data/types/board.type';
+import { Button, PopUp } from 'components/UI';
 
 const Sidebar = () => {
 	const dispatch = useAppDispatch();

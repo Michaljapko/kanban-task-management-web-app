@@ -1,7 +1,7 @@
 import { getBoardIndex, getColumnIndex } from '../../helpers/reducersHelpers';
 import { WritableDraft } from 'immer/dist/internal';
 import { AddTaskType } from '../types/addTask.type';
-import { Boards } from '../../../../data/types/boards.type';
+import { Boards } from 'data/types/boards.type';
 
 export const addTaskReducer = (
 	state: WritableDraft<Boards>,

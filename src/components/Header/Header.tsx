@@ -10,13 +10,12 @@ import {
 	selectLayout,
 	setIsSidebarShow,
 	setIsDropdownHeaderShow,
-} from '../../store/slices/layoutSlice/layoutSlice';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { APLICATION_TITLE } from '../../data/textEN';
-import { selectTasksData } from '../../store/slices/taskActionSlice/taskActionSlice';
+} from 'store/slices/layoutSlice/layoutSlice';
+import { useAppSelector, useAppDispatch } from 'store/hooks';
+import { DropDown, Ellipsis } from 'components/UI';
+import { APLICATION_TITLE } from 'data/textEN';
+import { selectTasksData } from 'store/slices/taskActionSlice/taskActionSlice';
 import AddTaskButton from './AddTaskButton';
-import Ellipsis from '../UI/Ellipsis';
-import DropDown from '../UI/DropDown';
 import Logo from './Logo';
 
 const Header = () => {

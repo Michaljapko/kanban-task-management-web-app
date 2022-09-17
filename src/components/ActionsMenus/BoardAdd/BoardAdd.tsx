@@ -3,22 +3,19 @@ import {
 	BOARD_NAME,
 	BOARD_ADD,
 	BOARD_PLACEHOLDER,
-} from '../../data/textEN';
-import { StyledBoxSection, StyledLabel } from '../../theme/MenuBox.styled';
+} from 'data/textEN';
+import { StyledBoxSection, StyledLabel } from 'theme/MenuBox.styled';
 import { Formik, Form } from 'formik';
-import { boardAddSchema } from '../../helpers/validationSchema';
-import { ColumnInputValues } from '../../types';
-import { addBoard } from '../../store/slices/taskActionSlice/taskActionSlice';
-import { changeBoard } from '../../store/slices/boardSlice/boardSlice';
-import { setIsBoardAddShow } from '../../store/slices/layoutSlice/layoutSlice';
-import { useAppDispatch } from '../../store/hooks';
+import { boardAddSchema } from 'helpers/validationSchema';
+import { ColumnInputValues } from 'types';
+import { addBoard } from 'store/slices/taskActionSlice/taskActionSlice';
+import { changeBoard } from 'store/slices/boardSlice/boardSlice';
+import { setIsBoardAddShow } from 'store/slices/layoutSlice/layoutSlice';
+import { useAppDispatch } from 'store/hooks';
 import { v4 as uuid } from 'uuid';
-import PopUp from '../UI/PopUp';
-import Button from '../UI/Button';
-import Input from '../UI/Input';
-
 import ColumnsAdd from './ColumnsAdd';
-import { Board } from '../../data/types/board.type';
+import { Board } from 'data/types/board.type';
+import { Button, Input, PopUp } from 'components/UI';
 
 const BoardAdd = () => {
 	const dispatch = useAppDispatch();

@@ -1,4 +1,4 @@
-import { ReactComponent as Cross } from '../../../assets/icon-cross.svg';
+import { ReactComponent as Cross } from 'assets/icon-cross.svg';
 import styled from 'styled-components';
 
 export const StyledCrossIcon = styled(Cross)`

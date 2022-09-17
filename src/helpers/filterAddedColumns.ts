@@ -1,4 +1,4 @@
-import { Column } from '../data/types/column.type';
+import { Column } from 'data/types/column.type';
 
 export const filterAddedColumns = (
 	addedColumns: {

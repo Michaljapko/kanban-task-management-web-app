@@ -8,29 +8,29 @@ import {
 	selectLayout,
 	setIsBoardEditShow,
 	setIsTaskShow,
-} from '../../store/slices/layoutSlice/layoutSlice';
+} from 'store/slices/layoutSlice/layoutSlice';
 import {
 	DragDropContext,
 	Draggable,
 	Droppable,
 	DropResult,
 } from 'react-beautiful-dnd';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { changeCurrentTask } from '../../store/slices/taskSlice/taskSlice';
-import { changeColumn } from '../../store/slices/columnSlice/columnSlice';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { changeCurrentTask } from 'store/slices/taskSlice/taskSlice';
+import { changeColumn } from 'store/slices/columnSlice/columnSlice';
 import {
 	selectTasksData,
 	columnChangeTaskDrag,
-} from '../../store/slices/taskActionSlice/taskActionSlice';
-import { getCompletedTask } from '../../helpers/getCompletedTasks';
-import { subtaskInfoCard } from '../../data/textEN';
-import { getSequenceArr } from '../../helpers/getSequenceArr';
-import TaskView from '../TaskView';
+} from 'store/slices/taskActionSlice/taskActionSlice';
+import { getCompletedTask } from 'helpers/getCompletedTasks';
+import { subtaskInfoCard } from 'data/textEN';
+import { getSequenceArr } from 'helpers/getSequenceArr';
+import { TaskView } from '../ActionsMenus';
+import { TasksData } from 'data/types/taskData.type';
+import { Button } from 'components/UI';
+import { selectCurrentBoard } from 'store/slices/boardSlice/boardSlice';
 import Dot from './Dot';
-import Button from '../UI/Button';
-import { selectCurrentBoard } from '../../store/slices/boardSlice/boardSlice';
-import theme from '../../theme/theme';
-import { TasksData } from '../../data/types/taskData.type';
+import theme from 'theme/theme';
 
 const TaskCards = () => {
 	const dispatch = useAppDispatch();

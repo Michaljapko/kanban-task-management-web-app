@@ -1,11 +1,12 @@
 import {
 	setIsTaskAddShow,
 	selectLayout,
-} from '../../../store/slices/layoutSlice/layoutSlice';
-import { useAppSelector, useAppDispatch } from '../../../store/hooks';
-import { TASK_ADD_HEADER } from '../../../data/textEN';
-import { selectTasksData } from '../../../store/slices/taskActionSlice/taskActionSlice';
-import Button from '../../UI/Button';
+} from 'store/slices/layoutSlice/layoutSlice';
+import { useAppSelector, useAppDispatch } from 'store/hooks';
+import { TASK_ADD_HEADER } from 'data/textEN';
+import { selectTasksData } from 'store/slices/taskActionSlice/taskActionSlice';
+import { Button } from 'components/UI';
+
 
 const AddTaskButton = () => {
 	const dispatch = useAppDispatch();

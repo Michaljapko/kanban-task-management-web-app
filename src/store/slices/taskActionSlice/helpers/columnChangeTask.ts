@@ -5,7 +5,7 @@ import {
 } from '../../helpers/reducersHelpers';
 import { WritableDraft } from 'immer/dist/internal';
 import { ColumnChangeType } from '../types/columnChange.type';
-import { Boards } from '../../../../data/types/boards.type';
+import { Boards } from 'data/types/boards.type';
 
 export const columnChangeTaskReducer = (
 	state: WritableDraft<Boards>,

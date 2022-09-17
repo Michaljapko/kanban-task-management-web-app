@@ -57,10 +57,8 @@ export const StyledSwitch = styled.input<{
 	& + label::after {
 		${switchDot};
 		transform: translateX(
-			${({ currentTheme }) => {
-				console.log(currentTheme);
-				return currentTheme === 'themeLight' ? '-0.625rem' : '0.625rem';
-			}}
+			${({ currentTheme }) =>
+				currentTheme === 'themeLight' ? '-0.625rem' : '0.625rem'}
 		);
 	}
 

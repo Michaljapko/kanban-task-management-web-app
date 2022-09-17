@@ -1,31 +1,28 @@
-import { StyledBoxSection, StyledLabel } from '../../theme/MenuBox.styled';
+import { StyledBoxSection, StyledLabel } from 'theme/MenuBox.styled';
 import {
 	selectCurrentTaskData,
 	selectTasksData,
 	columnChangeTask,
 	editTask,
-} from '../../store/slices/taskActionSlice/taskActionSlice';
+} from 'store/slices/taskActionSlice/taskActionSlice';
 import {
 	STATUS,
 	TASK_ADD,
 	TASK_DESCRIPTION,
 	TASK_EDIT,
 	TASK_TITLE,
-} from '../../data/textEN';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { TaskInputValues } from '../../types';
+} from 'data/textEN';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { TaskInputValues } from 'types';
 import { Formik, Form } from 'formik';
-import { selectCurrentBoard } from '../../store/slices/boardSlice/boardSlice';
-import { selectCurrentColumn } from '../../store/slices/columnSlice/columnSlice';
-import { setIsTaskEditShow } from '../../store/slices/layoutSlice/layoutSlice';
-import { taskAddSchema } from '../../helpers/validationSchema';
+import { selectCurrentBoard } from 'store/slices/boardSlice/boardSlice';
+import { selectCurrentColumn } from 'store/slices/columnSlice/columnSlice';
+import { setIsTaskEditShow } from 'store/slices/layoutSlice/layoutSlice';
+import { taskAddSchema } from 'helpers/validationSchema';
+import { TasksData } from 'data/types/taskData.type';
 import { v4 as uuid } from 'uuid';
-import PopUp from '../UI/PopUp';
-import Button from '../UI/Button';
-import Input from '../UI/Input';
-import SelectInput from '../UI/SelectInput';
 import SubtaskEdit from './SubtaskEdit';
-import { TasksData } from '../../data/types/taskData.type';
+import { Button, Input, PopUp, SelectInput } from 'components/UI';
 
 const TaskEdit = () => {
 	const dispatch = useAppDispatch();

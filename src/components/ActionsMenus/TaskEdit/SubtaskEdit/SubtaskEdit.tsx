@@ -1,15 +1,12 @@
 import { FieldArray } from 'formik';
-import { COLUMN_ADD, TASK_SUBTASK } from '../../../data/textEN';
+import { COLUMN_ADD, TASK_SUBTASK } from 'data/textEN';
 import {
 	StyledBoxSection,
 	StyledColumnInputBox,
 	StyledLabel,
-} from '../../../theme/MenuBox.styled';
-import { TaskInputValues } from '../../../types';
-import Button from '../../UI/Button';
-import CrossIcon from '../../UI/CrossIcon';
-import Input from '../../UI/Input';
-import ScrollWrapper from '../../UI/ScrollWrapper';
+} from 'theme/MenuBox.styled';
+import { TaskInputValues } from 'types';
+import { Button, CrossIcon, Input, ScrollWrapper } from 'components/UI';
 
 const SubtaskEdit = ({ values }: { values: TaskInputValues }) => (
 	<StyledBoxSection>

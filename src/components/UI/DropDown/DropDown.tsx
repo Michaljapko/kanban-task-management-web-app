@@ -5,10 +5,10 @@ import {
 	setIsDropdownTaskShow,
 	setIsDropdownHeaderShow,
 	setIsTaskEditShow,
-} from '../../../store/slices/layoutSlice/layoutSlice';
+} from 'store/slices/layoutSlice/layoutSlice';
 import { StyledDropMenu, StyledDropMenuButton } from './DropDown.styled';
-import { useAppDispatch } from '../../../store/hooks';
-import { DELETE, EDIT } from '../../../data/textEN';
+import { useAppDispatch } from 'store/hooks';
+import { DELETE, EDIT } from 'data/textEN';
 import { DropDownProps } from './DropDown.type';
 
 const DropDown = ({ variant }: DropDownProps) => {

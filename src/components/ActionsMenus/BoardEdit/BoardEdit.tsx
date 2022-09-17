@@ -1,20 +1,18 @@
-import { BOARD_NAME, BOARD_EDIT, SAVE } from '../../data/textEN';
-import { StyledBoxSection, StyledLabel } from '../../theme/MenuBox.styled';
+import { BOARD_NAME, BOARD_EDIT, SAVE } from 'data/textEN';
+import { StyledBoxSection, StyledLabel } from 'theme/MenuBox.styled';
 import {
 	selectCurrentBoard,
 	selectCurrentBoardData,
-} from '../../store/slices/boardSlice/boardSlice';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+} from 'store/slices/boardSlice/boardSlice';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { Formik, Form } from 'formik';
-import { setIsBoardEditShow } from '../../store/slices/layoutSlice/layoutSlice';
-import { BoardInputValues } from '../../types';
-import { boardAddSchema } from '../../helpers/validationSchema';
-import { editBoard } from '../../store/slices/taskActionSlice/taskActionSlice';
-import { filterAddedColumns } from '../../helpers/filterAddedColumns';
-import PopUp from '../UI/PopUp';
-import Input from '../UI/Input';
-import Button from '../UI/Button';
+import { setIsBoardEditShow } from 'store/slices/layoutSlice/layoutSlice';
+import { BoardInputValues } from 'types';
+import { boardAddSchema } from 'helpers/validationSchema';
+import { editBoard } from 'store/slices/taskActionSlice/taskActionSlice';
+import { filterAddedColumns } from 'helpers/filterAddedColumns';
 import ColumnsEdit from './ColumnsEdit';
+import { Button, Input, PopUp } from 'components/UI';
 
 const BoardEdit = () => {
 	const dispatch = useAppDispatch();

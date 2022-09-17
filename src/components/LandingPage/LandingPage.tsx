@@ -1,34 +1,31 @@
 import {
-	selectLayout,
-	setIsBoardAddShow,
-	setIsBoardEditShow,
-	setIsSidebarShow,
-} from '../../store/slices/layoutSlice/layoutSlice';
-import {
 	StyledInfo,
 	StyledWrapperInfo,
 	StyledWrapperCard,
 	StyledWrapper,
 	StyledHidebox,
 } from './LandingPage.styled';
+import { BOARD_CREATE, COLUMN_ADD, EMPTY, EMPTY_BOARD } from 'data/textEN';
+import { ReactComponent as ShowSidebar } from 'assets/icon-show-sidebar.svg';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { selectTasksData } from 'store/slices/taskActionSlice/taskActionSlice';
+import { Button } from 'components/UI';
 import {
-	BOARD_CREATE,
-	COLUMN_ADD,
-	EMPTY,
-	EMPTY_BOARD,
-} from '../../data/textEN';
-import { ReactComponent as ShowSidebar } from '../../assets/icon-show-sidebar.svg';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { selectTasksData } from '../../store/slices/taskActionSlice/taskActionSlice';
-import BoardAdd from '../BoardAdd';
-import Button from '../UI/Button';
-import Header from '../Header';
-import Sidebar from '../Sidebar';
-import TaskAdd from '../TaskAdd';
-import TaskCards from '../TaskCards';
-import TaskEdit from '../TaskEdit';
-import BoardEdit from '../BoardEdit';
-import DeleteMenu from '../UI/DeleteMenu';
+	BoardAdd,
+	BoardEdit,
+	DeleteMenu,
+	TaskAdd,
+	TaskEdit,
+} from 'components/ActionsMenus';
+import {
+	selectLayout,
+	setIsBoardAddShow,
+	setIsBoardEditShow,
+	setIsSidebarShow,
+} from 'store/slices/layoutSlice/layoutSlice';
+import TaskCards from 'components/TaskCards';
+import Sidebar from 'components/Sidebar';
+import Header from 'components/Header';
 
 const LandingPage = () => {
 	const tasksData = useAppSelector(selectTasksData);
@@ -54,7 +51,6 @@ const LandingPage = () => {
 			{isTaskEditShow && <TaskEdit />}
 			{isBoardDeleteShow && <DeleteMenu variant={'board'} />}
 			{isTaskDeleteShow && <DeleteMenu variant={'task'} />}
-
 			<Header />
 			<StyledWrapper>
 				{isSidebarShow && <Sidebar />}
