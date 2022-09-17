@@ -1,5 +1,5 @@
 import LandingPage from './components/LandingPage';
-import GlobalStyle from './globalStyles';
+import GlobalStyle from './theme/globalStyles';
 import { ThemeProvider } from 'styled-components';
 import { useAppSelector } from './store/hooks';
 import { selectThemeMode } from './store/slices/themeSlice/themeSlice';
