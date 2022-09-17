@@ -1,6 +1,5 @@
-
 import { WritableDraft } from 'immer/dist/internal';
-import { Boards } from '../../../../types';
+import { Boards } from '../../../../data/types/boards.type';
 
 export const deleteBoardReducer = (
 	state: WritableDraft<Boards>,

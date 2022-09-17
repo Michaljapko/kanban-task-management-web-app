@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { InputTypes } from '../../../types';
+import { InputProps } from './Input.types';
 
-export const StyledInput = styled.input<InputTypes>`
+export const StyledInput = styled.input<InputProps>`
 	padding: 0.5rem 1rem;
 	border: 1px solid ${({ theme }) => theme.borderGray};
 	border-color: ${({ theme, error }) =>

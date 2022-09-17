@@ -1,5 +1,6 @@
 import { WritableDraft } from 'immer/dist/internal';
-import { ThemeVariant } from '../../../../types';
+import { ThemeVariant } from '../type/themeVariant.type';
+
 
 export const toogleThemeReducer = (state: WritableDraft<ThemeVariant>) => {
 	if (state.theme === 'themeLight') {

@@ -1,4 +1,5 @@
-import { Column } from '../types';
+import { Column } from "./column.type";
+
 export interface Boards {
 	boards: {
 		id: string;

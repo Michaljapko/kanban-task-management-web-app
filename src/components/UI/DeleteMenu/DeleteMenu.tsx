@@ -19,14 +19,18 @@ import {
 	selectCurrentTask,
 	selectCurrentTaskName,
 } from '../../../store/slices/taskSlice/taskSlice';
-import { deleteBoard, deleteTask } from '../../../store/slices/taskActionSlice/taskActionSlice';
+import {
+	deleteBoard,
+	deleteTask,
+} from '../../../store/slices/taskActionSlice/taskActionSlice';
 import { selectCurrentColumn } from '../../../store/slices/columnSlice/columnSlice';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { StyledText, StyledWrapper } from './DeleteMenu.styled';
 import Button from '../Button';
 import PopUp from '../PopUp';
+import { DeleteMenuProps } from './DeleteMenu.types';
 
-const DeleteMenu = ({ variant }: { variant: 'board' | 'task' }) => {
+const DeleteMenu = ({ variant }: DeleteMenuProps) => {
 	const dispatch = useAppDispatch();
 	const columnId = useAppSelector(selectCurrentColumn);
 	const boardId = useAppSelector(selectCurrentBoard);
@@ -77,11 +81,7 @@ const DeleteMenu = ({ variant }: { variant: 'board' | 'task' }) => {
 				<Button variant='delete' width='full' onClick={() => deleteHandler()}>
 					{DELETE}
 				</Button>
-				<Button
-					variant='secondary'
-					width='full'
-					onClick={() => () => closeHandler()}
-				>
+				<Button variant='secondary' width='full' onClick={() => () => closeHandler()}>
 					{CANCEL}
 				</Button>
 			</StyledWrapper>

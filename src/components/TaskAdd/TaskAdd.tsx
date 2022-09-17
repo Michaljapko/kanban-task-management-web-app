@@ -15,7 +15,7 @@ import {
 } from '../../theme/MenuBox.styled';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { Formik, Form, FieldArray } from 'formik';
-import { TasksData, TaskInputValues } from '../../types';
+import { TaskInputValues } from '../../types';
 import {
 	addTask,
 	selectTasksData,
@@ -30,6 +30,7 @@ import PopUp from '../UI/PopUp';
 import Input from '../UI/Input';
 import ScrollWrapper from '../UI/ScrollWrapper';
 import CrossIcon from '../UI/CrossIcon';
+import { TasksData } from '../../data/types/taskData.type';
 
 const TaskAdd = () => {
 	const dispatch = useAppDispatch();

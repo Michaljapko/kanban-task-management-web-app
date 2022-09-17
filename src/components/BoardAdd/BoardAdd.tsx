@@ -7,7 +7,7 @@ import {
 import { StyledBoxSection, StyledLabel } from '../../theme/MenuBox.styled';
 import { Formik, Form } from 'formik';
 import { boardAddSchema } from '../../helpers/validationSchema';
-import { Board, ColumnInputValues } from '../../types';
+import { ColumnInputValues } from '../../types';
 import { addBoard } from '../../store/slices/taskActionSlice/taskActionSlice';
 import { changeBoard } from '../../store/slices/boardSlice/boardSlice';
 import { setIsBoardAddShow } from '../../store/slices/layoutSlice/layoutSlice';
@@ -18,6 +18,7 @@ import Button from '../UI/Button';
 import Input from '../UI/Input';
 
 import ColumnsAdd from './ColumnsAdd';
+import { Board } from '../../data/types/board.type';
 
 const BoardAdd = () => {
 	const dispatch = useAppDispatch();

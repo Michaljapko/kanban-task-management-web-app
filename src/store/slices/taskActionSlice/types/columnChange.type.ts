@@ -1,4 +1,5 @@
-import { TasksData } from './taskData.type';
+import { TasksData } from "../../../../data/types/taskData.type";
+
 
 export interface ColumnChangeType {
 	currentBoard: string;

@@ -1,4 +1,5 @@
-import { Board } from './board.type';
+import { Board } from "../../../../data/types/board.type";
+
 
 export interface EditBoardType {
 	currentBoard: string;

@@ -9,8 +9,9 @@ import {
 import { StyledDropMenu, StyledDropMenuButton } from './DropDown.styled';
 import { useAppDispatch } from '../../../store/hooks';
 import { DELETE, EDIT } from '../../../data/textEN';
+import { DropDownProps } from './DropDown.type';
 
-const DropDown = ({ variant }: { variant: 'board' | 'task' }) => {
+const DropDown = ({ variant }: DropDownProps) => {
 	const dispatch = useAppDispatch();
 	let editFunction: typeof setIsBoardEditShow | typeof setIsTaskEditShow;
 	let deleteFunction: typeof setIsDeleteBoardShow | typeof setIsDeleteTaskShow;

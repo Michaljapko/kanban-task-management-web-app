@@ -4,7 +4,9 @@ import {
 	getTaskIndex,
 } from '../../helpers/reducersHelpers';
 import { WritableDraft } from 'immer/dist/internal';
-import { EditTaskType, Boards } from '../../../../types';
+
+import { EditTaskType } from '../types/editTask.type';
+import { Boards } from '../../../../data/types/boards.type';
 
 export const editTaskReducer = (
 	state: WritableDraft<Boards>,

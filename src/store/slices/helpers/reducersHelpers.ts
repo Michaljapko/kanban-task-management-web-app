@@ -1,4 +1,7 @@
-import { Boards, Board, Column, TasksData } from '../../../types';
+import { Board } from '../../../data/types/board.type';
+import { Boards } from '../../../data/types/boards.type';
+import { Column } from '../../../data/types/column.type';
+import { TasksData } from '../../../data/types/taskData.type';
 
 export const getBoardIndex = ({ boards }: Boards, boardId: string) =>
 	boards.findIndex((board: Board) => board.id === boardId);

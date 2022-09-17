@@ -1,6 +1,6 @@
-import { PopUpVariants } from './popUpVariants.type';
+export type PopUpVariants = 'sidebar' | 'delete';
 
-export interface PopUpTypes {
+export interface PopUpProps {
 	children?: JSX.Element | JSX.Element[] | string;
 	title?: string;
 	layoutDispatch: () => void;

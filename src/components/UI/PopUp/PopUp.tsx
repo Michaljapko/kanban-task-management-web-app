@@ -6,8 +6,8 @@ import {
 	StyledHeading,
 	StyledToolBox,
 } from './PopUp.styled';
-import { PopUpTypes } from '../../../types';
 import CrossIcon from '../CrossIcon';
+import { PopUpProps } from './PopUp.type';
 
 const PopUp = ({
 	children,
@@ -15,25 +15,24 @@ const PopUp = ({
 	layoutDispatch,
 	variant,
 	headingElement,
-}: PopUpTypes) => {
-	return (
-		<>
-			<StyledBackdrop variant={variant} onClick={layoutDispatch} />
-			<StyledBack variant={variant}>
-				<StyledBox variant={variant} onClick={(e) => e.stopPropagation()}>
-					{title && (
-						<StyledBoxSection>
-							<StyledHeading variant={variant}>{title}</StyledHeading>
-							<StyledToolBox>
-								{headingElement}
-								<CrossIcon onClick={layoutDispatch} />
-							</StyledToolBox>
-						</StyledBoxSection>
-					)}
-					{children}
-				</StyledBox>
-			</StyledBack>
-		</>
-	);
-};
+}: PopUpProps) => (
+	<>
+		<StyledBackdrop variant={variant} onClick={layoutDispatch} />
+		<StyledBack variant={variant}>
+			<StyledBox variant={variant} onClick={(e) => e.stopPropagation()}>
+				{title && (
+					<StyledBoxSection>
+						<StyledHeading variant={variant}>{title}</StyledHeading>
+						<StyledToolBox>
+							{headingElement}
+							<CrossIcon onClick={layoutDispatch} />
+						</StyledToolBox>
+					</StyledBoxSection>
+				)}
+				{children}
+			</StyledBox>
+		</StyledBack>
+	</>
+);
+
 export default PopUp;

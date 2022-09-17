@@ -1,16 +1,11 @@
 import { useState } from 'react';
 import { StyledScrollWrapper } from './ScrollWrapper.styled';
+import { measuredRefType, ScrollWrapperProps } from './ScrollWrapper.types';
 
-const ScrollWrapper = ({
-	children,
-}: {
-	children: false | JSX.Element | JSX.Element[];
-}) => {
+const ScrollWrapper = ({ children }: ScrollWrapperProps) => {
 	const [currentHeight, setCurrentHeight] = useState(0);
 
-	const measuredRef = (
-		node: ((instance: HTMLDivElement | null) => void) & HTMLDivElement
-	) => {
+	const measuredRef = (node: measuredRefType) => {
 		if (node !== null) {
 			setCurrentHeight(node.getBoundingClientRect().height);
 		}

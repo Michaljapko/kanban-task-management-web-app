@@ -1,6 +1,6 @@
-import { ButtonTypes } from '../../../types';
 import { StyledBoardIcon, StyledHideIcon, StyledButton } from './Button.styled';
 import { ReactComponent as Plus } from '../../../assets/icon-add-task-mobile.svg';
+import { ButtonProps } from './Button.types';
 
 const Button = ({
 	children,
@@ -9,8 +9,7 @@ const Button = ({
 	variant,
 	type,
 	width,
-}: ButtonTypes) => {
-	
+}: ButtonProps) => {
 	const getIcon = (icon: string) => {
 		if (icon === 'plus') return <Plus />;
 		if (icon === 'board') return <StyledBoardIcon variant={variant} />;

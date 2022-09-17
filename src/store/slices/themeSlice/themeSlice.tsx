@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
-import { ThemeVariant } from '../../../types';
 import { toogleThemeReducer } from './helpers/toogleTheme';
 import { getThemeMode } from './helpers/getThemeMode';
+import { ThemeVariant } from './type/themeVariant.type';
 
 const initialState: () => ThemeVariant = () => {
 	if (localStorage.getItem('themeSlice')) {

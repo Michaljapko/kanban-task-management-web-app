@@ -1,9 +1,9 @@
 import { StyledInput, StyledError, StyledWrapper } from './Input.styled';
 import { FieldProps } from 'formik';
 import { Field } from 'formik';
-import { InputTypes } from '../../../types';
+import { InputProps } from './Input.types';
 
-const Input = ({ name, placeholder, as }: InputTypes) => {
+const Input = ({ name, placeholder, as }: InputProps) => {
 	return (
 		<StyledWrapper>
 			<Field name={name}>

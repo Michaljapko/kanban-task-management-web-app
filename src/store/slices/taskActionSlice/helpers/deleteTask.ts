@@ -1,9 +1,8 @@
-import {
-	getBoardIndex,
-	getColumnIndex,
-} from '../../helpers/reducersHelpers';
+import { getBoardIndex, getColumnIndex } from '../../helpers/reducersHelpers';
 import { WritableDraft } from 'immer/dist/internal';
-import { DeleteTaskType, Boards } from '../../../../types';
+
+import { DeleteTaskType } from '../types/deleteTask.type';
+import { Boards } from '../../../../data/types/boards.type';
 
 export const deleteTaskReducer = (
 	state: WritableDraft<Boards>,

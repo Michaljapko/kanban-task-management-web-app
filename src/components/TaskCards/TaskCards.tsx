@@ -22,7 +22,6 @@ import {
 	selectTasksData,
 	columnChangeTaskDrag,
 } from '../../store/slices/taskActionSlice/taskActionSlice';
-import { TasksData } from '../../types';
 import { getCompletedTask } from '../../helpers/getCompletedTasks';
 import { subtaskInfoCard } from '../../data/textEN';
 import { getSequenceArr } from '../../helpers/getSequenceArr';
@@ -31,6 +30,7 @@ import Dot from './Dot';
 import Button from '../UI/Button';
 import { selectCurrentBoard } from '../../store/slices/boardSlice/boardSlice';
 import theme from '../../theme/theme';
+import { TasksData } from '../../data/types/taskData.type';
 
 const TaskCards = () => {
 	const dispatch = useAppDispatch();

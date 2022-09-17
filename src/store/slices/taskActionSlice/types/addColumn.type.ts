@@ -1,4 +1,4 @@
-import { Column } from './column.type';
+import { Column } from '../../../../data/types/column.type';
 
 export interface AddColumnType {
 	currentBoard: string;

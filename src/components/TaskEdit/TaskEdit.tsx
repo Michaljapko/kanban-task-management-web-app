@@ -13,7 +13,7 @@ import {
 	TASK_TITLE,
 } from '../../data/textEN';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { TasksData, TaskInputValues } from '../../types';
+import { TaskInputValues } from '../../types';
 import { Formik, Form } from 'formik';
 import { selectCurrentBoard } from '../../store/slices/boardSlice/boardSlice';
 import { selectCurrentColumn } from '../../store/slices/columnSlice/columnSlice';
@@ -25,6 +25,7 @@ import Button from '../UI/Button';
 import Input from '../UI/Input';
 import SelectInput from '../UI/SelectInput';
 import SubtaskEdit from './SubtaskEdit';
+import { TasksData } from '../../data/types/taskData.type';
 
 const TaskEdit = () => {
 	const dispatch = useAppDispatch();

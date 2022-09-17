@@ -1,17 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
 import {
-	Boards,
-	Board,
-	ColumnChangeDragType,
-	ColumnChangeType,
-	EditBoardType,
-	AddTaskType,
-	AddColumnType,
-	EditTaskType,
-	DeleteTaskType,
-} from '../../../types';
-import {
 	editBoardReducer,
 	deleteBoardReducer,
 	addTaskReducer,
@@ -25,9 +14,18 @@ import {
 	getTasksData,
 } from './helpers';
 import { data } from '../../../data/data';
+import { DeleteTaskType } from './types/deleteTask.type';
+import { AddTaskType } from './types/addTask.type';
+import { EditTaskType } from './types/editTask.type';
+import { AddColumnType } from './types/addColumn.type';
+import { EditBoardType } from './types/editBoard.type';
+import { ColumnChangeType } from './types/columnChange.type';
+import { ColumnChangeDragType } from './types/columnChangeDrag.type';
+import { Boards } from '../../../data/types/boards.type';
+import { Board } from '../../../data/types/board.type';
 
 const initialState: () => Boards = () => {
-	if (localStorage.getItem('taskAction')) {;
+	if (localStorage.getItem('taskAction')) {
 		return JSON.parse(localStorage.getItem('taskAction')!);
 	}
 	return data;
