@@ -4,7 +4,7 @@ import {
 	StyledBoxSection,
 	StyledColumnInputBox,
 	StyledLabel,
-} from 'theme/MenuBox.styled';
+} from 'components/ActionsMenus/ActionsMenus.styled';
 import { TaskInputValues } from 'types';
 import { Button, CrossIcon, Input, ScrollWrapper } from 'components/UI';
 

@@ -1,5 +1,5 @@
 import { BOARD_NAME, BOARD_EDIT, SAVE } from 'data/textEN';
-import { StyledBoxSection, StyledLabel } from 'theme/MenuBox.styled';
+import { StyledBoxSection, StyledLabel } from '../ActionsMenus.styled';
 import {
 	selectCurrentBoard,
 	selectCurrentBoardData,

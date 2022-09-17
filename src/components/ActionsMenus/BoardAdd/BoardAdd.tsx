@@ -4,7 +4,7 @@ import {
 	BOARD_ADD,
 	BOARD_PLACEHOLDER,
 } from 'data/textEN';
-import { StyledBoxSection, StyledLabel } from 'theme/MenuBox.styled';
+import { StyledBoxSection, StyledLabel } from '../ActionsMenus.styled';
 import { Formik, Form } from 'formik';
 import { boardAddSchema } from 'helpers/validationSchema';
 import { ColumnInputValues } from 'types';

@@ -12,7 +12,7 @@ import {
 	StyledBoxSection,
 	StyledColumnInputBox,
 	StyledLabel,
-} from 'theme/MenuBox.styled';
+} from '../ActionsMenus.styled';
 import {
 	Button,
 	CrossIcon,

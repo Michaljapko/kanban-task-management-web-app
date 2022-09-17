@@ -1,4 +1,4 @@
-import { StyledBoxSection, StyledLabel } from 'theme/MenuBox.styled';
+import { StyledBoxSection, StyledLabel } from '../ActionsMenus.styled';
 import {
 	selectCurrentTaskData,
 	selectTasksData,

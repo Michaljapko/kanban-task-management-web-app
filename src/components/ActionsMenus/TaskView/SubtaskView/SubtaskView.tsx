@@ -1,4 +1,4 @@
-import { StyledBoxSection, StyledParagraph } from 'theme/MenuBox.styled';
+import { StyledBoxSection, StyledParagraph } from 'components/ActionsMenus/ActionsMenus.styled';
 import { StyledSubtaskBox, StyledSubtaskInfo } from './SubtaskView.styled';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { useEffect, useState } from 'react';

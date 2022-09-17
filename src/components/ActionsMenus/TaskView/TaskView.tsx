@@ -12,7 +12,7 @@ import {
 	changeColumn,
 	selectCurrentColumn,
 } from 'store/slices/columnSlice/columnSlice';
-import { StyledBoxSection, StyledParagraph } from 'theme/MenuBox.styled';
+import { StyledBoxSection, StyledParagraph } from 'components/ActionsMenus/ActionsMenus.styled';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { selectCurrentBoard } from 'store/slices/boardSlice/boardSlice';
 import { changeCurrentTask } from 'store/slices/taskSlice/taskSlice';

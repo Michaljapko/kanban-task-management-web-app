@@ -3,7 +3,7 @@ import {
 	StyledBoxSection,
 	StyledColumnInputBox,
 	StyledLabel,
-} from 'theme/MenuBox.styled';
+} from 'components/ActionsMenus/ActionsMenus.styled';
 import { Button, ScrollWrapper, Input, CrossIcon } from 'components/UI';
 import { BoardInputValues } from 'types';
 import { FieldArray } from 'formik';
