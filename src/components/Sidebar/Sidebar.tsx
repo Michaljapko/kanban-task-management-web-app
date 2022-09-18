@@ -43,15 +43,11 @@ const Sidebar = () => {
 				</StyledHead>
 				<StyledWrapper>
 					{boards.map((board) => {
-						let variant: 'sidebar' | 'sidebarCurrent' = 'sidebar';
-						if (board.id === currentBoards) {
-							variant = 'sidebarCurrent';
-						}
 						return (
 							<Button
 								onClick={() => boardButtonHandler(board)}
 								key={board.id}
-								variant={variant}
+								variant={board.id === currentBoards ? 'sidebarCurrent' : 'sidebar'}
 								icon='board'
 							>
 								{board.name}
