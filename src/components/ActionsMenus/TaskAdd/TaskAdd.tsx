@@ -26,9 +26,9 @@ import { Formik, Form, FieldArray } from 'formik';
 import { TaskInputValues } from 'types';
 import {
 	addTask,
+	selectCurrentBoard,
 	selectTasksData,
 } from 'store/slices/kanbanSlice/kanbanSlice';
-import { selectCurrentBoard } from 'store/slices/boardSlice/boardSlice';
 import { setIsTaskAddShow } from 'store/slices/layoutSlice/layoutSlice';
 import { taskAddSchema } from 'helpers/validationSchema';
 import { v4 as uuid } from 'uuid';

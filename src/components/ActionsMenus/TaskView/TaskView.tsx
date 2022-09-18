@@ -2,6 +2,7 @@ import {
 	selectTasksData,
 	columnChangeTask,
 	selectCurrentTaskData,
+	selectCurrentBoard,
 } from 'store/slices/kanbanSlice/kanbanSlice';
 import {
 	selectLayout,
@@ -12,9 +13,11 @@ import {
 	changeColumn,
 	selectCurrentColumn,
 } from 'store/slices/columnSlice/columnSlice';
-import { StyledBoxSection, StyledParagraph } from 'components/ActionsMenus/ActionsMenus.styled';
+import {
+	StyledBoxSection,
+	StyledParagraph,
+} from 'components/ActionsMenus/ActionsMenus.styled';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
-import { selectCurrentBoard } from 'store/slices/boardSlice/boardSlice';
 import { changeCurrentTask } from 'store/slices/taskSlice/taskSlice';
 import { SelectInputOption } from 'components/UI/SelectInput/SelectInput.type';
 import { StyledDescription } from './TaskView.styled';

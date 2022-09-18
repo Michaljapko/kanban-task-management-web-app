@@ -1,7 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { localStorageMiddleware } from './slices/helpers/localStorageMiddleware';
 import layoutSlice from './slices/layoutSlice/layoutSlice';
-import boardSlice from './slices/boardSlice/boardSlice';
 import columnSlice from './slices/columnSlice/columnSlice';
 import kanbanSlice from './slices/kanbanSlice/kanbanSlice';
 import taskSlice from './slices/taskSlice/taskSlice';
@@ -9,7 +8,6 @@ import taskSlice from './slices/taskSlice/taskSlice';
 export const store = configureStore({
 	reducer: {
 		kanbanSlice: kanbanSlice,
-		currentBoardId: boardSlice,
 		currentColumnId: columnSlice,
 		currentTask: taskSlice,
 		layoutSlice: layoutSlice,

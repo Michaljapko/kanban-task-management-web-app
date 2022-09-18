@@ -10,10 +10,7 @@ import {
 	setIsDeleteBoardShow,
 	setIsDeleteTaskShow,
 } from 'store/slices/layoutSlice/layoutSlice';
-import {
-	selectCurrentBoard,
-	selectCurrentBoardName,
-} from 'store/slices/boardSlice/boardSlice';
+
 import {
 	changeCurrentTask,
 	selectCurrentTask,
@@ -22,6 +19,8 @@ import {
 import {
 	deleteBoard,
 	deleteTask,
+	selectCurrentBoard,
+	selectCurrentBoardName,
 } from 'store/slices/kanbanSlice/kanbanSlice';
 import { selectCurrentColumn } from 'store/slices/columnSlice/columnSlice';
 import { useAppDispatch, useAppSelector } from 'store/hooks';

@@ -21,6 +21,7 @@ import { changeColumn } from 'store/slices/columnSlice/columnSlice';
 import {
 	selectTasksData,
 	columnChangeTaskDrag,
+	selectCurrentBoard,
 } from 'store/slices/kanbanSlice/kanbanSlice';
 import { getCompletedTask } from 'helpers/getCompletedTasks';
 import { subtaskInfoCard } from 'data/textEN';
@@ -28,7 +29,7 @@ import { getSequenceArr } from 'helpers/getSequenceArr';
 import { TaskView } from '../ActionsMenus';
 import { TasksData } from 'data/types/taskData.type';
 import { Button } from 'components/UI';
-import { selectCurrentBoard } from 'store/slices/boardSlice/boardSlice';
+
 import Dot from './Dot';
 import theme from 'theme/theme';
 

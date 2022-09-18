@@ -1,9 +1,4 @@
 import {
-	changeBoard,
-	selectBoards,
-	selectCurrentBoard,
-} from 'store/slices/boardSlice/boardSlice';
-import {
 	selectLayout,
 	setIsBoardAddShow,
 	setIsSidebarShow,
@@ -19,6 +14,11 @@ import {
 import ThemeBox from './ThemeBox';
 import { Board } from '../../data/types/board.type';
 import { Button, PopUp } from 'components/UI';
+import {
+	changeBoard,
+	selectBoards,
+	selectCurrentBoard,
+} from 'store/slices/kanbanSlice/kanbanSlice';
 
 const Sidebar = () => {
 	const dispatch = useAppDispatch();

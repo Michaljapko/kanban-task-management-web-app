@@ -1,9 +1,8 @@
 import { RootState } from '../../../store';
 
 export const getTasksData = (state: RootState) => {
-	console.log(state);
 	const board = state.kanbanSlice.data.boards.find(
-		(board) => board.id === state.currentBoardId
+		(board) => board.id === state.kanbanSlice.currentBoardId
 	);
 	return board?.columns;
 };

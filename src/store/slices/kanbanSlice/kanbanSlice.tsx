@@ -29,7 +29,7 @@ const initialState: () => KanbanSlice = () => {
 	if (localStorage.getItem('taskAction')) {
 		return JSON.parse(localStorage.getItem('taskAction')!);
 	}
-	return { data: data };
+	return { data: data, currentBoardId: '' };
 };
 
 export const kanbanSlice = createSlice({
@@ -39,7 +39,6 @@ export const kanbanSlice = createSlice({
 		addBoard: ({ data }, { payload }: PayloadAction<Board>) => {
 			data.boards = [...data.boards, payload];
 		},
-
 		editBoard: ({ data }, { payload }: PayloadAction<EditBoardType>) =>
 			editBoardReducer(data, payload),
 
@@ -65,6 +64,10 @@ export const kanbanSlice = createSlice({
 			{ data },
 			{ payload }: PayloadAction<ColumnChangeDragType>
 		) => columnChangeTaskDragReducer(data, payload),
+
+		changeBoard: (state, { payload }: PayloadAction<string>) => {
+			state.currentBoardId = payload;
+		},
 	},
 });
 
@@ -78,6 +81,7 @@ export const {
 	editBoard,
 	columnChangeTask,
 	columnChangeTaskDrag,
+	changeBoard,
 } = kanbanSlice.actions;
 
 export const selectTasksData = (state: RootState) => getTasksData(state);
@@ -86,5 +90,30 @@ export const selectTaskData = (state: RootState) => getTaskData(state);
 
 export const selectCurrentTaskData = (state: RootState) =>
 	getCurrentTaskData(state);
+
+export const selectCurrentBoard = (state: RootState) =>
+	state.kanbanSlice.currentBoardId;
+
+export const selectCurrentBoardIndex = (state: RootState) =>
+	state.kanbanSlice.data.boards.findIndex(
+		(board) => board.id === state.kanbanSlice.currentBoardId
+	);
+
+export const selectCurrentBoardData = ({ kanbanSlice }: RootState) => {
+	const currentBoard = kanbanSlice.data.boards.find(
+		(board) => board.id === kanbanSlice.currentBoardId
+	);
+	return currentBoard!;
+};
+
+export const selectCurrentBoardName = ({ kanbanSlice }: RootState) => {
+	const currentBoard = kanbanSlice.data.boards.find(
+		(board) => board.id === kanbanSlice.currentBoardId
+	);
+	return currentBoard!.name;
+};
+
+export const selectBoards = ({ kanbanSlice }: RootState) =>
+	kanbanSlice.data.boards.map((board) => board);
 
 export default kanbanSlice.reducer;

@@ -4,6 +4,7 @@ import {
 	selectTasksData,
 	columnChangeTask,
 	editTask,
+	selectCurrentBoard,
 } from 'store/slices/kanbanSlice/kanbanSlice';
 import {
 	STATUS,
@@ -15,7 +16,6 @@ import {
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { TaskInputValues } from 'types';
 import { Formik, Form } from 'formik';
-import { selectCurrentBoard } from 'store/slices/boardSlice/boardSlice';
 import { selectCurrentColumn } from 'store/slices/columnSlice/columnSlice';
 import { setIsTaskEditShow } from 'store/slices/layoutSlice/layoutSlice';
 import { taskAddSchema } from 'helpers/validationSchema';

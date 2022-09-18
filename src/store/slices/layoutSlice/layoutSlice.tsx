@@ -71,6 +71,7 @@ export const layoutSlice = createSlice({
 				isTaskDeleteShow: !state.isTaskDeleteShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
+				theme: state.theme,
 			}),
 
 		setIsDeleteBoardShow: (state) =>

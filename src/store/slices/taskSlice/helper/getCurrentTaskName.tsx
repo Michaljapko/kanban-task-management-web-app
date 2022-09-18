@@ -8,7 +8,10 @@ import {
 export const getCurrentTaskName = (state: RootState) => {
 	if (!state.currentTask.currentTaskId) return '';
 
-	const boardIndex = getBoardIndex(state.kanbanSlice.data, state.currentBoardId);
+	const boardIndex = getBoardIndex(
+		state.kanbanSlice.data,
+		state.kanbanSlice.currentBoardId
+	);
 	const columnIndex = getColumnIndex(
 		state.kanbanSlice.data,
 		boardIndex,
