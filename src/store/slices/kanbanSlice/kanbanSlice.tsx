@@ -24,12 +24,18 @@ import { ColumnChangeDragType } from './types/columnChangeDrag.type';
 
 import { Board } from '../../../data/types/board.type';
 import { KanbanSlice } from './types/kanbanSlice';
+import { getCurrentTaskName } from './helpers/getCurrentTaskName';
 
 const initialState: () => KanbanSlice = () => {
 	if (localStorage.getItem('taskAction')) {
 		return JSON.parse(localStorage.getItem('taskAction')!);
 	}
-	return { data: data, currentBoardId: '', currentColumnId: '' };
+	return {
+		data: data,
+		currentBoardId: '',
+		currentColumnId: '',
+		currentTaskId: '',
+	};
 };
 
 export const kanbanSlice = createSlice({
@@ -68,8 +74,11 @@ export const kanbanSlice = createSlice({
 		changeBoard: (state, { payload }: PayloadAction<string>) => {
 			state.currentBoardId = payload;
 		},
-		changeColumn: (state, action: PayloadAction<string>) => {
-			state.currentColumnId = action.payload;
+		changeColumn: (state, { payload }: PayloadAction<string>) => {
+			state.currentColumnId = payload;
+		},
+		changeTask: (state, { payload }: PayloadAction<string>) => {
+			state.currentTaskId = payload;
 		},
 	},
 });
@@ -86,6 +95,7 @@ export const {
 	columnChangeTaskDrag,
 	changeBoard,
 	changeColumn,
+	changeTask,
 } = kanbanSlice.actions;
 
 export const selectTasksData = (state: RootState) => getTasksData(state);
@@ -122,5 +132,11 @@ export const selectBoards = ({ kanbanSlice }: RootState) =>
 
 export const selectCurrentColumn = ({ kanbanSlice }: RootState) =>
 	kanbanSlice.currentColumnId;
+
+export const selectCurrentTask = (state: RootState) =>
+	state.kanbanSlice.currentTaskId;
+
+export const selectCurrentTaskName = (state: RootState) =>
+	getCurrentTaskName(state);
 
 export default kanbanSlice.reducer;

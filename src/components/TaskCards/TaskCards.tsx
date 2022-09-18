@@ -16,12 +16,13 @@ import {
 	DropResult,
 } from 'react-beautiful-dnd';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
-import { changeCurrentTask } from 'store/slices/taskSlice/taskSlice';
+
 import {
 	selectTasksData,
 	columnChangeTaskDrag,
 	selectCurrentBoard,
 	changeColumn,
+	changeTask,
 } from 'store/slices/kanbanSlice/kanbanSlice';
 import { getCompletedTask } from 'helpers/getCompletedTasks';
 import { subtaskInfoCard } from 'data/textEN';
@@ -44,7 +45,7 @@ const TaskCards = () => {
 
 	const showTask = (task: TasksData, ColumnId: string) => {
 		dispatch(changeColumn(ColumnId));
-		dispatch(changeCurrentTask(task.id));
+		dispatch(changeTask(task.id));
 		dispatch(setIsTaskShow());
 	};
 	const onDragEndHadnle = (event: DropResult) => {

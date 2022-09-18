@@ -5,6 +5,7 @@ import {
 	selectCurrentBoard,
 	selectCurrentColumn,
 	changeColumn,
+	changeTask,
 } from 'store/slices/kanbanSlice/kanbanSlice';
 import {
 	selectLayout,
@@ -16,7 +17,6 @@ import {
 	StyledParagraph,
 } from 'components/ActionsMenus/ActionsMenus.styled';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
-import { changeCurrentTask } from 'store/slices/taskSlice/taskSlice';
 import { SelectInputOption } from 'components/UI/SelectInput/SelectInput.type';
 import { StyledDescription } from './TaskView.styled';
 import { STATE } from 'data/textEN';
@@ -66,7 +66,7 @@ const TaskView = () => {
 			title={task.title}
 			layoutDispatch={() => {
 				dispatch(setIsTaskShow());
-				dispatch(changeCurrentTask(''));
+				dispatch(changeTask(''));
 			}}
 			headingElement={ellipsisButton}
 		>

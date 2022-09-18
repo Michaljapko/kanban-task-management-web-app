@@ -12,16 +12,14 @@ import {
 } from 'store/slices/layoutSlice/layoutSlice';
 
 import {
-	changeCurrentTask,
-	selectCurrentTask,
-	selectCurrentTaskName,
-} from 'store/slices/taskSlice/taskSlice';
-import {
+	changeTask,
 	deleteBoard,
 	deleteTask,
 	selectCurrentBoard,
 	selectCurrentBoardName,
 	selectCurrentColumn,
+	selectCurrentTask,
+	selectCurrentTaskName,
 } from 'store/slices/kanbanSlice/kanbanSlice';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { StyledText, StyledWrapper } from './DeleteMenu.styled';
@@ -49,7 +47,7 @@ const DeleteMenu = ({ variant }: DeleteMenuProps) => {
 		dispatch(setIsDeleteBoardShow());
 	};
 	const taskDeleteHandler = () => {
-		dispatch(changeCurrentTask(''));
+		dispatch(changeTask(''));
 		dispatch(setIsDeleteTaskShow());
 		dispatch(
 			deleteTask({

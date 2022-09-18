@@ -6,7 +6,7 @@ import {
 } from '../../helpers/reducersHelpers';
 
 export const getCurrentTaskName = (state: RootState) => {
-	if (!state.currentTask.currentTaskId) return '';
+	if (!state.kanbanSlice.currentTaskId) return '';
 
 	const boardIndex = getBoardIndex(
 		state.kanbanSlice.data,
@@ -21,7 +21,7 @@ export const getCurrentTaskName = (state: RootState) => {
 		state.kanbanSlice.data,
 		boardIndex,
 		columnIndex,
-		state.currentTask.currentTaskId
+		state.kanbanSlice.currentTaskId
 	);
 	return state.kanbanSlice.data.boards[boardIndex].columns[columnIndex].tasks[
 		taskIndex

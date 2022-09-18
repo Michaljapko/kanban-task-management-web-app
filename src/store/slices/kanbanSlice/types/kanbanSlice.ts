@@ -4,4 +4,5 @@ export interface KanbanSlice {
 	data: Boards;
 	currentBoardId: string;
 	currentColumnId: string;
+	currentTaskId: string;
 }
