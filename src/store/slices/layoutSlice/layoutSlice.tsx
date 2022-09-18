@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
+import { getThemeMode } from './helpers/getThemeMode';
+import { isSidebarShow } from './helpers/isSidebarShow';
+import { toogleThemeReducer } from './helpers/toogleTheme';
+import { layoutSliceState } from './type/layoutSlice.type';
 
-const initialStateData = {
+const initialStateData: layoutSliceState = {
 	isSidebarShow: true,
 	isTaskAddShow: false,
 	isTaskEditShow: false,
@@ -13,20 +17,13 @@ const initialStateData = {
 	isDropdownTaskShow: false,
 	isBoardEditShow: false,
 	device: 'desktop',
+	theme: 'themeLight',
 };
-const initialState = () => {
+const initialState = (): layoutSliceState => {
 	if (localStorage.getItem('layoutSlice')) {
 		return JSON.parse(localStorage.getItem('layoutSlice')!);
 	}
 	return initialStateData;
-};
-const isSidebarShow = (state: typeof initialStateData) => {
-	if (state.device === 'desktop') {
-		return state.isSidebarShow;
-	}
-	if (state.device === 'mobile') {
-		return false;
-	}
 };
 
 export const layoutSlice = createSlice({
@@ -114,6 +111,8 @@ export const layoutSlice = createSlice({
 
 		setMobile: (state) => (state = { ...state, device: 'mobile' }),
 		setDesktop: (state) => (state = { ...state, device: 'desktop' }),
+		toogleTheme: (state) =>
+			(state = { ...state, theme: toogleThemeReducer(state.theme) }),
 	},
 });
 
@@ -130,8 +129,15 @@ export const {
 	setIsTaskEditShow,
 	setMobile,
 	setDesktop,
+	toogleTheme,
 } = layoutSlice.actions;
 
 export const selectLayout = ({ layoutSlice }: RootState) => layoutSlice;
+
+export const selectCurrentTheme = ({ layoutSlice }: RootState) =>
+	layoutSlice.theme;
+
+export const selectThemeMode = ({ layoutSlice }: RootState) =>
+	getThemeMode(layoutSlice.theme);
 
 export default layoutSlice.reducer;

@@ -7,13 +7,9 @@ export const localStorageMiddleware: Middleware =
 			const state = store.getState().taskAction;
 			localStorage.setItem('taskAction', JSON.stringify(state));
 		}
-		if (result.type.startsWith('layoutSlice/setIsSidebarShow')) {
+		if (result.type.startsWith('layoutSlice/')) {
 			const state = store.getState().layoutSlice;
 			localStorage.setItem('layoutSlice', JSON.stringify(state));
-		}
-		if (result.type.startsWith('themeSlice/toogleTheme')) {
-			const state = store.getState().themeSlice;
-			localStorage.setItem('themeSlice', JSON.stringify(state));
 		}
 
 		return result;

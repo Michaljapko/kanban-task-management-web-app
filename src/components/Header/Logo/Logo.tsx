@@ -2,8 +2,11 @@ import { useAppSelector } from 'store/hooks';
 import logoDark from 'assets/logo-dark.svg';
 import logoLight from 'assets/logo-light.svg';
 import logoMobile from 'assets/logo-mobile.svg';
-import { selectLayout } from 'store/slices/layoutSlice/layoutSlice';
-import { selectCurrentTheme } from 'store/slices/themeSlice/themeSlice';
+import {
+	selectCurrentTheme,
+	selectLayout,
+} from 'store/slices/layoutSlice/layoutSlice';
+
 import { StyledLogo, StyledLogoMobile } from './Logo.styled';
 
 const Logo = () => {

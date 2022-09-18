@@ -5,7 +5,7 @@ import boardSlice from './slices/boardSlice/boardSlice';
 import columnSlice from './slices/columnSlice/columnSlice';
 import taskActionSlice from './slices/taskActionSlice/taskActionSlice';
 import taskSlice from './slices/taskSlice/taskSlice';
-import themeSlice from './slices/themeSlice/themeSlice';
+
 
 export const store = configureStore({
 	reducer: {
@@ -14,7 +14,6 @@ export const store = configureStore({
 		currentColumnId: columnSlice,
 		currentTask: taskSlice,
 		layoutSlice: layoutSlice,
-		themeSlice: themeSlice,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware().concat(localStorageMiddleware),
