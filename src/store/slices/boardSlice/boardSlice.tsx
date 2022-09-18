@@ -5,8 +5,7 @@ export const boardSlice = createSlice({
 	name: 'currentBoardId',
 	initialState: '',
 	reducers: {
-		changeBoard: (state, action: PayloadAction<string>) =>
-			(state = action.payload),
+		changeBoard: (state, action: PayloadAction<string>) => (state = action.payload),
 	},
 });
 
@@ -16,13 +15,15 @@ export const selectCurrentBoard = ({ currentBoardId }: RootState) =>
 	currentBoardId;
 
 export const selectCurrentBoardIndex = (state: RootState) =>
-	state.taskAction.boards.findIndex((board) => board.id === state.currentBoardId);
+	state.kanbanSlice.data.boards.findIndex(
+		(board) => board.id === state.currentBoardId
+	);
 
 export const selectCurrentBoardData = ({
 	currentBoardId,
-	taskAction,
+	kanbanSlice,
 }: RootState) => {
-	const currentBoard = taskAction.boards.find(
+	const currentBoard = kanbanSlice.data.boards.find(
 		(board) => board.id === currentBoardId
 	);
 	return currentBoard!;
@@ -30,15 +31,15 @@ export const selectCurrentBoardData = ({
 
 export const selectCurrentBoardName = ({
 	currentBoardId,
-	taskAction,
+	kanbanSlice,
 }: RootState) => {
-	const currentBoard = taskAction.boards.find(
+	const currentBoard = kanbanSlice.data.boards.find(
 		(board) => board.id === currentBoardId
 	);
 	return currentBoard!.name;
 };
 
-export const selectBoards = ({ taskAction }: RootState) =>
-taskAction.boards.map((board) => board);
+export const selectBoards = ({ kanbanSlice }: RootState) =>
+	kanbanSlice.data.boards.map((board) => board);
 
 export default boardSlice.reducer;

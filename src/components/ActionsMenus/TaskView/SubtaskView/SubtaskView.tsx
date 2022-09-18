@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { useEffect, useState } from 'react';
 import { selectCurrentBoard } from 'store/slices/boardSlice/boardSlice';
 import { selectCurrentColumn } from 'store/slices/columnSlice/columnSlice';
-import { editTask } from 'store/slices/taskActionSlice/taskActionSlice';
+import { editTask } from 'store/slices/kanbanSlice/kanbanSlice';
 import { getCompletedTask } from 'helpers/getCompletedTasks';
 import { getUpdateTask } from 'helpers/getUpdateTask';
 import { subtaskInfo } from 'data/textEN';

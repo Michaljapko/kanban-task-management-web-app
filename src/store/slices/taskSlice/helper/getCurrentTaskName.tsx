@@ -7,19 +7,20 @@ import {
 
 export const getCurrentTaskName = (state: RootState) => {
 	if (!state.currentTask.currentTaskId) return '';
-    
-	const boardIndex = getBoardIndex(state.taskAction, state.currentBoardId);
+
+	const boardIndex = getBoardIndex(state.kanbanSlice.data, state.currentBoardId);
 	const columnIndex = getColumnIndex(
-		state.taskAction,
+		state.kanbanSlice.data,
 		boardIndex,
 		state.currentColumnId
 	);
 	const taskIndex = getTaskIndex(
-		state.taskAction,
+		state.kanbanSlice.data,
 		boardIndex,
 		columnIndex,
 		state.currentTask.currentTaskId
 	);
-	return state.taskAction.boards[boardIndex].columns[columnIndex].tasks[taskIndex]
-		.title;
+	return state.kanbanSlice.data.boards[boardIndex].columns[columnIndex].tasks[
+		taskIndex
+	].title;
 };

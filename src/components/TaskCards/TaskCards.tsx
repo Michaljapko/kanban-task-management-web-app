@@ -21,7 +21,7 @@ import { changeColumn } from 'store/slices/columnSlice/columnSlice';
 import {
 	selectTasksData,
 	columnChangeTaskDrag,
-} from 'store/slices/taskActionSlice/taskActionSlice';
+} from 'store/slices/kanbanSlice/kanbanSlice';
 import { getCompletedTask } from 'helpers/getCompletedTasks';
 import { subtaskInfoCard } from 'data/textEN';
 import { getSequenceArr } from 'helpers/getSequenceArr';

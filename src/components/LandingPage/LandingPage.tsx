@@ -8,7 +8,7 @@ import {
 import { BOARD_CREATE, COLUMN_ADD, EMPTY, EMPTY_BOARD } from 'data/textEN';
 import { ReactComponent as ShowSidebar } from 'assets/icon-show-sidebar.svg';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
-import { selectTasksData } from 'store/slices/taskActionSlice/taskActionSlice';
+import { selectTasksData } from 'store/slices/kanbanSlice/kanbanSlice';
 import { Button } from 'components/UI';
 import {
 	BoardAdd,

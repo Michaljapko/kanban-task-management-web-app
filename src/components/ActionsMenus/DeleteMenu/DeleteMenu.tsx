@@ -22,7 +22,7 @@ import {
 import {
 	deleteBoard,
 	deleteTask,
-} from 'store/slices/taskActionSlice/taskActionSlice';
+} from 'store/slices/kanbanSlice/kanbanSlice';
 import { selectCurrentColumn } from 'store/slices/columnSlice/columnSlice';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { StyledText, StyledWrapper } from './DeleteMenu.styled';

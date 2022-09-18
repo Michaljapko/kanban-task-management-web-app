@@ -4,7 +4,7 @@ import {
 } from 'store/slices/layoutSlice/layoutSlice';
 import { useAppSelector, useAppDispatch } from 'store/hooks';
 import { TASK_ADD_HEADER } from 'data/textEN';
-import { selectTasksData } from 'store/slices/taskActionSlice/taskActionSlice';
+import { selectTasksData } from 'store/slices/kanbanSlice/kanbanSlice';
 import { Button } from 'components/UI';
 
 

@@ -3,7 +3,7 @@ import { RootState } from '../../store';
 import { getThemeMode } from './helpers/getThemeMode';
 import { isSidebarShow } from './helpers/isSidebarShow';
 import { toogleThemeReducer } from './helpers/toogleTheme';
-import { layoutSliceState } from './type/layoutSlice.type';
+import { layoutSliceState } from './types/layoutSlice.type';
 
 const initialStateData: layoutSliceState = {
 	isSidebarShow: true,
@@ -35,6 +35,7 @@ export const layoutSlice = createSlice({
 				...initialStateData,
 				isSidebarShow: !state.isSidebarShow,
 				device: state.device,
+				theme: state.theme,
 			}),
 
 		setIsBoardAddShow: (state) =>
@@ -43,6 +44,7 @@ export const layoutSlice = createSlice({
 				isBoardAddShow: !state.isBoardAddShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
+				theme: state.theme,
 			}),
 
 		setIsBoardEditShow: (state) =>
@@ -51,6 +53,7 @@ export const layoutSlice = createSlice({
 				isBoardEditShow: !state.isBoardEditShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
+				theme: state.theme,
 			}),
 
 		setIsTaskAddShow: (state) =>
@@ -59,6 +62,7 @@ export const layoutSlice = createSlice({
 				isTaskAddShow: !state.isTaskAddShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
+				theme: state.theme,
 			}),
 
 		setIsDeleteTaskShow: (state) =>
@@ -75,6 +79,7 @@ export const layoutSlice = createSlice({
 				isBoardDeleteShow: !state.isBoardDeleteShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
+				theme: state.theme,
 			}),
 
 		setIsTaskShow: (state) =>
@@ -83,6 +88,7 @@ export const layoutSlice = createSlice({
 				isTaskShow: !state.isTaskShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
+				theme: state.theme,
 			}),
 
 		setIsTaskEditShow: (state) =>
@@ -91,6 +97,7 @@ export const layoutSlice = createSlice({
 				isTaskEditShow: !state.isTaskEditShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
+				theme: state.theme,
 			}),
 
 		setIsDropdownHeaderShow: (state) =>
@@ -99,6 +106,7 @@ export const layoutSlice = createSlice({
 				isDropdownHeaderShow: !state.isDropdownHeaderShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
+				theme: state.theme,
 			}),
 
 		setIsDropdownTaskShow: (state) =>
@@ -107,6 +115,7 @@ export const layoutSlice = createSlice({
 				isDropdownTaskShow: !state.isDropdownTaskShow,
 				isSidebarShow: isSidebarShow(state)!,
 				device: state.device,
+				theme: state.theme,
 			}),
 
 		setMobile: (state) => (state = { ...state, device: 'mobile' }),

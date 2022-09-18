@@ -2,7 +2,7 @@ import {
 	selectTasksData,
 	columnChangeTask,
 	selectCurrentTaskData,
-} from 'store/slices/taskActionSlice/taskActionSlice';
+} from 'store/slices/kanbanSlice/kanbanSlice';
 import {
 	selectLayout,
 	setIsDropdownTaskShow,

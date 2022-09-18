@@ -14,7 +14,7 @@ import {
 import { useAppSelector, useAppDispatch } from 'store/hooks';
 import { DropDown, Ellipsis } from 'components/UI';
 import { APLICATION_TITLE } from 'data/textEN';
-import { selectTasksData } from 'store/slices/taskActionSlice/taskActionSlice';
+import { selectTasksData } from 'store/slices/kanbanSlice/kanbanSlice';
 import AddTaskButton from './AddTaskButton';
 import Logo from './Logo';
 

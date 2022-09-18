@@ -1,4 +1,4 @@
-import { layoutSliceState } from '../type/layoutSlice.type';
+import { layoutSliceState } from '../types/layoutSlice.type';
 
 export const isSidebarShow = (state: layoutSliceState) => {
 	if (state.device === 'desktop') {

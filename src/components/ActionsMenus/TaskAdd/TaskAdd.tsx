@@ -27,7 +27,7 @@ import { TaskInputValues } from 'types';
 import {
 	addTask,
 	selectTasksData,
-} from 'store/slices/taskActionSlice/taskActionSlice';
+} from 'store/slices/kanbanSlice/kanbanSlice';
 import { selectCurrentBoard } from 'store/slices/boardSlice/boardSlice';
 import { setIsTaskAddShow } from 'store/slices/layoutSlice/layoutSlice';
 import { taskAddSchema } from 'helpers/validationSchema';

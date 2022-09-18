@@ -4,7 +4,7 @@ import {
 	selectTasksData,
 	columnChangeTask,
 	editTask,
-} from 'store/slices/taskActionSlice/taskActionSlice';
+} from 'store/slices/kanbanSlice/kanbanSlice';
 import {
 	STATUS,
 	TASK_ADD,

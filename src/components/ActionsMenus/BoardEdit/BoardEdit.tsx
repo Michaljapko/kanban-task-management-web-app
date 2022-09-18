@@ -9,7 +9,7 @@ import { Formik, Form } from 'formik';
 import { setIsBoardEditShow } from 'store/slices/layoutSlice/layoutSlice';
 import { BoardInputValues } from 'types';
 import { boardAddSchema } from 'helpers/validationSchema';
-import { editBoard } from 'store/slices/taskActionSlice/taskActionSlice';
+import { editBoard } from 'store/slices/kanbanSlice/kanbanSlice';
 import { filterAddedColumns } from 'helpers/filterAddedColumns';
 import ColumnsEdit from './ColumnsEdit';
 import { Button, Input, PopUp } from 'components/UI';

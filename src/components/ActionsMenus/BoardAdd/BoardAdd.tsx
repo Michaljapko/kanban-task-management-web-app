@@ -8,7 +8,7 @@ import { StyledBoxSection, StyledLabel } from '../ActionsMenus.styled';
 import { Formik, Form } from 'formik';
 import { boardAddSchema } from 'helpers/validationSchema';
 import { ColumnInputValues } from 'types';
-import { addBoard } from 'store/slices/taskActionSlice/taskActionSlice';
+import { addBoard } from 'store/slices/kanbanSlice/kanbanSlice';
 import { changeBoard } from 'store/slices/boardSlice/boardSlice';
 import { setIsBoardAddShow } from 'store/slices/layoutSlice/layoutSlice';
 import { useAppDispatch } from 'store/hooks';
