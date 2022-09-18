@@ -2,10 +2,9 @@ import {
 	getBoardIndex,
 	getColumnIndex,
 	getTaskIndex,
-} from '../../helpers/reducersHelpers';
+} from '../../../helpers/reducersHelpers';
 import { WritableDraft } from 'immer/dist/internal';
-
-import { EditTaskType } from '../types/editTask.type';
+import { EditTaskType } from '../../types/editTask.type';
 import { Boards } from 'data/types/boards.type';
 
 export const editTaskReducer = (

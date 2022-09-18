@@ -12,6 +12,7 @@ import {
 	getTaskData,
 	getCurrentTaskData,
 	getTasksData,
+	getCurrentTaskName,
 } from './helpers';
 import { data } from '../../../data/data';
 import { DeleteTaskType } from './types/deleteTask.type';
@@ -24,7 +25,6 @@ import { ColumnChangeDragType } from './types/columnChangeDrag.type';
 
 import { Board } from '../../../data/types/board.type';
 import { KanbanSlice } from './types/kanbanSlice';
-import { getCurrentTaskName } from './helpers/getCurrentTaskName';
 
 const initialState: () => KanbanSlice = () => {
 	if (localStorage.getItem('taskAction')) {

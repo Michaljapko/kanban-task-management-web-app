@@ -1,6 +1,6 @@
-import { getBoardIndex } from '../../helpers/reducersHelpers';
+import { getBoardIndex } from '../../../helpers/reducersHelpers';
 import { WritableDraft } from 'immer/dist/internal';
-import { AddColumnType } from '../types/addColumn.type';
+import { AddColumnType } from '../../types/addColumn.type';
 import { Boards } from 'data/types/boards.type';
 
 export const addColumReducer = (

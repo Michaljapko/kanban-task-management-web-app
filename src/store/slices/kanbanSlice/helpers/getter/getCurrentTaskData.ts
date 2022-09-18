@@ -2,8 +2,8 @@ import {
 	getBoardIndex,
 	getColumnIndex,
 	getTaskIndex,
-} from '../../helpers/reducersHelpers';
-import { RootState } from '../../../store';
+} from '../../../helpers/reducersHelpers';
+import { RootState } from '../../../../store';
 
 export const getCurrentTaskData = (state: RootState) => {
 	const boardIndex = getBoardIndex(

@@ -1,4 +1,4 @@
-import { RootState } from '../../../store';
+import { RootState } from 'store/store';
 
 export const getTasksData = (state: RootState) => {
 	const board = state.kanbanSlice.data.boards.find(

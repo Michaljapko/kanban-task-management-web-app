@@ -1,5 +1,6 @@
-import { getBoardIndex, getColumnIndex } from '../../helpers/reducersHelpers';
-import { RootState } from '../../../store';
+import { getBoardIndex, getColumnIndex } from "store/slices/helpers/reducersHelpers";
+import { RootState } from "store/store";
+
 
 export const getTaskData = (state: RootState) => {
 	const boardIndex = getBoardIndex(

@@ -1,9 +1,9 @@
-import { RootState } from '../../../store';
 import {
 	getBoardIndex,
 	getColumnIndex,
 	getTaskIndex,
-} from '../../helpers/reducersHelpers';
+} from 'store/slices/helpers/reducersHelpers';
+import { RootState } from 'store/store';
 
 export const getCurrentTaskName = (state: RootState) => {
 	if (!state.kanbanSlice.currentTaskId) return '';
