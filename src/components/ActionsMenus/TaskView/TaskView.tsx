@@ -3,16 +3,14 @@ import {
 	columnChangeTask,
 	selectCurrentTaskData,
 	selectCurrentBoard,
+	selectCurrentColumn,
+	changeColumn,
 } from 'store/slices/kanbanSlice/kanbanSlice';
 import {
 	selectLayout,
 	setIsDropdownTaskShow,
 	setIsTaskShow,
 } from 'store/slices/layoutSlice/layoutSlice';
-import {
-	changeColumn,
-	selectCurrentColumn,
-} from 'store/slices/columnSlice/columnSlice';
 import {
 	StyledBoxSection,
 	StyledParagraph,

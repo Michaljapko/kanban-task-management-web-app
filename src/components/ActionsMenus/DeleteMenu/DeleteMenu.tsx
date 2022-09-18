@@ -21,8 +21,8 @@ import {
 	deleteTask,
 	selectCurrentBoard,
 	selectCurrentBoardName,
+	selectCurrentColumn,
 } from 'store/slices/kanbanSlice/kanbanSlice';
-import { selectCurrentColumn } from 'store/slices/columnSlice/columnSlice';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { StyledText, StyledWrapper } from './DeleteMenu.styled';
 import { DeleteMenuProps } from './DeleteMenu.types';

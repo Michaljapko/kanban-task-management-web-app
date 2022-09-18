@@ -17,11 +17,11 @@ import {
 } from 'react-beautiful-dnd';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { changeCurrentTask } from 'store/slices/taskSlice/taskSlice';
-import { changeColumn } from 'store/slices/columnSlice/columnSlice';
 import {
 	selectTasksData,
 	columnChangeTaskDrag,
 	selectCurrentBoard,
+	changeColumn,
 } from 'store/slices/kanbanSlice/kanbanSlice';
 import { getCompletedTask } from 'helpers/getCompletedTasks';
 import { subtaskInfoCard } from 'data/textEN';
@@ -38,7 +38,6 @@ const TaskCards = () => {
 	const columns = useAppSelector(selectTasksData);
 	const isTaskShow = useAppSelector(selectLayout).isTaskShow;
 	const currentBoard = useAppSelector(selectCurrentBoard);
-
 	const dotColorsNum = theme.dotColors.length;
 	const sequenceLength = columns!.length;
 	const sequenceArr = getSequenceArr(sequenceLength, dotColorsNum);

@@ -5,11 +5,10 @@ import {
 import { StyledSubtaskBox, StyledSubtaskInfo } from './SubtaskView.styled';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { useEffect, useState } from 'react';
-
-import { selectCurrentColumn } from 'store/slices/columnSlice/columnSlice';
 import {
 	editTask,
 	selectCurrentBoard,
+	selectCurrentColumn,
 } from 'store/slices/kanbanSlice/kanbanSlice';
 import { getCompletedTask } from 'helpers/getCompletedTasks';
 import { getUpdateTask } from 'helpers/getUpdateTask';

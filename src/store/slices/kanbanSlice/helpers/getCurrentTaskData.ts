@@ -13,7 +13,7 @@ export const getCurrentTaskData = (state: RootState) => {
 	const columnIndex = getColumnIndex(
 		state.kanbanSlice.data,
 		boardIndex,
-		state.currentColumnId
+		state.kanbanSlice.currentColumnId
 	);
 	const taskIndex = getTaskIndex(
 		state.kanbanSlice.data,
