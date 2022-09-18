@@ -29,13 +29,15 @@ import Header from 'components/Header';
 
 const LandingPage = () => {
 	const tasksData = useAppSelector(selectTasksData);
-	const isSidebarShow = useAppSelector(selectLayout).isSidebarShow;
-	const isBoardAddShow = useAppSelector(selectLayout).isBoardAddShow;
-	const isBoardEditShow = useAppSelector(selectLayout).isBoardEditShow;
-	const isTaskAddShow = useAppSelector(selectLayout).isTaskAddShow;
-	const isBoardDeleteShow = useAppSelector(selectLayout).isBoardDeleteShow;
-	const isTaskDeleteShow = useAppSelector(selectLayout).isTaskDeleteShow;
-	const isTaskEditShow = useAppSelector(selectLayout).isTaskEditShow;
+	const {
+		isSidebarShow,
+		isBoardAddShow,
+		isBoardEditShow,
+		isTaskAddShow,
+		isBoardDeleteShow,
+		isTaskDeleteShow,
+		isTaskEditShow,
+	} = useAppSelector(selectLayout);
 	const dispatch = useAppDispatch();
 
 	const buttonHandler = () =>
