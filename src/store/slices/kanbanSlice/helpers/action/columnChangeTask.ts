@@ -8,32 +8,27 @@ import { ColumnChangeType } from '../../types/columnChange.type';
 import { KanbanSlice } from '../../types/kanbanSlice';
 
 export const columnChangeTaskReducer = (
-	state: WritableDraft<KanbanSlice>,
-	payload: ColumnChangeType
+	{ data, currentBoardId }: WritableDraft<KanbanSlice>,
+	{ columnId, taskId, columnTarget }: ColumnChangeType
 ) => {
-	const boardIndex = getBoardIndex(state.data, state.currentBoardId);
-	const columnIndex = getColumnIndex(state.data, boardIndex, payload.columnId);
-	const taskIndex = getTaskIndex(
-		state.data,
-		boardIndex,
-		columnIndex,
-		payload.taskId
-	);
+	const boardIndex = getBoardIndex(data, currentBoardId);
+	const columnIndex = getColumnIndex(data, boardIndex, columnId);
+	const taskIndex = getTaskIndex(data, boardIndex, columnIndex, taskId);
 
 	const taskToChange =
-		state.data.boards[boardIndex].columns[columnIndex].tasks[taskIndex];
+		data.boards[boardIndex].columns[columnIndex].tasks[taskIndex];
 
-	const filterTasks = state.data.boards[boardIndex].columns[
-		columnIndex
-	].tasks.filter((task) => payload.taskId !== task.id);
-
-	state.data.boards[boardIndex].columns[columnIndex].tasks = filterTasks;
-
-	const columnIndexTarget = state.data.boards[boardIndex].columns.findIndex(
-		(column) => column.id === payload.columnTarget
+	const filterTasks = data.boards[boardIndex].columns[columnIndex].tasks.filter(
+		(task) => taskId !== task.id
 	);
-	state.data.boards[boardIndex].columns[columnIndexTarget].tasks = [
-		...state.data.boards[boardIndex].columns[columnIndexTarget].tasks,
+
+	data.boards[boardIndex].columns[columnIndex].tasks = filterTasks;
+
+	const columnIndexTarget = data.boards[boardIndex].columns.findIndex(
+		(column) => column.id === columnTarget
+	);
+	data.boards[boardIndex].columns[columnIndexTarget].tasks = [
+		...data.boards[boardIndex].columns[columnIndexTarget].tasks,
 		taskToChange,
 	];
 };
