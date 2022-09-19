@@ -39,10 +39,11 @@ const TaskView = () => {
 		dispatch(changeColumn(event!.value));
 		dispatch(
 			columnChangeTask({
+				columnId: currentColumn,
 				columnTarget: event!.value,
-				task: taskUpdated,
 				taskId: task.id,
-			})    
+				task: taskUpdated,
+			})
 		);
 	};
 

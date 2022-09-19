@@ -27,6 +27,7 @@ export const columnChangeTaskDragReducer = (
 		(column) => column.id === columnTarget
 	);
 	const newTasks = data.boards[boardIndex].columns[columnIndexTarget].tasks;
+	
 	newTasks.splice(index, 0, taskToChange);
 	data.boards[boardIndex].columns[columnIndexTarget].tasks = newTasks;
 };

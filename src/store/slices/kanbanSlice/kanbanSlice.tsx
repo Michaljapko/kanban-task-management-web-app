@@ -21,9 +21,9 @@ import { KanbanSlice } from './types/kanbanSlice';
 import { TasksData } from 'data/types/taskData.type';
 
 const initialState: () => KanbanSlice = () => {
-	if (localStorage.getItem('taskAction')) {
-		return JSON.parse(localStorage.getItem('taskAction')!);
-	}
+	// if (localStorage.getItem('taskAction')) {
+	// 	return JSON.parse(localStorage.getItem('taskAction')!);
+	// }
 	return {
 		data: data,
 		currentBoardId: '',

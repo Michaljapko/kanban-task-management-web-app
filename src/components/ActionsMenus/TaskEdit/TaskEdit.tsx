@@ -56,15 +56,13 @@ const TaskEdit = () => {
 			})),
 			status: values.status,
 		};
-
-		dispatch(
-			columnChangeTask({
-				columnTarget: values.status,
-				taskId: taskEdited.id,
-				task: taskEdited,
-			})
-		);
-		dispatch(editTask({ task: taskEdited }));
+		const taskStateValues = {
+			columnId: currentColumn,
+			taskId: taskEdited.id,
+			task: taskEdited,
+		};
+		dispatch(columnChangeTask({ columnTarget: values.status, ...taskStateValues }));
+		dispatch(editTask(taskStateValues));
 		dispatch(setIsTaskEditShow());
 	};
 
