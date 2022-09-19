@@ -1,12 +1,12 @@
 import { getBoardIndex } from '../../../helpers/reducersHelpers';
 import { WritableDraft } from 'immer/dist/internal';
-import { EditBoardType } from '../../types/editBoard.type';
-import { Boards } from 'data/types/boards.type';
+import { KanbanSlice } from '../../types/kanbanSlice';
+import { Board } from 'data/types/board.type';
 
 export const editBoardReducer = (
-	state: WritableDraft<Boards>,
-	payload: EditBoardType
+	{ data, currentBoardId }: WritableDraft<KanbanSlice>,
+	payload: { board: Board }
 ) => {
-	const boardIndex = getBoardIndex(state, payload.currentBoard);
-	state.boards[boardIndex] = payload.board;
+	const boardIndex = getBoardIndex(data, currentBoardId);
+	data.boards[boardIndex] = payload.board;
 };

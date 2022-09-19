@@ -3,13 +3,9 @@ import {
 	StyledParagraph,
 } from 'components/ActionsMenus/ActionsMenus.styled';
 import { StyledSubtaskBox, StyledSubtaskInfo } from './SubtaskView.styled';
-import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { useAppDispatch } from 'store/hooks';
 import { useEffect, useState } from 'react';
-import {
-	editTask,
-	selectCurrentBoard,
-	selectCurrentColumn,
-} from 'store/slices/kanbanSlice/kanbanSlice';
+import { editTask } from 'store/slices/kanbanSlice/kanbanSlice';
 import { getCompletedTask } from 'helpers/getCompletedTasks';
 import { getUpdateTask } from 'helpers/getUpdateTask';
 import { subtaskInfo } from 'data/textEN';
@@ -21,15 +17,10 @@ const SubtaskView = ({ task }: { task: TasksData }) => {
 	const [taskDone, setTaskDone] = useState(0);
 
 	const dispatch = useAppDispatch();
-	const currentColumn = useAppSelector(selectCurrentColumn);
-	const currentBoard = useAppSelector(selectCurrentBoard);
 
 	const taskCheckHandler = (subtask: Subtask) => {
 		dispatch(
 			editTask({
-				columnId: currentColumn,
-				taskId: task.id,
-				currentBoard: currentBoard,
 				task: getUpdateTask(subtask, task),
 			})
 		);

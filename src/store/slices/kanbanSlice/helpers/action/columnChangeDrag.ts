@@ -5,27 +5,28 @@ import {
 } from '../../../helpers/reducersHelpers';
 import { WritableDraft } from 'immer/dist/internal';
 import { ColumnChangeDragType } from '../../types/columnChangeDrag.type';
-import { Boards } from 'data/types/boards.type';
+import { KanbanSlice } from '../../types/kanbanSlice';
 
 export const columnChangeTaskDragReducer = (
-	state: WritableDraft<Boards>,
-	payload: ColumnChangeDragType
+	{ data, currentBoardId }: WritableDraft<KanbanSlice>,
+	{ index, columnId, taskId, columnTarget }: ColumnChangeDragType
 ) => {
-	const boardIndex = getBoardIndex(state, payload.currentBoard);
-	const columnIndex = getColumnIndex(state, boardIndex, payload.columnId);
-	const taskIndex = getTaskIndex(state, boardIndex, columnIndex, payload.taskId);
+	const boardIndex = getBoardIndex(data, currentBoardId);
+	const columnIndex = getColumnIndex(data, boardIndex, columnId);
+	const taskIndex = getTaskIndex(data, boardIndex, columnIndex, taskId);
 
 	const taskToChange =
-		state.boards[boardIndex].columns[columnIndex].tasks[taskIndex];
-	state.boards[boardIndex].columns[columnIndex].tasks = state.boards[
-		boardIndex
-	].columns[columnIndex].tasks.filter((task) => {
-		return payload.taskId !== task.id;
-	});
-	const columnIndexTarget = state.boards[boardIndex].columns.findIndex(
-		(column) => column.id === payload.columnTarget
+		data.boards[boardIndex].columns[columnIndex].tasks[taskIndex];
+
+	const filterTasks = data.boards[boardIndex].columns[columnIndex].tasks.filter(
+		(task) => taskId !== task.id
 	);
-	const newTasks = state.boards[boardIndex].columns[columnIndexTarget].tasks;
-	newTasks.splice(payload.index, 0, taskToChange);
-	state.boards[boardIndex].columns[columnIndexTarget].tasks = newTasks;
+	data.boards[boardIndex].columns[columnIndex].tasks = filterTasks;
+
+	const columnIndexTarget = data.boards[boardIndex].columns.findIndex(
+		(column) => column.id === columnTarget
+	);
+	const newTasks = data.boards[boardIndex].columns[columnIndexTarget].tasks;
+	newTasks.splice(index, 0, taskToChange);
+	data.boards[boardIndex].columns[columnIndexTarget].tasks = newTasks;
 };

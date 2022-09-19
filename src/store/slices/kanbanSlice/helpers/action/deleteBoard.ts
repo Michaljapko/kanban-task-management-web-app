@@ -1,11 +1,9 @@
 import { WritableDraft } from 'immer/dist/internal';
-import { Boards } from 'data/types/boards.type';
+import { KanbanSlice } from '../../types/kanbanSlice';
 
-export const deleteBoardReducer = (
-	state: WritableDraft<Boards>,
-	payload: string
-) => {
-	state.boards = state.boards.filter((board) => {
-		return payload !== board.id;
-	});
+export const deleteBoardReducer = ({
+	data,
+	currentBoardId,
+}: WritableDraft<KanbanSlice>) => {
+	data.boards = data.boards.filter((board) => currentBoardId !== board.id);
 };

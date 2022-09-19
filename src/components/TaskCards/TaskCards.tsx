@@ -20,7 +20,6 @@ import { useAppDispatch, useAppSelector } from 'store/hooks';
 import {
 	selectTasksData,
 	columnChangeTaskDrag,
-	selectCurrentBoard,
 	changeColumn,
 	changeTask,
 } from 'store/slices/kanbanSlice/kanbanSlice';
@@ -38,7 +37,6 @@ const TaskCards = () => {
 	const dispatch = useAppDispatch();
 	const columns = useAppSelector(selectTasksData);
 	const isTaskShow = useAppSelector(selectLayout).isTaskShow;
-	const currentBoard = useAppSelector(selectCurrentBoard);
 	const dotColorsNum = theme.dotColors.length;
 	const sequenceLength = columns!.length;
 	const sequenceArr = getSequenceArr(sequenceLength, dotColorsNum);
@@ -51,17 +49,15 @@ const TaskCards = () => {
 	const onDragEndHadnle = (event: DropResult) => {
 		if (!event.destination) return;
 		const payload: {
-			currentBoard: string;
 			columnId: string;
 			columnTarget: string;
 			taskId: string;
 			index: number;
 		} = {
-			currentBoard: currentBoard,
+			index: event.destination.index,
+			taskId: event.draggableId,
 			columnId: event.source.droppableId,
 			columnTarget: event.destination.droppableId,
-			taskId: event.draggableId,
-			index: event.destination.index,
 		};
 		dispatch(columnChangeTaskDrag(payload));
 	};

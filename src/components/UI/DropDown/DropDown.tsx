@@ -1,10 +1,10 @@
 import {
 	setIsBoardEditShow,
-	setIsDeleteBoardShow,
 	setIsDeleteTaskShow,
 	setIsDropdownTaskShow,
 	setIsDropdownHeaderShow,
 	setIsTaskEditShow,
+	setIsDeleteBoardShow,
 } from 'store/slices/layoutSlice/layoutSlice';
 import { StyledDropMenu, StyledDropMenuButton } from './DropDown.styled';
 import { useAppDispatch } from 'store/hooks';

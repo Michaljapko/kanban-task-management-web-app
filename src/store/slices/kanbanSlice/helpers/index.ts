@@ -1,7 +1,6 @@
 export * from './action/editBoard';
 export * from './action/deleteBoard';
 export * from './action/addTask';
-export * from './action/addColumn';
 export * from './action/editTask';
 export * from './action/deleteTask';
 export * from './action/columnChangeTask';

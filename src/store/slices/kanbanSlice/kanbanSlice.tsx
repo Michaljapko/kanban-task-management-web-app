@@ -4,7 +4,6 @@ import {
 	editBoardReducer,
 	deleteBoardReducer,
 	addTaskReducer,
-	addColumReducer,
 	editTaskReducer,
 	deleteTaskReducer,
 	columnChangeTaskReducer,
@@ -15,16 +14,11 @@ import {
 	getCurrentTaskName,
 } from './helpers';
 import { data } from '../../../data/data';
-import { DeleteTaskType } from './types/deleteTask.type';
-import { AddTaskType } from './types/addTask.type';
-import { EditTaskType } from './types/editTask.type';
-import { AddColumnType } from './types/addColumn.type';
-import { EditBoardType } from './types/editBoard.type';
 import { ColumnChangeType } from './types/columnChange.type';
 import { ColumnChangeDragType } from './types/columnChangeDrag.type';
-
 import { Board } from '../../../data/types/board.type';
 import { KanbanSlice } from './types/kanbanSlice';
+import { TasksData } from 'data/types/taskData.type';
 
 const initialState: () => KanbanSlice = () => {
 	if (localStorage.getItem('taskAction')) {
@@ -45,31 +39,26 @@ export const kanbanSlice = createSlice({
 		addBoard: ({ data }, { payload }: PayloadAction<Board>) => {
 			data.boards = [...data.boards, payload];
 		},
-		editBoard: ({ data }, { payload }: PayloadAction<EditBoardType>) =>
-			editBoardReducer(data, payload),
+		editBoard: (state, { payload }: PayloadAction<{ board: Board }>) =>
+			editBoardReducer(state, payload),
 
-		deleteBoard: ({ data }, { payload }: PayloadAction<string>) =>
-			deleteBoardReducer(data, payload),
+		deleteBoard: (state) => deleteBoardReducer(state),
 
-		addTask: ({ data }, { payload }: PayloadAction<AddTaskType>) =>
-			addTaskReducer(data, payload),
+		addTask: (state, { payload }: PayloadAction<{ task: TasksData }>) =>
+			addTaskReducer(state, payload),
 
-		addColumn: ({ data }, { payload }: PayloadAction<AddColumnType>) =>
-			addColumReducer(data, payload),
+		editTask: (state, { payload }: PayloadAction<{ task: TasksData }>) =>
+			editTaskReducer(state, payload),
 
-		editTask: ({ data }, { payload }: PayloadAction<EditTaskType>) =>
-			editTaskReducer(data, payload),
+		deleteTask: (state) => deleteTaskReducer(state),
 
-		deleteTask: ({ data }, { payload }: PayloadAction<DeleteTaskType>) =>
-			deleteTaskReducer(data, payload),
-
-		columnChangeTask: ({ data }, { payload }: PayloadAction<ColumnChangeType>) =>
-			columnChangeTaskReducer(data, payload),
+		columnChangeTask: (state, { payload }: PayloadAction<ColumnChangeType>) =>
+			columnChangeTaskReducer(state, payload),
 
 		columnChangeTaskDrag: (
-			{ data },
+			state,
 			{ payload }: PayloadAction<ColumnChangeDragType>
-		) => columnChangeTaskDragReducer(data, payload),
+		) => columnChangeTaskDragReducer(state, payload),
 
 		changeBoard: (state, { payload }: PayloadAction<string>) => {
 			state.currentBoardId = payload;
@@ -86,7 +75,6 @@ export const kanbanSlice = createSlice({
 export const {
 	addTask,
 	addBoard,
-	addColumn,
 	deleteBoard,
 	deleteTask,
 	editTask,

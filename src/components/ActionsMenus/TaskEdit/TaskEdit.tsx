@@ -4,7 +4,6 @@ import {
 	selectTasksData,
 	columnChangeTask,
 	editTask,
-	selectCurrentBoard,
 	selectCurrentColumn,
 } from 'store/slices/kanbanSlice/kanbanSlice';
 import {
@@ -28,7 +27,6 @@ const TaskEdit = () => {
 	const dispatch = useAppDispatch();
 	const taskColumns = useAppSelector(selectTasksData);
 	const currentColumn = useAppSelector(selectCurrentColumn);
-	const currentBoard = useAppSelector(selectCurrentBoard);
 	const task = useAppSelector(selectCurrentTaskData);
 
 	const taskColumnsData = taskColumns!.map((column) => ({
@@ -59,14 +57,14 @@ const TaskEdit = () => {
 			status: values.status,
 		};
 
-		const taskStateValues = {
-			currentBoard: currentBoard,
-			columnId: currentColumn,
-			taskId: taskEdited.id,
-			task: taskEdited,
-		};
-		dispatch(columnChangeTask({ columnTarget: values.status, ...taskStateValues }));
-		dispatch(editTask(taskStateValues));
+		dispatch(
+			columnChangeTask({
+				columnTarget: values.status,
+				taskId: taskEdited.id,
+				task: taskEdited,
+			})
+		);
+		dispatch(editTask({ task: taskEdited }));
 		dispatch(setIsTaskEditShow());
 	};
 

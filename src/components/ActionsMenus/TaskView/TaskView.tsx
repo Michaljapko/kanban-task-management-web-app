@@ -2,7 +2,6 @@ import {
 	selectTasksData,
 	columnChangeTask,
 	selectCurrentTaskData,
-	selectCurrentBoard,
 	selectCurrentColumn,
 	changeColumn,
 	changeTask,
@@ -26,9 +25,8 @@ import { DropDown, Ellipsis, PopUp, SelectInput } from 'components/UI';
 const TaskView = () => {
 	const dispatch = useAppDispatch();
 	const currentColumn = useAppSelector(selectCurrentColumn);
-	const currentBoard = useAppSelector(selectCurrentBoard);
 	const taskColumn = useAppSelector(selectTasksData);
-	const isDropdownTaskShow = useAppSelector(selectLayout).isDropdownTaskShow;
+	const { isDropdownTaskShow } = useAppSelector(selectLayout);
 	const task = useAppSelector(selectCurrentTaskData);
 
 	const taskColumsData = taskColumn!.map((column) => ({
@@ -41,22 +39,16 @@ const TaskView = () => {
 		dispatch(changeColumn(event!.value));
 		dispatch(
 			columnChangeTask({
-				columnId: currentColumn,
 				columnTarget: event!.value,
-				taskId: task.id,
-				currentBoard: currentBoard,
 				task: taskUpdated,
-			})
+				taskId: task.id,
+			})    
 		);
 	};
 
 	const ellipsisButton = (
 		<>
-			<Ellipsis
-				onClick={() => {
-					dispatch(setIsDropdownTaskShow());
-				}}
-			/>
+			<Ellipsis onClick={() => dispatch(setIsDropdownTaskShow())} />
 			{isDropdownTaskShow && <DropDown variant='task' />}
 		</>
 	);

@@ -27,7 +27,6 @@ const BoardEdit = () => {
 
 	const handleEditBoard = (values: BoardInputValues) => {
 		const board = {
-			currentBoard: currentBoardId,
 			board: {
 				id: currentBoardId,
 				name: values.boardName,

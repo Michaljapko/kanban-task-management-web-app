@@ -1,17 +1,20 @@
-import { getBoardIndex, getColumnIndex } from '../../../helpers/reducersHelpers';
+import {
+	getBoardIndex,
+	getColumnIndex,
+} from '../../../helpers/reducersHelpers';
 import { WritableDraft } from 'immer/dist/internal';
+import { KanbanSlice } from '../../types/kanbanSlice';
 
-import { DeleteTaskType } from '../../types/deleteTask.type';
-import { Boards } from 'data/types/boards.type';
-
-export const deleteTaskReducer = (
-	state: WritableDraft<Boards>,
-	payload: DeleteTaskType
-) => {
-	const boardIndex = getBoardIndex(state, payload.currentBoard);
-	const columnIndex = getColumnIndex(state, boardIndex, payload.columnId);
-	const newTasks = state.boards[boardIndex].columns[columnIndex].tasks.filter(
-		(task) => task.id !== payload.taskId
+export const deleteTaskReducer = ({
+	data,
+	currentBoardId,
+	currentColumnId,
+	currentTaskId,
+}: WritableDraft<KanbanSlice>) => {
+	const boardIndex = getBoardIndex(data, currentBoardId);
+	const columnIndex = getColumnIndex(data, boardIndex, currentColumnId);
+	const newTasks = data.boards[boardIndex].columns[columnIndex].tasks.filter(
+		(task) => task.id !== currentTaskId
 	);
-	state.boards[boardIndex].columns[columnIndex].tasks = newTasks;
+	data.boards[boardIndex].columns[columnIndex].tasks = newTasks;
 };

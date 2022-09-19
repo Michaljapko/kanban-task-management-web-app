@@ -24,11 +24,7 @@ import {
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { Formik, Form, FieldArray } from 'formik';
 import { TaskInputValues } from 'types';
-import {
-	addTask,
-	selectCurrentBoard,
-	selectTasksData,
-} from 'store/slices/kanbanSlice/kanbanSlice';
+import { addTask, selectTasksData } from 'store/slices/kanbanSlice/kanbanSlice';
 import { setIsTaskAddShow } from 'store/slices/layoutSlice/layoutSlice';
 import { taskAddSchema } from 'helpers/validationSchema';
 import { v4 as uuid } from 'uuid';
@@ -37,7 +33,6 @@ import { TasksData } from 'data/types/taskData.type';
 const TaskAdd = () => {
 	const dispatch = useAppDispatch();
 	const taskColumns = useAppSelector(selectTasksData);
-	const currentBoard = useAppSelector(selectCurrentBoard);
 	const taskColumnsData = taskColumns!.map((column) => ({
 		value: column.id,
 		label: column.name,
@@ -60,7 +55,7 @@ const TaskAdd = () => {
 			})),
 			status: values.status,
 		};
-		dispatch(addTask({ task: task, currentBoard: currentBoard }));
+		dispatch(addTask({ task: task }));
 		dispatch(setIsTaskAddShow());
 	}
 

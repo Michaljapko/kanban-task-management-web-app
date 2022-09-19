@@ -10,15 +10,11 @@ import {
 	setIsDeleteBoardShow,
 	setIsDeleteTaskShow,
 } from 'store/slices/layoutSlice/layoutSlice';
-
 import {
 	changeTask,
 	deleteBoard,
 	deleteTask,
-	selectCurrentBoard,
 	selectCurrentBoardName,
-	selectCurrentColumn,
-	selectCurrentTask,
 	selectCurrentTaskName,
 } from 'store/slices/kanbanSlice/kanbanSlice';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
@@ -28,10 +24,7 @@ import { Button, PopUp } from 'components/UI';
 
 const DeleteMenu = ({ variant }: DeleteMenuProps) => {
 	const dispatch = useAppDispatch();
-	const columnId = useAppSelector(selectCurrentColumn);
-	const boardId = useAppSelector(selectCurrentBoard);
 	const boardName = useAppSelector(selectCurrentBoardName);
-	const taskId = useAppSelector(selectCurrentTask);
 	const taskName = useAppSelector(selectCurrentTaskName);
 
 	const getTitle = () => {
@@ -43,19 +36,13 @@ const DeleteMenu = ({ variant }: DeleteMenuProps) => {
 		if (variant === 'task') return taskDeleteInfo(taskName!);
 	};
 	const boardDeleteHandler = () => {
-		dispatch(deleteBoard(boardId));
+		dispatch(deleteBoard());
 		dispatch(setIsDeleteBoardShow());
 	};
 	const taskDeleteHandler = () => {
+		dispatch(deleteTask());
 		dispatch(changeTask(''));
 		dispatch(setIsDeleteTaskShow());
-		dispatch(
-			deleteTask({
-				currentBoard: boardId,
-				columnId: columnId,
-				taskId: taskId,
-			})
-		);
 	};
 	const closeHandler = () => {
 		if (variant === 'board') dispatch(setIsDeleteBoardShow());
