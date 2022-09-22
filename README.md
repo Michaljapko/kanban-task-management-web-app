@@ -1,7 +1,15 @@
-![Logo](https://michaljapko.github.io/kanban-task-management-web-app/static/media/logo-light.1e20d87d61c965503a5323cc3bd2c827.svg)
-![Logo](https://raw.githubusercontent.com/Michaljapko/kanban-task-management-web-app/development/demo.gif)
+<div align="center">
+  <img height="50" src="https://michaljapko.github.io/kanban-task-management-web-app/static/media/logo-light.1e20d87d61c965503a5323cc3bd2c827.svg"  />
+</div>
 
-# Kanban task management Web App
+###
+
+<div align="center">
+  <img height="350" src="https://raw.githubusercontent.com/Michaljapko/kanban-task-management-web-app/development/demo.gif"  />
+</div>
+
+#### Kanban task management Web App
+
 Fully-functional task management app with a light/dark mode toggle. A project built on the basis of brief and figma design files from Frontend Mentor challenge.
 
 ## Demo
