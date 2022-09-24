@@ -1,6 +1,6 @@
 export interface ColumnChangeDragType {
-	columnTarget: string;
-	columnId: string;
-	taskId: string;
-	index: number;
+  columnTarget: string;
+  columnId: string;
+  taskId: string;
+  index: number;
 }

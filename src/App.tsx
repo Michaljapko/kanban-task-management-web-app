@@ -6,15 +6,15 @@ import { useDetectScreen } from './hooks/useDetectScreen';
 import { selectThemeMode } from 'store/slices/layoutSlice/layoutSlice';
 
 function App() {
-	const newTheme = useAppSelector(selectThemeMode);
-	useDetectScreen();
+  const newTheme = useAppSelector(selectThemeMode);
+  useDetectScreen();
 
-	return (
-		<ThemeProvider theme={newTheme}>
-			<GlobalStyle />
-			<LandingPage />
-		</ThemeProvider>
-	);
+  return (
+    <ThemeProvider theme={newTheme}>
+      <GlobalStyle />
+      <LandingPage />
+    </ThemeProvider>
+  );
 }
 
 export default App;

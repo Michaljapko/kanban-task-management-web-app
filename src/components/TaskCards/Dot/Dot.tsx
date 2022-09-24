@@ -1,8 +1,8 @@
 import { StyledDot } from './Dot.styled';
 interface DotType {
-	colorIndex: number;
+  colorIndex: number;
 }
 const Dot = ({ colorIndex }: DotType) => {
-	return <StyledDot colorIndex={colorIndex} />;
+  return <StyledDot colorIndex={colorIndex} />;
 };
 export default Dot;

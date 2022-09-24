@@ -1,5 +1,4 @@
 export interface ScrollWrapperProps {
-	children: false | JSX.Element | JSX.Element[];
+  children: false | JSX.Element | JSX.Element[];
 }
-export type measuredRefType = ((instance: HTMLDivElement | null) => void) &
-	HTMLDivElement;
+export type measuredRefType = ((instance: HTMLDivElement | null) => void) & HTMLDivElement;

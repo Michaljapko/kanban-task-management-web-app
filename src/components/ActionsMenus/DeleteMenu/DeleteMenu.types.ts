@@ -1,3 +1,3 @@
 export interface DeleteMenuProps {
-	variant: 'board' | 'task';
+  variant: 'board' | 'task';
 }

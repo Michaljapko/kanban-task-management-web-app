@@ -4,9 +4,9 @@ import { KanbanSlice } from '../../types/kanbanSlice';
 import { Board } from 'data/types/board.type';
 
 export const editBoardReducer = (
-	{ data, currentBoardId }: WritableDraft<KanbanSlice>,
-	payload: { board: Board }
+  { data, currentBoardId }: WritableDraft<KanbanSlice>,
+  payload: { board: Board }
 ) => {
-	const boardIndex = getBoardIndex(data, currentBoardId);
-	data.boards[boardIndex] = payload.board;
+  const boardIndex = getBoardIndex(data, currentBoardId);
+  data.boards[boardIndex] = payload.board;
 };
