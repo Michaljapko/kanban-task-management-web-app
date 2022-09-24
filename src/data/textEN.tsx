@@ -1,38 +1,38 @@
 export {
-	EMPTY,
-	EMPTY_BOARD,
-	APLICATION_TITLE,
-	DELETE,
-	COLUMN_ADD,
-	COLUMN_PLACEHOLDER,
-	TASK_DELETE,
-	BOARD_CREATE,
-	BOARD_NAME,
-	BOARD_EDIT,
-	BOARD_COLUMNS,
-	BOARD_ADD,
-	BOARD_DELETE,
-	BOARD_PLACEHOLDER,
-	TASK_EDIT,
-	TASK_TITLE,
-	TASK_NAME,
-	TASK_ADD,
-	TASK_ADD_HEADER,
-	TASK_DESCRIPTION,
-	TASK_PLACEHOLDER,
-	TASK_SUBTASK,
-	ALL_BOARD,
-	STATE,
-	STATUS,
-	SAVE,
-	CANCEL,
-	EDIT,
-	HIDE_SIDEBAR,
-	boardDeleteInfo,
-	taskDeleteInfo,
-	subtaskInfo,
-	subtaskInfoCard,
-	SUBTASK_ADD,
+  EMPTY,
+  EMPTY_BOARD,
+  APLICATION_TITLE,
+  DELETE,
+  COLUMN_ADD,
+  COLUMN_PLACEHOLDER,
+  TASK_DELETE,
+  BOARD_CREATE,
+  BOARD_NAME,
+  BOARD_EDIT,
+  BOARD_COLUMNS,
+  BOARD_ADD,
+  BOARD_DELETE,
+  BOARD_PLACEHOLDER,
+  TASK_EDIT,
+  TASK_TITLE,
+  TASK_NAME,
+  TASK_ADD,
+  TASK_ADD_HEADER,
+  TASK_DESCRIPTION,
+  TASK_PLACEHOLDER,
+  TASK_SUBTASK,
+  ALL_BOARD,
+  STATE,
+  STATUS,
+  SAVE,
+  CANCEL,
+  EDIT,
+  HIDE_SIDEBAR,
+  boardDeleteInfo,
+  taskDeleteInfo,
+  subtaskInfo,
+  subtaskInfoCard,
+  SUBTASK_ADD,
 };
 
 const EMPTY = 'Create or choose a board to get started.';
@@ -58,7 +58,7 @@ const TASK_EDIT = 'Edit Task';
 const TASK_SUBTASK = 'Subtask';
 const SUBTASK_ADD = '+ Add New Subtask';
 const TASK_PLACEHOLDER =
-	'e.g. It’s always good to take a break. This 15 minute break will  recharge the batteries a little.';
+  'e.g. It’s always good to take a break. This 15 minute break will  recharge the batteries a little.';
 
 const ALL_BOARD = 'All Boards';
 const STATUS = 'Status';
@@ -68,14 +68,14 @@ const EDIT = 'Edit';
 const STATE = 'Current state:';
 const HIDE_SIDEBAR = 'Hide Sidebar';
 const boardDeleteInfo = (
-	boardName: string
+  boardName: string
 ) => `Are you sure you want to delete the ‘${boardName}’ board? This action
 will remove all columns and tasks and cannot be reversed.`;
 const taskDeleteInfo = (
-	taskName: string
+  taskName: string
 ) => `Are you sure you want to delete the ‘${taskName}’ task and its
 subtasks? This action cannot be reversed.`;
 const subtaskInfo = (subtasksDone: number, subtasksNum: number) =>
-	`Subtask (${subtasksDone} of ${subtasksNum})`;
+  `Subtask (${subtasksDone} of ${subtasksNum})`;
 const subtaskInfoCard = (subtasksDone: number, subtasksNum: number) =>
-	`${subtasksDone} of ${subtasksNum} subtasks`;
+  `${subtasksDone} of ${subtasksNum} subtasks`;

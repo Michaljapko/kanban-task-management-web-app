@@ -1,9 +1,9 @@
-import { Column } from "./column.type";
+import { Column } from './column.type';
 
 export interface Boards {
-	boards: {
-		id: string;
-		name: string;
-		columns: Column[];
-	}[];
+  boards: {
+    id: string;
+    name: string;
+    columns: Column[];
+  }[];
 }

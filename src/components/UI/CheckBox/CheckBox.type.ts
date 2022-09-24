@@ -1,5 +1,5 @@
 export interface CheckBoxTypes {
-	name?: string;
-	onChange?: () => void;
-	defaultChecked?: boolean;
+  name?: string;
+  onChange?: () => void;
+  defaultChecked?: boolean;
 }

@@ -1,4 +1,4 @@
 export interface ColumnInputValues {
-	boardName: string;
-	columns: { name: string }[];
+  boardName: string;
+  columns: { name: string }[];
 }
