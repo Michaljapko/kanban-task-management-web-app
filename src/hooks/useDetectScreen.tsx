@@ -12,9 +12,10 @@ export const useDetectScreen = () => {
   const [width, setWidth] = useState(window.innerWidth);
   const dispatch = useDispatch();
   const currentDevice = useAppSelector(selectLayout).device;
+  const setWidthListener = () => setWidth(window.innerWidth);
 
   useEffect(() => {
-    window.addEventListener('resize', () => setWidth(window.innerWidth));
+    window.addEventListener('resize', setWidthListener);
     if (width >= 992 && currentDevice !== 'desktop') {
       dispatch(setDesktop());
     }
@@ -23,7 +24,7 @@ export const useDetectScreen = () => {
       dispatch(setIsSidebarShow());
     }
     return () => {
-      window.addEventListener('resize', () => setWidth(window.innerWidth));
+      window.removeEventListener('resize', setWidthListener);
     };
   }, [width, dispatch, currentDevice]);
 };
