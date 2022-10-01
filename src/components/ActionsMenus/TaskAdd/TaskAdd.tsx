@@ -15,9 +15,9 @@ import { Formik, Form, FieldArray } from 'formik';
 import { TaskInputValues } from 'types';
 import { addTask, selectTasksData } from 'store/slices/kanbanSlice/kanbanSlice';
 import { setIsTaskAddShow } from 'store/slices/layoutSlice/layoutSlice';
-import { taskAddSchema } from 'helpers/validationSchema';
 import { v4 as uuid } from 'uuid';
 import { TasksData } from 'data/types/taskData.type';
+import { taskAddSchema } from './TaskAdd.validation';
 
 const TaskAdd = () => {
   const dispatch = useAppDispatch();

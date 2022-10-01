@@ -1,7 +1,7 @@
 import { BOARD_CREATE, BOARD_NAME, BOARD_ADD, BOARD_PLACEHOLDER } from 'data/textEN';
 import { StyledBoxSection, StyledLabel } from '../ActionsMenus.styled';
 import { Formik, Form } from 'formik';
-import { boardAddSchema } from 'helpers/validationSchema';
+import { boardAddSchema } from './BoardAdd.validation';
 import { ColumnInputValues } from 'types';
 import { addBoard, changeBoard } from 'store/slices/kanbanSlice/kanbanSlice';
 import { setIsBoardAddShow } from 'store/slices/layoutSlice/layoutSlice';

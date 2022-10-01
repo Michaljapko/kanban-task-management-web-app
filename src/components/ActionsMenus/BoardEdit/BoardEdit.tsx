@@ -1,19 +1,18 @@
-import { BOARD_NAME, BOARD_EDIT, SAVE } from 'data/textEN';
-import { StyledBoxSection, StyledLabel } from '../ActionsMenus.styled';
-
-import { useAppDispatch, useAppSelector } from 'store/hooks';
-import { Formik, Form } from 'formik';
-import { setIsBoardEditShow } from 'store/slices/layoutSlice/layoutSlice';
-import { BoardInputValues } from 'types';
-import { boardAddSchema } from 'helpers/validationSchema';
 import {
   editBoard,
   selectCurrentBoard,
   selectCurrentBoardData,
 } from 'store/slices/kanbanSlice/kanbanSlice';
+import { BOARD_NAME, BOARD_EDIT, SAVE } from 'data/textEN';
+import { StyledBoxSection, StyledLabel } from '../ActionsMenus.styled';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { Formik, Form } from 'formik';
+import { setIsBoardEditShow } from 'store/slices/layoutSlice/layoutSlice';
+import { BoardInputValues } from 'types';
 import { filterAddedColumns } from 'helpers/filterAddedColumns';
 import ColumnsEdit from './ColumnsEdit';
 import { Button, Input, PopUp } from 'components/UI';
+import { boardAddSchema } from '../BoardAdd/BoardAdd.validation';
 
 const BoardEdit = () => {
   const dispatch = useAppDispatch();
