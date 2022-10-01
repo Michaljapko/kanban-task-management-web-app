@@ -37,17 +37,15 @@ const Sidebar = () => {
           {ALL_BOARD} ({boards.length})
         </StyledHead>
         <StyledWrapper>
-          {boards.map((board) => {
-            return (
-              <Button
-                onClick={() => boardButtonHandler(board)}
-                key={board.id}
-                variant={board.id === currentBoards ? 'sidebarCurrent' : 'sidebar'}
-                icon="board">
-                {board.name}
-              </Button>
-            );
-          })}
+          {boards.map((board) => (
+            <Button
+              onClick={() => boardButtonHandler(board)}
+              key={board.id}
+              variant={board.id === currentBoards ? 'sidebarCurrent' : 'sidebar'}
+              icon="board">
+              {board.name}
+            </Button>
+          ))}
         </StyledWrapper>
         <Button onClick={() => dispatch(setIsBoardAddShow())} variant="sidebarBold" icon="board">
           {BOARD_CREATE}
