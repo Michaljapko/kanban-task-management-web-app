@@ -1,3 +1,4 @@
+import { RESOLUTION_THRESHOLD } from 'constants/resolutionTreshold';
 import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
@@ -23,7 +24,7 @@ export const StyledWrapperCard = styled.div`
   padding: 5.5rem 1rem;
   gap: 1.5rem;
   overflow: auto;
-  @media (min-width: 992px) {
+  @media (min-width: ${RESOLUTION_THRESHOLD}) {
     padding: 7.5rem 1.5rem;
   }
 
@@ -40,7 +41,7 @@ export const StyledWrapperCard = styled.div`
 
 export const StyledHidebox = styled.button`
   display: none;
-  @media (min-width: 992px) {
+  @media (min-width: ${RESOLUTION_THRESHOLD}) {
     position: absolute;
     left: 0px;
     bottom: 2rem;

@@ -1,3 +1,4 @@
+import { RESOLUTION_THRESHOLD } from 'constants/resolutionTreshold';
 import styled from 'styled-components';
 
 export const StyledHead = styled.div`
@@ -25,7 +26,7 @@ export const StyledRadioBox = styled.div`
 export const StyledHideBox = styled.div`
   display: none;
 
-  @media (min-width: 992px) {
+  @media (min-width: ${RESOLUTION_THRESHOLD}) {
     display: flex;
     margin-top: 22px;
   }
@@ -44,7 +45,7 @@ export const StyledWrapper = styled.div`
   }
 `;
 export const StyledFooter = styled.div`
-  @media (min-width: 992px) {
+  @media (min-width: ${RESOLUTION_THRESHOLD}) {
     position: relative;
     bottom: 0;
     width: 100%;

@@ -1,3 +1,4 @@
+import { RESOLUTION_THRESHOLD } from 'constants/resolutionTreshold';
 import styled from 'styled-components';
 
 export const StyledDropMenu = styled.div`
@@ -15,7 +16,7 @@ export const StyledDropMenu = styled.div`
   height: 5.875rem;
   padding: 1rem;
   background: ${({ theme }) => theme.backgroundMain};
-  @media (min-width: 992px) {
+  @media (min-width: ${RESOLUTION_THRESHOLD}) {
     top: 4.5rem;
   }
 `;

@@ -1,3 +1,4 @@
+import { RESOLUTION_THRESHOLD } from 'constants/resolutionTreshold';
 import { styled } from '../../../theme/theme';
 
 export const StyledText = styled.p`
@@ -10,7 +11,7 @@ export const StyledWrapper = styled.div`
   margin-top: 1.5rem;
   gap: 1rem;
 
-  @media (min-width: 992px) {
+  @media (min-width: ${RESOLUTION_THRESHOLD}) {
     flex-direction: row;
     margin-bottom: 1rem;
   }

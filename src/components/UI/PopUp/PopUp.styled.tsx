@@ -1,3 +1,4 @@
+import { RESOLUTION_THRESHOLD } from 'constants/resolutionTreshold';
 import styled, { css } from 'styled-components';
 import { PopUpVariants } from './PopUp.type';
 
@@ -13,7 +14,7 @@ export const StyledBackdrop = styled.div<{ variant?: PopUpVariants }>`
   ${({ variant }) => {
     if (variant === 'sidebar')
       return css`
-        @media (min-width: 992px) {
+        @media (min-width: ${RESOLUTION_THRESHOLD}) {
           display: none;
         }
       `;
@@ -31,7 +32,7 @@ export const StyledBack = styled.div<{ variant?: PopUpVariants }>`
   padding-bottom: 2rem;
   padding-top: 4rem;
 
-  @media (min-width: 992px) {
+  @media (min-width: ${RESOLUTION_THRESHOLD}) {
     height: 100%;
     align-items: center;
     justify-content: center;
@@ -40,7 +41,7 @@ export const StyledBack = styled.div<{ variant?: PopUpVariants }>`
     if (variant === 'sidebar')
       return css`
         align-items: flex-start;
-        @media (min-width: 992px) {
+        @media (min-width: ${RESOLUTION_THRESHOLD}) {
           position: relative;
           display: flex;
           justify-content: flex-start;
@@ -69,7 +70,7 @@ export const StyledBox = styled.div<{ variant?: PopUpVariants }>`
     if (variant === 'sidebar')
       return css`
         width: 264px;
-        @media (min-width: 992px) {
+        @media (min-width: ${RESOLUTION_THRESHOLD}) {
           position: fixed;
           flex-direction: column;
           justify-content: space-between;
@@ -83,7 +84,7 @@ export const StyledBox = styled.div<{ variant?: PopUpVariants }>`
           padding-top: 0.9375rem;
           padding-bottom: 2rem;
         }
-        @media (max-height: 800px) and (min-width: 992px) {
+        @media (max-height: 800px) and (min-width: ${RESOLUTION_THRESHOLD}) {
           padding-bottom: 3.875rem;
         }
       `;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ReactComponent as ChevronDown } from 'assets/icon-chevron-down.svg';
 import { ReactComponent as ChevronUp } from 'assets/icon-chevron-up.svg';
+import { RESOLUTION_THRESHOLD } from 'constants/resolutionTreshold';
 
 export const StyledHeader = styled.div<{ isSidebarShow: boolean }>`
   position: fixed;
@@ -12,7 +13,7 @@ export const StyledHeader = styled.div<{ isSidebarShow: boolean }>`
   width: 100vw;
   background: ${({ theme }) => theme.backgroundMain};
 
-  @media (min-width: 992px) {
+  @media (min-width: ${RESOLUTION_THRESHOLD}) {
     padding: 0;
     padding-right: 2rem;
     height: 96px;
@@ -34,19 +35,19 @@ export const StyledHeaderBox = styled.div`
 `;
 
 export const StyledArrowUp = styled(ChevronUp)`
-  @media (min-width: 992px) {
+  @media (min-width: ${RESOLUTION_THRESHOLD}) {
     display: none;
   }
 `;
 export const StyledArrowDown = styled(ChevronDown)`
-  @media (min-width: 992px) {
+  @media (min-width: ${RESOLUTION_THRESHOLD}) {
     display: none;
   }
 `;
 export const StyledLogoText = styled.h1`
   ${({ theme }) => theme.textHeading.large}
   color:${({ theme }) => theme.mainColor};
-  @media (min-width: 992px) {
+  @media (min-width: ${RESOLUTION_THRESHOLD}) {
     font-size: 24px;
     line-height: 30px;
   }

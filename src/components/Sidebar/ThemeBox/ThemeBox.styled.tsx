@@ -1,5 +1,6 @@
 import { styled } from '../../../theme/theme';
 import { css } from 'styled-components';
+import { RESOLUTION_THRESHOLD } from 'constants/resolutionTreshold';
 
 const switchDot = css`
   content: '';
@@ -21,7 +22,7 @@ export const StyledRadioBox = styled.div`
   border-radius: 0.375rem;
   background: ${({ theme }) => theme.backgroundContrast};
 
-  @media (min-width: 992px) {
+  @media (min-width: ${RESOLUTION_THRESHOLD}) {
     margin: 0 2rem;
   }
 `;
